@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <swModel>
+    <tasks xmi:id="OF_TM?type=Task" name="OF_TM" stimuli="50ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="OFTM_RadarC?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="OFTM_RadarR?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="OFTM_RadarL?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Scene_Description?type=Task" name="Scene_Description" stimuli="50ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="Scene_Lanes?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="Scene_Obstacles?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="Scene_TrafficLights?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="Scene_TrafficSigns?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="SensingRadar?type=Task" name="SensingRadar" stimuli="5ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="Sensing_FrontRadar?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="Sensing_RearRadar?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="SensingCamera?type=Task" name="SensingCamera" stimuli="5ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="Sensing_Camera?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="DynamicTrajectory?type=Task" name="DynamicTrajectory" stimuli="1000ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="DynamicTrajectory?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="AD+Function?type=Task" name="AD Function" stimuli="50ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="Trajectory?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="Analysis?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="Decision?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <runnables xmi:id="Sensing_Camera?type=Runnable" name="Sensing_Camera" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="In_FrontCamera?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Out_FrontCamera?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="400000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Sensing_FrontRadar?type=Runnable" name="Sensing_FrontRadar" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="In_RadarFront?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="FrontRadar_C?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="FrontRadar_L?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="FrontRadar_R?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="40000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Sensing_RearRadar?type=Runnable" name="Sensing_RearRadar" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="In_RadarRear?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="RearRadar_C?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="RearRadar_L?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="RearRadar_R?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="40000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="OFTM_RadarC?type=Runnable" name="OFTM_RadarC" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="Out_FrontCamera?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="FrontRadar_C?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarC?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="4000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="OFTM_RadarR?type=Runnable" name="OFTM_RadarR" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="FrontRadar_R?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="RearRadar_R?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarR?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="4000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="OFTM_RadarL?type=Runnable" name="OFTM_RadarL" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="FrontRadar_L?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="RearRadar_L?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarL?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="4000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Analysis?type=Runnable" name="Analysis" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="Scene_Lanes?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_Obstacles?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_TrafficLights?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_TrafficSigns?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Selection?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="800000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Decision?type=Runnable" name="Decision" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="Scene_Lanes?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_Obstacles?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_TrafficLights?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_TrafficSigns?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Selection?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1000000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Trajectory?type=Runnable" name="Trajectory" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="Scene_Lanes?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_Obstacles?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_TrafficLights?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_TrafficSigns?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Selection?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="800000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="DynamicTrajectory?type=Runnable" name="DynamicTrajectory" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="Selection?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="800000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Scene_Lanes?type=Runnable" name="Scene_Lanes" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarC?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarL?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarR?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_Lanes?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="800000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Scene_Obstacles?type=Runnable" name="Scene_Obstacles" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarC?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarL?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarR?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_Obstacles?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="800000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Scene_TrafficSigns?type=Runnable" name="Scene_TrafficSigns" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarC?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarL?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarR?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_TrafficSigns?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="800000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Scene_TrafficLights?type=Runnable" name="Scene_TrafficLights" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarC?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarL?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="OFTM_RadarR?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Scene_TrafficLights?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="800000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <labels xmi:id="In_FrontCamera?type=Label" name="In_FrontCamera" constant="false" bVolatile="false"/>
+    <labels xmi:id="Out_FrontCamera?type=Label" name="Out_FrontCamera" constant="false" bVolatile="false">
+      <size value="1" unit="Gbit"/>
+    </labels>
+    <labels xmi:id="In_RadarFront?type=Label" name="In_RadarFront" constant="false" bVolatile="false"/>
+    <labels xmi:id="In_RadarRear?type=Label" name="In_RadarRear" constant="false" bVolatile="false"/>
+    <labels xmi:id="FrontRadar_R?type=Label" name="FrontRadar_R" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="FrontRadar_C?type=Label" name="FrontRadar_C" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="FrontRadar_L?type=Label" name="FrontRadar_L" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="RearRadar_R?type=Label" name="RearRadar_R" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="RearRadar_C?type=Label" name="RearRadar_C" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="RearRadar_L?type=Label" name="RearRadar_L" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="OFTM_RadarR?type=Label" name="OFTM_RadarR" constant="false" bVolatile="false">
+      <size value="2048" unit="kbit"/>
+    </labels>
+    <labels xmi:id="OFTM_RadarL?type=Label" name="OFTM_RadarL" constant="false" bVolatile="false">
+      <size value="2048" unit="kbit"/>
+    </labels>
+    <labels xmi:id="OFTM_RadarC?type=Label" name="OFTM_RadarC" constant="false" bVolatile="false">
+      <size value="2048" unit="kbit"/>
+    </labels>
+    <labels xmi:id="Scene_Lanes?type=Label" name="Scene_Lanes" constant="false" bVolatile="false"/>
+    <labels xmi:id="Scene_Obstacles?type=Label" name="Scene_Obstacles" constant="false" bVolatile="false"/>
+    <labels xmi:id="Scene_TrafficSigns?type=Label" name="Scene_TrafficSigns" constant="false" bVolatile="false"/>
+    <labels xmi:id="Scene_TrafficLights?type=Label" name="Scene_TrafficLights" constant="false" bVolatile="false"/>
+    <labels xmi:id="Selection?type=Label" name="Selection" constant="false" bVolatile="false"/>
+  </swModel>
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="ARM+A76?type=ProcessingUnitDefinition" name="ARM A76" puType="CPU"/>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A76+L1+I?type=CacheDefinition" name="ARM A76 L1 I" cacheType="instruction" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="64" unit="kB"/>
+    </definitions>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A76+L1+D?type=CacheDefinition" name="ARM A76 L1 D" cacheType="data" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="64" unit="kB"/>
+    </definitions>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A76+L2?type=CacheDefinition" name="ARM A76 L2" cacheType="unified" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="512" unit="kB"/>
+    </definitions>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A76+L3?type=CacheDefinition" name="ARM A76 L3" cacheType="unified" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="2" unit="MB"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="GenericRAM?type=MemoryDefinition" name="GenericRAM" memoryType="DRAM">
+      <size value="8" unit="Gbit"/>
+    </definitions>
+    <definitions xsi:type="am:ConnectionHandlerDefinition" xmi:id="BUS?type=ConnectionHandlerDefinition" name="BUS" maxBurstSize="1" maxConcurrentTransfers="1"/>
+    <structures xmi:id="Raspberri+Pi+5?type=HwStructure" name="Raspberri Pi 5" structureType="Microcontroller">
+      <structures xmi:id="BCM2712?type=HwStructure" name="BCM2712" structureType="SoC">
+        <structures xmi:id="QuadCoe?type=HwStructure" name="QuadCoe" structureType="Group">
+          <modules xsi:type="am:ProcessingUnit" xmi:id="A76+Core+%281%29?type=ProcessingUnit" name="A76 Core (1)" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="ARM+A76?type=ProcessingUnitDefinition">
+            <ports xmi:id="A76+Core+%281%29/CoreToBus?type=HwPort" name="CoreToBus" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+            <ports xmi:id="A76+Core+%281%29/CoreToL1?type=HwPort" name="CoreToL1" bitWidth="0" priority="0"/>
+            <ports xmi:id="A76+Core+%281%29/CoreToL2?type=HwPort" name="CoreToL2" bitWidth="0" priority="0" portInterface="custom"/>
+            <accessElements name="CoreToMemory" destination="RAM?type=Memory"/>
+            <accessElements name="A76CoreToGPU" destination="GPU?type=ProcessingUnit"/>
+            <caches xmi:id="Cache+L1+I?type=Cache" name="Cache L1 I" definition="ARM+A76+L1+I?type=CacheDefinition">
+              <ports xmi:id="Cache+L1+I/CacheToCore?type=HwPort" name="CacheToCore" bitWidth="0" priority="0" portInterface="custom"/>
+            </caches>
+            <caches xmi:id="Cache+L1+D?type=Cache" name="Cache L1 D" definition="ARM+A76+L1+D?type=CacheDefinition">
+              <ports xmi:id="Cache+L1+D/CacheToCore?type=HwPort" name="CacheToCore" bitWidth="0" priority="0" portInterface="custom"/>
+            </caches>
+            <caches xmi:id="Cache+L2?type=Cache" name="Cache L2" definition="ARM+A76+L1+I?type=CacheDefinition">
+              <ports xmi:id="Cache+L2/CacheToCore?type=HwPort" name="CacheToCore" bitWidth="0" priority="0" portInterface="custom"/>
+            </caches>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="A76+Core+%282%29?type=ProcessingUnit" name="A76 Core (2)" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="ARM+A76?type=ProcessingUnitDefinition">
+            <ports xmi:id="A76+Core+%282%29/CoreToBus?type=HwPort" name="CoreToBus" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+            <ports xmi:id="A76+Core+%282%29/CoreToL1?type=HwPort" name="CoreToL1" bitWidth="0" priority="0"/>
+            <ports xmi:id="A76+Core+%282%29/CoreToL2?type=HwPort" name="CoreToL2" bitWidth="0" priority="0" portInterface="custom"/>
+            <accessElements name="CoreToMemory" destination="RAM?type=Memory"/>
+            <accessElements name="A76CoreToGPU" destination="GPU?type=ProcessingUnit"/>
+            <caches xmi:id="Cache+L1+I+%282%29?type=Cache" name="Cache L1 I (2)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L1+D+%282%29?type=Cache" name="Cache L1 D (2)" definition="ARM+A76+L1+D?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L2+%282%29?type=Cache" name="Cache L2 (2)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="A76+Core+%283%29?type=ProcessingUnit" name="A76 Core (3)" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="ARM+A76?type=ProcessingUnitDefinition">
+            <ports xmi:id="A76+Core+%283%29/CoreToBus?type=HwPort" name="CoreToBus" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+            <ports xmi:id="A76+Core+%283%29/CoreToL1?type=HwPort" name="CoreToL1" bitWidth="0" priority="0"/>
+            <ports xmi:id="A76+Core+%283%29/CoreToL2?type=HwPort" name="CoreToL2" bitWidth="0" priority="0" portInterface="custom"/>
+            <accessElements name="CoreToMemory" destination="RAM?type=Memory"/>
+            <accessElements name="A76CoreToGPU" destination="GPU?type=ProcessingUnit"/>
+            <caches xmi:id="Cache+L1+I+%283%29?type=Cache" name="Cache L1 I (3)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L1+D+%283%29?type=Cache" name="Cache L1 D (3)" definition="ARM+A76+L1+D?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L2+%283%29?type=Cache" name="Cache L2 (3)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="A76+Core+%284%29?type=ProcessingUnit" name="A76 Core (4)" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="ARM+A76?type=ProcessingUnitDefinition">
+            <ports xmi:id="A76+Core+%284%29/CoreToBus?type=HwPort" name="CoreToBus" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+            <ports xmi:id="A76+Core+%284%29/CoreToL1?type=HwPort" name="CoreToL1" bitWidth="0" priority="0"/>
+            <ports xmi:id="A76+Core+%284%29/CoreToL2?type=HwPort" name="CoreToL2" bitWidth="0" priority="0" portInterface="custom"/>
+            <accessElements name="CoreToMemory" destination="RAM?type=Memory"/>
+            <accessElements name="A76CoreToGPU" destination="GPU?type=ProcessingUnit"/>
+            <caches xmi:id="Cache+L1+I+%284%29?type=Cache" name="Cache L1 I (4)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L1+D+%284%29?type=Cache" name="Cache L1 D (4)" definition="ARM+A76+L1+D?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L2+%284%29?type=Cache" name="Cache L2 (4)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+          </modules>
+          <modules xsi:type="am:Cache" xmi:id="Cache+L3?type=Cache" name="Cache L3" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="ARM+A76+L3?type=CacheDefinition">
+            <ports xmi:id="Cache+L3/CashToCore?type=HwPort" name="CashToCore" bitWidth="0" priority="0"/>
+            <ports xmi:id="Cache+L3/CacheToBUS?type=HwPort" name="CacheToBUS" bitWidth="0" priority="0"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="QuadCoreToBUS?type=ConnectionHandler" name="QuadCoreToBUS" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="BUS?type=ConnectionHandlerDefinition">
+            <ports xmi:id="QuadCoreToBUS/QuadCoreToBUS?type=HwPort" name="QuadCoreToBUS" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+          </modules>
+          <connections xmi:id="QuadCoe/CashToCore1?type=HwConnection" name="CashToCore1" port1="A76+Core+%281%29/CoreToBus?type=HwPort" port2="Cache+L3/CashToCore?type=HwPort"/>
+          <connections xmi:id="QuadCoe/CashToCore2?type=HwConnection" name="CashToCore2" port1="A76+Core+%282%29/CoreToBus?type=HwPort" port2="Cache+L3/CashToCore?type=HwPort"/>
+          <connections xmi:id="QuadCoe/CashToCore3?type=HwConnection" name="CashToCore3" port1="A76+Core+%283%29/CoreToBus?type=HwPort" port2="Cache+L3/CashToCore?type=HwPort"/>
+          <connections xmi:id="QuadCoe/CashToCore4?type=HwConnection" name="CashToCore4" port1="A76+Core+%284%29/CoreToBus?type=HwPort" port2="Cache+L3/CashToCore?type=HwPort"/>
+          <connections xmi:id="QuadCoe/L3ToBUS?type=HwConnection" name="L3ToBUS" port1="Cache+L3/CacheToBUS?type=HwPort" port2="QuadCoreToBUS/QuadCoreToBUS?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="BusHandler?type=ConnectionHandler" name="BusHandler" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain">
+          <ports xmi:id="BusHandler/BusToQuadcore?type=HwPort" name="BusToQuadcore" bitWidth="0" priority="0"/>
+          <ports xmi:id="BusHandler/BUSHandlerToBCM?type=HwPort" name="BUSHandlerToBCM" bitWidth="0" priority="0"/>
+        </modules>
+        <modules xsi:type="am:ProcessingUnit" xmi:id="GPU?type=ProcessingUnit" name="GPU" frequencyDomain="GPU?type=FrequencyDomain">
+          <ports xmi:id="GPU/GPUToMemory?type=HwPort" name="GPUToMemory" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+          <accessElements name="GPUToRAM" destination="RAM?type=Memory"/>
+        </modules>
+        <connections xmi:id="BCM2712/BUSToQuadcore?type=HwConnection" name="BUSToQuadcore" port1="QuadCoreToBUS/QuadCoreToBUS?type=HwPort" port2="BusHandler/BusToQuadcore?type=HwPort"/>
+        <connections xmi:id="BCM2712/BusHandlerToGPU?type=HwConnection" name="BusHandlerToGPU" port1="GPU/GPUToMemory?type=HwPort" port2="BusHandler/BUSHandlerToBCM?type=HwPort"/>
+      </structures>
+      <modules xsi:type="am:Memory" xmi:id="RAM?type=Memory" name="RAM" frequencyDomain="RAM?type=FrequencyDomain" definition="GenericRAM?type=MemoryDefinition">
+        <ports xmi:id="RAM/RamToBus?type=HwPort" name="RamToBus" bitWidth="0" priority="0"/>
+      </modules>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="Arm+Cortex-A76?type=FrequencyDomain" name="Arm Cortex-A76" clockGating="false">
+      <defaultValue value="2.4" unit="GHz"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="GPU?type=FrequencyDomain" name="GPU" clockGating="false">
+      <defaultValue value="800.0" unit="MHz"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="RAM?type=FrequencyDomain" name="RAM" clockGating="false">
+      <defaultValue value="4276.0" unit="MHz"/>
+    </domains>
+  </hwModel>
+  <osModel>
+    <operatingSystems name="RTOS">
+      <taskSchedulers xmi:id="RMS+Core1?type=TaskScheduler" name="RMS Core1" definition="RMS?type=SchedulerDefinition"/>
+      <taskSchedulers xmi:id="RMS+Core2?type=TaskScheduler" name="RMS Core2" definition="RMS?type=SchedulerDefinition"/>
+      <taskSchedulers xmi:id="RMS+Core3?type=TaskScheduler" name="RMS Core3" definition="RMS?type=SchedulerDefinition"/>
+    </operatingSystems>
+    <schedulerDefinitions xmi:id="EDF?type=SchedulerDefinition" name="EDF" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
+    <schedulerDefinitions xmi:id="RMS?type=SchedulerDefinition" name="RMS" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
+  </osModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="1000ms?type=PeriodicStimulus" name="1000ms">
+      <recurrence value="1000" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="50ms?type=PeriodicStimulus" name="50ms">
+      <recurrence value="50" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="10ms?type=PeriodicStimulus" name="10ms">
+      <recurrence value="10" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="5ms?type=PeriodicStimulus" name="5ms">
+      <recurrence value="5" unit="ms"/>
+    </stimuli>
+  </stimuliModel>
+  <eventModel>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateCamera?type=ProcessEvent" name="ActivateCamera" eventType="activate" entity="SensingCamera?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndOfCamera?type=ProcessEvent" name="EndOfCamera" eventType="terminate" entity="SensingCamera?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateFrontRadar?type=ProcessEvent" name="ActivateFrontRadar" eventType="activate"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndOfFrontRadar?type=ProcessEvent" name="EndOfFrontRadar" eventType="terminate" entity="SensingRadar?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateRearRadar?type=ProcessEvent" name="ActivateRearRadar" eventType="activate" entity="SensingRadar?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndOfRearRadar?type=ProcessEvent" name="EndOfRearRadar" eventType="terminate" entity="SensingRadar?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateObjectFusion?type=ProcessEvent" name="ActivateObjectFusion" eventType="activate" entity="OF_TM?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndOfObjectFusion?type=ProcessEvent" name="EndOfObjectFusion" eventType="terminate" entity="OF_TM?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateSceneDescription?type=ProcessEvent" name="ActivateSceneDescription" eventType="activate" entity="Scene_Description?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndOfSceneDescription?type=ProcessEvent" name="EndOfSceneDescription" eventType="terminate" entity="Scene_Description?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateDynamicTrajectory?type=ProcessEvent" name="ActivateDynamicTrajectory" eventType="activate" entity="DynamicTrajectory?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndOfDynamicTrajectory?type=ProcessEvent" name="EndOfDynamicTrajectory" eventType="terminate" entity="DynamicTrajectory?type=Task"/>
+  </eventModel>
+  <constraintsModel>
+    <eventChains xmi:id="DataColection?type=EventChain" name="DataColection" stimulus="ActivateCamera?type=ProcessEvent" response="EndOfDynamicTrajectory?type=ProcessEvent" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="" stimulus="ActivateCamera?type=ProcessEvent" response="EndOfCamera?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="" stimulus="EndOfCamera?type=ProcessEvent" response="ActivateObjectFusion?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="" stimulus="ActivateObjectFusion?type=ProcessEvent" response="EndOfObjectFusion?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="" stimulus="EndOfObjectFusion?type=ProcessEvent" response="ActivateSceneDescription?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="" stimulus="ActivateSceneDescription?type=ProcessEvent" response="EndOfSceneDescription?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="" stimulus="EndOfSceneDescription?type=ProcessEvent" response="ActivateDynamicTrajectory?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="" stimulus="ActivateDynamicTrajectory?type=ProcessEvent" response="EndOfDynamicTrajectory?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+  </constraintsModel>
+  <mappingModel>
+    <schedulerAllocation scheduler="RMS+Core1?type=TaskScheduler" responsibility="A76+Core+%281%29?type=ProcessingUnit" executingPU="A76+Core+%281%29?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="RMS+Core2?type=TaskScheduler" responsibility="A76+Core+%282%29?type=ProcessingUnit" executingPU="A76+Core+%282%29?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="RMS+Core3?type=TaskScheduler" responsibility="A76+Core+%283%29?type=ProcessingUnit" executingPU="A76+Core+%283%29?type=ProcessingUnit"/>
+    <taskAllocation task="SensingCamera?type=Task" scheduler="RMS+Core1?type=TaskScheduler" affinity="A76+Core+%281%29?type=ProcessingUnit"/>
+    <taskAllocation task="SensingRadar?type=Task" scheduler="RMS+Core1?type=TaskScheduler" affinity="A76+Core+%281%29?type=ProcessingUnit"/>
+    <taskAllocation task="OF_TM?type=Task" scheduler="RMS+Core2?type=TaskScheduler" affinity="A76+Core+%282%29?type=ProcessingUnit"/>
+    <taskAllocation task="AD+Function?type=Task" scheduler="RMS+Core2?type=TaskScheduler" affinity="A76+Core+%282%29?type=ProcessingUnit"/>
+    <taskAllocation task="DynamicTrajectory?type=Task" scheduler="RMS+Core2?type=TaskScheduler" affinity="A76+Core+%282%29?type=ProcessingUnit"/>
+    <taskAllocation task="Scene_Description?type=Task" scheduler="RMS+Core2?type=TaskScheduler" affinity="A76+Core+%282%29?type=ProcessingUnit"/>
+    <taskAllocation scheduler="RMS+Core3?type=TaskScheduler" affinity="A76+Core+%283%29?type=ProcessingUnit"/>
+    <taskAllocation scheduler="RMS+Core3?type=TaskScheduler" affinity="A76+Core+%283%29?type=ProcessingUnit"/>
+    <taskAllocation scheduler="RMS+Core3?type=TaskScheduler" affinity="A76+Core+%283%29?type=ProcessingUnit"/>
+  </mappingModel>
+</am:Amalthea>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="ARM+A72?type=ProcessingUnitDefinition" name="ARM A72" puType="CPU"/>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A72+Cache+I?type=CacheDefinition" name="ARM A72 Cache I" cacheType="instruction" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="64" unit="kB"/>
+    </definitions>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A72+Cache+D?type=CacheDefinition" name="ARM A72 Cache D" cacheType="data" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="64" unit="kB"/>
+    </definitions>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A72+Cache+L2?type=CacheDefinition" name="ARM A72 Cache L2" cacheType="unified" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="512" unit="kB"/>
+    </definitions>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A72+Cache+L3?type=CacheDefinition" name="ARM A72 Cache L3" cacheType="unified" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="2" unit="MB"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="GenericRAM?type=MemoryDefinition" name="GenericRAM" memoryType="DRAM">
+      <size value="8" unit="Gbit"/>
+    </definitions>
+    <structures xmi:id="BCM2711?type=HwStructure" name="BCM2711" structureType="SoC">
+      <modules xsi:type="am:ProcessingUnit" xmi:id="ARM+A72+%281%29?type=ProcessingUnit" name="ARM A72 (1)" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="ARM+A72?type=ProcessingUnitDefinition">
+        <ports xmi:id="ARM+A72+%281%29/Port+I+%26+D?type=HwPort" name="Port I &amp; D" bitWidth="64" priority="0"/>
+        <ports xmi:id="ARM+A72+%281%29/Port+L2?type=HwPort" name="Port L2" bitWidth="512" priority="0"/>
+        <ports xmi:id="ARM+A72+%281%29/Port+L3?type=HwPort" name="Port L3" bitWidth="0" priority="0"/>
+        <ports xmi:id="ARM+A72+%281%29/Port+L3+To+Bus?type=HwPort" name="Port L3 To Bus" bitWidth="0" priority="0"/>
+        <caches xmi:id="Cache+D+%281%29?type=Cache" name="Cache D (1)" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="ARM+A72+Cache+D?type=CacheDefinition">
+          <ports xmi:id="Cache+D+%281%29/ARM+A72+%281%29+D+caches?type=HwPort" name="ARM A72 (1) D caches" bitWidth="64" priority="0"/>
+        </caches>
+        <caches xmi:id="Cache+I+%281%29?type=Cache" name="Cache I (1)" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="ARM+A72+Cache+I?type=CacheDefinition">
+          <ports xmi:id="Cache+I+%281%29/ARM+A72+%281%29+I+caches?type=HwPort" name="ARM A72 (1) I caches" bitWidth="64" priority="0"/>
+        </caches>
+        <caches xmi:id="Cache+L2+%281%29?type=Cache" name="Cache L2 (1)" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="ARM+A72+Cache+L2?type=CacheDefinition">
+          <ports xmi:id="Cache+L2+%281%29/ARM+A72+%281%29+L2+caches?type=HwPort" name="ARM A72 (1) L2 caches" bitWidth="512" priority="0"/>
+        </caches>
+      </modules>
+      <modules xsi:type="am:Cache" xmi:id="Cache+L3?type=Cache" name="Cache L3" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="ARM+A72+Cache+L3?type=CacheDefinition">
+        <ports xmi:id="Cache+L3/ARM+A72+%281%29+L+caches?type=HwPort" name="ARM A72 (1) L caches" bitWidth="512" priority="0"/>
+      </modules>
+      <modules xsi:type="am:Memory" xmi:id="RAM?type=Memory" name="RAM" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="GenericRAM?type=MemoryDefinition">
+        <ports xmi:id="RAM/FlashToPort?type=HwPort" name="FlashToPort" bitWidth="0" priority="0"/>
+      </modules>
+      <connections xmi:id="BCM2711/ARM+A72+Cache+I+%281%29?type=HwConnection" name="ARM A72 Cache I (1)" port1="ARM+A72+%281%29/Port+I+%26+D?type=HwPort" port2="Cache+I+%281%29/ARM+A72+%281%29+I+caches?type=HwPort"/>
+      <connections xmi:id="BCM2711/ARM+A72+Cache+D+%281%29?type=HwConnection" name="ARM A72 Cache D (1)" port1="ARM+A72+%281%29/Port+I+%26+D?type=HwPort" port2="Cache+D+%281%29/ARM+A72+%281%29+D+caches?type=HwPort"/>
+      <connections xmi:id="BCM2711/ARM+A72+Cache+I+To+L2+%281%29?type=HwConnection" name="ARM A72 Cache I To L2 (1)" port1="Cache+I+%281%29/ARM+A72+%281%29+I+caches?type=HwPort" port2="Cache+L2+%281%29/ARM+A72+%281%29+L2+caches?type=HwPort"/>
+      <connections xmi:id="BCM2711/ARM+A72+Cache+D+To+L2+%281%29?type=HwConnection" name="ARM A72 Cache D To L2 (1)" port1="Cache+D+%281%29/ARM+A72+%281%29+D+caches?type=HwPort" port2="Cache+L2+%281%29/ARM+A72+%281%29+L2+caches?type=HwPort"/>
+      <connections xmi:id="BCM2711/ARM+A72+Cache+L2+To+L3+%281%29?type=HwConnection" name="ARM A72 Cache L2 To L3 (1)" port1="ARM+A72+%281%29/Port+L2?type=HwPort" port2="ARM+A72+%281%29/Port+L3?type=HwPort"/>
+      <connections xmi:id="BCM2711/ARM+A72+Cache+L3+To+RAM+%281%29?type=HwConnection" name="ARM A72 Cache L3 To RAM (1)" port1="ARM+A72+%281%29/Port+L3?type=HwPort" port2="ARM+A72+%281%29/Port+L3+To+Bus?type=HwPort"/>
+      <connections xmi:id="BCM2711/ARM+A72+Cache+Bus+To+Ram+%281%29?type=HwConnection" name="ARM A72 Cache Bus To Ram (1)" port1="ARM+A72+%281%29/Port+L3+To+Bus?type=HwPort" port2="RAM/FlashToPort?type=HwPort"/>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="Arm+Cortex-A76?type=FrequencyDomain" name="Arm Cortex-A76" clockGating="false">
+      <defaultValue value="2.4" unit="GHz"/>
+    </domains>
+  </hwModel>
+</am:Amalthea>

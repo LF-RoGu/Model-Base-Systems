@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <osModel>
+    <operatingSystems name="OperatingSystem">
+      <taskSchedulers xmi:id="Task_Scheduler_Core_1?type=TaskScheduler" name="Task_Scheduler_Core_1" definition="OSEK?type=SchedulerDefinition"/>
+    </operatingSystems>
+    <schedulerDefinitions xmi:id="OSEK?type=SchedulerDefinition" name="OSEK" processParameters="priority?type=SchedulingParameterDefinition taskGroup?type=SchedulingParameterDefinition" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
+    <schedulingParameterDefinitions xmi:id="priority?type=SchedulingParameterDefinition" name="priority" type="Integer" many="false" mandatory="true"/>
+    <schedulingParameterDefinitions xmi:id="taskGroup?type=SchedulingParameterDefinition" name="taskGroup" type="Integer" many="false" mandatory="true"/>
+  </osModel>
+</am:Amalthea>

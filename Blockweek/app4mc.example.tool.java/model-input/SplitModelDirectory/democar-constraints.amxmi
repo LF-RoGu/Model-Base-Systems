@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <constraintsModel>
+    <eventChains xmi:id="BrakeEC?type=EventChain" name="BrakeEC" minItemsCompleted="1">
+      <stimulus xsi:type="am:RunnableEvent" href="amlt:/#BrakeActuatorMonitor_start?type=RunnableEvent"/>
+      <response xsi:type="am:RunnableEvent" href="amlt:/#BrakeForceActuation_terminate?type=RunnableEvent"/>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="BrakeEC_segment1" minItemsCompleted="1">
+          <stimulus xsi:type="am:RunnableEvent" href="amlt:/#BrakeActuatorMonitor_start?type=RunnableEvent"/>
+          <response xsi:type="am:RunnableEvent" href="amlt:/#BrakeActuatorMonitor_terminate?type=RunnableEvent"/>
+        </eventChain>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="BrakeEC_segment2" minItemsCompleted="1">
+          <stimulus xsi:type="am:RunnableEvent" href="amlt:/#BrakeActuatorMonitor_terminate?type=RunnableEvent"/>
+          <response xsi:type="am:RunnableEvent" href="amlt:/#BrakeForceCalculation_start?type=RunnableEvent"/>
+        </eventChain>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="BrakeEC_segment3" minItemsCompleted="1">
+          <stimulus xsi:type="am:RunnableEvent" href="amlt:/#BrakeForceCalculation_start?type=RunnableEvent"/>
+          <response xsi:type="am:RunnableEvent" href="amlt:/#BrakeForceCalculation_terminate?type=RunnableEvent"/>
+        </eventChain>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="BrakeEC_segment4" minItemsCompleted="1">
+          <stimulus xsi:type="am:RunnableEvent" href="amlt:/#BrakeForceCalculation_terminate?type=RunnableEvent"/>
+          <response xsi:type="am:RunnableEvent" href="amlt:/#BrakeForceActuation_start?type=RunnableEvent"/>
+        </eventChain>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="BrakeEC_segment5" minItemsCompleted="1">
+          <stimulus xsi:type="am:RunnableEvent" href="amlt:/#BrakeForceActuation_start?type=RunnableEvent"/>
+          <response xsi:type="am:RunnableEvent" href="amlt:/#BrakeForceActuation_terminate?type=RunnableEvent"/>
+        </eventChain>
+      </items>
+    </eventChains>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_05" severity="Critical">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="5" unit="ms"/>
+      </limit>
+      <process xsi:type="am:Task" href="amlt:/#Task_5MS?type=Task"/>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_10" severity="Critical">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="10" unit="ms"/>
+      </limit>
+      <process xsi:type="am:Task" href="amlt:/#Task_10MS?type=Task"/>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_20" severity="Critical">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="20" unit="ms"/>
+      </limit>
+      <process xsi:type="am:Task" href="amlt:/#Task_20MS?type=Task"/>
+    </requirements>
+  </constraintsModel>
+</am:Amalthea>

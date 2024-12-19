@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="DefaultCore?type=ProcessingUnitDefinition" name="DefaultCore" puType="CPU" features="Instructions/IPC_1?type=HwFeature"/>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="DefaultMemory?type=MemoryDefinition" name="DefaultMemory">
+      <size value="4" unit="MB"/>
+      <accessLatency xsi:type="am:DiscreteValueConstant" value="2"/>
+    </definitions>
+    <featureCategories xmi:id="Instructions?type=HwFeatureCategory" name="Instructions" featureType="performance">
+      <features xmi:id="Instructions/IPC_1?type=HwFeature" name="IPC_1" value="1.0"/>
+    </featureCategories>
+    <structures xmi:id="Democar?type=HwStructure" name="Democar" structureType="System">
+      <structures xmi:id="ECU_1?type=HwStructure" name="ECU_1" structureType="ECU">
+        <structures xmi:id="Microcontroller_1?type=HwStructure" name="Microcontroller_1" structureType="Microcontroller">
+          <modules xsi:type="am:Memory" xmi:id="Mem_1?type=Memory" name="Mem_1" frequencyDomain="FrequencyDomain_1?type=FrequencyDomain" definition="DefaultMemory?type=MemoryDefinition">
+            <ports xmi:id="Mem_1/port?type=HwPort" name="port" bitWidth="32" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="Core_1?type=ProcessingUnit" name="Core_1" frequencyDomain="FrequencyDomain_1?type=FrequencyDomain" definition="DefaultCore?type=ProcessingUnitDefinition">
+            <ports xmi:id="Core_1/port?type=HwPort" name="port" bitWidth="32" priority="0" portType="initiator"/>
+          </modules>
+          <connections xmi:id="Microcontroller_1/con1?type=HwConnection" name="con1" port1="Core_1/port?type=HwPort" port2="Mem_1/port?type=HwPort"/>
+        </structures>
+      </structures>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="FrequencyDomain_1?type=FrequencyDomain" name="FrequencyDomain_1" clockGating="false">
+      <defaultValue value="200.0" unit="MHz"/>
+    </domains>
+  </hwModel>
+</am:Amalthea>

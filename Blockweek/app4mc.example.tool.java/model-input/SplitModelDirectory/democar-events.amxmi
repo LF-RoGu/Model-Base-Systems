@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <eventModel>
+    <events xsi:type="am:RunnableEvent" xmi:id="BrakeActuatorMonitor_start?type=RunnableEvent" name="BrakeActuatorMonitor_start" description="" eventType="start">
+      <entity href="amlt:/#BrakeActuatorMonitor?type=Runnable"/>
+    </events>
+    <events xsi:type="am:RunnableEvent" xmi:id="BrakeActuatorMonitor_terminate?type=RunnableEvent" name="BrakeActuatorMonitor_terminate" eventType="terminate">
+      <entity href="amlt:/#BrakeActuatorMonitor?type=Runnable"/>
+    </events>
+    <events xsi:type="am:RunnableEvent" xmi:id="BrakeForceCalculation_start?type=RunnableEvent" name="BrakeForceCalculation_start" eventType="start">
+      <entity href="amlt:/#BrakeForceCalculation?type=Runnable"/>
+    </events>
+    <events xsi:type="am:RunnableEvent" xmi:id="BrakeForceCalculation_terminate?type=RunnableEvent" name="BrakeForceCalculation_terminate" eventType="terminate">
+      <entity href="amlt:/#BrakeForceCalculation?type=Runnable"/>
+    </events>
+    <events xsi:type="am:RunnableEvent" xmi:id="BrakeForceActuation_start?type=RunnableEvent" name="BrakeForceActuation_start" eventType="start">
+      <entity href="amlt:/#BrakeForceActuation?type=Runnable"/>
+    </events>
+    <events xsi:type="am:RunnableEvent" xmi:id="BrakeForceActuation_terminate?type=RunnableEvent" name="BrakeForceActuation_terminate" eventType="terminate">
+      <entity href="amlt:/#BrakeForceActuation?type=Runnable"/>
+    </events>
+  </eventModel>
+</am:Amalthea>

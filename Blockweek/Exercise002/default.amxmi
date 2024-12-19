@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <swModel>
+    <tasks xmi:id="T1?type=Task" name="T1" stimuli="10ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="R1?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="R6?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="T2?type=Task" name="T2" stimuli="10ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="R2?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="R7?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="T3?type=Task" name="T3" stimuli="15ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="R3?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="R8?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="T4?type=Task" name="T4" stimuli="15ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="R4?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="R9?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="T5?type=Task" name="T5" stimuli="15ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="R5?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="R10?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <runnables xmi:id="R1?type=Runnable" name="R1" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="L1?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="L2?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="R2?type=Runnable" name="R2" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="L2?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="L3?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="R3?type=Runnable" name="R3" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="L3?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="L4?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="R4?type=Runnable" name="R4" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="L4?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="L5?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="R5?type=Runnable" name="R5" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="L5?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="L6?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="R6?type=Runnable" name="R6" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="L6?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="L7?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="R7?type=Runnable" name="R7" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="L7?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="L8?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="R8?type=Runnable" name="R8" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="L8?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="L9?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="R9?type=Runnable" name="R9" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="L9?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="L10?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="R10?type=Runnable" name="R10" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="L10?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="L11?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <labels xmi:id="L1?type=Label" name="L1" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="L2?type=Label" name="L2" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="L3?type=Label" name="L3" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="L4?type=Label" name="L4" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="L5?type=Label" name="L5" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="L6?type=Label" name="L6" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="L7?type=Label" name="L7" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="L8?type=Label" name="L8" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="L9?type=Label" name="L9" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="L10?type=Label" name="L10" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+    <labels xmi:id="L11?type=Label" name="L11" constant="false" bVolatile="false">
+      <size value="1024" unit="kbit"/>
+    </labels>
+  </swModel>
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="DummyCPU?type=ProcessingUnitDefinition" name="DummyCPU" puType="CPU"/>
+    <structures xmi:id="ECU?type=HwStructure" name="ECU" structureType="ECU">
+      <modules xsi:type="am:ProcessingUnit" xmi:id="Core1?type=ProcessingUnit" name="Core1" frequencyDomain="FreqCPU?type=FrequencyDomain" definition="DummyCPU?type=ProcessingUnitDefinition"/>
+      <modules xsi:type="am:ProcessingUnit" xmi:id="Core2?type=ProcessingUnit" name="Core2" frequencyDomain="FreqCPU?type=FrequencyDomain" definition="DummyCPU?type=ProcessingUnitDefinition"/>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="FreqCPU?type=FrequencyDomain" name="FreqCPU" clockGating="false">
+      <defaultValue value="200.0" unit="MHz"/>
+    </domains>
+  </hwModel>
+  <osModel>
+    <operatingSystems name="RTOS">
+      <taskSchedulers xmi:id="RateMonotonic?type=TaskScheduler" name="RateMonotonic" definition="Monotonic?type=SchedulerDefinition"/>
+      <taskSchedulers xmi:id="EarliestDeadlineFirst?type=TaskScheduler" name="EarliestDeadlineFirst"/>
+    </operatingSystems>
+    <schedulerDefinitions xmi:id="Monotonic?type=SchedulerDefinition" name="Monotonic" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
+    <schedulerDefinitions xmi:id="EarliestDeadlineFirst?type=SchedulerDefinition" name="EarliestDeadlineFirst" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
+  </osModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="10ms?type=PeriodicStimulus" name="10ms">
+      <recurrence value="10" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="15ms?type=PeriodicStimulus" name="15ms">
+      <recurrence value="15" unit="ms"/>
+    </stimuli>
+  </stimuliModel>
+  <eventModel>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateOfT1?type=ProcessEvent" name="ActivateOfT1" eventType="activate" entity="T1?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndOfT1?type=ProcessEvent" name="EndOfT1" eventType="terminate" entity="T1?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateOfT2?type=ProcessEvent" name="ActivateOfT2" eventType="activate" entity="T2?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndOfT2?type=ProcessEvent" name="EndOfT2" eventType="terminate" entity="T2?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateOfT3?type=ProcessEvent" name="ActivateOfT3" eventType="activate" entity="T3?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndOfT3?type=ProcessEvent" name="EndOfT3" eventType="terminate" entity="T3?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateOfT4?type=ProcessEvent" name="ActivateOfT4" eventType="activate" entity="T5?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndOfT4?type=ProcessEvent" name="EndOfT4" eventType="terminate" entity="T4?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateOfT5?type=ProcessEvent" name="ActivateOfT5" eventType="activate" entity="T5?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndOfT5?type=ProcessEvent" name="EndOfT5" eventType="terminate" entity="T5?type=Task"/>
+  </eventModel>
+  <constraintsModel>
+    <eventChains xmi:id="EventChain1?type=EventChain" name="EventChain1" stimulus="ActivateOfT1?type=ProcessEvent" response="EndOfT3?type=ProcessEvent" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TimeTask1" stimulus="ActivateOfT1?type=ProcessEvent" response="EndOfT1?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="EndT1ActivateT2" stimulus="EndOfT1?type=ProcessEvent" response="ActivateOfT2?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TimeTask2" stimulus="ActivateOfT2?type=ProcessEvent" response="EndOfT2?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="EndT2ActivateT3" stimulus="EndOfT2?type=ProcessEvent" response="ActivateOfT3?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TimeTask3" stimulus="ActivateOfT3?type=ProcessEvent" response="EndOfT3?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="EventChain2?type=EventChain" name="EventChain2" stimulus="ActivateOfT3?type=ProcessEvent" response="EndOfT5?type=ProcessEvent" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TimeTask3" stimulus="ActivateOfT3?type=ProcessEvent" response="EndOfT3?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="EndT3ActivateT4" stimulus="EndOfT3?type=ProcessEvent" response="ActivateOfT4?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TimeTask4" stimulus="ActivateOfT4?type=ProcessEvent" response="EndOfT4?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="EndT4ActivateT5" stimulus="EndOfT4?type=ProcessEvent" response="ActivateOfT5?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TimeTask5" stimulus="ActivateOfT5?type=ProcessEvent" response="EndOfT5?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+  </constraintsModel>
+  <mappingModel>
+    <schedulerAllocation scheduler="RateMonotonic?type=TaskScheduler" responsibility="Core1?type=ProcessingUnit" executingPU="Core1?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="EarliestDeadlineFirst?type=TaskScheduler" responsibility="Core2?type=ProcessingUnit" executingPU="Core2?type=ProcessingUnit"/>
+    <taskAllocation task="T1?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+    <taskAllocation task="T2?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+    <taskAllocation task="T3?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+    <taskAllocation task="T4?type=Task" scheduler="EarliestDeadlineFirst?type=TaskScheduler"/>
+    <taskAllocation task="T5?type=Task" scheduler="EarliestDeadlineFirst?type=TaskScheduler"/>
+  </mappingModel>
+</am:Amalthea>

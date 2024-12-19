@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <swModel>
+    <tasks xmi:id="CheckECallTrigger?type=Task" name="CheckECallTrigger" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="CheckAirbag%26Button?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="StartECall?type=Task" name="StartECall" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="Wait+for+Driver+Interrupt?type=Runnable"/>
+        <items xsi:type="am:RunnableCall" runnable="LastGPSLocation?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="ProcessECall+-+ECall+Core?type=Task" name="ProcessECall - ECall Core" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="CheckOngoingCall+-+ECALL+Core?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="ProcessECall+-+Infotainment+Core?type=Task" name="ProcessECall - Infotainment Core" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="UpdateCall?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="ScreenHanler?type=Task" name="ScreenHanler" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="DisplayInfo+-+Display+Core?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="PlayEmergencySpeaker?type=Task" name="PlayEmergencySpeaker" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="ActivateSpeaker?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Modem+Task?type=Task" name="Modem Task" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="Modem?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="EndECall?type=Task" name="EndECall" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:RunnableCall" runnable="EndCall?type=Runnable"/>
+      </activityGraph>
+    </tasks>
+    <runnables xmi:id="CheckAirbag%26Button?type=Runnable" name="CheckAirbag&amp;Button" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="Airbag?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ECallButton?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ECall_Signal_Activate?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="LastGPSLocation?type=Runnable" name="LastGPSLocation" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="GPS?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ParseGPS?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Wait+for+Driver+Interrupt?type=Runnable" name="Wait for Driver Interrupt" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ECall_Signal_Activate?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Counter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ActivateECall?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="CheckOngoingCall+-+ECALL+Core?type=Runnable" name="CheckOngoingCall - ECALL Core" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="OngoingCallInfo?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="FlashLED?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="DisplayInfo+-+Display+Core?type=Runnable" name="DisplayInfo - Display Core" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="OngoingCallInfo?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Screen?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="ActivateSpeaker?type=Runnable" name="ActivateSpeaker" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="OngoingCallInfo?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Speaker?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="UpdateCall?type=Runnable" name="UpdateCall" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="Microfon?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Modem+Out?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ParseGPS?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ProcessedCallSignal?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="OngoingCallInfo?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Modem?type=Runnable" name="Modem" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ProcessedCallSignal?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Modem+Out?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="CallEnded?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="EndCall?type=Runnable" name="EndCall" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="CallEnded?type=Label" access="read"/>
+      </activityGraph>
+    </runnables>
+    <labels xmi:id="Airbag?type=Label" name="Airbag" constant="false" bVolatile="false"/>
+    <labels xmi:id="ECallButton?type=Label" name="ECallButton" constant="false" bVolatile="false"/>
+    <labels xmi:id="GPS?type=Label" name="GPS" constant="false" bVolatile="false"/>
+    <labels xmi:id="ECUSignal?type=Label" name="ECUSignal" constant="false" bVolatile="false"/>
+    <labels xmi:id="Microfon?type=Label" name="Microfon" constant="false" bVolatile="false"/>
+    <labels xmi:id="Speaker?type=Label" name="Speaker" constant="false" bVolatile="false"/>
+    <labels xmi:id="CallSignal?type=Label" name="CallSignal" constant="false" bVolatile="false"/>
+    <labels xmi:id="Screen?type=Label" name="Screen" constant="false" bVolatile="false"/>
+    <labels xmi:id="Counter?type=Label" name="Counter" constant="false" bVolatile="false"/>
+    <labels xmi:id="ActivateECall?type=Label" name="ActivateECall" constant="false" bVolatile="false"/>
+    <labels xmi:id="ParseGPS?type=Label" name="ParseGPS" constant="false" bVolatile="false"/>
+    <labels xmi:id="FlashLED?type=Label" name="FlashLED" constant="false" bVolatile="false"/>
+    <labels xmi:id="ECall_Signal_Activate?type=Label" name="ECall_Signal_Activate" constant="false" bVolatile="false"/>
+    <labels xmi:id="ProcessedCallSignal?type=Label" name="ProcessedCallSignal" constant="false" bVolatile="false"/>
+    <labels xmi:id="OngoingCallInfo?type=Label" name="OngoingCallInfo" constant="false" bVolatile="false"/>
+    <labels xmi:id="Modem+Out?type=Label" name="Modem Out" constant="false" bVolatile="false"/>
+    <labels xmi:id="CallEnded?type=Label" name="CallEnded" constant="false" bVolatile="false"/>
+  </swModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="Task_5MS?type=PeriodicStimulus" name="Task_5MS">
+      <recurrence value="5" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="Task_10MS?type=PeriodicStimulus" name="Task_10MS">
+      <recurrence value="10" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="Task_20MS?type=PeriodicStimulus" name="Task_20MS">
+      <recurrence value="20" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="Task_500MS?type=PeriodicStimulus" name="Task_500MS">
+      <recurrence value="500" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+  </stimuliModel>
+  <eventModel>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateCheckECallTrigger?type=ProcessEvent" name="ActivateCheckECallTrigger"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="TerminateCheckECallTrigger?type=ProcessEvent" name="TerminateCheckECallTrigger"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateStartECall?type=ProcessEvent" name="ActivateStartECall"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="TerminateStartECall?type=ProcessEvent" name="TerminateStartECall"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateProcessECall+-+ECall+Core?type=ProcessEvent" name="ActivateProcessECall - ECall Core"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="TerminateProcessECall+-+ECall+Core?type=ProcessEvent" name="TerminateProcessECall - ECall Core"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateProcessECall+-+Infotainment+Core?type=ProcessEvent" name="ActivateProcessECall - Infotainment Core"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="TerminateProcessECall+-+Infotainment+Core?type=ProcessEvent" name="TerminateProcessECall - Infotainment Core"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateScreenHandler?type=ProcessEvent" name="ActivateScreenHandler"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="TerminateScreenHandler?type=ProcessEvent" name="TerminateScreenHandler"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivatePlayEmergencySpeaker?type=ProcessEvent" name="ActivatePlayEmergencySpeaker"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="TerminatePlayEmergencySpeaker?type=ProcessEvent" name="TerminatePlayEmergencySpeaker"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateEndECall?type=ProcessEvent" name="ActivateEndECall"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="TerminateEndECall?type=ProcessEvent" name="TerminateEndECall"/>
+  </eventModel>
+  <constraintsModel>
+    <eventChains xmi:id="Event+Chain?type=EventChain" name="Event Chain" stimulus="ActivateCheckECallTrigger?type=ProcessEvent" response="TerminateProcessECall+-+Infotainment+Core?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="Process CheckECallTrigger" stimulus="ActivateCheckECallTrigger?type=ProcessEvent" response="TerminateCheckECallTrigger?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="Comm CheckECallTrigger" stimulus="TerminateCheckECallTrigger?type=ProcessEvent" response="ActivateStartECall?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="Process StartECall" stimulus="ActivateStartECall?type=ProcessEvent" response="TerminateStartECall?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="Comm StartECall - ProcessECall ECall Core" stimulus="TerminateStartECall?type=ProcessEvent" response="ActivateProcessECall+-+ECall+Core?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="Process ProcessECall ECall Core" stimulus="ActivateProcessECall+-+ECall+Core?type=ProcessEvent" response="TerminateProcessECall+-+ECall+Core?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="Comm ProcessECall ECall Core -  ProcessECall Infotainment Core" stimulus="TerminateProcessECall+-+ECall+Core?type=ProcessEvent" response="ActivateProcessECall+-+Infotainment+Core?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="Process ProcessECall Infotainment Core" stimulus="ActivateProcessECall+-+Infotainment+Core?type=ProcessEvent" response="TerminateProcessECall+-+Infotainment+Core?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+  </constraintsModel>
+</am:Amalthea>

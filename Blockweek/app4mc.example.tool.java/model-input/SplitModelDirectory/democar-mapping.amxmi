@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <mappingModel>
+    <schedulerAllocation>
+      <scheduler xsi:type="am:TaskScheduler" href="amlt:/#Task_Scheduler_Core_1?type=TaskScheduler"/>
+      <responsibility href="amlt:/#Core_1?type=ProcessingUnit"/>
+      <executingPU href="amlt:/#Core_1?type=ProcessingUnit"/>
+    </schedulerAllocation>
+    <taskAllocation>
+      <schedulingParameters>
+        <key href="amlt:/#priority?type=SchedulingParameterDefinition"/>
+        <value xsi:type="am:IntegerObject" value="30"/>
+      </schedulingParameters>
+      <task href="amlt:/#Task_5MS?type=Task"/>
+      <scheduler href="amlt:/#Task_Scheduler_Core_1?type=TaskScheduler"/>
+    </taskAllocation>
+    <taskAllocation>
+      <schedulingParameters>
+        <key href="amlt:/#priority?type=SchedulingParameterDefinition"/>
+        <value xsi:type="am:IntegerObject" value="20"/>
+      </schedulingParameters>
+      <task href="amlt:/#Task_10MS?type=Task"/>
+      <scheduler href="amlt:/#Task_Scheduler_Core_1?type=TaskScheduler"/>
+    </taskAllocation>
+    <taskAllocation>
+      <schedulingParameters>
+        <key href="amlt:/#priority?type=SchedulingParameterDefinition"/>
+        <value xsi:type="am:IntegerObject" value="10"/>
+      </schedulingParameters>
+      <task href="amlt:/#Task_20MS?type=Task"/>
+      <scheduler href="amlt:/#Task_Scheduler_Core_1?type=TaskScheduler"/>
+    </taskAllocation>
+  </mappingModel>
+</am:Amalthea>

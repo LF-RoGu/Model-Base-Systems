@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <swModel/>
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="ARM+A76?type=ProcessingUnitDefinition" name="ARM A76" puType="CPU"/>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A76+L1+I?type=CacheDefinition" name="ARM A76 L1 I" cacheType="instruction" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="64" unit="kB"/>
+    </definitions>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A76+L1+D?type=CacheDefinition" name="ARM A76 L1 D" cacheType="data" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="64" unit="kB"/>
+    </definitions>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A76+L2?type=CacheDefinition" name="ARM A76 L2" cacheType="unified" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="512" unit="kB"/>
+    </definitions>
+    <definitions xsi:type="am:CacheDefinition" xmi:id="ARM+A76+L3?type=CacheDefinition" name="ARM A76 L3" cacheType="unified" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
+      <size value="2" unit="MB"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="GenericRAM?type=MemoryDefinition" name="GenericRAM" memoryType="DRAM">
+      <size value="8" unit="Gbit"/>
+    </definitions>
+    <definitions xsi:type="am:ConnectionHandlerDefinition" xmi:id="BUS?type=ConnectionHandlerDefinition" name="BUS" maxBurstSize="1" maxConcurrentTransfers="1"/>
+    <structures xmi:id="Raspberri+Pi+5?type=HwStructure" name="Raspberri Pi 5" structureType="Microcontroller">
+      <structures xmi:id="BCM2712?type=HwStructure" name="BCM2712" structureType="SoC">
+        <structures xmi:id="QuadCoe?type=HwStructure" name="QuadCoe" structureType="Group">
+          <modules xsi:type="am:ProcessingUnit" xmi:id="A76+Core+%281%29?type=ProcessingUnit" name="A76 Core (1)" definition="ARM+A76?type=ProcessingUnitDefinition">
+            <ports xmi:id="A76+Core+%281%29/CoreToBus?type=HwPort" name="CoreToBus" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+            <ports xmi:id="A76+Core+%281%29/CoreToL1?type=HwPort" name="CoreToL1" bitWidth="0" priority="0"/>
+            <ports xmi:id="A76+Core+%281%29/CoreToL2?type=HwPort" name="CoreToL2" bitWidth="0" priority="0" portInterface="custom"/>
+            <accessElements name="CoreToMemory" destination="RAM?type=Memory"/>
+            <accessElements name="A76CoreToGPU" destination="GPU?type=ProcessingUnit"/>
+            <caches xmi:id="Cache+L1+I?type=Cache" name="Cache L1 I" definition="ARM+A76+L1+I?type=CacheDefinition">
+              <ports xmi:id="Cache+L1+I/CacheToCore?type=HwPort" name="CacheToCore" bitWidth="0" priority="0" portInterface="custom"/>
+            </caches>
+            <caches xmi:id="Cache+L1+D?type=Cache" name="Cache L1 D" definition="ARM+A76+L1+D?type=CacheDefinition">
+              <ports xmi:id="Cache+L1+D/CacheToCore?type=HwPort" name="CacheToCore" bitWidth="0" priority="0" portInterface="custom"/>
+            </caches>
+            <caches xmi:id="Cache+L2?type=Cache" name="Cache L2" definition="ARM+A76+L1+I?type=CacheDefinition">
+              <ports xmi:id="Cache+L2/CacheToCore?type=HwPort" name="CacheToCore" bitWidth="0" priority="0" portInterface="custom"/>
+            </caches>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="A76+Core+%282%29?type=ProcessingUnit" name="A76 Core (2)" definition="ARM+A76?type=ProcessingUnitDefinition">
+            <ports xmi:id="A76+Core+%282%29/CoreToBus?type=HwPort" name="CoreToBus" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+            <ports xmi:id="A76+Core+%282%29/CoreToL1?type=HwPort" name="CoreToL1" bitWidth="0" priority="0"/>
+            <ports xmi:id="A76+Core+%282%29/CoreToL2?type=HwPort" name="CoreToL2" bitWidth="0" priority="0" portInterface="custom"/>
+            <accessElements name="CoreToMemory" destination="RAM?type=Memory"/>
+            <accessElements name="A76CoreToGPU" destination="GPU?type=ProcessingUnit"/>
+            <caches xmi:id="Cache+L1+I+%282%29?type=Cache" name="Cache L1 I (2)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L1+D+%282%29?type=Cache" name="Cache L1 D (2)" definition="ARM+A76+L1+D?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L2+%282%29?type=Cache" name="Cache L2 (2)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="A76+Core+%283%29?type=ProcessingUnit" name="A76 Core (3)" definition="ARM+A76?type=ProcessingUnitDefinition">
+            <ports xmi:id="A76+Core+%283%29/CoreToBus?type=HwPort" name="CoreToBus" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+            <ports xmi:id="A76+Core+%283%29/CoreToL1?type=HwPort" name="CoreToL1" bitWidth="0" priority="0"/>
+            <ports xmi:id="A76+Core+%283%29/CoreToL2?type=HwPort" name="CoreToL2" bitWidth="0" priority="0" portInterface="custom"/>
+            <accessElements name="CoreToMemory" destination="RAM?type=Memory"/>
+            <accessElements name="A76CoreToGPU" destination="GPU?type=ProcessingUnit"/>
+            <caches xmi:id="Cache+L1+I+%283%29?type=Cache" name="Cache L1 I (3)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L1+D+%283%29?type=Cache" name="Cache L1 D (3)" definition="ARM+A76+L1+D?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L2+%283%29?type=Cache" name="Cache L2 (3)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="A76+Core+%284%29?type=ProcessingUnit" name="A76 Core (4)" definition="ARM+A76?type=ProcessingUnitDefinition">
+            <ports xmi:id="A76+Core+%284%29/CoreToBus?type=HwPort" name="CoreToBus" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+            <ports xmi:id="A76+Core+%284%29/CoreToL1?type=HwPort" name="CoreToL1" bitWidth="0" priority="0"/>
+            <ports xmi:id="A76+Core+%284%29/CoreToL2?type=HwPort" name="CoreToL2" bitWidth="0" priority="0" portInterface="custom"/>
+            <accessElements name="CoreToMemory" destination="RAM?type=Memory"/>
+            <accessElements name="A76CoreToGPU" destination="GPU?type=ProcessingUnit"/>
+            <caches xmi:id="Cache+L1+I+%284%29?type=Cache" name="Cache L1 I (4)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L1+D+%284%29?type=Cache" name="Cache L1 D (4)" definition="ARM+A76+L1+D?type=CacheDefinition"/>
+            <caches xmi:id="Cache+L2+%284%29?type=Cache" name="Cache L2 (4)" definition="ARM+A76+L1+I?type=CacheDefinition"/>
+          </modules>
+          <modules xsi:type="am:Cache" xmi:id="Cache+L3?type=Cache" name="Cache L3" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="ARM+A76+L3?type=CacheDefinition">
+            <ports xmi:id="Cache+L3/CashToCore?type=HwPort" name="CashToCore" bitWidth="0" priority="0"/>
+            <ports xmi:id="Cache+L3/CacheToBUS?type=HwPort" name="CacheToBUS" bitWidth="0" priority="0"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="QuadCoreToBUS?type=ConnectionHandler" name="QuadCoreToBUS" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain" definition="BUS?type=ConnectionHandlerDefinition">
+            <ports xmi:id="QuadCoreToBUS/QuadCoreToBUS?type=HwPort" name="QuadCoreToBUS" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+          </modules>
+          <connections xmi:id="QuadCoe/CashToCore1?type=HwConnection" name="CashToCore1" port1="A76+Core+%281%29/CoreToBus?type=HwPort" port2="Cache+L3/CashToCore?type=HwPort"/>
+          <connections xmi:id="QuadCoe/CashToCore2?type=HwConnection" name="CashToCore2" port1="A76+Core+%282%29/CoreToBus?type=HwPort" port2="Cache+L3/CashToCore?type=HwPort"/>
+          <connections xmi:id="QuadCoe/CashToCore3?type=HwConnection" name="CashToCore3" port1="A76+Core+%283%29/CoreToBus?type=HwPort" port2="Cache+L3/CashToCore?type=HwPort"/>
+          <connections xmi:id="QuadCoe/CashToCore4?type=HwConnection" name="CashToCore4" port1="A76+Core+%284%29/CoreToBus?type=HwPort" port2="Cache+L3/CashToCore?type=HwPort"/>
+          <connections xmi:id="QuadCoe/L3ToBUS?type=HwConnection" name="L3ToBUS" port1="Cache+L3/CacheToBUS?type=HwPort" port2="QuadCoreToBUS/QuadCoreToBUS?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="BusHandler?type=ConnectionHandler" name="BusHandler" frequencyDomain="Arm+Cortex-A76?type=FrequencyDomain">
+          <ports xmi:id="BusHandler/BusToQuadcore?type=HwPort" name="BusToQuadcore" bitWidth="0" priority="0"/>
+          <ports xmi:id="BusHandler/BUSHandlerToBCM?type=HwPort" name="BUSHandlerToBCM" bitWidth="0" priority="0"/>
+        </modules>
+        <modules xsi:type="am:ProcessingUnit" xmi:id="GPU?type=ProcessingUnit" name="GPU" frequencyDomain="GPU?type=FrequencyDomain">
+          <ports xmi:id="GPU/GPUToMemory?type=HwPort" name="GPUToMemory" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
+          <accessElements name="GPUToRAM" destination="RAM?type=Memory"/>
+        </modules>
+        <connections xmi:id="BCM2712/BUSToQuadcore?type=HwConnection" name="BUSToQuadcore" port1="QuadCoreToBUS/QuadCoreToBUS?type=HwPort" port2="BusHandler/BusToQuadcore?type=HwPort"/>
+        <connections xmi:id="BCM2712/BusHandlerToGPU?type=HwConnection" name="BusHandlerToGPU" port1="GPU/GPUToMemory?type=HwPort" port2="BusHandler/BUSHandlerToBCM?type=HwPort"/>
+      </structures>
+      <modules xsi:type="am:Memory" xmi:id="RAM?type=Memory" name="RAM" frequencyDomain="RAM?type=FrequencyDomain" definition="GenericRAM?type=MemoryDefinition">
+        <ports xmi:id="RAM/RamToBus?type=HwPort" name="RamToBus" bitWidth="0" priority="0"/>
+      </modules>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="Arm+Cortex-A76?type=FrequencyDomain" name="Arm Cortex-A76" clockGating="false">
+      <defaultValue value="2.4" unit="GHz"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="GPU?type=FrequencyDomain" name="GPU" clockGating="false">
+      <defaultValue value="800.0" unit="MHz"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="RAM?type=FrequencyDomain" name="RAM" clockGating="false">
+      <defaultValue value="4276.0" unit="MHz"/>
+    </domains>
+  </hwModel>
+  <osModel/>
+</am:Amalthea>

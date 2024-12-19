@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="ARM7?type=ProcessingUnitDefinition" name="ARM7" puType="CPU" features="FloatingPoint+Unit/FPU?type=HwFeature"/>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="GenericDRAM?type=MemoryDefinition" name="GenericDRAM" memoryType="DRAM">
+      <size value="256" unit="Mbit"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="GenericFLASH?type=MemoryDefinition" name="GenericFLASH" memoryType="FLASH">
+      <size value="128" unit="Mbit"/>
+    </definitions>
+    <featureCategories xmi:id="FloatingPoint+Unit?type=HwFeatureCategory" name="FloatingPoint Unit" featureType="performance">
+      <features xmi:id="FloatingPoint+Unit/FPU?type=HwFeature" name="FPU" value="0.0"/>
+    </featureCategories>
+    <structures xmi:id="MCU?type=HwStructure" name="MCU" structureType="Microcontroller">
+      <modules xsi:type="am:ProcessingUnit" xmi:id="Core1?type=ProcessingUnit" name="Core1" frequencyDomain="200MHz?type=FrequencyDomain" definition="ARM7?type=ProcessingUnitDefinition">
+        <ports xmi:id="Core1/Port1?type=HwPort" name="Port1" bitWidth="32" priority="0"/>
+      </modules>
+      <modules xsi:type="am:ProcessingUnit" xmi:id="Core2?type=ProcessingUnit" name="Core2" frequencyDomain="200MHz?type=FrequencyDomain" definition="ARM7?type=ProcessingUnitDefinition">
+        <ports xmi:id="Core2/Port1?type=HwPort" name="Port1" bitWidth="32" priority="0"/>
+      </modules>
+      <modules xsi:type="am:Memory" xmi:id="RAM?type=Memory" name="RAM" frequencyDomain="200MHz?type=FrequencyDomain" definition="GenericDRAM?type=MemoryDefinition">
+        <ports xmi:id="RAM/Port1?type=HwPort" name="Port1" bitWidth="32" priority="0"/>
+      </modules>
+      <modules xsi:type="am:Memory" xmi:id="FLASH?type=Memory" name="FLASH" frequencyDomain="200MHz?type=FrequencyDomain" definition="GenericFLASH?type=MemoryDefinition">
+        <ports xmi:id="FLASH/Port1?type=HwPort" name="Port1" bitWidth="32" priority="0"/>
+      </modules>
+      <connections xmi:id="MCU/Core1ToFlash?type=HwConnection" name="Core1ToFlash" port1="Core1/Port1?type=HwPort" port2="FLASH/Port1?type=HwPort"/>
+      <connections xmi:id="MCU/Core1ToRam?type=HwConnection" name="Core1ToRam" port1="Core1/Port1?type=HwPort" port2="RAM/Port1?type=HwPort"/>
+      <connections xmi:id="MCU/Core2ToFlash?type=HwConnection" name="Core2ToFlash" port1="Core2/Port1?type=HwPort" port2="FLASH/Port1?type=HwPort"/>
+      <connections xmi:id="MCU/Core2ToRam?type=HwConnection" name="Core2ToRam" port1="Core2/Port1?type=HwPort" port2="RAM/Port1?type=HwPort"/>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="200MHz?type=FrequencyDomain" name="200MHz" clockGating="false">
+      <defaultValue value="200.0" unit="MHz"/>
+    </domains>
+  </hwModel>
+</am:Amalthea>

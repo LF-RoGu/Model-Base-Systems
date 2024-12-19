@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <swModel>
+    <tasks xmi:id="TaskA1?type=Task" name="TaskA1" multipleTaskActivationLimit="0"/>
+    <tasks xmi:id="TaskB1?type=Task" name="TaskB1" multipleTaskActivationLimit="0"/>
+    <tasks xmi:id="TaskC1?type=Task" name="TaskC1" multipleTaskActivationLimit="0"/>
+    <tasks xmi:id="TaskD1?type=Task" name="TaskD1" multipleTaskActivationLimit="0"/>
+    <tasks xmi:id="TaskA2?type=Task" name="TaskA2" multipleTaskActivationLimit="0"/>
+    <tasks xmi:id="TaskB2?type=Task" name="TaskB2" multipleTaskActivationLimit="0"/>
+    <tasks xmi:id="TaskC2?type=Task" name="TaskC2" multipleTaskActivationLimit="0"/>
+    <tasks xmi:id="TaskD2?type=Task" name="TaskD2" multipleTaskActivationLimit="0"/>
+  </swModel>
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="Core_Definition?type=ProcessingUnitDefinition" name="Core_Definition" puType="CPU"/>
+    <structures xmi:id="System?type=HwStructure" name="System" structureType="System">
+      <structures xmi:id="ECU?type=HwStructure" name="ECU" structureType="ECU">
+        <modules xsi:type="am:ProcessingUnit" xmi:id="CoreA?type=ProcessingUnit" name="CoreA" frequencyDomain="Main_Freq_Domain?type=FrequencyDomain" definition="Core_Definition?type=ProcessingUnitDefinition"/>
+        <modules xsi:type="am:ProcessingUnit" xmi:id="CoreB?type=ProcessingUnit" name="CoreB" frequencyDomain="Main_Freq_Domain?type=FrequencyDomain" definition="Core_Definition?type=ProcessingUnitDefinition"/>
+      </structures>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="Main_Freq_Domain?type=FrequencyDomain" name="Main_Freq_Domain" clockGating="false">
+      <defaultValue value="200.0" unit="MHz"/>
+    </domains>
+  </hwModel>
+  <osModel>
+    <operatingSystems name="">
+      <taskSchedulers xmi:id="Partitioned_FPP?type=TaskScheduler" name="Partitioned_FPP" definition="UserSpecificSchedulingAlgorithm1?type=SchedulerDefinition"/>
+      <taskSchedulers xmi:id="GroupA?type=TaskScheduler" name="GroupA" definition="GroupingServer?type=SchedulerDefinition">
+        <schedulingParameters key="capacity?type=SchedulingParameterDefinition">
+          <value xsi:type="am:Time" value="1" unit="ms"/>
+        </schedulingParameters>
+        <schedulingParameters key="period?type=SchedulingParameterDefinition">
+          <value xsi:type="am:Time" value="10" unit="ms"/>
+        </schedulingParameters>
+        <parentAssociation parent="Partitioned_FPP?type=TaskScheduler"/>
+      </taskSchedulers>
+      <taskSchedulers xmi:id="GroupB?type=TaskScheduler" name="GroupB" definition="GroupingServer?type=SchedulerDefinition">
+        <schedulingParameters key="capacity?type=SchedulingParameterDefinition">
+          <value xsi:type="am:Time" value="2" unit="ms"/>
+        </schedulingParameters>
+        <schedulingParameters key="period?type=SchedulingParameterDefinition">
+          <value xsi:type="am:Time" value="15" unit="ms"/>
+        </schedulingParameters>
+        <parentAssociation parent="Partitioned_FPP?type=TaskScheduler"/>
+      </taskSchedulers>
+      <taskSchedulers xmi:id="GroupC?type=TaskScheduler" name="GroupC" definition="GroupingServer?type=SchedulerDefinition">
+        <schedulingParameters key="capacity?type=SchedulingParameterDefinition">
+          <value xsi:type="am:Time" value="5" unit="ms"/>
+        </schedulingParameters>
+        <schedulingParameters key="period?type=SchedulingParameterDefinition">
+          <value xsi:type="am:Time" value="20" unit="ms"/>
+        </schedulingParameters>
+        <parentAssociation parent="Partitioned_FPP?type=TaskScheduler"/>
+      </taskSchedulers>
+      <taskSchedulers xmi:id="GroupD?type=TaskScheduler" name="GroupD" definition="GroupingServer?type=SchedulerDefinition">
+        <schedulingParameters key="capacity?type=SchedulingParameterDefinition">
+          <value xsi:type="am:Time" value="2" unit="ms"/>
+        </schedulingParameters>
+        <schedulingParameters key="period?type=SchedulingParameterDefinition">
+          <value xsi:type="am:Time" value="5" unit="ms"/>
+        </schedulingParameters>
+        <parentAssociation parent="Partitioned_FPP?type=TaskScheduler"/>
+      </taskSchedulers>
+    </operatingSystems>
+    <schedulerDefinitions xmi:id="GroupingServer?type=SchedulerDefinition" name="GroupingServer" description="This is not a scheduler algorithm. Schedulers using this definition&#xA;act as a logical grouping of tasks/child-schedulers, e.g. a partition&#xA;for some tasks for budget accounting reasons.&#xA;&#xA;This scheduler does not take any scheduling decisions,&#xA;and a parent scheduler is mandatory.&#xA;&#xA;Algorithm parameters&#xA; - capacity [1] Time&#xA;      The fixed budget that can be used by processes.&#xA;      It will be replenished periodically.&#xA; - period [1] Time&#xA;      Amount of time after which the capacity will be replenished.&#xA;&#xA;Process parameters&#xA; -&#xA;&#xA;Options:&#xA; - passes parameters upwards&#xA; - requires parent scheduler&#xA;" algorithmParameters="capacity?type=SchedulingParameterDefinition period?type=SchedulingParameterDefinition" requiresParentScheduler="true" passesParametersUpwards="true" hasExactlyOneChild="false"/>
+    <schedulerDefinitions xmi:id="UserSpecificSchedulingAlgorithm1?type=SchedulerDefinition" name="UserSpecificSchedulingAlgorithm1" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
+    <schedulingParameterDefinitions xmi:id="capacity?type=SchedulingParameterDefinition" name="capacity" type="Time" many="false" mandatory="true"/>
+    <schedulingParameterDefinitions xmi:id="maxBudget?type=SchedulingParameterDefinition" name="maxBudget" type="Time" many="false" mandatory="true"/>
+    <schedulingParameterDefinitions xmi:id="period?type=SchedulingParameterDefinition" name="period" type="Time" many="false" mandatory="true"/>
+    <schedulingParameterDefinitions xmi:id="priority?type=SchedulingParameterDefinition" name="priority" type="Integer" many="false" mandatory="true"/>
+    <schedulingParameterDefinitions xmi:id="replenishment?type=SchedulingParameterDefinition" name="replenishment" type="Time" many="false" mandatory="true"/>
+  </osModel>
+  <mappingModel>
+    <schedulerAllocation scheduler="Partitioned_FPP?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit" executingPU="CoreA?type=ProcessingUnit"/>
+    <taskAllocation task="TaskA1?type=Task" scheduler="GroupA?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="50"/>
+      </schedulingParameters>
+    </taskAllocation>
+    <taskAllocation task="TaskA2?type=Task" scheduler="GroupA?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="30"/>
+      </schedulingParameters>
+    </taskAllocation>
+    <taskAllocation task="TaskB1?type=Task" scheduler="GroupB?type=TaskScheduler" affinity="CoreB?type=ProcessingUnit">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="55"/>
+      </schedulingParameters>
+    </taskAllocation>
+    <taskAllocation task="TaskB2?type=Task" scheduler="GroupB?type=TaskScheduler" affinity="CoreB?type=ProcessingUnit">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="60"/>
+      </schedulingParameters>
+    </taskAllocation>
+    <taskAllocation task="TaskC1?type=Task" scheduler="GroupC?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="75"/>
+      </schedulingParameters>
+    </taskAllocation>
+    <taskAllocation task="TaskC2?type=Task" scheduler="GroupC?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="20"/>
+      </schedulingParameters>
+    </taskAllocation>
+    <taskAllocation task="TaskD1?type=Task" scheduler="GroupD?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="100"/>
+      </schedulingParameters>
+    </taskAllocation>
+    <taskAllocation task="TaskD2?type=Task" scheduler="GroupD?type=TaskScheduler" affinity="CoreB?type=ProcessingUnit CoreA?type=ProcessingUnit">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="10"/>
+      </schedulingParameters>
+    </taskAllocation>
+  </mappingModel>
+</am:Amalthea>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <stimuliModel>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="Timer_5MS?type=PeriodicStimulus" name="Timer_5MS">
+      <recurrence value="5" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="Timer_10MS?type=PeriodicStimulus" name="Timer_10MS">
+      <recurrence value="10" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="Timer_20MS?type=PeriodicStimulus" name="Timer_20MS">
+      <recurrence value="20" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+  </stimuliModel>
+</am:Amalthea>

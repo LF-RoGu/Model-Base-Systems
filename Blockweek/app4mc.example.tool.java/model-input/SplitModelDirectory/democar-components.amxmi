@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <componentsModel>
+    <components xmi:id="SwcEngineController?type=Component" name="SwcEngineController">
+      <runnables href="amlt:/#APedVoter?type=Runnable"/>
+      <runnables href="amlt:/#BaseFuelMass?type=Runnable"/>
+      <runnables href="amlt:/#IgnitionTiming?type=Runnable"/>
+      <runnables href="amlt:/#ThrottleActuator?type=Runnable"/>
+      <runnables href="amlt:/#ThrottleController?type=Runnable"/>
+      <runnables href="amlt:/#TotalFuelMass?type=Runnable"/>
+      <runnables href="amlt:/#TransientFuelMass?type=Runnable"/>
+    </components>
+    <components xmi:id="SwcActuators?type=Component" name="SwcActuators">
+      <runnables href="amlt:/#EcuBrakeActuator?type=Runnable"/>
+      <runnables href="amlt:/#EcuStopLightActuator?type=Runnable"/>
+    </components>
+    <components xmi:id="SwcBrakeForceArbiter?type=Component" name="SwcBrakeForceArbiter">
+      <runnables href="amlt:/#BrakeForceArbiter?type=Runnable"/>
+    </components>
+    <components xmi:id="SwcABSCalculation?type=Component" name="SwcABSCalculation">
+      <runnables href="amlt:/#ABSCalculation?type=Runnable"/>
+      <runnables href="amlt:/#BrakeActuator?type=Runnable"/>
+      <runnables href="amlt:/#BrakeForceActuation?type=Runnable"/>
+      <runnables href="amlt:/#CaliperPositionCalculation?type=Runnable"/>
+      <runnables href="amlt:/#StopLightActuator?type=Runnable"/>
+    </components>
+    <components xmi:id="SwcSensors?type=Component" name="SwcSensors">
+      <runnables href="amlt:/#EcuBrakePedalSensor?type=Runnable"/>
+      <runnables href="amlt:/#EcuDecelerationSensor?type=Runnable"/>
+      <runnables href="amlt:/#EcuVehicleSpeedSensor?type=Runnable"/>
+      <runnables href="amlt:/#EcuWheelSpeedSensor?type=Runnable"/>
+    </components>
+    <components xmi:id="SwcSensorPostprocessing?type=Component" name="SwcSensorPostprocessing">
+      <runnables href="amlt:/#BrakePedalSensorDiagnosis?type=Runnable"/>
+      <runnables href="amlt:/#BrakePedalSensorTranslation?type=Runnable"/>
+      <runnables href="amlt:/#BrakePedalSensorVoter?type=Runnable"/>
+      <runnables href="amlt:/#DecelerationSensorDiagnosis?type=Runnable"/>
+      <runnables href="amlt:/#DecelerationSensorTranslation?type=Runnable"/>
+      <runnables href="amlt:/#DecelerationSensorVoter?type=Runnable"/>
+      <runnables href="amlt:/#VehicleSpeedSensorDiagnosis?type=Runnable"/>
+      <runnables href="amlt:/#VehicleSpeedSensorTranslation?type=Runnable"/>
+      <runnables href="amlt:/#VehicleSpeedSensorVoter?type=Runnable"/>
+      <runnables href="amlt:/#WheelSpeedSensorDiagnosis?type=Runnable"/>
+      <runnables href="amlt:/#WheelSpeedSensorTranslation?type=Runnable"/>
+      <runnables href="amlt:/#WheelSpeedSensorVoter?type=Runnable"/>
+    </components>
+    <components xmi:id="SwcCylNumObserver?type=Component" name="SwcCylNumObserver">
+      <runnables href="amlt:/#CylNumObserver?type=Runnable"/>
+    </components>
+    <components xmi:id="SwcBrakeForceCalculation?type=Component" name="SwcBrakeForceCalculation">
+      <runnables href="amlt:/#BrakeActuatorMonitor?type=Runnable"/>
+      <runnables href="amlt:/#BrakeForceCalculation?type=Runnable"/>
+      <runnables href="amlt:/#BrakeSafetyMonitor?type=Runnable"/>
+      <runnables href="amlt:/#CheckPlausability?type=Runnable"/>
+      <runnables href="amlt:/#DiagnosisArbiter?type=Runnable"/>
+      <runnables href="amlt:/#VehicleStateMonitor?type=Runnable"/>
+    </components>
+    <components xmi:id="SwcEngineSensors?type=Component" name="SwcEngineSensors">
+      <runnables href="amlt:/#APedSensor?type=Runnable"/>
+      <runnables href="amlt:/#MassAirFlowSensor?type=Runnable"/>
+      <runnables href="amlt:/#ThrottleSensor?type=Runnable"/>
+    </components>
+    <components xmi:id="SwcInjIgnActuation?type=Component" name="SwcInjIgnActuation">
+      <runnables href="amlt:/#IgnitionTimeActuation?type=Runnable"/>
+      <runnables href="amlt:/#InjectionTimeActuation?type=Runnable"/>
+    </components>
+  </componentsModel>
+</am:Amalthea>
