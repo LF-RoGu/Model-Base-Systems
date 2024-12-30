@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <hwModel>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="DDR3+SDRAM?type=MemoryDefinition" name="DDR3 SDRAM" memoryType="DRAM">
+      <size value="2" unit="GB"/>
+      <dataRate value="400" unit="MibitPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="eMMC?type=MemoryDefinition" name="eMMC" memoryType="FLASH">
+      <size value="4" unit="GB"/>
+      <dataRate value="400" unit="MibitPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="ARM+Cortex+A9+Core?type=ProcessingUnitDefinition" name="ARM Cortex A9 Core" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="NEON+MPE+Co-Processor?type=ProcessingUnitDefinition" name="NEON MPE Co-Processor" puType="Accelerator"/>
+    <definitions xsi:type="am:ConnectionHandlerDefinition" xmi:id="External+Memory+Controller?type=ConnectionHandlerDefinition" name="External Memory Controller" maxBurstSize="1" maxConcurrentTransfers="1"/>
+    <structures xmi:id="Commsignia+ITS-OB4?type=HwStructure" name="Commsignia ITS-OB4" structureType="System">
+      <ports xmi:id="Commsignia+ITS-OB4/CAN?type=HwPort" name="CAN" bitWidth="0" priority="0" portInterface="CAN"/>
+      <ports xmi:id="Commsignia+ITS-OB4/OBD+II?type=HwPort" name="OBD II" bitWidth="0" priority="0" portInterface="custom"/>
+      <ports xmi:id="Commsignia+ITS-OB4/Ethernet?type=HwPort" name="Ethernet" bitWidth="0" priority="0" portInterface="Ethernet"/>
+      <ports xmi:id="Commsignia+ITS-OB4/USB+I?type=HwPort" name="USB I" bitWidth="0" priority="0" portInterface="Ethernet"/>
+      <ports xmi:id="Commsignia+ITS-OB4/USB+II?type=HwPort" name="USB II" bitWidth="0" priority="0" portInterface="Ethernet"/>
+      <structures xmi:id="CPU+i.MX+6?type=HwStructure" name="CPU i.MX 6" structureType="SoC">
+        <modules xsi:type="am:ProcessingUnit" xmi:id="ARM+Cortex+A9+Core?type=ProcessingUnit" name="ARM Cortex A9 Core" frequencyDomain="800+MHz?type=FrequencyDomain" definition="ARM+Cortex+A9+Core?type=ProcessingUnitDefinition">
+          <ports xmi:id="ARM+Cortex+A9+Core/Core+-+I-Cache?type=HwPort" name="Core - I-Cache" bitWidth="0" priority="0"/>
+          <ports xmi:id="ARM+Cortex+A9+Core/Core+-+D-Cache?type=HwPort" name="Core - D-Cache" bitWidth="0" priority="0"/>
+          <ports xmi:id="ARM+Cortex+A9+Core/Core+-+Bus?type=HwPort" name="Core - Bus" bitWidth="0" priority="0"/>
+          <caches xmi:id="I-Cache?type=Cache" name="I-Cache">
+            <ports xmi:id="I-Cache/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+          </caches>
+          <caches xmi:id="D-Cache?type=Cache" name="D-Cache">
+            <ports xmi:id="D-Cache/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+          </caches>
+        </modules>
+        <modules xsi:type="am:Cache" xmi:id="L2+Cache?type=Cache" name="L2 Cache" frequencyDomain="800+MHz?type=FrequencyDomain">
+          <ports xmi:id="L2+Cache/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+        </modules>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="CPU+Bus?type=ConnectionHandler" name="CPU Bus">
+          <ports xmi:id="CPU+Bus/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+        </modules>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="External+Memory++Controller?type=ConnectionHandler" name="External Memory  Controller">
+          <ports xmi:id="External+Memory++Controller/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="AHB"/>
+        </modules>
+        <connections xmi:id="CPU+i.MX+6/Core+-+I-Cache?type=HwConnection" name="Core - I-Cache" port1="ARM+Cortex+A9+Core/Core+-+I-Cache?type=HwPort" port2="I-Cache/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/Core+-+D-Cache?type=HwConnection" name="Core - D-Cache" port1="ARM+Cortex+A9+Core/Core+-+D-Cache?type=HwPort" port2="D-Cache/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/CPU+Bus+-+Core?type=HwConnection" name="CPU Bus - Core" port1="ARM+Cortex+A9+Core/Core+-+Bus?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/CPU+Bus+-+L2+Cache?type=HwConnection" name="CPU Bus - L2 Cache" port1="L2+Cache/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/Bus+-+EMC?type=HwConnection" name="Bus - EMC" port1="External+Memory++Controller/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+      </structures>
+      <structures xmi:id="Measurement+Devices?type=HwStructure" name="Measurement Devices" structureType="Group">
+        <structures xmi:id="Magnetometer?type=HwStructure" name="Magnetometer"/>
+        <structures xmi:id="Gyroscope?type=HwStructure" name="Gyroscope"/>
+        <structures xmi:id="Accelerometer?type=HwStructure" name="Accelerometer"/>
+        <structures xmi:id="GNSS?type=HwStructure" name="GNSS"/>
+      </structures>
+      <structures xmi:id="HSM?type=HwStructure" name="HSM" structureType="System"/>
+      <structures xmi:id="WLAN?type=HwStructure" name="WLAN" structureType="System"/>
+      <structures xmi:id="3G%2FLTE+Modem?type=HwStructure" name="3G/LTE Modem" structureType="System"/>
+      <structures xmi:id="DSRC+Transmitter?type=HwStructure" name="DSRC Transmitter" structureType="System"/>
+      <modules xsi:type="am:Memory" xmi:id="DDR3+SDRAM?type=Memory" name="DDR3 SDRAM" frequencyDomain="800+MHz?type=FrequencyDomain" definition="DDR3+SDRAM?type=MemoryDefinition">
+        <ports xmi:id="DDR3+SDRAM/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+      </modules>
+      <modules xsi:type="am:Memory" xmi:id="eMMC+Flash?type=Memory" name="eMMC Flash" frequencyDomain="800+MHz?type=FrequencyDomain" definition="eMMC?type=MemoryDefinition">
+        <ports xmi:id="eMMC+Flash/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+      </modules>
+      <connections xmi:id="Commsignia+ITS-OB4/CPU+-+Ram?type=HwConnection" name="CPU - Ram" port1="External+Memory++Controller/Port?type=HwPort" port2="DDR3+SDRAM/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/CPU+-+Flash?type=HwConnection" name="CPU - Flash" port1="External+Memory++Controller/Port?type=HwPort" port2="eMMC+Flash/Port?type=HwPort"/>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="400+MHz?type=FrequencyDomain" name="400 MHz" clockGating="false"/>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="800+MHz?type=FrequencyDomain" name="800 MHz" clockGating="false"/>
+  </hwModel>
+</am:Amalthea>
