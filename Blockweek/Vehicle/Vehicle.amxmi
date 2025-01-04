@@ -1041,12 +1041,62 @@
             </structures>
           </structures>
         </structures>
-        <structures xmi:id="Deserializer?type=HwStructure" name="Deserializer" structureType="SoC">
-          <ports xmi:id="Deserializer/PortIn_1?type=HwPort" name="PortIn_1" bitWidth="0" priority="0"/>
-          <ports xmi:id="Deserializer/PortIn_2?type=HwPort" name="PortIn_2" bitWidth="0" priority="0"/>
-          <ports xmi:id="Deserializer/PortIn_3?type=HwPort" name="PortIn_3" bitWidth="0" priority="0"/>
-          <ports xmi:id="Deserializer/PortIn_4?type=HwPort" name="PortIn_4" bitWidth="0" priority="0"/>
+        <structures xmi:id="Optics+Sensors?type=HwStructure" name="Optics Sensors" structureType="Group">
+          <structures xmi:id="Camera?type=HwStructure" name="Camera" structureType="System">
+            <structures xmi:id="Image+Processor?type=HwStructure" name="Image Processor" structureType="SoC"/>
+            <structures xmi:id="Image+MCU?type=HwStructure" name="Image MCU" structureType="Microcontroller"/>
+            <structures xmi:id="Interface?type=HwStructure" name="Interface" structureType="ECU"/>
+            <structures xmi:id="Interface+Deserializer?type=HwStructure" name="Interface Deserializer" structureType="SoC"/>
+            <structures xmi:id="ISP?type=HwStructure" name="ISP" structureType="Group">
+              <structures xmi:id="Serializer?type=HwStructure" name="Serializer" structureType="SoC"/>
+              <structures xmi:id="Image+Sensor?type=HwStructure" name="Image Sensor" structureType="SoC"/>
+              <modules xsi:type="am:ProcessingUnit" xmi:id="Image+Sensor+Processor?type=ProcessingUnit" name="Image Sensor Processor"/>
+            </structures>
+            <modules xsi:type="am:Memory" xmi:id="Camera+Memory?type=Memory" name="Camera Memory"/>
+          </structures>
         </structures>
+        <structures xmi:id="Processing+Unit?type=HwStructure" name="Processing Unit" structureType="System">
+          <structures xmi:id="Deserializer?type=HwStructure" name="Deserializer" structureType="SoC">
+            <ports xmi:id="Deserializer/PortIn_1?type=HwPort" name="PortIn_1" bitWidth="0" priority="0"/>
+            <ports xmi:id="Deserializer/PortIn_2?type=HwPort" name="PortIn_2" bitWidth="0" priority="0"/>
+            <ports xmi:id="Deserializer/PortIn_3?type=HwPort" name="PortIn_3" bitWidth="0" priority="0"/>
+            <ports xmi:id="Deserializer/PortIn_4?type=HwPort" name="PortIn_4" bitWidth="0" priority="0"/>
+            <ports xmi:id="Deserializer/PortOut_1?type=HwPort" name="PortOut_1" bitWidth="0" priority="0"/>
+            <ports xmi:id="Deserializer/PortOut_2?type=HwPort" name="PortOut_2" bitWidth="0" priority="0"/>
+            <ports xmi:id="Deserializer/PortOut_3?type=HwPort" name="PortOut_3" bitWidth="0" priority="0"/>
+            <ports xmi:id="Deserializer/PortOut_4?type=HwPort" name="PortOut_4" bitWidth="0" priority="0"/>
+          </structures>
+          <structures xmi:id="SoC%2FFPGA?type=HwStructure" name="SoC/FPGA" structureType="SoC">
+            <ports xmi:id="SoC%2FFPGA/PortIn_1?type=HwPort" name="PortIn_1" bitWidth="0" priority="0"/>
+            <ports xmi:id="SoC%2FFPGA/PortIn_2?type=HwPort" name="PortIn_2" bitWidth="0" priority="0"/>
+            <ports xmi:id="SoC%2FFPGA/PortIn_3?type=HwPort" name="PortIn_3" bitWidth="0" priority="0"/>
+            <ports xmi:id="SoC%2FFPGA/PortIn_4?type=HwPort" name="PortIn_4" bitWidth="0" priority="0"/>
+            <ports xmi:id="SoC%2FFPGA/PortOut_Serializer?type=HwPort" name="PortOut_Serializer" bitWidth="0" priority="0"/>
+            <ports xmi:id="SoC%2FFPGA/PortOut_Transceiver?type=HwPort" name="PortOut_Transceiver" bitWidth="0" priority="0"/>
+            <ports xmi:id="SoC%2FFPGA/PortOut_Ethernet?type=HwPort" name="PortOut_Ethernet" bitWidth="0" priority="0"/>
+          </structures>
+          <connections xmi:id="Processing+Unit/Deserializer-SoC?type=HwConnection" name="Deserializer-SoC" port1="Deserializer/PortIn_1?type=HwPort" port2="SoC%2FFPGA/PortIn_1?type=HwPort"/>
+          <connections xmi:id="Processing+Unit/Deserializer-SoC?type=HwConnection" name="Deserializer-SoC" port1="Deserializer/PortIn_2?type=HwPort" port2="SoC%2FFPGA/PortIn_2?type=HwPort"/>
+          <connections xmi:id="Processing+Unit/Deserializer-SoC?type=HwConnection" name="Deserializer-SoC" port1="Deserializer/PortIn_3?type=HwPort" port2="SoC%2FFPGA/PortIn_3?type=HwPort"/>
+          <connections xmi:id="Processing+Unit/Deserializer-SoC?type=HwConnection" name="Deserializer-SoC" port1="Deserializer/PortIn_4?type=HwPort" port2="SoC%2FFPGA/PortIn_4?type=HwPort"/>
+          <connections xmi:id="Processing+Unit/PU-Serializer?type=HwConnection" name="PU-Serializer" port1="SoC%2FFPGA/PortOut_Serializer?type=HwPort" port2="Serializer/PortIn?type=HwPort"/>
+          <connections xmi:id="Processing+Unit/PU-Transceiver?type=HwConnection" name="PU-Transceiver" port1="SoC%2FFPGA/PortOut_Transceiver?type=HwPort" port2="Transceiver/PortIn?type=HwPort"/>
+          <connections xmi:id="Processing+Unit/PU-Ethernet?type=HwConnection" name="PU-Ethernet" port1="SoC%2FFPGA/PortOut_Ethernet?type=HwPort" port2="Ethernet%2FPHY/PortOut?type=HwPort"/>
+        </structures>
+        <structures xmi:id="Serializer?type=HwStructure" name="Serializer" structureType="SoC">
+          <ports xmi:id="Serializer/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0"/>
+          <ports xmi:id="Serializer/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0"/>
+        </structures>
+        <structures xmi:id="Transceiver?type=HwStructure" name="Transceiver" structureType="SoC">
+          <ports xmi:id="Transceiver/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0"/>
+          <ports xmi:id="Transceiver/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0"/>
+        </structures>
+        <structures xmi:id="Ethernet%2FPHY?type=HwStructure" name="Ethernet/PHY" structureType="SoC">
+          <ports xmi:id="Ethernet%2FPHY/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0"/>
+          <ports xmi:id="Ethernet%2FPHY/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0"/>
+        </structures>
+        <modules xsi:type="am:ProcessingUnit" xmi:id="Osc%2FPLL?type=ProcessingUnit" name="Osc/PLL"/>
+        <modules xsi:type="am:Memory" xmi:id="PU+Mem?type=Memory" name="PU Mem"/>
       </structures>
     </structures>
     <domains xsi:type="am:FrequencyDomain" xmi:id="Cortex+R4F?type=FrequencyDomain" name="Cortex R4F" clockGating="false">
