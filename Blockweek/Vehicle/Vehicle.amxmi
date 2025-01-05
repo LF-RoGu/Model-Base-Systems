@@ -1,1109 +1,429 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <swModel/>
   <hwModel>
-    <definitions xsi:type="am:MemoryDefinition" xmi:id="Cortex+R4F+DRAM?type=MemoryDefinition" name="Cortex R4F DRAM" memoryType="DRAM">
-      <size value="192" unit="kB"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="RH850%2FP1H-C?type=ProcessingUnitDefinition" name="RH850/P1H-C" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="RH850%2FE2x?type=ProcessingUnitDefinition" name="RH850/E2x" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="RH850%2FC1M?type=ProcessingUnitDefinition" name="RH850/C1M" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="R-Car+W1R?type=ProcessingUnitDefinition" name="R-Car W1R" puType="CPU"/>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition" name="Flash-RH850/E2x 4 MiB" memoryType="FLASH">
+      <size value="4" unit="MiB"/>
+      <dataRate value="50" unit="MBPerSecond"/>
     </definitions>
-    <definitions xsi:type="am:MemoryDefinition" xmi:id="Cortex+R4F+SRAM?type=MemoryDefinition" name="Cortex R4F SRAM" memoryType="SRAM">
-      <size value="512" unit="kB"/>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition" name="RAM-RH850/E2x 1MiB" memoryType="SRAM">
+      <size value="1" unit="MiB"/>
+      <dataRate value="120" unit="MBPerSecond"/>
     </definitions>
-    <definitions xsi:type="am:MemoryDefinition" xmi:id="Cortex+R4F+FLASH?type=MemoryDefinition" name="Cortex R4F FLASH" memoryType="FLASH">
-      <size value="128" unit="kB"/>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition" name="EEPROM-RH850/E2x 1MiB">
+      <size value="256" unit="KiB"/>
+      <dataRate value="5" unit="MBPerSecond"/>
     </definitions>
-    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="Cortex+R4F?type=ProcessingUnitDefinition" name="Cortex R4F" puType="CPU"/>
-    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="C674x+DSP?type=ProcessingUnitDefinition" name="C674x DSP" puType="Accelerator"/>
-    <definitions xsi:type="am:CacheDefinition" xmi:id="C674x+L1+Pgm?type=CacheDefinition" name="C674x L1 Pgm" cacheType="instruction" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
-      <size value="32" unit="kB"/>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FC1M+3+MiB?type=MemoryDefinition" name="Flash-RH850/C1M 3 MiB" memoryType="FLASH">
+      <size value="3" unit="MiB"/>
+      <dataRate value="50" unit="MBPerSecond"/>
     </definitions>
-    <definitions xsi:type="am:CacheDefinition" xmi:id="C674x+L1+RAM?type=CacheDefinition" name="C674x L1 RAM" cacheType="data" nWays="0" coherency="false" exclusive="false" hitRate="0.0">
-      <size value="32" unit="kB"/>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-RH850%2FC1M+256+KiB?type=MemoryDefinition" name="RAM-RH850/C1M 256 KiB" memoryType="SRAM">
+      <size value="256" unit="KiB"/>
+      <dataRate value="80" unit="MBPerSecond"/>
     </definitions>
-    <definitions xsi:type="am:MemoryDefinition" xmi:id="C674x+L2+RAM?type=MemoryDefinition" name="C674x L2 RAM" memoryType="DRAM">
-      <size value="256" unit="kB"/>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="EEPROM-RH850%2FC1M+128+KiB?type=MemoryDefinition" name="EEPROM-RH850/C1M 128 KiB">
+      <size value="128" unit="KiB"/>
+      <dataRate value="5" unit="KiBPerSecond"/>
     </definitions>
-    <definitions xsi:type="am:MemoryDefinition" xmi:id="C674x+BOOT+ROM?type=MemoryDefinition" name="C674x BOOT ROM" memoryType="FLASH"/>
-    <definitions xsi:type="am:MemoryDefinition" xmi:id="C674x?type=MemoryDefinition" name="C674x" memoryType="DRAM">
-      <size value="128" unit="kB"/>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-R-Car+W1R+16GiB?type=MemoryDefinition" name="Flash-R-Car W1R 16GiB" memoryType="FLASH">
+      <size value="16" unit="GiB"/>
+      <dataRate value="600" unit="MBPerSecond"/>
     </definitions>
-    <definitions xsi:type="am:MemoryDefinition" xmi:id="DSP+Subs-System?type=MemoryDefinition" name="DSP Subs-System" memoryType="DRAM">
-      <size value="768" unit="kB"/>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-R-Car+W1R+2GiB?type=MemoryDefinition" name="RAM-R-Car W1R 2GiB" memoryType="DRAM">
+      <size value="2" unit="GiB"/>
+      <dataRate value="80" unit="GBPerSecond"/>
     </definitions>
-    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="Generic+IF+PU?type=ProcessingUnitDefinition" name="Generic IF PU"/>
-    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="Generic+ADC+PU?type=ProcessingUnitDefinition" name="Generic ADC PU"/>
-    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="Generic+Mixer+PU?type=ProcessingUnitDefinition" name="Generic Mixer PU"/>
-    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="Generic+LNA+PU?type=ProcessingUnitDefinition" name="Generic LNA PU"/>
-    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="Generic+DFE?type=ProcessingUnitDefinition" name="Generic DFE"/>
-    <structures xmi:id="ADAS?type=HwStructure" name="ADAS" structureType="System">
-      <structures xmi:id="Radar+Surround+System?type=HwStructure" name="Radar Surround System" structureType="System">
-        <structures xmi:id="Radar+Sensors?type=HwStructure" name="Radar Sensors" structureType="Group">
-          <structures xmi:id="Front?type=HwStructure" name="Front" structureType="System">
-            <structures xmi:id="Radar+System?type=HwStructure" name="Radar System" structureType="System">
-              <ports xmi:id="Radar+System/PortOutFront_UART?type=HwPort" name="PortOutFront_UART" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_I2C?type=HwPort" name="PortOutFront_I2C" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_SPI?type=HwPort" name="PortOutFront_SPI" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_CAN-FD?type=HwPort" name="PortOutFront_CAN-FD" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_QSPI?type=HwPort" name="PortOutFront_QSPI" bitWidth="0" priority="0"/>
-              <structures xmi:id="IWR6843?type=HwStructure" name="IWR6843" structureType="Microcontroller">
-                <ports xmi:id="IWR6843/QSPI?type=HwPort" name="QSPI" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
-                <ports xmi:id="IWR6843/SPI?type=HwPort" name="SPI" bitWidth="0" priority="0" portType="initiator" portInterface="SPI"/>
-                <ports xmi:id="IWR6843/I2C?type=HwPort" name="I2C" bitWidth="0" priority="0" portType="initiator" portInterface="I2C"/>
-                <ports xmi:id="IWR6843/CAN-FD?type=HwPort" name="CAN-FD" bitWidth="0" priority="0" portType="initiator" portInterface="CAN"/>
-                <ports xmi:id="IWR6843/UART?type=HwPort" name="UART" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
-                <structures xmi:id="Radio+Processor+Sub-System?type=HwStructure" name="Radio Processor Sub-System" structureType="Group">
-                  <structures xmi:id="Radio+%28BIST%29?type=HwStructure" name="Radio (BIST)" structureType="Microcontroller">
-                    <structures xmi:id="Programable+RAM+%26+ROm?type=HwStructure" name="Programable RAM &amp; ROm">
-                      <modules xsi:type="am:Memory" xmi:id="RAM?type=Memory" name="RAM"/>
-                      <modules xsi:type="am:Memory" xmi:id="ROM?type=Memory" name="ROM"/>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="BIST?type=ProcessingUnit" name="BIST"/>
-                    <modules xsi:type="am:Memory" xmi:id="Data+RAM?type=Memory" name="Data RAM"/>
-                  </structures>
-                  <structures xmi:id="Ramp+Generator?type=HwStructure" name="Ramp Generator" structureType="SoC">
-                    <ports xmi:id="Ramp+Generator/Ramp+Gen+Port?type=HwPort" name="Ramp Gen Port" bitWidth="0" priority="0"/>
-                  </structures>
-                  <structures xmi:id="Digital+Front-End?type=HwStructure" name="Digital Front-End" structureType="Microcontroller">
-                    <ports xmi:id="Digital+Front-End/DFE+port?type=HwPort" name="DFE port" bitWidth="0" priority="0"/>
-                  </structures>
-                  <connections xmi:id="Radio+Processor+Sub-System/Synth-RampGen?type=HwConnection" name="Synth-RampGen" port1="Synthesizer/Synth-RampGen?type=HwPort" port2="Ramp+Generator/Ramp+Gen+Port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                </structures>
-                <structures xmi:id="RF%2Fanalog+Sub-System?type=HwStructure" name="RF/analog Sub-System" structureType="Group">
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA1+Port?type=HwPort" name="PA1 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA2+Port?type=HwPort" name="PA2 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA3+Port?type=HwPort" name="PA3 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Synth?type=HwStructure" name="Synth" structureType="SoC">
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Synthesizer?type=ProcessingUnit" name="Synthesizer">
-                      <ports xmi:id="Synthesizer/Synth+Port?type=HwPort" name="Synth Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Synthesizer/Synth-RampGen?type=HwPort" name="Synth-RampGen" bitWidth="0" priority="0"/>
-                    </modules>
-                  </structures>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA1+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA2+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA3+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/Mixer+to+Synth?type=HwConnection" name="Mixer to Synth" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                </structures>
-                <structures xmi:id="Main+%26+subsystem?type=HwStructure" name="Main &amp; subsystem" structureType="Group">
-                  <structures xmi:id="Mailbox?type=HwStructure" name="Mailbox" structureType="Cluster"/>
-                  <structures xmi:id="Bus+Matrix?type=HwStructure" name="Bus Matrix" structureType="Array"/>
-                  <structures xmi:id="DSP+Sub-System?type=HwStructure" name="DSP Sub-System" structureType="Group">
-                    <structures xmi:id="C674x+DSP?type=HwStructure" name="C674x DSP" structureType="SoC">
-                      <structures xmi:id="Peripherals?type=HwStructure" name="Peripherals" structureType="Group">
-                        <ports xmi:id="Peripherals/Peripherals+Port?type=HwPort" name="Peripherals Port" bitWidth="0" priority="0"/>
-                        <structures xmi:id="Serial+Interfaces?type=HwStructure" name="Serial Interfaces" structureType="Group">
-                          <structures xmi:id="McBSP+x2?type=HwStructure" name="McBSP x2" structureType="SoC"/>
-                          <structures xmi:id="I2C+x2?type=HwStructure" name="I2C x2" structureType="SoC"/>
-                          <structures xmi:id="SPI+x2?type=HwStructure" name="SPI x2" structureType="SoC"/>
-                          <structures xmi:id="UART+x3?type=HwStructure" name="UART x3" structureType="SoC"/>
-                        </structures>
-                        <structures xmi:id="Display?type=HwStructure" name="Display" structureType="Group">
-                          <structures xmi:id="LCD+Ctlr?type=HwStructure" name="LCD Ctlr" structureType="Region"/>
-                        </structures>
-                        <structures xmi:id="Parallel?type=HwStructure" name="Parallel" structureType="Group">
-                          <structures xmi:id="uPP?type=HwStructure" name="uPP" structureType="Region"/>
-                        </structures>
-                        <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Group">
-                          <structures xmi:id="EDMA3+x2?type=HwStructure" name="EDMA3 x2" structureType="Array"/>
-                        </structures>
-                        <structures xmi:id="Control+timers?type=HwStructure" name="Control timers" structureType="Group">
-                          <structures xmi:id="ePWM+x2?type=HwStructure" name="ePWM x2" structureType="Region"/>
-                          <structures xmi:id="eCAP+x3?type=HwStructure" name="eCAP x3" structureType="Region"/>
-                        </structures>
-                        <modules xsi:type="am:Memory" xmi:id="Internal+Memory?type=Memory" name="Internal Memory" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x?type=MemoryDefinition"/>
-                      </structures>
-                      <structures xmi:id="DSP+Subsystem?type=HwStructure" name="DSP Subsystem" structureType="Group">
-                        <ports xmi:id="DSP+Subsystem/DSP+subsystem+Port?type=HwPort" name="DSP subsystem Port" bitWidth="0" priority="0"/>
-                        <modules xsi:type="am:ProcessingUnit" xmi:id="C674x?type=ProcessingUnit" name="C674x" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F?type=ProcessingUnitDefinition"/>
-                        <modules xsi:type="am:Cache" xmi:id="L1+Pgm?type=Cache" name="L1 Pgm" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L1+Pgm?type=CacheDefinition"/>
-                        <modules xsi:type="am:Cache" xmi:id="L1+RAM?type=Cache" name="L1 RAM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L1+RAM?type=CacheDefinition"/>
-                        <modules xsi:type="am:Memory" xmi:id="L2+RAM?type=Memory" name="L2 RAM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L2+RAM?type=MemoryDefinition"/>
-                        <modules xsi:type="am:Memory" xmi:id="BOOT+ROM?type=Memory" name="BOOT ROM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+BOOT+ROM?type=MemoryDefinition"/>
-                      </structures>
-                      <structures xmi:id="System+control?type=HwStructure" name="System control" structureType="Group">
-                        <ports xmi:id="System+control/System+control+Port?type=HwPort" name="System control Port" bitWidth="0" priority="0"/>
-                      </structures>
-                      <modules xsi:type="am:ConnectionHandler" xmi:id="Switched+Central+Resource?type=ConnectionHandler" name="Switched Central Resource">
-                        <ports xmi:id="Switched+Central+Resource/SCR+Port?type=HwPort" name="SCR Port" bitWidth="0" priority="0"/>
-                        <internalConnections xmi:id="Switched+Central+Resource/SCR+Handler?type=HwConnection" name="SCR Handler"/>
-                        <internalConnections xmi:id="Switched+Central+Resource/SCR+Handler?type=HwConnection" name="SCR Handler"/>
-                      </modules>
-                      <connections xmi:id="C674x+DSP/Link1?type=HwConnection" name="Link1"/>
-                      <connections xmi:id="C674x+DSP/Link2?type=HwConnection" name="Link2"/>
-                      <connections xmi:id="C674x+DSP/Link3?type=HwConnection" name="Link3"/>
-                    </structures>
-                    <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Array"/>
-                    <structures xmi:id="CRC?type=HwStructure" name="CRC" structureType="System"/>
-                    <modules xsi:type="am:Memory" xmi:id="Radar+Data+Memory?type=Memory" name="Radar Data Memory" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="DSP+Subs-System?type=MemoryDefinition"/>
-                  </structures>
-                  <structures xmi:id="Main+Sub-System?type=HwStructure" name="Main Sub-System" structureType="Microcontroller">
-                    <structures xmi:id="Cortex+R4F?type=HwStructure" name="Cortex R4F" structureType="Microcontroller">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="R4F?type=ProcessingUnit" name="R4F" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F?type=ProcessingUnitDefinition">
-                        <ports xmi:id="R4F/R4F+Core+Port?type=HwPort" name="R4F Core Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="DRAM?type=Memory" name="DRAM" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F+DRAM?type=MemoryDefinition">
-                        <ports xmi:id="DRAM/R4F+DRAM+Port?type=HwPort" name="R4F DRAM Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="SRAM?type=Memory" name="SRAM" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F+SRAM?type=MemoryDefinition">
-                        <ports xmi:id="SRAM/R4F+SRAM+Port?type=HwPort" name="R4F SRAM Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="FLASH?type=Memory" name="FLASH" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="Cortex+R4F+FLASH?type=MemoryDefinition">
-                        <ports xmi:id="FLASH/R4F+FLASH+Port?type=HwPort" name="R4F FLASH Port" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <structures xmi:id="Radar+HW+Accelerator?type=HwStructure" name="Radar HW Accelerator" structureType="Group">
-                      <customProperties key="FFT"/>
-                      <customProperties key="Log"/>
-                      <customProperties key="Mag"/>
-                      <customProperties key="Others"/>
-                    </structures>
-                    <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Array"/>
-                    <structures xmi:id="I2C?type=HwStructure" name="I2C" structureType="SoC"/>
-                    <structures xmi:id="SPI?type=HwStructure" name="SPI" structureType="SoC"/>
-                    <structures xmi:id="UART?type=HwStructure" name="UART" structureType="SoC"/>
-                    <structures xmi:id="JTAG?type=HwStructure" name="JTAG" structureType="SoC"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+DRAM?type=HwConnection" name="Core To DRAM" port1="R4F/R4F+Core+Port?type=HwPort" port2="DRAM/R4F+DRAM+Port?type=HwPort"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+SRAM?type=HwConnection" name="Core To SRAM" port1="R4F/R4F+Core+Port?type=HwPort" port2="SRAM/R4F+SRAM+Port?type=HwPort"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R4F/R4F+Core+Port?type=HwPort" port2="FLASH/R4F+FLASH+Port?type=HwPort"/>
-                  </structures>
-                </structures>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC+PU+Port?type=HwPort" port2="ADC/ADC-DFE?type=HwPort"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC+PU+Port?type=HwPort"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE"/>
-                <connections xmi:id="IWR6843/Synth-Ramp?type=HwConnection" name="Synth-Ramp"/>
-              </structures>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/UART?type=HwPort" port2="Radar+System/PortOutFront_UART?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/I2C?type=HwPort" port2="Radar+System/PortOutFront_I2C?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/SPI?type=HwPort" port2="Radar+System/PortOutFront_SPI?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/CAN-FD?type=HwPort" port2="Radar+System/PortOutFront_CAN-FD?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/QSPI?type=HwPort" port2="Radar+System/PortOutFront_QSPI?type=HwPort"/>
-            </structures>
-          </structures>
-          <structures xmi:id="Left?type=HwStructure" name="Left" structureType="System">
-            <structures xmi:id="Radar+System?type=HwStructure" name="Radar System" structureType="System">
-              <ports xmi:id="Radar+System/PortOutFront_UART?type=HwPort" name="PortOutFront_UART" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_I2C?type=HwPort" name="PortOutFront_I2C" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_SPI?type=HwPort" name="PortOutFront_SPI" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_CAN-FD?type=HwPort" name="PortOutFront_CAN-FD" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_QSPI?type=HwPort" name="PortOutFront_QSPI" bitWidth="0" priority="0"/>
-              <structures xmi:id="IWR6843?type=HwStructure" name="IWR6843" structureType="Microcontroller">
-                <ports xmi:id="IWR6843/QSPI?type=HwPort" name="QSPI" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
-                <ports xmi:id="IWR6843/SPI?type=HwPort" name="SPI" bitWidth="0" priority="0" portType="initiator" portInterface="SPI"/>
-                <ports xmi:id="IWR6843/I2C?type=HwPort" name="I2C" bitWidth="0" priority="0" portType="initiator" portInterface="I2C"/>
-                <ports xmi:id="IWR6843/CAN-FD?type=HwPort" name="CAN-FD" bitWidth="0" priority="0" portType="initiator" portInterface="CAN"/>
-                <ports xmi:id="IWR6843/UART?type=HwPort" name="UART" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
-                <structures xmi:id="Radio+Processor+Sub-System?type=HwStructure" name="Radio Processor Sub-System" structureType="Group">
-                  <structures xmi:id="Radio+%28BIST%29?type=HwStructure" name="Radio (BIST)" structureType="Microcontroller">
-                    <structures xmi:id="Programable+RAM+%26+ROm?type=HwStructure" name="Programable RAM &amp; ROm">
-                      <modules xsi:type="am:Memory" xmi:id="RAM?type=Memory" name="RAM"/>
-                      <modules xsi:type="am:Memory" xmi:id="ROM?type=Memory" name="ROM"/>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="BIST?type=ProcessingUnit" name="BIST"/>
-                    <modules xsi:type="am:Memory" xmi:id="Data+RAM?type=Memory" name="Data RAM"/>
-                  </structures>
-                  <structures xmi:id="Ramp+Generator?type=HwStructure" name="Ramp Generator" structureType="SoC">
-                    <ports xmi:id="Ramp+Generator/Ramp+Gen+Port?type=HwPort" name="Ramp Gen Port" bitWidth="0" priority="0"/>
-                  </structures>
-                  <structures xmi:id="Digital+Front-End?type=HwStructure" name="Digital Front-End" structureType="Microcontroller">
-                    <ports xmi:id="Digital+Front-End/DFE+port?type=HwPort" name="DFE port" bitWidth="0" priority="0"/>
-                  </structures>
-                  <connections xmi:id="Radio+Processor+Sub-System/Synth-RampGen?type=HwConnection" name="Synth-RampGen" port1="Synthesizer/Synth-RampGen?type=HwPort" port2="Ramp+Generator/Ramp+Gen+Port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                </structures>
-                <structures xmi:id="RF%2Fanalog+Sub-System?type=HwStructure" name="RF/analog Sub-System" structureType="Group">
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA1+Port?type=HwPort" name="PA1 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA2+Port?type=HwPort" name="PA2 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA3+Port?type=HwPort" name="PA3 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Synth?type=HwStructure" name="Synth" structureType="SoC">
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Synthesizer?type=ProcessingUnit" name="Synthesizer">
-                      <ports xmi:id="Synthesizer/Synth+Port?type=HwPort" name="Synth Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Synthesizer/Synth-RampGen?type=HwPort" name="Synth-RampGen" bitWidth="0" priority="0"/>
-                    </modules>
-                  </structures>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA1+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA2+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA3+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/Mixer+to+Synth?type=HwConnection" name="Mixer to Synth" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                </structures>
-                <structures xmi:id="Main+%26+subsystem?type=HwStructure" name="Main &amp; subsystem" structureType="Group">
-                  <structures xmi:id="Mailbox?type=HwStructure" name="Mailbox" structureType="Cluster"/>
-                  <structures xmi:id="Bus+Matrix?type=HwStructure" name="Bus Matrix" structureType="Array"/>
-                  <structures xmi:id="DSP+Sub-System?type=HwStructure" name="DSP Sub-System" structureType="Group">
-                    <structures xmi:id="C674x+DSP?type=HwStructure" name="C674x DSP" structureType="SoC">
-                      <structures xmi:id="Peripherals?type=HwStructure" name="Peripherals" structureType="Group">
-                        <ports xmi:id="Peripherals/Peripherals+Port?type=HwPort" name="Peripherals Port" bitWidth="0" priority="0"/>
-                        <structures xmi:id="Serial+Interfaces?type=HwStructure" name="Serial Interfaces" structureType="Group">
-                          <structures xmi:id="McBSP+x2?type=HwStructure" name="McBSP x2" structureType="SoC"/>
-                          <structures xmi:id="I2C+x2?type=HwStructure" name="I2C x2" structureType="SoC"/>
-                          <structures xmi:id="SPI+x2?type=HwStructure" name="SPI x2" structureType="SoC"/>
-                          <structures xmi:id="UART+x3?type=HwStructure" name="UART x3" structureType="SoC"/>
-                        </structures>
-                        <structures xmi:id="Display?type=HwStructure" name="Display" structureType="Group">
-                          <structures xmi:id="LCD+Ctlr?type=HwStructure" name="LCD Ctlr" structureType="Region"/>
-                        </structures>
-                        <structures xmi:id="Parallel?type=HwStructure" name="Parallel" structureType="Group">
-                          <structures xmi:id="uPP?type=HwStructure" name="uPP" structureType="Region"/>
-                        </structures>
-                        <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Group">
-                          <structures xmi:id="EDMA3+x2?type=HwStructure" name="EDMA3 x2" structureType="Array"/>
-                        </structures>
-                        <structures xmi:id="Control+timers?type=HwStructure" name="Control timers" structureType="Group">
-                          <structures xmi:id="ePWM+x2?type=HwStructure" name="ePWM x2" structureType="Region"/>
-                          <structures xmi:id="eCAP+x3?type=HwStructure" name="eCAP x3" structureType="Region"/>
-                        </structures>
-                        <modules xsi:type="am:Memory" xmi:id="Internal+Memory?type=Memory" name="Internal Memory" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x?type=MemoryDefinition"/>
-                      </structures>
-                      <structures xmi:id="DSP+Subsystem?type=HwStructure" name="DSP Subsystem" structureType="Group">
-                        <ports xmi:id="DSP+Subsystem/DSP+subsystem+Port?type=HwPort" name="DSP subsystem Port" bitWidth="0" priority="0"/>
-                        <modules xsi:type="am:ProcessingUnit" xmi:id="C674x?type=ProcessingUnit" name="C674x" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F?type=ProcessingUnitDefinition"/>
-                        <modules xsi:type="am:Cache" xmi:id="L1+Pgm?type=Cache" name="L1 Pgm" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L1+Pgm?type=CacheDefinition"/>
-                        <modules xsi:type="am:Cache" xmi:id="L1+RAM?type=Cache" name="L1 RAM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L1+RAM?type=CacheDefinition"/>
-                        <modules xsi:type="am:Memory" xmi:id="L2+RAM?type=Memory" name="L2 RAM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L2+RAM?type=MemoryDefinition"/>
-                        <modules xsi:type="am:Memory" xmi:id="BOOT+ROM?type=Memory" name="BOOT ROM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+BOOT+ROM?type=MemoryDefinition"/>
-                      </structures>
-                      <structures xmi:id="System+control?type=HwStructure" name="System control" structureType="Group">
-                        <ports xmi:id="System+control/System+control+Port?type=HwPort" name="System control Port" bitWidth="0" priority="0"/>
-                      </structures>
-                      <modules xsi:type="am:ConnectionHandler" xmi:id="Switched+Central+Resource?type=ConnectionHandler" name="Switched Central Resource">
-                        <ports xmi:id="Switched+Central+Resource/SCR+Port?type=HwPort" name="SCR Port" bitWidth="0" priority="0"/>
-                        <internalConnections xmi:id="Switched+Central+Resource/SCR+Handler?type=HwConnection" name="SCR Handler"/>
-                        <internalConnections xmi:id="Switched+Central+Resource/SCR+Handler?type=HwConnection" name="SCR Handler"/>
-                      </modules>
-                      <connections xmi:id="C674x+DSP/Link1?type=HwConnection" name="Link1"/>
-                      <connections xmi:id="C674x+DSP/Link2?type=HwConnection" name="Link2"/>
-                      <connections xmi:id="C674x+DSP/Link3?type=HwConnection" name="Link3"/>
-                    </structures>
-                    <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Array"/>
-                    <structures xmi:id="CRC?type=HwStructure" name="CRC" structureType="System"/>
-                    <modules xsi:type="am:Memory" xmi:id="Radar+Data+Memory?type=Memory" name="Radar Data Memory" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="DSP+Subs-System?type=MemoryDefinition"/>
-                  </structures>
-                  <structures xmi:id="Main+Sub-System?type=HwStructure" name="Main Sub-System" structureType="Microcontroller">
-                    <structures xmi:id="Cortex+R4F?type=HwStructure" name="Cortex R4F" structureType="Microcontroller">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="R4F?type=ProcessingUnit" name="R4F" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F?type=ProcessingUnitDefinition">
-                        <ports xmi:id="R4F/R4F+Core+Port?type=HwPort" name="R4F Core Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="DRAM?type=Memory" name="DRAM" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F+DRAM?type=MemoryDefinition">
-                        <ports xmi:id="DRAM/R4F+DRAM+Port?type=HwPort" name="R4F DRAM Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="SRAM?type=Memory" name="SRAM" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F+SRAM?type=MemoryDefinition">
-                        <ports xmi:id="SRAM/R4F+SRAM+Port?type=HwPort" name="R4F SRAM Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="FLASH?type=Memory" name="FLASH" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="Cortex+R4F+FLASH?type=MemoryDefinition">
-                        <ports xmi:id="FLASH/R4F+FLASH+Port?type=HwPort" name="R4F FLASH Port" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <structures xmi:id="Radar+HW+Accelerator?type=HwStructure" name="Radar HW Accelerator" structureType="Group">
-                      <customProperties key="FFT"/>
-                      <customProperties key="Log"/>
-                      <customProperties key="Mag"/>
-                      <customProperties key="Others"/>
-                    </structures>
-                    <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Array"/>
-                    <structures xmi:id="I2C?type=HwStructure" name="I2C" structureType="SoC"/>
-                    <structures xmi:id="SPI?type=HwStructure" name="SPI" structureType="SoC"/>
-                    <structures xmi:id="UART?type=HwStructure" name="UART" structureType="SoC"/>
-                    <structures xmi:id="JTAG?type=HwStructure" name="JTAG" structureType="SoC"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+DRAM?type=HwConnection" name="Core To DRAM" port1="R4F/R4F+Core+Port?type=HwPort" port2="DRAM/R4F+DRAM+Port?type=HwPort"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+SRAM?type=HwConnection" name="Core To SRAM" port1="R4F/R4F+Core+Port?type=HwPort" port2="SRAM/R4F+SRAM+Port?type=HwPort"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R4F/R4F+Core+Port?type=HwPort" port2="FLASH/R4F+FLASH+Port?type=HwPort"/>
-                  </structures>
-                </structures>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC+PU+Port?type=HwPort" port2="ADC/ADC-DFE?type=HwPort"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC+PU+Port?type=HwPort"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE"/>
-                <connections xmi:id="IWR6843/Synth-Ramp?type=HwConnection" name="Synth-Ramp"/>
-              </structures>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/UART?type=HwPort" port2="Radar+System/PortOutFront_UART?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/I2C?type=HwPort" port2="Radar+System/PortOutFront_I2C?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/SPI?type=HwPort" port2="Radar+System/PortOutFront_SPI?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/CAN-FD?type=HwPort" port2="Radar+System/PortOutFront_CAN-FD?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/QSPI?type=HwPort" port2="Radar+System/PortOutFront_QSPI?type=HwPort"/>
-            </structures>
-          </structures>
-          <structures xmi:id="Right?type=HwStructure" name="Right" structureType="System">
-            <structures xmi:id="Radar+System?type=HwStructure" name="Radar System" structureType="System">
-              <ports xmi:id="Radar+System/PortOutFront_UART?type=HwPort" name="PortOutFront_UART" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_I2C?type=HwPort" name="PortOutFront_I2C" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_SPI?type=HwPort" name="PortOutFront_SPI" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_CAN-FD?type=HwPort" name="PortOutFront_CAN-FD" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_QSPI?type=HwPort" name="PortOutFront_QSPI" bitWidth="0" priority="0"/>
-              <structures xmi:id="IWR6843?type=HwStructure" name="IWR6843" structureType="Microcontroller">
-                <ports xmi:id="IWR6843/QSPI?type=HwPort" name="QSPI" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
-                <ports xmi:id="IWR6843/SPI?type=HwPort" name="SPI" bitWidth="0" priority="0" portType="initiator" portInterface="SPI"/>
-                <ports xmi:id="IWR6843/I2C?type=HwPort" name="I2C" bitWidth="0" priority="0" portType="initiator" portInterface="I2C"/>
-                <ports xmi:id="IWR6843/CAN-FD?type=HwPort" name="CAN-FD" bitWidth="0" priority="0" portType="initiator" portInterface="CAN"/>
-                <ports xmi:id="IWR6843/UART?type=HwPort" name="UART" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
-                <structures xmi:id="Radio+Processor+Sub-System?type=HwStructure" name="Radio Processor Sub-System" structureType="Group">
-                  <structures xmi:id="Radio+%28BIST%29?type=HwStructure" name="Radio (BIST)" structureType="Microcontroller">
-                    <structures xmi:id="Programable+RAM+%26+ROm?type=HwStructure" name="Programable RAM &amp; ROm">
-                      <modules xsi:type="am:Memory" xmi:id="RAM?type=Memory" name="RAM"/>
-                      <modules xsi:type="am:Memory" xmi:id="ROM?type=Memory" name="ROM"/>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="BIST?type=ProcessingUnit" name="BIST"/>
-                    <modules xsi:type="am:Memory" xmi:id="Data+RAM?type=Memory" name="Data RAM"/>
-                  </structures>
-                  <structures xmi:id="Ramp+Generator?type=HwStructure" name="Ramp Generator" structureType="SoC">
-                    <ports xmi:id="Ramp+Generator/Ramp+Gen+Port?type=HwPort" name="Ramp Gen Port" bitWidth="0" priority="0"/>
-                  </structures>
-                  <structures xmi:id="Digital+Front-End?type=HwStructure" name="Digital Front-End" structureType="Microcontroller">
-                    <ports xmi:id="Digital+Front-End/DFE+port?type=HwPort" name="DFE port" bitWidth="0" priority="0"/>
-                  </structures>
-                  <connections xmi:id="Radio+Processor+Sub-System/Synth-RampGen?type=HwConnection" name="Synth-RampGen" port1="Synthesizer/Synth-RampGen?type=HwPort" port2="Ramp+Generator/Ramp+Gen+Port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                </structures>
-                <structures xmi:id="RF%2Fanalog+Sub-System?type=HwStructure" name="RF/analog Sub-System" structureType="Group">
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA1+Port?type=HwPort" name="PA1 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA2+Port?type=HwPort" name="PA2 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA3+Port?type=HwPort" name="PA3 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Synth?type=HwStructure" name="Synth" structureType="SoC">
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Synthesizer?type=ProcessingUnit" name="Synthesizer">
-                      <ports xmi:id="Synthesizer/Synth+Port?type=HwPort" name="Synth Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Synthesizer/Synth-RampGen?type=HwPort" name="Synth-RampGen" bitWidth="0" priority="0"/>
-                    </modules>
-                  </structures>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA1+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA2+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA3+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/Mixer+to+Synth?type=HwConnection" name="Mixer to Synth" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                </structures>
-                <structures xmi:id="Main+%26+subsystem?type=HwStructure" name="Main &amp; subsystem" structureType="Group">
-                  <structures xmi:id="Mailbox?type=HwStructure" name="Mailbox" structureType="Cluster"/>
-                  <structures xmi:id="Bus+Matrix?type=HwStructure" name="Bus Matrix" structureType="Array"/>
-                  <structures xmi:id="DSP+Sub-System?type=HwStructure" name="DSP Sub-System" structureType="Group">
-                    <structures xmi:id="C674x+DSP?type=HwStructure" name="C674x DSP" structureType="SoC">
-                      <structures xmi:id="Peripherals?type=HwStructure" name="Peripherals" structureType="Group">
-                        <ports xmi:id="Peripherals/Peripherals+Port?type=HwPort" name="Peripherals Port" bitWidth="0" priority="0"/>
-                        <structures xmi:id="Serial+Interfaces?type=HwStructure" name="Serial Interfaces" structureType="Group">
-                          <structures xmi:id="McBSP+x2?type=HwStructure" name="McBSP x2" structureType="SoC"/>
-                          <structures xmi:id="I2C+x2?type=HwStructure" name="I2C x2" structureType="SoC"/>
-                          <structures xmi:id="SPI+x2?type=HwStructure" name="SPI x2" structureType="SoC"/>
-                          <structures xmi:id="UART+x3?type=HwStructure" name="UART x3" structureType="SoC"/>
-                        </structures>
-                        <structures xmi:id="Display?type=HwStructure" name="Display" structureType="Group">
-                          <structures xmi:id="LCD+Ctlr?type=HwStructure" name="LCD Ctlr" structureType="Region"/>
-                        </structures>
-                        <structures xmi:id="Parallel?type=HwStructure" name="Parallel" structureType="Group">
-                          <structures xmi:id="uPP?type=HwStructure" name="uPP" structureType="Region"/>
-                        </structures>
-                        <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Group">
-                          <structures xmi:id="EDMA3+x2?type=HwStructure" name="EDMA3 x2" structureType="Array"/>
-                        </structures>
-                        <structures xmi:id="Control+timers?type=HwStructure" name="Control timers" structureType="Group">
-                          <structures xmi:id="ePWM+x2?type=HwStructure" name="ePWM x2" structureType="Region"/>
-                          <structures xmi:id="eCAP+x3?type=HwStructure" name="eCAP x3" structureType="Region"/>
-                        </structures>
-                        <modules xsi:type="am:Memory" xmi:id="Internal+Memory?type=Memory" name="Internal Memory" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x?type=MemoryDefinition"/>
-                      </structures>
-                      <structures xmi:id="DSP+Subsystem?type=HwStructure" name="DSP Subsystem" structureType="Group">
-                        <ports xmi:id="DSP+Subsystem/DSP+subsystem+Port?type=HwPort" name="DSP subsystem Port" bitWidth="0" priority="0"/>
-                        <modules xsi:type="am:ProcessingUnit" xmi:id="C674x?type=ProcessingUnit" name="C674x" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F?type=ProcessingUnitDefinition"/>
-                        <modules xsi:type="am:Cache" xmi:id="L1+Pgm?type=Cache" name="L1 Pgm" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L1+Pgm?type=CacheDefinition"/>
-                        <modules xsi:type="am:Cache" xmi:id="L1+RAM?type=Cache" name="L1 RAM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L1+RAM?type=CacheDefinition"/>
-                        <modules xsi:type="am:Memory" xmi:id="L2+RAM?type=Memory" name="L2 RAM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L2+RAM?type=MemoryDefinition"/>
-                        <modules xsi:type="am:Memory" xmi:id="BOOT+ROM?type=Memory" name="BOOT ROM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+BOOT+ROM?type=MemoryDefinition"/>
-                      </structures>
-                      <structures xmi:id="System+control?type=HwStructure" name="System control" structureType="Group">
-                        <ports xmi:id="System+control/System+control+Port?type=HwPort" name="System control Port" bitWidth="0" priority="0"/>
-                      </structures>
-                      <modules xsi:type="am:ConnectionHandler" xmi:id="Switched+Central+Resource?type=ConnectionHandler" name="Switched Central Resource">
-                        <ports xmi:id="Switched+Central+Resource/SCR+Port?type=HwPort" name="SCR Port" bitWidth="0" priority="0"/>
-                        <internalConnections xmi:id="Switched+Central+Resource/SCR+Handler?type=HwConnection" name="SCR Handler"/>
-                        <internalConnections xmi:id="Switched+Central+Resource/SCR+Handler?type=HwConnection" name="SCR Handler"/>
-                      </modules>
-                      <connections xmi:id="C674x+DSP/Link1?type=HwConnection" name="Link1"/>
-                      <connections xmi:id="C674x+DSP/Link2?type=HwConnection" name="Link2"/>
-                      <connections xmi:id="C674x+DSP/Link3?type=HwConnection" name="Link3"/>
-                    </structures>
-                    <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Array"/>
-                    <structures xmi:id="CRC?type=HwStructure" name="CRC" structureType="System"/>
-                    <modules xsi:type="am:Memory" xmi:id="Radar+Data+Memory?type=Memory" name="Radar Data Memory" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="DSP+Subs-System?type=MemoryDefinition"/>
-                  </structures>
-                  <structures xmi:id="Main+Sub-System?type=HwStructure" name="Main Sub-System" structureType="Microcontroller">
-                    <structures xmi:id="Cortex+R4F?type=HwStructure" name="Cortex R4F" structureType="Microcontroller">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="R4F?type=ProcessingUnit" name="R4F" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F?type=ProcessingUnitDefinition">
-                        <ports xmi:id="R4F/R4F+Core+Port?type=HwPort" name="R4F Core Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="DRAM?type=Memory" name="DRAM" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F+DRAM?type=MemoryDefinition">
-                        <ports xmi:id="DRAM/R4F+DRAM+Port?type=HwPort" name="R4F DRAM Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="SRAM?type=Memory" name="SRAM" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F+SRAM?type=MemoryDefinition">
-                        <ports xmi:id="SRAM/R4F+SRAM+Port?type=HwPort" name="R4F SRAM Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="FLASH?type=Memory" name="FLASH" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="Cortex+R4F+FLASH?type=MemoryDefinition">
-                        <ports xmi:id="FLASH/R4F+FLASH+Port?type=HwPort" name="R4F FLASH Port" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <structures xmi:id="Radar+HW+Accelerator?type=HwStructure" name="Radar HW Accelerator" structureType="Group">
-                      <customProperties key="FFT"/>
-                      <customProperties key="Log"/>
-                      <customProperties key="Mag"/>
-                      <customProperties key="Others"/>
-                    </structures>
-                    <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Array"/>
-                    <structures xmi:id="I2C?type=HwStructure" name="I2C" structureType="SoC"/>
-                    <structures xmi:id="SPI?type=HwStructure" name="SPI" structureType="SoC"/>
-                    <structures xmi:id="UART?type=HwStructure" name="UART" structureType="SoC"/>
-                    <structures xmi:id="JTAG?type=HwStructure" name="JTAG" structureType="SoC"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+DRAM?type=HwConnection" name="Core To DRAM" port1="R4F/R4F+Core+Port?type=HwPort" port2="DRAM/R4F+DRAM+Port?type=HwPort"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+SRAM?type=HwConnection" name="Core To SRAM" port1="R4F/R4F+Core+Port?type=HwPort" port2="SRAM/R4F+SRAM+Port?type=HwPort"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R4F/R4F+Core+Port?type=HwPort" port2="FLASH/R4F+FLASH+Port?type=HwPort"/>
-                  </structures>
-                </structures>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC+PU+Port?type=HwPort" port2="ADC/ADC-DFE?type=HwPort"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC+PU+Port?type=HwPort"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE"/>
-                <connections xmi:id="IWR6843/Synth-Ramp?type=HwConnection" name="Synth-Ramp"/>
-              </structures>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/UART?type=HwPort" port2="Radar+System/PortOutFront_UART?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/I2C?type=HwPort" port2="Radar+System/PortOutFront_I2C?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/SPI?type=HwPort" port2="Radar+System/PortOutFront_SPI?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/CAN-FD?type=HwPort" port2="Radar+System/PortOutFront_CAN-FD?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/QSPI?type=HwPort" port2="Radar+System/PortOutFront_QSPI?type=HwPort"/>
-            </structures>
-          </structures>
-          <structures xmi:id="Back?type=HwStructure" name="Back" structureType="System">
-            <structures xmi:id="Radar+System?type=HwStructure" name="Radar System" structureType="System">
-              <ports xmi:id="Radar+System/PortOutFront_UART?type=HwPort" name="PortOutFront_UART" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_I2C?type=HwPort" name="PortOutFront_I2C" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_SPI?type=HwPort" name="PortOutFront_SPI" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_CAN-FD?type=HwPort" name="PortOutFront_CAN-FD" bitWidth="0" priority="0"/>
-              <ports xmi:id="Radar+System/PortOutFront_QSPI?type=HwPort" name="PortOutFront_QSPI" bitWidth="0" priority="0"/>
-              <structures xmi:id="IWR6843?type=HwStructure" name="IWR6843" structureType="Microcontroller">
-                <ports xmi:id="IWR6843/QSPI?type=HwPort" name="QSPI" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
-                <ports xmi:id="IWR6843/SPI?type=HwPort" name="SPI" bitWidth="0" priority="0" portType="initiator" portInterface="SPI"/>
-                <ports xmi:id="IWR6843/I2C?type=HwPort" name="I2C" bitWidth="0" priority="0" portType="initiator" portInterface="I2C"/>
-                <ports xmi:id="IWR6843/CAN-FD?type=HwPort" name="CAN-FD" bitWidth="0" priority="0" portType="initiator" portInterface="CAN"/>
-                <ports xmi:id="IWR6843/UART?type=HwPort" name="UART" bitWidth="0" priority="0" portType="initiator" portInterface="custom"/>
-                <structures xmi:id="Radio+Processor+Sub-System?type=HwStructure" name="Radio Processor Sub-System" structureType="Group">
-                  <structures xmi:id="Radio+%28BIST%29?type=HwStructure" name="Radio (BIST)" structureType="Microcontroller">
-                    <structures xmi:id="Programable+RAM+%26+ROm?type=HwStructure" name="Programable RAM &amp; ROm">
-                      <modules xsi:type="am:Memory" xmi:id="RAM?type=Memory" name="RAM"/>
-                      <modules xsi:type="am:Memory" xmi:id="ROM?type=Memory" name="ROM"/>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="BIST?type=ProcessingUnit" name="BIST"/>
-                    <modules xsi:type="am:Memory" xmi:id="Data+RAM?type=Memory" name="Data RAM"/>
-                  </structures>
-                  <structures xmi:id="Ramp+Generator?type=HwStructure" name="Ramp Generator" structureType="SoC">
-                    <ports xmi:id="Ramp+Generator/Ramp+Gen+Port?type=HwPort" name="Ramp Gen Port" bitWidth="0" priority="0"/>
-                  </structures>
-                  <structures xmi:id="Digital+Front-End?type=HwStructure" name="Digital Front-End" structureType="Microcontroller">
-                    <ports xmi:id="Digital+Front-End/DFE+port?type=HwPort" name="DFE port" bitWidth="0" priority="0"/>
-                  </structures>
-                  <connections xmi:id="Radio+Processor+Sub-System/Synth-RampGen?type=HwConnection" name="Synth-RampGen" port1="Synthesizer/Synth-RampGen?type=HwPort" port2="Ramp+Generator/Ramp+Gen+Port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                  <connections xmi:id="Radio+Processor+Sub-System/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC-DFE?type=HwPort" port2="Digital+Front-End/DFE+port?type=HwPort"/>
-                </structures>
-                <structures xmi:id="RF%2Fanalog+Sub-System?type=HwStructure" name="RF/analog Sub-System" structureType="Group">
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="InfraRed+Signal+Processing?type=HwStructure" name="InfraRed Signal Processing" structureType="Group">
-                    <structures xmi:id="ADC?type=HwStructure" name="ADC" structureType="SoC">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="ADC?type=ProcessingUnit" name="ADC" definition="Generic+ADC+PU?type=ProcessingUnitDefinition">
-                        <ports xmi:id="ADC/ADC+PU+Port?type=HwPort" name="ADC PU Port" bitWidth="0" priority="0"/>
-                        <ports xmi:id="ADC/ADC-DFE?type=HwPort" name="ADC-DFE" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="InfraRed+Procesing+unit?type=ProcessingUnit" name="InfraRed Procesing unit" definition="Generic+IF+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" name="IF PU Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="LNA?type=ProcessingUnit" name="LNA" definition="Generic+LNA+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="LNA/LNA+Port?type=HwPort" name="LNA Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Mixer?type=ProcessingUnit" name="Mixer" definition="Generic+Mixer+PU?type=ProcessingUnitDefinition">
-                      <ports xmi:id="Mixer/Mixer-IF+Port?type=HwPort" name="Mixer-IF Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer-LNA+Port?type=HwPort" name="Mixer-LNA Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Mixer/Mixer+Port?type=HwPort" name="Mixer Port" bitWidth="0" priority="0"/>
-                    </modules>
-                    <connections xmi:id="InfraRed+Signal+Processing/IF+To+ADC?type=HwConnection" name="IF To ADC" port1="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort" port2="ADC/ADC+PU+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/LNA+To+Mixer?type=HwConnection" name="LNA To Mixer" port1="LNA/LNA+Port?type=HwPort" port2="Mixer/Mixer-LNA+Port?type=HwPort"/>
-                    <connections xmi:id="InfraRed+Signal+Processing/Mixer+To+IF?type=HwConnection" name="Mixer To IF" port1="Mixer/Mixer-IF+Port?type=HwPort" port2="InfraRed+Procesing+unit/IF+PU+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA1+Port?type=HwPort" name="PA1 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA2+Port?type=HwPort" name="PA2 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Power+Amplifier?type=HwStructure" name="Power Amplifier" structureType="Group">
-                    <ports xmi:id="Power+Amplifier/PA3+Port?type=HwPort" name="PA3 Port" bitWidth="0" priority="0"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                    <connections xmi:id="Power+Amplifier/Pa-Mixer?type=HwConnection" name="Pa-Mixer" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  </structures>
-                  <structures xmi:id="Synth?type=HwStructure" name="Synth" structureType="SoC">
-                    <modules xsi:type="am:ProcessingUnit" xmi:id="Synthesizer?type=ProcessingUnit" name="Synthesizer">
-                      <ports xmi:id="Synthesizer/Synth+Port?type=HwPort" name="Synth Port" bitWidth="0" priority="0"/>
-                      <ports xmi:id="Synthesizer/Synth-RampGen?type=HwPort" name="Synth-RampGen" bitWidth="0" priority="0"/>
-                    </modules>
-                  </structures>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA1+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA2+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/PA-Synth?type=HwConnection" name="PA-Synth" port1="Power+Amplifier/PA3+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                  <connections xmi:id="RF%2Fanalog+Sub-System/Mixer+to+Synth?type=HwConnection" name="Mixer to Synth" port1="Mixer/Mixer+Port?type=HwPort" port2="Synthesizer/Synth+Port?type=HwPort"/>
-                </structures>
-                <structures xmi:id="Main+%26+subsystem?type=HwStructure" name="Main &amp; subsystem" structureType="Group">
-                  <structures xmi:id="Mailbox?type=HwStructure" name="Mailbox" structureType="Cluster"/>
-                  <structures xmi:id="Bus+Matrix?type=HwStructure" name="Bus Matrix" structureType="Array"/>
-                  <structures xmi:id="DSP+Sub-System?type=HwStructure" name="DSP Sub-System" structureType="Group">
-                    <structures xmi:id="C674x+DSP?type=HwStructure" name="C674x DSP" structureType="SoC">
-                      <structures xmi:id="Peripherals?type=HwStructure" name="Peripherals" structureType="Group">
-                        <ports xmi:id="Peripherals/Peripherals+Port?type=HwPort" name="Peripherals Port" bitWidth="0" priority="0"/>
-                        <structures xmi:id="Serial+Interfaces?type=HwStructure" name="Serial Interfaces" structureType="Group">
-                          <structures xmi:id="McBSP+x2?type=HwStructure" name="McBSP x2" structureType="SoC"/>
-                          <structures xmi:id="I2C+x2?type=HwStructure" name="I2C x2" structureType="SoC"/>
-                          <structures xmi:id="SPI+x2?type=HwStructure" name="SPI x2" structureType="SoC"/>
-                          <structures xmi:id="UART+x3?type=HwStructure" name="UART x3" structureType="SoC"/>
-                        </structures>
-                        <structures xmi:id="Display?type=HwStructure" name="Display" structureType="Group">
-                          <structures xmi:id="LCD+Ctlr?type=HwStructure" name="LCD Ctlr" structureType="Region"/>
-                        </structures>
-                        <structures xmi:id="Parallel?type=HwStructure" name="Parallel" structureType="Group">
-                          <structures xmi:id="uPP?type=HwStructure" name="uPP" structureType="Region"/>
-                        </structures>
-                        <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Group">
-                          <structures xmi:id="EDMA3+x2?type=HwStructure" name="EDMA3 x2" structureType="Array"/>
-                        </structures>
-                        <structures xmi:id="Control+timers?type=HwStructure" name="Control timers" structureType="Group">
-                          <structures xmi:id="ePWM+x2?type=HwStructure" name="ePWM x2" structureType="Region"/>
-                          <structures xmi:id="eCAP+x3?type=HwStructure" name="eCAP x3" structureType="Region"/>
-                        </structures>
-                        <modules xsi:type="am:Memory" xmi:id="Internal+Memory?type=Memory" name="Internal Memory" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x?type=MemoryDefinition"/>
-                      </structures>
-                      <structures xmi:id="DSP+Subsystem?type=HwStructure" name="DSP Subsystem" structureType="Group">
-                        <ports xmi:id="DSP+Subsystem/DSP+subsystem+Port?type=HwPort" name="DSP subsystem Port" bitWidth="0" priority="0"/>
-                        <modules xsi:type="am:ProcessingUnit" xmi:id="C674x?type=ProcessingUnit" name="C674x" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F?type=ProcessingUnitDefinition"/>
-                        <modules xsi:type="am:Cache" xmi:id="L1+Pgm?type=Cache" name="L1 Pgm" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L1+Pgm?type=CacheDefinition"/>
-                        <modules xsi:type="am:Cache" xmi:id="L1+RAM?type=Cache" name="L1 RAM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L1+RAM?type=CacheDefinition"/>
-                        <modules xsi:type="am:Memory" xmi:id="L2+RAM?type=Memory" name="L2 RAM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+L2+RAM?type=MemoryDefinition"/>
-                        <modules xsi:type="am:Memory" xmi:id="BOOT+ROM?type=Memory" name="BOOT ROM" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="C674x+BOOT+ROM?type=MemoryDefinition"/>
-                      </structures>
-                      <structures xmi:id="System+control?type=HwStructure" name="System control" structureType="Group">
-                        <ports xmi:id="System+control/System+control+Port?type=HwPort" name="System control Port" bitWidth="0" priority="0"/>
-                      </structures>
-                      <modules xsi:type="am:ConnectionHandler" xmi:id="Switched+Central+Resource?type=ConnectionHandler" name="Switched Central Resource">
-                        <ports xmi:id="Switched+Central+Resource/SCR+Port?type=HwPort" name="SCR Port" bitWidth="0" priority="0"/>
-                        <internalConnections xmi:id="Switched+Central+Resource/SCR+Handler?type=HwConnection" name="SCR Handler"/>
-                        <internalConnections xmi:id="Switched+Central+Resource/SCR+Handler?type=HwConnection" name="SCR Handler"/>
-                      </modules>
-                      <connections xmi:id="C674x+DSP/Link1?type=HwConnection" name="Link1"/>
-                      <connections xmi:id="C674x+DSP/Link2?type=HwConnection" name="Link2"/>
-                      <connections xmi:id="C674x+DSP/Link3?type=HwConnection" name="Link3"/>
-                    </structures>
-                    <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Array"/>
-                    <structures xmi:id="CRC?type=HwStructure" name="CRC" structureType="System"/>
-                    <modules xsi:type="am:Memory" xmi:id="Radar+Data+Memory?type=Memory" name="Radar Data Memory" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="DSP+Subs-System?type=MemoryDefinition"/>
-                  </structures>
-                  <structures xmi:id="Main+Sub-System?type=HwStructure" name="Main Sub-System" structureType="Microcontroller">
-                    <structures xmi:id="Cortex+R4F?type=HwStructure" name="Cortex R4F" structureType="Microcontroller">
-                      <modules xsi:type="am:ProcessingUnit" xmi:id="R4F?type=ProcessingUnit" name="R4F" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F?type=ProcessingUnitDefinition">
-                        <ports xmi:id="R4F/R4F+Core+Port?type=HwPort" name="R4F Core Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="DRAM?type=Memory" name="DRAM" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F+DRAM?type=MemoryDefinition">
-                        <ports xmi:id="DRAM/R4F+DRAM+Port?type=HwPort" name="R4F DRAM Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="SRAM?type=Memory" name="SRAM" frequencyDomain="Cortex+R4F?type=FrequencyDomain" definition="Cortex+R4F+SRAM?type=MemoryDefinition">
-                        <ports xmi:id="SRAM/R4F+SRAM+Port?type=HwPort" name="R4F SRAM Port" bitWidth="0" priority="0"/>
-                      </modules>
-                      <modules xsi:type="am:Memory" xmi:id="FLASH?type=Memory" name="FLASH" frequencyDomain="C674x+DPS?type=FrequencyDomain" definition="Cortex+R4F+FLASH?type=MemoryDefinition">
-                        <ports xmi:id="FLASH/R4F+FLASH+Port?type=HwPort" name="R4F FLASH Port" bitWidth="0" priority="0"/>
-                      </modules>
-                    </structures>
-                    <structures xmi:id="Radar+HW+Accelerator?type=HwStructure" name="Radar HW Accelerator" structureType="Group">
-                      <customProperties key="FFT"/>
-                      <customProperties key="Log"/>
-                      <customProperties key="Mag"/>
-                      <customProperties key="Others"/>
-                    </structures>
-                    <structures xmi:id="DMA?type=HwStructure" name="DMA" structureType="Array"/>
-                    <structures xmi:id="I2C?type=HwStructure" name="I2C" structureType="SoC"/>
-                    <structures xmi:id="SPI?type=HwStructure" name="SPI" structureType="SoC"/>
-                    <structures xmi:id="UART?type=HwStructure" name="UART" structureType="SoC"/>
-                    <structures xmi:id="JTAG?type=HwStructure" name="JTAG" structureType="SoC"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+DRAM?type=HwConnection" name="Core To DRAM" port1="R4F/R4F+Core+Port?type=HwPort" port2="DRAM/R4F+DRAM+Port?type=HwPort"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+SRAM?type=HwConnection" name="Core To SRAM" port1="R4F/R4F+Core+Port?type=HwPort" port2="SRAM/R4F+SRAM+Port?type=HwPort"/>
-                    <connections xmi:id="Main+Sub-System/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R4F/R4F+Core+Port?type=HwPort" port2="FLASH/R4F+FLASH+Port?type=HwPort"/>
-                  </structures>
-                </structures>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC+PU+Port?type=HwPort" port2="ADC/ADC-DFE?type=HwPort"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE" port1="ADC/ADC+PU+Port?type=HwPort"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE"/>
-                <connections xmi:id="IWR6843/ADC-DFE?type=HwConnection" name="ADC-DFE"/>
-                <connections xmi:id="IWR6843/Synth-Ramp?type=HwConnection" name="Synth-Ramp"/>
-              </structures>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/UART?type=HwPort" port2="Radar+System/PortOutFront_UART?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/I2C?type=HwPort" port2="Radar+System/PortOutFront_I2C?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/SPI?type=HwPort" port2="Radar+System/PortOutFront_SPI?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/CAN-FD?type=HwPort" port2="Radar+System/PortOutFront_CAN-FD?type=HwPort"/>
-              <connections xmi:id="Radar+System/UART?type=HwConnection" name="UART" port1="IWR6843/QSPI?type=HwPort" port2="Radar+System/PortOutFront_QSPI?type=HwPort"/>
-            </structures>
-          </structures>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition" name="Flash-RH850/P1M 2 MiB" memoryType="FLASH">
+      <size value="2" unit="MiB"/>
+      <dataRate value="50" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-RH850%2FP1M+512+KiB?type=MemoryDefinition" name="RAM-RH850/P1M 512 KiB" memoryType="SRAM">
+      <size value="512" unit="KiB"/>
+      <dataRate value="100" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="EEPROM-RH850%2FP1M+128+KiB?type=MemoryDefinition" name="EEPROM-RH850/P1M 128 KiB">
+      <size value="128" unit="KiB"/>
+      <dataRate value="5" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FP1H-C+2+MiB?type=MemoryDefinition" name="Flash-RH850/P1H-C 2 MiB" memoryType="FLASH">
+      <size value="2" unit="MiB"/>
+      <dataRate value="40" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-RH850%2FP1H-C+512+KiB?type=MemoryDefinition" name="RAM-RH850/P1H-C 512 KiB" memoryType="SRAM">
+      <size value="512" unit="KiB"/>
+      <dataRate value="100" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="EEPROM-RH850%2FP1H-C+128+KiB?type=MemoryDefinition" name="EEPROM-RH850/P1H-C 128 KiB">
+      <size value="128" unit="KiB"/>
+      <dataRate value="5" unit="MBPerSecond"/>
+    </definitions>
+    <structures xmi:id="FrontZoneECU?type=HwStructure" name="FrontZoneECU" structureType="System">
+      <structures xmi:id="EngineControlUnit?type=HwStructure" name="EngineControlUnit" structureType="ECU">
+        <ports xmi:id="EngineControlUnit/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="EngineControlUnit/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="EngineControlUnit/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
+          <ports xmi:id="MicroController/MCU-ECU+Handler+Out?type=HwPort" name="MCU-ECU Handler Out" bitWidth="0" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FE2x+%281%29?type=ProcessingUnit" name="RH850/E2x (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain" definition="RH850%2FE2x?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FE2x+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FE2x+%282%29?type=ProcessingUnit" name="RH850/E2x (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain" definition="RH850%2FE2x?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FE2x+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-ECU+Handler?type=ConnectionHandler" name="MCU-ECU Handler">
+            <ports xmi:id="MCU-ECU+Handler/MCU-ECU+Port+%281%29?type=HwPort" name="MCU-ECU Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-ECU+Handler/MCU-ECU+Port+%282%29?type=HwPort" name="MCU-ECU Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-ECU+Handler/MCU-ECU+Handler+Out?type=HwPort" name="MCU-ECU Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FE2x+%281%29/core+port?type=HwPort" port2="EEPROM+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FE2x+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FE2x+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FE2x+%282%29/core+port?type=HwPort" port2="EEPROM+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FE2x+%282%29/core+port?type=HwPort" port2="FLASH+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FE2x+%282%29/core+port?type=HwPort" port2="RAM+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU-ECU+Handler/MCU-ECU+Port+%281%29?type=HwPort" port2="RH850%2FE2x+%281%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU-ECU+Handler/MCU-ECU+Port+%282%29?type=HwPort" port2="RH850%2FE2x+%282%29/core+to+bus?type=HwPort"/>
         </structures>
-        <structures xmi:id="Optics+Sensors?type=HwStructure" name="Optics Sensors" structureType="Group">
-          <structures xmi:id="Camera?type=HwStructure" name="Camera" structureType="System">
-            <structures xmi:id="Image+Processor?type=HwStructure" name="Image Processor" structureType="SoC"/>
-            <structures xmi:id="Image+MCU?type=HwStructure" name="Image MCU" structureType="Microcontroller"/>
-            <structures xmi:id="Interface?type=HwStructure" name="Interface" structureType="ECU"/>
-            <structures xmi:id="Interface+Deserializer?type=HwStructure" name="Interface Deserializer" structureType="SoC"/>
-            <structures xmi:id="ISP?type=HwStructure" name="ISP" structureType="Group">
-              <structures xmi:id="Serializer?type=HwStructure" name="Serializer" structureType="SoC"/>
-              <structures xmi:id="Image+Sensor?type=HwStructure" name="Image Sensor" structureType="SoC"/>
-              <modules xsi:type="am:ProcessingUnit" xmi:id="Image+Sensor+Processor?type=ProcessingUnit" name="Image Sensor Processor"/>
-            </structures>
-            <modules xsi:type="am:Memory" xmi:id="Camera+Memory?type=Memory" name="Camera Memory"/>
-          </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="ECU-ConnectionHandler?type=ConnectionHandler" name="ECU-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="ECU-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="ECU-ConnectionHandler/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="EngineControlUnit/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="ECU-ConnectionHandler/PortOut?type=HwPort" port2="EngineControlUnit/CAN?type=HwPort"/>
+        <connections xmi:id="EngineControlUnit/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="ECU-ConnectionHandler/PortOut?type=HwPort" port2="EngineControlUnit/LIN?type=HwPort"/>
+        <connections xmi:id="EngineControlUnit/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="ECU-ConnectionHandler/PortOut?type=HwPort" port2="EngineControlUnit/FlexRay?type=HwPort"/>
+        <connections xmi:id="EngineControlUnit/MCU-ECU+Handler?type=HwConnection" name="MCU-ECU Handler" port1="ECU-ConnectionHandler/PortIn?type=HwPort" port2="MCU-ECU+Handler/MCU-ECU+Handler+Out?type=HwPort"/>
+      </structures>
+      <structures xmi:id="TransmissionControlModule?type=HwStructure" name="TransmissionControlModule" structureType="ECU">
+        <ports xmi:id="TransmissionControlModule/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="TransmissionControlModule/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="TransmissionControlModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
+          <ports xmi:id="MicroController/MCU-TCM+port?type=HwPort" name="MCU-TCM port" bitWidth="16" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M+%281%29?type=ProcessingUnit" name="RH850/C1M (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FC1M+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M+%282%29?type=ProcessingUnit" name="RH850/C1M (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FC1M+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-TCM+Handler?type=ConnectionHandler" name="MCU-TCM Handler">
+            <ports xmi:id="MCU-TCM+Handler/MCU-TCM+Port+%281%29?type=HwPort" name="MCU-TCM Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-TCM+Handler/MCU-TCM+Port+%282%29?type=HwPort" name="MCU-TCM Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-TCM+Handler/MCU-TCM+Handler+Out?type=HwPort" name="MCU-TCM Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="EEPROM+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FC1M+%282%29/core+port?type=HwPort" port2="EEPROM+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FC1M+%282%29/core+port?type=HwPort" port2="FLASH+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FC1M+%282%29/core+port?type=HwPort" port2="RAM+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU-TCM+Handler/MCU-TCM+Port+%281%29?type=HwPort" port2="RH850%2FC1M+%281%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU-TCM+Handler/MCU-TCM+Port+%282%29?type=HwPort" port2="RH850%2FC1M+%282%29/core+to+bus?type=HwPort"/>
         </structures>
-        <structures xmi:id="Processing+Unit?type=HwStructure" name="Processing Unit" structureType="System">
-          <structures xmi:id="Deserializer?type=HwStructure" name="Deserializer" structureType="SoC">
-            <ports xmi:id="Deserializer/PortIn_1?type=HwPort" name="PortIn_1" bitWidth="0" priority="0"/>
-            <ports xmi:id="Deserializer/PortIn_2?type=HwPort" name="PortIn_2" bitWidth="0" priority="0"/>
-            <ports xmi:id="Deserializer/PortIn_3?type=HwPort" name="PortIn_3" bitWidth="0" priority="0"/>
-            <ports xmi:id="Deserializer/PortIn_4?type=HwPort" name="PortIn_4" bitWidth="0" priority="0"/>
-            <ports xmi:id="Deserializer/PortOut_1?type=HwPort" name="PortOut_1" bitWidth="0" priority="0"/>
-            <ports xmi:id="Deserializer/PortOut_2?type=HwPort" name="PortOut_2" bitWidth="0" priority="0"/>
-            <ports xmi:id="Deserializer/PortOut_3?type=HwPort" name="PortOut_3" bitWidth="0" priority="0"/>
-            <ports xmi:id="Deserializer/PortOut_4?type=HwPort" name="PortOut_4" bitWidth="0" priority="0"/>
-          </structures>
-          <structures xmi:id="SoC%2FFPGA?type=HwStructure" name="SoC/FPGA" structureType="SoC">
-            <ports xmi:id="SoC%2FFPGA/PortIn_1?type=HwPort" name="PortIn_1" bitWidth="0" priority="0"/>
-            <ports xmi:id="SoC%2FFPGA/PortIn_2?type=HwPort" name="PortIn_2" bitWidth="0" priority="0"/>
-            <ports xmi:id="SoC%2FFPGA/PortIn_3?type=HwPort" name="PortIn_3" bitWidth="0" priority="0"/>
-            <ports xmi:id="SoC%2FFPGA/PortIn_4?type=HwPort" name="PortIn_4" bitWidth="0" priority="0"/>
-            <ports xmi:id="SoC%2FFPGA/PortOut_Serializer?type=HwPort" name="PortOut_Serializer" bitWidth="0" priority="0"/>
-            <ports xmi:id="SoC%2FFPGA/PortOut_Transceiver?type=HwPort" name="PortOut_Transceiver" bitWidth="0" priority="0"/>
-            <ports xmi:id="SoC%2FFPGA/PortOut_Ethernet?type=HwPort" name="PortOut_Ethernet" bitWidth="0" priority="0"/>
-          </structures>
-          <connections xmi:id="Processing+Unit/Deserializer-SoC?type=HwConnection" name="Deserializer-SoC" port1="Deserializer/PortIn_1?type=HwPort" port2="SoC%2FFPGA/PortIn_1?type=HwPort"/>
-          <connections xmi:id="Processing+Unit/Deserializer-SoC?type=HwConnection" name="Deserializer-SoC" port1="Deserializer/PortIn_2?type=HwPort" port2="SoC%2FFPGA/PortIn_2?type=HwPort"/>
-          <connections xmi:id="Processing+Unit/Deserializer-SoC?type=HwConnection" name="Deserializer-SoC" port1="Deserializer/PortIn_3?type=HwPort" port2="SoC%2FFPGA/PortIn_3?type=HwPort"/>
-          <connections xmi:id="Processing+Unit/Deserializer-SoC?type=HwConnection" name="Deserializer-SoC" port1="Deserializer/PortIn_4?type=HwPort" port2="SoC%2FFPGA/PortIn_4?type=HwPort"/>
-          <connections xmi:id="Processing+Unit/PU-Serializer?type=HwConnection" name="PU-Serializer" port1="SoC%2FFPGA/PortOut_Serializer?type=HwPort" port2="Serializer/PortIn?type=HwPort"/>
-          <connections xmi:id="Processing+Unit/PU-Transceiver?type=HwConnection" name="PU-Transceiver" port1="SoC%2FFPGA/PortOut_Transceiver?type=HwPort" port2="Transceiver/PortIn?type=HwPort"/>
-          <connections xmi:id="Processing+Unit/PU-Ethernet?type=HwConnection" name="PU-Ethernet" port1="SoC%2FFPGA/PortOut_Ethernet?type=HwPort" port2="Ethernet%2FPHY/PortOut?type=HwPort"/>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="TCM-ConnectionHandler?type=ConnectionHandler" name="TCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="TCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="TCM-ConnectionHandler/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="TransmissionControlModule/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="TCM-ConnectionHandler/PortOut?type=HwPort" port2="TransmissionControlModule/CAN?type=HwPort"/>
+        <connections xmi:id="TransmissionControlModule/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="TCM-ConnectionHandler/PortOut?type=HwPort" port2="TransmissionControlModule/LIN?type=HwPort"/>
+        <connections xmi:id="TransmissionControlModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="TCM-ConnectionHandler/PortOut?type=HwPort" port2="TransmissionControlModule/FlexRay?type=HwPort"/>
+        <connections xmi:id="TransmissionControlModule/MCU-TCU+Handler?type=HwConnection" name="MCU-TCU Handler" port1="TCM-ConnectionHandler/PortIn?type=HwPort" port2="MCU-TCM+Handler/MCU-TCM+Handler+Out?type=HwPort"/>
+      </structures>
+      <structures xmi:id="TelematicsControlUnit?type=HwStructure" name="TelematicsControlUnit" structureType="ECU">
+        <ports xmi:id="TelematicsControlUnit/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="TelematicsControlUnit/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="TelematicsControlUnit/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
+          <ports xmi:id="MicroController/MCU-TCU+Handler+Out?type=HwPort" name="MCU-TCU Handler Out" bitWidth="0" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%281%29?type=ProcessingUnit" name="R-Car W1R (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+W1R+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%282%29?type=ProcessingUnit" name="R-Car W1R (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+W1R+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%283%29?type=ProcessingUnit" name="R-Car W1R (3)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+W1R+%283%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%283%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%284%29?type=ProcessingUnit" name="R-Car W1R (4)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+W1R+%284%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%284%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%283%29?type=Memory" name="FLASH (3)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%283%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%283%29?type=Memory" name="RAM (3)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%283%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%284%29?type=Memory" name="FLASH (4)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%284%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%284%29?type=Memory" name="RAM (4)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%284%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
+            <ports xmi:id="MCU+Handler/MCU-TCU+Port+%281%29?type=HwPort" name="MCU-TCU Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU+Handler/MCU-TCU+Port+%282%29?type=HwPort" name="MCU-TCU Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU+Handler/MCU-TCU+Port+%283%29?type=HwPort" name="MCU-TCU Port (3)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU+Handler/MCU-TCU+Port+%284%29?type=HwPort" name="MCU-TCU Port (4)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU+Handler/MCU-TCU+Handler+Out?type=HwPort" name="MCU-TCU Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%282%29/core+port?type=HwPort" port2="FLASH+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%282%29/core+port?type=HwPort" port2="RAM+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%283%29/core+port?type=HwPort" port2="FLASH+%283%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%283%29/core+port?type=HwPort" port2="RAM+%283%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%284%29/core+port?type=HwPort" port2="FLASH+%284%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%284%29/core+port?type=HwPort" port2="RAM+%284%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-TCU+Port+%281%29?type=HwPort" port2="R-Car+W1R+%281%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-TCU+Port+%282%29?type=HwPort" port2="R-Car+W1R+%282%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-TCU+Port+%283%29?type=HwPort" port2="R-Car+W1R+%283%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-TCU+Port+%284%29?type=HwPort" port2="R-Car+W1R+%284%29/core+to+bus?type=HwPort"/>
         </structures>
-        <structures xmi:id="Serializer?type=HwStructure" name="Serializer" structureType="SoC">
-          <ports xmi:id="Serializer/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0"/>
-          <ports xmi:id="Serializer/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0"/>
-        </structures>
-        <structures xmi:id="Transceiver?type=HwStructure" name="Transceiver" structureType="SoC">
-          <ports xmi:id="Transceiver/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0"/>
-          <ports xmi:id="Transceiver/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0"/>
-        </structures>
-        <structures xmi:id="Ethernet%2FPHY?type=HwStructure" name="Ethernet/PHY" structureType="SoC">
-          <ports xmi:id="Ethernet%2FPHY/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0"/>
-          <ports xmi:id="Ethernet%2FPHY/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0"/>
-        </structures>
-        <modules xsi:type="am:ProcessingUnit" xmi:id="Osc%2FPLL?type=ProcessingUnit" name="Osc/PLL"/>
-        <modules xsi:type="am:Memory" xmi:id="PU+Mem?type=Memory" name="PU Mem"/>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="TCU-ConnectionHandler?type=ConnectionHandler" name="TCU-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="TCU-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="TCU-ConnectionHandler/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="TelematicsControlUnit/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="TCU-ConnectionHandler/PortOut?type=HwPort" port2="TelematicsControlUnit/CAN?type=HwPort"/>
+        <connections xmi:id="TelematicsControlUnit/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="TCU-ConnectionHandler/PortOut?type=HwPort" port2="TelematicsControlUnit/LIN?type=HwPort"/>
+        <connections xmi:id="TelematicsControlUnit/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="TCU-ConnectionHandler/PortOut?type=HwPort" port2="TelematicsControlUnit/FlexRay?type=HwPort"/>
+        <connections xmi:id="TelematicsControlUnit/MCU-TCU+Handler?type=HwConnection" name="MCU-TCU Handler" port1="TCU-ConnectionHandler/PortIn?type=HwPort" port2="MCU+Handler/MCU-TCU+Handler+Out?type=HwPort"/>
       </structures>
     </structures>
-    <domains xsi:type="am:FrequencyDomain" xmi:id="Cortex+R4F?type=FrequencyDomain" name="Cortex R4F" clockGating="false">
+    <structures xmi:id="BackZoneECU?type=HwStructure" name="BackZoneECU" structureType="System">
+      <structures xmi:id="BrakeControlModule?type=HwStructure" name="BrakeControlModule" structureType="ECU">
+        <ports xmi:id="BrakeControlModule/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="BrakeControlModule/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="BrakeControlModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
+          <ports xmi:id="MicroController/MCU-BCM+Handler+Out?type=HwPort" name="MCU-BCM Handler Out" bitWidth="0" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%281%29?type=ProcessingUnit" name="RH850/P1M (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1M+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%282%29?type=ProcessingUnit" name="RH850/P1M (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1M+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FP1M+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-RH850%2FP1M+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FP1M+512+KiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
+            <ports xmi:id="MCU+Handler/MCU-BCM+Port+%281%29?type=HwPort" name="MCU-BCM Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU+Handler/MCU-BCM+Port+%282%29?type=HwPort" name="MCU-BCM Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU+Handler/MCU-BCM+Handler+Out?type=HwPort" name="MCU-BCM Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%281%29/core+port?type=HwPort" port2="EEPROM+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%282%29/core+port?type=HwPort" port2="EEPROM+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%282%29/core+port?type=HwPort" port2="FLASH+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%282%29/core+port?type=HwPort" port2="RAM+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-BCM+Port+%281%29?type=HwPort" port2="RH850%2FP1M+%281%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-BCM+Port+%282%29?type=HwPort" port2="RH850%2FP1M+%282%29/core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="BCM-ConnectionHandler?type=ConnectionHandler" name="BCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="BCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="BCM-ConnectionHandler/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="BrakeControlModule/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="BCM-ConnectionHandler/PortOut?type=HwPort" port2="BrakeControlModule/CAN?type=HwPort"/>
+        <connections xmi:id="BrakeControlModule/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="BCM-ConnectionHandler/PortOut?type=HwPort" port2="BrakeControlModule/LIN?type=HwPort"/>
+        <connections xmi:id="BrakeControlModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="BCM-ConnectionHandler/PortOut?type=HwPort" port2="BrakeControlModule/FlexRay?type=HwPort"/>
+        <connections xmi:id="BrakeControlModule/MCU-BCM+Handler?type=HwConnection" name="MCU-BCM Handler" port1="BCM-ConnectionHandler/PortIn?type=HwPort" port2="MCU+Handler/MCU-BCM+Handler+Out?type=HwPort"/>
+      </structures>
+      <structures xmi:id="SteeringControlModule?type=HwStructure" name="SteeringControlModule" structureType="ECU">
+        <ports xmi:id="SteeringControlModule/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="SteeringControlModule/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="SteeringControlModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
+          <ports xmi:id="MicroController/MCU-TCM+port?type=HwPort" name="MCU-TCM port" bitWidth="16" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M+%281%29?type=ProcessingUnit" name="RH850/C1M (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FC1M+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M+%282%29?type=ProcessingUnit" name="RH850/C1M (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FC1M+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain">
+            <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
+            <ports xmi:id="MCU+Handler/MCU-SCM+Port+%281%29?type=HwPort" name="MCU-SCM Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU+Handler/MCU-SCM+Handler+Out?type=HwPort" name="MCU-SCM Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="EEPROM+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-SCM+Port+%281%29?type=HwPort" port2="RH850%2FC1M+%281%29/core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="SCM-ConnectionHandler?type=ConnectionHandler" name="SCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="SCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="SCM-ConnectionHandler/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="SteeringControlModule/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="SCM-ConnectionHandler/PortOut?type=HwPort" port2="SteeringControlModule/CAN?type=HwPort"/>
+        <connections xmi:id="SteeringControlModule/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="SCM-ConnectionHandler/PortOut?type=HwPort" port2="SteeringControlModule/LIN?type=HwPort"/>
+        <connections xmi:id="SteeringControlModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="SCM-ConnectionHandler/PortOut?type=HwPort" port2="SteeringControlModule/FlexRay?type=HwPort"/>
+        <connections xmi:id="SteeringControlModule/MCU-SCM+Handler?type=HwConnection" name="MCU-SCM Handler" port1="SCM-ConnectionHandler/PortIn?type=HwPort" port2="MCU+Handler/MCU-SCM+Handler+Out?type=HwPort"/>
+      </structures>
+    </structures>
+    <structures xmi:id="CenterZoneECU?type=HwStructure" name="CenterZoneECU" structureType="System">
+      <structures xmi:id="AirbagControlModule?type=HwStructure" name="AirbagControlModule" structureType="ECU">
+        <ports xmi:id="AirbagControlModule/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="AirbagControlModule/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="AirbagControlModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
+          <ports xmi:id="MicroController/MCU-ACM+Handler+Out?type=HwPort" name="MCU-ACM Handler Out" bitWidth="0" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1H-C+%281%29?type=ProcessingUnit" name="RH850/P1H-C (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1H-C?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1H-C+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1H-C+%282%29?type=ProcessingUnit" name="RH850/P1H-C (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1H-C?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1H-C+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
+            <ports xmi:id="MCU+Handler/MCU-ACM+Port+%281%29?type=HwPort" name="MCU-ACM Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU+Handler/MCU-ACM+Port+%282%29?type=HwPort" name="MCU-ACM Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU+Handler/MCU-ACM+Handler+Out?type=HwPort" name="MCU-ACM Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1H-C+%281%29/core+port?type=HwPort" port2="EEPROM+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1H-C+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1H-C+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1H-C+%282%29/core+port?type=HwPort" port2="EEPROM+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1H-C+%282%29/core+port?type=HwPort" port2="FLASH+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1H-C+%282%29/core+port?type=HwPort" port2="RAM+%282%29/mem+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-ACM+Port+%281%29?type=HwPort" port2="RH850%2FP1H-C+%281%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-ACM+Port+%282%29?type=HwPort" port2="RH850%2FP1H-C+%282%29/core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="ACM-ConnectionHandler?type=ConnectionHandler" name="ACM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="ACM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="ACM-ConnectionHandler/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="AirbagControlModule/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="ACM-ConnectionHandler/PortOut?type=HwPort" port2="AirbagControlModule/CAN?type=HwPort"/>
+        <connections xmi:id="AirbagControlModule/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="ACM-ConnectionHandler/PortOut?type=HwPort" port2="AirbagControlModule/LIN?type=HwPort"/>
+        <connections xmi:id="AirbagControlModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="ACM-ConnectionHandler/PortOut?type=HwPort" port2="AirbagControlModule/FlexRay?type=HwPort"/>
+        <connections xmi:id="AirbagControlModule/MCU-ACM+Handler?type=HwConnection" name="MCU-ACM Handler" port1="ACM-ConnectionHandler/PortIn?type=HwPort" port2="MCU+Handler/MCU-ACM+Handler+Out?type=HwPort"/>
+      </structures>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="RH850%2FE2x?type=FrequencyDomain" name="RH850/E2x" clockGating="false">
+      <defaultValue value="240.0" unit="MHz"/>
+    </domains>
+    <domains xsi:type="am:PowerDomain" xmi:id="RH850?type=PowerDomain" name="RH850" powerGating="false">
+      <defaultValue value="5.0" unit="V"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="RH850%2FC1M-Ax?type=FrequencyDomain" name="RH850/C1M-Ax" clockGating="false">
+      <defaultValue value="240.0" unit="MHz"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="R-Car+W1R?type=FrequencyDomain" name="R-Car W1R" clockGating="false">
+      <defaultValue value="1.2" unit="GHz"/>
+    </domains>
+    <domains xsi:type="am:PowerDomain" xmi:id="R-Car+W1R?type=PowerDomain" name="R-Car W1R" powerGating="false">
+      <defaultValue value="5.0" unit="V"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="RH850%2FP1M?type=FrequencyDomain" name="RH850/P1M" clockGating="false">
       <defaultValue value="200.0" unit="MHz"/>
     </domains>
-    <domains xsi:type="am:FrequencyDomain" xmi:id="C674x+DPS?type=FrequencyDomain" name="C674x DPS" clockGating="false">
-      <defaultValue value="600.0" unit="MHz"/>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="RH850%2FP1H-C?type=FrequencyDomain" name="RH850/P1H-C" clockGating="false">
+      <defaultValue value="240.0" unit="MHz"/>
     </domains>
   </hwModel>
 </am:Amalthea>
