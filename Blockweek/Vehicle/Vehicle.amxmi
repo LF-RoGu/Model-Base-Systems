@@ -333,13 +333,13 @@
             <ports xmi:id="RH850%2FC1M+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
             <ports xmi:id="RH850%2FC1M+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
-          <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FC1M+3+MiB?type=MemoryDefinition">
             <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
-          <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+          <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FC1M+256+KiB?type=MemoryDefinition">
             <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
-          <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain">
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FC1M+128+KiB?type=MemoryDefinition">
             <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
@@ -376,22 +376,22 @@
             <ports xmi:id="RH850%2FP1H-C+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
             <ports xmi:id="RH850%2FP1H-C+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
-          <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FP1H-C+128+KiB?type=MemoryDefinition">
             <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
-          <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FP1H-C+2+MiB?type=MemoryDefinition">
             <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
-          <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+          <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FP1H-C+512+KiB?type=MemoryDefinition">
             <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
-          <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-RH850%2FP1H-C+128+KiB?type=MemoryDefinition">
             <ports xmi:id="EEPROM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
-          <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FP1H-C+2+MiB?type=MemoryDefinition">
             <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
-          <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+          <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FP1H-C+512+KiB?type=MemoryDefinition">
             <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
