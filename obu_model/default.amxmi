@@ -19,6 +19,7 @@
       <ports xmi:id="Commsignia+ITS-OB4/USB+I?type=HwPort" name="USB I" bitWidth="0" priority="0" portInterface="Ethernet"/>
       <ports xmi:id="Commsignia+ITS-OB4/USB+II?type=HwPort" name="USB II" bitWidth="0" priority="0" portInterface="Ethernet"/>
       <structures xmi:id="CPU+i.MX+6?type=HwStructure" name="CPU i.MX 6" structureType="SoC">
+        <ports xmi:id="CPU+i.MX+6/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
         <modules xsi:type="am:ProcessingUnit" xmi:id="ARM+Cortex+A9+Core?type=ProcessingUnit" name="ARM Cortex A9 Core" frequencyDomain="800+MHz?type=FrequencyDomain" definition="ARM+Cortex+A9+Core?type=ProcessingUnitDefinition">
           <ports xmi:id="ARM+Cortex+A9+Core/Core+-+I-Cache?type=HwPort" name="Core - I-Cache" bitWidth="0" priority="0"/>
           <ports xmi:id="ARM+Cortex+A9+Core/Core+-+D-Cache?type=HwPort" name="Core - D-Cache" bitWidth="0" priority="0"/>
@@ -46,25 +47,69 @@
         <connections xmi:id="CPU+i.MX+6/Bus+-+EMC?type=HwConnection" name="Bus - EMC" port1="External+Memory++Controller/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
       </structures>
       <structures xmi:id="Measurement+Devices?type=HwStructure" name="Measurement Devices" structureType="Group">
+        <ports xmi:id="Measurement+Devices/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
         <structures xmi:id="Magnetometer?type=HwStructure" name="Magnetometer"/>
         <structures xmi:id="Gyroscope?type=HwStructure" name="Gyroscope"/>
         <structures xmi:id="Accelerometer?type=HwStructure" name="Accelerometer"/>
         <structures xmi:id="GNSS?type=HwStructure" name="GNSS"/>
       </structures>
       <structures xmi:id="HSM?type=HwStructure" name="HSM" structureType="System"/>
-      <structures xmi:id="WLAN?type=HwStructure" name="WLAN" structureType="System"/>
-      <structures xmi:id="3G%2FLTE+Modem?type=HwStructure" name="3G/LTE Modem" structureType="System"/>
-      <structures xmi:id="DSRC+Transmitter?type=HwStructure" name="DSRC Transmitter" structureType="System"/>
+      <structures xmi:id="DSRC+Transmitter?type=HwStructure" name="DSRC Transmitter" structureType="System">
+        <ports xmi:id="DSRC+Transmitter/DSRC+Port?type=HwPort" name="DSRC Port" bitWidth="0" priority="0"/>
+        <structures xmi:id="V2X+ANT1?type=HwStructure" name="V2X ANT1"/>
+        <structures xmi:id="V2X+ANT2?type=HwStructure" name="V2X ANT2"/>
+      </structures>
+      <structures xmi:id="Mini+PCIe+%231?type=HwStructure" name="Mini PCIe #1">
+        <ports xmi:id="Mini+PCIe+%231/WLAN+Port?type=HwPort" name="WLAN Port" bitWidth="0" priority="0"/>
+        <structures xmi:id="WLAN?type=HwStructure" name="WLAN" structureType="System">
+          <structures xmi:id="WLAN+ANT1?type=HwStructure" name="WLAN ANT1"/>
+          <structures xmi:id="WLAN+ANT2?type=HwStructure" name="WLAN ANT2"/>
+        </structures>
+      </structures>
+      <structures xmi:id="Mini+PCIe+%232?type=HwStructure" name="Mini PCIe #2">
+        <ports xmi:id="Mini+PCIe+%232/LTE+Port?type=HwPort" name="LTE Port" bitWidth="0" priority="0"/>
+        <structures xmi:id="4G%2FLTE+Modem?type=HwStructure" name="4G/LTE Modem" structureType="System">
+          <structures xmi:id="LTE+ANT1?type=HwStructure" name="LTE ANT1"/>
+          <structures xmi:id="LTE+ANT2?type=HwStructure" name="LTE ANT2"/>
+        </structures>
+      </structures>
+      <structures xmi:id="GPIO?type=HwStructure" name="GPIO">
+        <ports xmi:id="GPIO/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="AXI"/>
+      </structures>
+      <structures xmi:id="GNSS+ANT1?type=HwStructure" name="GNSS ANT1">
+        <ports xmi:id="GNSS+ANT1/GPS+Port?type=HwPort" name="GPS Port" bitWidth="0" priority="0" portInterface="SPI"/>
+      </structures>
       <modules xsi:type="am:Memory" xmi:id="DDR3+SDRAM?type=Memory" name="DDR3 SDRAM" frequencyDomain="800+MHz?type=FrequencyDomain" definition="DDR3+SDRAM?type=MemoryDefinition">
         <ports xmi:id="DDR3+SDRAM/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
       </modules>
       <modules xsi:type="am:Memory" xmi:id="eMMC+Flash?type=Memory" name="eMMC Flash" frequencyDomain="800+MHz?type=FrequencyDomain" definition="eMMC?type=MemoryDefinition">
         <ports xmi:id="eMMC+Flash/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
       </modules>
+      <modules xsi:type="am:ConnectionHandler" xmi:id="PCIe+Bus?type=ConnectionHandler" name="PCIe Bus">
+        <ports xmi:id="PCIe+Bus/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+      </modules>
+      <modules xsi:type="am:ConnectionHandler" xmi:id="SPI+Bus?type=ConnectionHandler" name="SPI Bus">
+        <ports xmi:id="SPI+Bus/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="SPI"/>
+      </modules>
+      <modules xsi:type="am:ConnectionHandler" xmi:id="AXI+Bus?type=ConnectionHandler" name="AXI Bus">
+        <ports xmi:id="AXI+Bus/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="AXI"/>
+      </modules>
       <connections xmi:id="Commsignia+ITS-OB4/CPU+-+Ram?type=HwConnection" name="CPU - Ram" port1="External+Memory++Controller/Port?type=HwPort" port2="DDR3+SDRAM/Port?type=HwPort"/>
       <connections xmi:id="Commsignia+ITS-OB4/CPU+-+Flash?type=HwConnection" name="CPU - Flash" port1="External+Memory++Controller/Port?type=HwPort" port2="eMMC+Flash/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/PCIe+-+WLAN?type=HwConnection" name="PCIe - WLAN" port1="PCIe+Bus/Port?type=HwPort" port2="Mini+PCIe+%231/WLAN+Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/PCIe+-+LTE?type=HwConnection" name="PCIe - LTE" port1="PCIe+Bus/Port?type=HwPort" port2="Mini+PCIe+%232/LTE+Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/PCIe+-+CPU?type=HwConnection" name="PCIe - CPU" port1="PCIe+Bus/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/PCIe+-+DSRC?type=HwConnection" name="PCIe - DSRC" port1="PCIe+Bus/Port?type=HwPort" port2="DSRC+Transmitter/DSRC+Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/SPI+-+GPS?type=HwConnection" name="SPI - GPS" port1="SPI+Bus/Port?type=HwPort" port2="GNSS+ANT1/GPS+Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/SPI+-+CPU?type=HwConnection" name="SPI - CPU" port1="SPI+Bus/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/SPI+-+Measurement+Devices?type=HwConnection" name="SPI - Measurement Devices" port1="SPI+Bus/Port?type=HwPort" port2="Measurement+Devices/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/AXI+-+GPIO?type=HwConnection" name="AXI - GPIO" port1="AXI+Bus/Port?type=HwPort" port2="GPIO/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/AXI+-+CPU?type=HwConnection" name="AXI - CPU" port1="AXI+Bus/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
     </structures>
     <domains xsi:type="am:FrequencyDomain" xmi:id="400+MHz?type=FrequencyDomain" name="400 MHz" clockGating="false"/>
     <domains xsi:type="am:FrequencyDomain" xmi:id="800+MHz?type=FrequencyDomain" name="800 MHz" clockGating="false"/>
   </hwModel>
+  <osModel>
+    <operatingSystems name="Linux (V2X)"/>
+  </osModel>
 </am:Amalthea>
