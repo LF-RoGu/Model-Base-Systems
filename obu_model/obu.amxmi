@@ -37,14 +37,22 @@
         <modules xsi:type="am:ConnectionHandler" xmi:id="CPU+Bus?type=ConnectionHandler" name="CPU Bus">
           <ports xmi:id="CPU+Bus/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
         </modules>
-        <modules xsi:type="am:ConnectionHandler" xmi:id="External+Memory++Controller?type=ConnectionHandler" name="External Memory  Controller">
+        <modules xsi:type="am:ConnectionHandler" xmi:id="External+Memory++Controller?type=ConnectionHandler" name="External Memory  Controller" frequencyDomain="400+MHz?type=FrequencyDomain" definition="External+Memory+Controller?type=ConnectionHandlerDefinition">
           <ports xmi:id="External+Memory++Controller/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="AHB"/>
+        </modules>
+        <modules xsi:type="am:Memory" xmi:id="Internal+RAM?type=Memory" name="Internal RAM">
+          <ports xmi:id="Internal+RAM/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="AXI"/>
+        </modules>
+        <modules xsi:type="am:Memory" xmi:id="Internal+ROM?type=Memory" name="Internal ROM">
+          <ports xmi:id="Internal+ROM/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="AHB"/>
         </modules>
         <connections xmi:id="CPU+i.MX+6/Core+-+I-Cache?type=HwConnection" name="Core - I-Cache" port1="ARM+Cortex+A9+Core/Core+-+I-Cache?type=HwPort" port2="I-Cache/Port?type=HwPort"/>
         <connections xmi:id="CPU+i.MX+6/Core+-+D-Cache?type=HwConnection" name="Core - D-Cache" port1="ARM+Cortex+A9+Core/Core+-+D-Cache?type=HwPort" port2="D-Cache/Port?type=HwPort"/>
         <connections xmi:id="CPU+i.MX+6/CPU+Bus+-+Core?type=HwConnection" name="CPU Bus - Core" port1="ARM+Cortex+A9+Core/Core+-+Bus?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
         <connections xmi:id="CPU+i.MX+6/CPU+Bus+-+L2+Cache?type=HwConnection" name="CPU Bus - L2 Cache" port1="L2+Cache/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
         <connections xmi:id="CPU+i.MX+6/Bus+-+EMC?type=HwConnection" name="Bus - EMC" port1="External+Memory++Controller/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/Bus+-+RAM?type=HwConnection" name="Bus - RAM" port1="CPU+Bus/Port?type=HwPort" port2="Internal+RAM/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/Bus+-+ROM?type=HwConnection" name="Bus - ROM" port1="CPU+Bus/Port?type=HwPort" port2="Internal+ROM/Port?type=HwPort"/>
       </structures>
       <structures xmi:id="Measurement+Devices?type=HwStructure" name="Measurement Devices" structureType="Group">
         <ports xmi:id="Measurement+Devices/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
