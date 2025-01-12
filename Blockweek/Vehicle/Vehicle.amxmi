@@ -1,6 +1,347 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
-  <swModel/>
+  <swModel>
+    <tasks xmi:id="Task-5ms?type=Task" name="Task-5ms" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="ACMZone" ordered="true" interruptible="true"/>
+        <items xsi:type="am:Group" name="VCM" ordered="true" interruptible="true">
+          <items xsi:type="am:Group" name="CenterZone" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ACM-checkFault?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="CenterZone-keepalive" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ACM-keepalive?type=Runnable"/>
+          </items>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-10ms?type=Task" name="Task-10ms" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="VCM" ordered="true" interruptible="true">
+          <items xsi:type="am:Group" name="CenterZone" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ACM-keepalive?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="FrontZone-keepalive" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ECU-keepalive?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCM-keepalive?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCU-keepalive?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="Timeout" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ECU-timeout?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCM-timeout?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCU-timeout?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="VCM-timeout?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="BCM-timeout?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="SCM-timeout?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="ACM-timeout?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="HMI-timeout?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="FrontZone" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ECU-checkFault?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCM-checkFault?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCU-checkFault?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="VCM-checkFault?type=Runnable"/>
+          </items>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-20ms?type=Task" name="Task-20ms" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="VCM" ordered="true" interruptible="true">
+          <items xsi:type="am:Group" name="BackZone" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="BCM-checkFault?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="SCM-checkFault?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="BackZone-keepalive" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="BCM-keepalive?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="SCM-keepalive?type=Runnable"/>
+          </items>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-40ms?type=Task" name="Task-40ms" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="VCM" ordered="true" interruptible="true">
+          <items xsi:type="am:Group" name="BackZone" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="HMI-checkFault?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="BackZone-keepalive" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="HMI-keepalive?type=Runnable"/>
+          </items>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-100ms?type=Task" name="Task-100ms" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="HMI - Data" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="HMI-Data?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-500ms?type=Task" name="Task-500ms" multipleTaskActivationLimit="0"/>
+    <tasks xmi:id="Task-1000ms?type=Task" name="Task-1000ms" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="DTC - Diagnostic Trouble Code" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="VCM-checkFaultMemArea?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <runnables xmi:id="ECU-timeout?type=Runnable" name="ECU-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ECU-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ECU-timeoutFlag?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCM-timeout?type=Runnable" name="TCM-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCM-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCM-timeoutFlag?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCU-timeout?type=Runnable" name="TCU-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCU-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCU-timeoutFlag?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="VCM-timeout?type=Runnable" name="VCM-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="VCM-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="VCM-timeoutFlag?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="BCM-timeout?type=Runnable" name="BCM-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="BCM-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="BCM-timeoutFlag?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="SCM-timeout?type=Runnable" name="SCM-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="SCM-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="SCM-timeoutFlag?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="ACM-timeout?type=Runnable" name="ACM-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ACM-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ACM-timeoutFlag?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="HMI-timeout?type=Runnable" name="HMI-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="HMI-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="HMI-timeoutFlag?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="ECU-keepalive?type=Runnable" name="ECU-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ECU-AliveCounter?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCM-keepalive?type=Runnable" name="TCM-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCM-AliveCounter?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCU-keepalive?type=Runnable" name="TCU-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCU-AliveCounter?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="BCM-keepalive?type=Runnable" name="BCM-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="BCM-AliveCounter?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="SCM-keepalive?type=Runnable" name="SCM-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="SCM-AliveCounter?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="ACM-keepalive?type=Runnable" name="ACM-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ACM-AliveCounter?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="HMI-keepalive?type=Runnable" name="HMI-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="HMI-AliveCounter?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="ECU-checkFault?type=Runnable" name="ECU-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ECU-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="ECU-Fault?type=Label" access="read"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCM-checkFault?type=Runnable" name="TCM-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCM-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="TCM-Fault?type=Label" access="read"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCU-checkFault?type=Runnable" name="TCU-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCU-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="TCU-Fault?type=Label" access="read"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="VCM-checkFault?type=Runnable" name="VCM-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="VCM-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="VCM-Fault?type=Label" access="read"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="BCM-checkFault?type=Runnable" name="BCM-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="BCM-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="BCM-Fault?type=Label" access="read"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="SCM-checkFault?type=Runnable" name="SCM-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="SCM-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="SCM-Fault?type=Label" access="read"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="ACM-checkFault?type=Runnable" name="ACM-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ACM-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="ACM-Fault?type=Label" access="read"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="HMI-checkFault?type=Runnable" name="HMI-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="HMI-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="HMI-Fault?type=Label" access="read"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="VCM-checkFaultMemArea?type=Runnable" name="VCM-checkFaultMemArea" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="VCM-FaultMemArea?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="ECU-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCM-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCU-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="VCM-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="BCM-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="SCM-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ACM-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="HMI-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ECU-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCU-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="BCM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="SCM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ACM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="HMI-timeoutFlag?type=Label" access="read"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="HMI-Data?type=Runnable" name="HMI-Data" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="HMI-DataOut?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <labels xmi:id="ECU-AliveCounter?type=Label" name="ECU-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="TCM-AliveCounter?type=Label" name="TCM-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="TCU-AliveCounter?type=Label" name="TCU-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="VCM-AliveCounter?type=Label" name="VCM-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="BCM-AliveCounter?type=Label" name="BCM-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="SCM-AliveCounter?type=Label" name="SCM-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="ACM-AliveCounter?type=Label" name="ACM-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="HMI-AliveCounter?type=Label" name="HMI-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="ECU-timeoutFlag?type=Label" name="ECU-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="TCM-timeoutFlag?type=Label" name="TCM-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="TCU-timeoutFlag?type=Label" name="TCU-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="VCM-timeoutFlag?type=Label" name="VCM-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="BCM-timeoutFlag?type=Label" name="BCM-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="SCM-timeoutFlag?type=Label" name="SCM-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="ACM-timeoutFlag?type=Label" name="ACM-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="HMI-timeoutFlag?type=Label" name="HMI-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="ECU-MemFaults?type=Label" name="ECU-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="TCM-MemFaults?type=Label" name="TCM-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="TCU-MemFaults?type=Label" name="TCU-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="VCM-MemFaults?type=Label" name="VCM-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="BCM-MemFaults?type=Label" name="BCM-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="SCM-MemFaults?type=Label" name="SCM-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="ACM-MemFaults?type=Label" name="ACM-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="HMI-MemFaults?type=Label" name="HMI-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="VCM-FaultMemArea?type=Label" name="VCM-FaultMemArea" constant="false" bVolatile="false">
+      <size value="200" unit="B"/>
+    </labels>
+    <labels xmi:id="ECU-Fault?type=Label" name="ECU-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="TCM-Fault?type=Label" name="TCM-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="TCU-Fault?type=Label" name="TCU-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="VCM-Fault?type=Label" name="VCM-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="BCM-Fault?type=Label" name="BCM-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="SCM-Fault?type=Label" name="SCM-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="ACM-Fault?type=Label" name="ACM-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="HMI-Fault?type=Label" name="HMI-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="HMI-DataOut?type=Label" name="HMI-DataOut" constant="false" bVolatile="false"/>
+  </swModel>
   <hwModel>
     <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="RH850%2FP1H-C?type=ProcessingUnitDefinition" name="RH850/P1H-C" puType="CPU"/>
     <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="RH850%2FE2x?type=ProcessingUnitDefinition" name="RH850/E2x" puType="CPU"/>
@@ -601,4 +942,37 @@
       <defaultValue value="3.3" unit="V"/>
     </domains>
   </hwModel>
+  <osModel>
+    <operatingSystems name=""/>
+  </osModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="5+ms?type=PeriodicStimulus" name="5 ms">
+      <recurrence value="5" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="10+ms?type=PeriodicStimulus" name="10 ms">
+      <recurrence value="10" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="20+ms?type=PeriodicStimulus" name="20 ms">
+      <recurrence value="20" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="40+ms?type=PeriodicStimulus" name="40 ms">
+      <recurrence value="40" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="100+ms?type=PeriodicStimulus" name="100 ms">
+      <recurrence value="100" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="500+ms?type=PeriodicStimulus" name="500 ms">
+      <recurrence value="500" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="1000+ms?type=PeriodicStimulus" name="1000 ms">
+      <recurrence value="1000" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+  </stimuliModel>
 </am:Amalthea>
