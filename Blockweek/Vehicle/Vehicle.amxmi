@@ -8,6 +8,7 @@
     <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="R-Car+W1R?type=ProcessingUnitDefinition" name="R-Car W1R" puType="CPU"/>
     <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="R-Car+M3?type=ProcessingUnitDefinition" name="R-Car M3" puType="CPU"/>
     <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="ARM+Mali-T720?type=ProcessingUnitDefinition" name="ARM Mali-T720" puType="GPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="RH850%2FP1M?type=ProcessingUnitDefinition" name="RH850/P1M" puType="CPU"/>
     <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition" name="Flash-RH850/E2x 4 MiB" memoryType="FLASH">
       <size value="4" unit="MiB"/>
       <dataRate value="50" unit="MBPerSecond"/>
@@ -39,6 +40,14 @@
     <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-R-Car+W1R+2GiB?type=MemoryDefinition" name="RAM-R-Car W1R 2GiB" memoryType="DRAM">
       <size value="2" unit="GiB"/>
       <dataRate value="80" unit="GBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FP1M+4MiB?type=MemoryDefinition" name="Flash-RH850/P1M 4MiB" memoryType="FLASH">
+      <size value="4" unit="MiB"/>
+      <dataRate value="50" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="EEPROM-RH850%2FP1M+256+KiB?type=MemoryDefinition" name="EEPROM-RH850/P1M 256 KiB">
+      <size value="256" unit="KiB"/>
+      <dataRate value="5" unit="MBPerSecond"/>
     </definitions>
     <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition" name="Flash-RH850/P1M 2 MiB" memoryType="FLASH">
       <size value="2" unit="MiB"/>
@@ -84,44 +93,44 @@
         <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
           <ports xmi:id="MicroController/MCU-ECU+Handler+Out?type=HwPort" name="MCU-ECU Handler Out" bitWidth="0" priority="0"/>
           <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FE2x+%281%29?type=ProcessingUnit" name="RH850/E2x (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain" definition="RH850%2FE2x?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FE2x+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FE2x+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x+%281%29/ECU+core+port?type=HwPort" name="ECU core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x+%281%29/ECU+core+to+bus?type=HwPort" name="ECU core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FE2x+%282%29?type=ProcessingUnit" name="RH850/E2x (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain" definition="RH850%2FE2x?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FE2x+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FE2x+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x+%282%29/ECU+core+port?type=HwPort" name="ECU core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x+%282%29/ECU+core+to+bus?type=HwPort" name="ECU core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%281%29/ECU+EEPROM+port?type=HwPort" name="ECU EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%281%29/ECU+FLASH+port?type=HwPort" name="ECU FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%281%29/ECU+RAM+port?type=HwPort" name="ECU RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%282%29/ECU+EEPROM+port?type=HwPort" name="ECU EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%282%29/ECU+FLASH+port?type=HwPort" name="ECU FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%282%29/ECU+RAM+port?type=HwPort" name="ECU RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-ECU+Handler?type=ConnectionHandler" name="MCU-ECU Handler">
             <ports xmi:id="MCU-ECU+Handler/MCU-ECU+Port+%281%29?type=HwPort" name="MCU-ECU Port (1)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU-ECU+Handler/MCU-ECU+Port+%282%29?type=HwPort" name="MCU-ECU Port (2)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU-ECU+Handler/MCU-ECU+Handler+Out?type=HwPort" name="MCU-ECU Handler Out" bitWidth="0" priority="0"/>
           </modules>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FE2x+%281%29/core+port?type=HwPort" port2="EEPROM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FE2x+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FE2x+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FE2x+%282%29/core+port?type=HwPort" port2="EEPROM+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FE2x+%282%29/core+port?type=HwPort" port2="FLASH+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FE2x+%282%29/core+port?type=HwPort" port2="RAM+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU-ECU+Handler/MCU-ECU+Port+%281%29?type=HwPort" port2="RH850%2FE2x+%281%29/core+to+bus?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU-ECU+Handler/MCU-ECU+Port+%282%29?type=HwPort" port2="RH850%2FE2x+%282%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FE2x+%281%29/ECU+core+port?type=HwPort" port2="EEPROM+%281%29/ECU+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FE2x+%281%29/ECU+core+port?type=HwPort" port2="FLASH+%281%29/ECU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FE2x+%281%29/ECU+core+port?type=HwPort" port2="RAM+%281%29/ECU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FE2x+%282%29/ECU+core+port?type=HwPort" port2="EEPROM+%282%29/ECU+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FE2x+%282%29/ECU+core+port?type=HwPort" port2="FLASH+%282%29/ECU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FE2x+%282%29/ECU+core+port?type=HwPort" port2="RAM+%282%29/ECU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU-ECU+Handler/MCU-ECU+Port+%281%29?type=HwPort" port2="RH850%2FE2x+%281%29/ECU+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU-ECU+Handler/MCU-ECU+Port+%282%29?type=HwPort" port2="RH850%2FE2x+%282%29/ECU+core+to+bus?type=HwPort"/>
         </structures>
         <modules xsi:type="am:ConnectionHandler" xmi:id="ECU-ConnectionHandler?type=ConnectionHandler" name="ECU-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
           <ports xmi:id="ECU-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
@@ -139,44 +148,44 @@
         <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
           <ports xmi:id="MicroController/MCU-TCM+port?type=HwPort" name="MCU-TCM port" bitWidth="16" priority="0"/>
           <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M+%281%29?type=ProcessingUnit" name="RH850/C1M (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FC1M+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FC1M+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%281%29/TCM+core+port?type=HwPort" name="TCM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%281%29/TCM+core+to+bus?type=HwPort" name="TCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M+%282%29?type=ProcessingUnit" name="RH850/C1M (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FC1M+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FC1M+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%282%29/TCM+core+port?type=HwPort" name="TCM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%282%29/TCM+core+to+bus?type=HwPort" name="TCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FC1M+128+KiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%281%29/TCM+EEPROM+port?type=HwPort" name="TCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FC1M+3+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%281%29/TCM+FLASH+port?type=HwPort" name="TCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FC1M+256+KiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%281%29/TCM+RAM+port?type=HwPort" name="TCM RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-RH850%2FC1M+128+KiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%282%29/TCM+EEPROM+port?type=HwPort" name="TCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FC1M+3+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%282%29/TCM+FLASH+port?type=HwPort" name="TCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FC1M+256+KiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%282%29/TCM+RAM+port?type=HwPort" name="TCM RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-TCM+Handler?type=ConnectionHandler" name="MCU-TCM Handler">
             <ports xmi:id="MCU-TCM+Handler/MCU-TCM+Port+%281%29?type=HwPort" name="MCU-TCM Port (1)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU-TCM+Handler/MCU-TCM+Port+%282%29?type=HwPort" name="MCU-TCM Port (2)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU-TCM+Handler/MCU-TCM+Handler+Out?type=HwPort" name="MCU-TCM Handler Out" bitWidth="0" priority="0"/>
           </modules>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="EEPROM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FC1M+%282%29/core+port?type=HwPort" port2="EEPROM+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FC1M+%282%29/core+port?type=HwPort" port2="FLASH+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FC1M+%282%29/core+port?type=HwPort" port2="RAM+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU-TCM+Handler/MCU-TCM+Port+%281%29?type=HwPort" port2="RH850%2FC1M+%281%29/core+to+bus?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU-TCM+Handler/MCU-TCM+Port+%282%29?type=HwPort" port2="RH850%2FC1M+%282%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FC1M+%281%29/TCM+core+port?type=HwPort" port2="EEPROM+%281%29/TCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FC1M+%281%29/TCM+core+port?type=HwPort" port2="FLASH+%281%29/TCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FC1M+%281%29/TCM+core+port?type=HwPort" port2="RAM+%281%29/TCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FC1M+%282%29/TCM+core+port?type=HwPort" port2="EEPROM+%282%29/TCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FC1M+%282%29/TCM+core+port?type=HwPort" port2="FLASH+%282%29/TCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FC1M+%282%29/TCM+core+port?type=HwPort" port2="RAM+%282%29/TCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU-TCM+Handler/MCU-TCM+Port+%281%29?type=HwPort" port2="RH850%2FC1M+%281%29/TCM+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU-TCM+Handler/MCU-TCM+Port+%282%29?type=HwPort" port2="RH850%2FC1M+%282%29/TCM+core+to+bus?type=HwPort"/>
         </structures>
         <modules xsi:type="am:ConnectionHandler" xmi:id="TCM-ConnectionHandler?type=ConnectionHandler" name="TCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
           <ports xmi:id="TCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
@@ -194,44 +203,44 @@
         <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
           <ports xmi:id="MicroController/MCU-TCU+Handler+Out?type=HwPort" name="MCU-TCU Handler Out" bitWidth="0" priority="0"/>
           <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%281%29?type=ProcessingUnit" name="R-Car W1R (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
-            <ports xmi:id="R-Car+W1R+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="R-Car+W1R+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%281%29/TCU+core+port?type=HwPort" name="TCU core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%281%29/TCU+core+to+bus?type=HwPort" name="TCU core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%282%29?type=ProcessingUnit" name="R-Car W1R (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
-            <ports xmi:id="R-Car+W1R+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="R-Car+W1R+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%282%29/TCU+core+port?type=HwPort" name="TCU core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%282%29/TCU+core+to+bus?type=HwPort" name="TCU core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%283%29?type=ProcessingUnit" name="R-Car W1R (3)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
-            <ports xmi:id="R-Car+W1R+%283%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="R-Car+W1R+%283%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%283%29/TCU+core+port?type=HwPort" name="TCU core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%283%29/TCU+core+to+bus?type=HwPort" name="TCU core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%284%29?type=ProcessingUnit" name="R-Car W1R (4)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
-            <ports xmi:id="R-Car+W1R+%284%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="R-Car+W1R+%284%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%284%29/TCU+core+port?type=HwPort" name="TCU core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%284%29/TCU+core+to+bus?type=HwPort" name="TCU core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-R-Car+W1R+16GiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%281%29/TCU+FLASH+port?type=HwPort" name="TCU FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-R-Car+W1R+2GiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%281%29/TCU+RAM+port?type=HwPort" name="TCU RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-R-Car+W1R+16GiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%282%29/TCU+FLASH+port?type=HwPort" name="TCU FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-R-Car+W1R+2GiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%282%29/TCU+RAM+port?type=HwPort" name="TCU RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%283%29?type=Memory" name="FLASH (3)" definition="Flash-R-Car+W1R+16GiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%283%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%283%29/TCU+FLASH+port?type=HwPort" name="TCU FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%283%29?type=Memory" name="RAM (3)" definition="RAM-R-Car+W1R+2GiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%283%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%283%29/TCU+RAM+port?type=HwPort" name="TCU RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
-          <modules xsi:type="am:Memory" xmi:id="FLASH+%284%29?type=Memory" name="FLASH (4)" definition="Flash-RH850%2FC1M+3+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%284%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%284%29?type=Memory" name="FLASH (4)" definition="Flash-R-Car+W1R+16GiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%284%29/TCU+FLASH+port?type=HwPort" name="TCU FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%284%29?type=Memory" name="RAM (4)" definition="RAM-R-Car+W1R+2GiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%284%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%284%29/TCU+RAM+port?type=HwPort" name="TCU RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
             <ports xmi:id="MCU+Handler/MCU-TCU+Port+%281%29?type=HwPort" name="MCU-TCU Port (1)" bitWidth="0" priority="0"/>
@@ -240,18 +249,18 @@
             <ports xmi:id="MCU+Handler/MCU-TCU+Port+%284%29?type=HwPort" name="MCU-TCU Port (4)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU+Handler/MCU-TCU+Handler+Out?type=HwPort" name="MCU-TCU Handler Out" bitWidth="0" priority="0"/>
           </modules>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%282%29/core+port?type=HwPort" port2="FLASH+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%282%29/core+port?type=HwPort" port2="RAM+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%283%29/core+port?type=HwPort" port2="FLASH+%283%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%283%29/core+port?type=HwPort" port2="RAM+%283%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%284%29/core+port?type=HwPort" port2="FLASH+%284%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%284%29/core+port?type=HwPort" port2="RAM+%284%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-TCU+Port+%281%29?type=HwPort" port2="R-Car+W1R+%281%29/core+to+bus?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-TCU+Port+%282%29?type=HwPort" port2="R-Car+W1R+%282%29/core+to+bus?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-TCU+Port+%283%29?type=HwPort" port2="R-Car+W1R+%283%29/core+to+bus?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-TCU+Port+%284%29?type=HwPort" port2="R-Car+W1R+%284%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%281%29/TCU+core+port?type=HwPort" port2="FLASH+%281%29/TCU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%281%29/TCU+core+port?type=HwPort" port2="RAM+%281%29/TCU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%282%29/TCU+core+port?type=HwPort" port2="FLASH+%282%29/TCU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%282%29/TCU+core+port?type=HwPort" port2="RAM+%282%29/TCU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%283%29/TCU+core+port?type=HwPort" port2="FLASH+%283%29/TCU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%283%29/TCU+core+port?type=HwPort" port2="RAM+%283%29/TCU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+W1R+%284%29/TCU+core+port?type=HwPort" port2="FLASH+%284%29/TCU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+W1R+%284%29/TCU+core+port?type=HwPort" port2="RAM+%284%29/TCU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-TCU+Port+%281%29?type=HwPort" port2="R-Car+W1R+%281%29/TCU+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-TCU+Port+%282%29?type=HwPort" port2="R-Car+W1R+%282%29/TCU+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-TCU+Port+%283%29?type=HwPort" port2="R-Car+W1R+%283%29/TCU+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-TCU+Port+%284%29?type=HwPort" port2="R-Car+W1R+%284%29/TCU+core+to+bus?type=HwPort"/>
         </structures>
         <modules xsi:type="am:ConnectionHandler" xmi:id="TCU-ConnectionHandler?type=ConnectionHandler" name="TCU-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
           <ports xmi:id="TCU-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
@@ -262,6 +271,61 @@
         <connections xmi:id="TelematicsControlUnit/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="TCU-ConnectionHandler/PortOut?type=HwPort" port2="TelematicsControlUnit/FlexRay?type=HwPort"/>
         <connections xmi:id="TelematicsControlUnit/MCU-TCU+Handler?type=HwConnection" name="MCU-TCU Handler" port1="TCU-ConnectionHandler/PortIn?type=HwPort" port2="MCU+Handler/MCU-TCU+Handler+Out?type=HwPort"/>
       </structures>
+      <structures xmi:id="VehicleControlModule?type=HwStructure" name="VehicleControlModule" structureType="ECU">
+        <ports xmi:id="VehicleControlModule/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="VehicleControlModule/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="VehicleControlModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
+          <ports xmi:id="MicroController/MCU-VCM+Handler+Out?type=HwPort" name="MCU-VCM Handler Out" bitWidth="0" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%281%29?type=ProcessingUnit" name="RH850/P1M (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1M+%281%29/VCM+core+port?type=HwPort" name="VCM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%281%29/VCM+core+to+bus?type=HwPort" name="VCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%282%29?type=ProcessingUnit" name="RH850/P1M (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1M+%282%29/VCM+core+port?type=HwPort" name="VCM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%282%29/VCM+core+to+bus?type=HwPort" name="VCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FP1M+256+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM+%281%29/VCM+EEPROM+port?type=HwPort" name="VCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FP1M+4MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%281%29/VCM+FLASH+port?type=HwPort" name="VCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FP1M+512+KiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%281%29/VCM+RAM+port?type=HwPort" name="VCM RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-RH850%2FP1M+256+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM+%282%29/VCM+EEPROM+port?type=HwPort" name="VCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FP1M+4MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH+%282%29/VCM+FLASH+port?type=HwPort" name="VCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FP1M+512+KiB?type=MemoryDefinition">
+            <ports xmi:id="RAM+%282%29/VCM+RAM+port?type=HwPort" name="VCM RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
+            <ports xmi:id="MCU+Handler/MCU-VCM+Port+%281%29?type=HwPort" name="MCU-VCM Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU+Handler/MCU-VCM+Port+%282%29?type=HwPort" name="MCU-VCM Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU+Handler/MCU-VCM+Handler+Out?type=HwPort" name="MCU-VCM Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%281%29/VCM+core+port?type=HwPort" port2="EEPROM+%281%29/VCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%281%29/VCM+core+port?type=HwPort" port2="FLASH+%281%29/VCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%281%29/VCM+core+port?type=HwPort" port2="RAM+%281%29/VCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%282%29/VCM+core+port?type=HwPort" port2="EEPROM+%282%29/VCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%282%29/VCM+core+port?type=HwPort" port2="FLASH+%282%29/VCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%282%29/VCM+core+port?type=HwPort" port2="RAM+%282%29/VCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-VCM+Port+%281%29?type=HwPort" port2="RH850%2FP1M+%281%29/VCM+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-VCM+Port+%282%29?type=HwPort" port2="RH850%2FP1M+%282%29/VCM+core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="VCM-ConnectionHandler?type=ConnectionHandler" name="VCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain">
+          <ports xmi:id="VCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="VCM-ConnectionHandler/PortOut?type=HwPort" name="PortOut" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="VehicleControlModule/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="VCM-ConnectionHandler/PortOut?type=HwPort" port2="VehicleControlModule/CAN?type=HwPort"/>
+        <connections xmi:id="VehicleControlModule/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="VCM-ConnectionHandler/PortOut?type=HwPort" port2="VehicleControlModule/LIN?type=HwPort"/>
+        <connections xmi:id="VehicleControlModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="VCM-ConnectionHandler/PortOut?type=HwPort" port2="VehicleControlModule/FlexRay?type=HwPort"/>
+        <connections xmi:id="VehicleControlModule/MCU-VCM+Handler?type=HwConnection" name="MCU-VCM Handler" port1="VCM-ConnectionHandler/PortIn?type=HwPort" port2="MCU+Handler/MCU-VCM+Handler+Out?type=HwPort"/>
+      </structures>
     </structures>
     <structures xmi:id="BackZoneECU?type=HwStructure" name="BackZoneECU" structureType="System">
       <structures xmi:id="BrakeControlModule?type=HwStructure" name="BrakeControlModule" structureType="ECU">
@@ -271,44 +335,44 @@
         <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
           <ports xmi:id="MicroController/MCU-BCM+Handler+Out?type=HwPort" name="MCU-BCM Handler Out" bitWidth="0" priority="0"/>
           <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%281%29?type=ProcessingUnit" name="RH850/P1M (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FP1M+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FP1M+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%281%29/BCM+core+port?type=HwPort" name="BCM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%281%29/BCM+core+to+bus?type=HwPort" name="BCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%282%29?type=ProcessingUnit" name="RH850/P1M (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FP1M+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FP1M+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%282%29/BCM+core+port?type=HwPort" name="BCM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%282%29/BCM+core+to+bus?type=HwPort" name="BCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FP1M+128+KiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%281%29/BCM+EEPROM+port?type=HwPort" name="BCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%281%29/BCM+FLASH+port?type=HwPort" name="BCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%281%29/BCM+RAM+port?type=HwPort" name="BCM RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-RH850%2FP1M+128+KiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%282%29/BCM+EEPROM+port?type=HwPort" name="BCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%282%29/BCM+FLASH+port?type=HwPort" name="BCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FP1M+512+KiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%282%29/BCM+RAM+port?type=HwPort" name="BCM RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
             <ports xmi:id="MCU+Handler/MCU-BCM+Port+%281%29?type=HwPort" name="MCU-BCM Port (1)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU+Handler/MCU-BCM+Port+%282%29?type=HwPort" name="MCU-BCM Port (2)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU+Handler/MCU-BCM+Handler+Out?type=HwPort" name="MCU-BCM Handler Out" bitWidth="0" priority="0"/>
           </modules>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%281%29/core+port?type=HwPort" port2="EEPROM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%282%29/core+port?type=HwPort" port2="EEPROM+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%282%29/core+port?type=HwPort" port2="FLASH+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%282%29/core+port?type=HwPort" port2="RAM+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-BCM+Port+%281%29?type=HwPort" port2="RH850%2FP1M+%281%29/core+to+bus?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-BCM+Port+%282%29?type=HwPort" port2="RH850%2FP1M+%282%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%281%29/BCM+core+port?type=HwPort" port2="EEPROM+%281%29/BCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%281%29/BCM+core+port?type=HwPort" port2="FLASH+%281%29/BCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%281%29/BCM+core+port?type=HwPort" port2="RAM+%281%29/BCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%282%29/BCM+core+port?type=HwPort" port2="EEPROM+%282%29/BCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%282%29/BCM+core+port?type=HwPort" port2="FLASH+%282%29/BCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%282%29/BCM+core+port?type=HwPort" port2="RAM+%282%29/BCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-BCM+Port+%281%29?type=HwPort" port2="RH850%2FP1M+%281%29/BCM+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-BCM+Port+%282%29?type=HwPort" port2="RH850%2FP1M+%282%29/BCM+core+to+bus?type=HwPort"/>
         </structures>
         <modules xsi:type="am:ConnectionHandler" xmi:id="BCM-ConnectionHandler?type=ConnectionHandler" name="BCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
           <ports xmi:id="BCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
@@ -326,30 +390,30 @@
         <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
           <ports xmi:id="MicroController/MCU-TCM+port?type=HwPort" name="MCU-TCM port" bitWidth="16" priority="0"/>
           <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M+%281%29?type=ProcessingUnit" name="RH850/C1M (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FC1M+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FC1M+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%281%29/SCM+core+port?type=HwPort" name="SCM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%281%29/SCM+core+to+bus?type=HwPort" name="SCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M+%282%29?type=ProcessingUnit" name="RH850/C1M (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FC1M+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FC1M+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%282%29/SCM+core+port?type=HwPort" name="SCM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%282%29/SCM+core+to+bus?type=HwPort" name="SCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FC1M+3+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%281%29/SCM+FLASH+port?type=HwPort" name="SCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FC1M+256+KiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%281%29/SCM+RAM+port?type=HwPort" name="SCM RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FC1M+128+KiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%281%29/SCM+EEPROM+port?type=HwPort" name="SCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
             <ports xmi:id="MCU+Handler/MCU-SCM+Port+%281%29?type=HwPort" name="MCU-SCM Port (1)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU+Handler/MCU-SCM+Handler+Out?type=HwPort" name="MCU-SCM Handler Out" bitWidth="0" priority="0"/>
           </modules>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="EEPROM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FC1M+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-SCM+Port+%281%29?type=HwPort" port2="RH850%2FC1M+%281%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FC1M+%281%29/SCM+core+port?type=HwPort" port2="EEPROM+%281%29/SCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FC1M+%281%29/SCM+core+port?type=HwPort" port2="FLASH+%281%29/SCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FC1M+%281%29/SCM+core+port?type=HwPort" port2="RAM+%281%29/SCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-SCM+Port+%281%29?type=HwPort" port2="RH850%2FC1M+%281%29/SCM+core+to+bus?type=HwPort"/>
         </structures>
         <modules xsi:type="am:ConnectionHandler" xmi:id="SCM-ConnectionHandler?type=ConnectionHandler" name="SCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
           <ports xmi:id="SCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
@@ -369,44 +433,44 @@
         <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
           <ports xmi:id="MicroController/MCU-ACM+Handler+Out?type=HwPort" name="MCU-ACM Handler Out" bitWidth="0" priority="0"/>
           <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1H-C+%281%29?type=ProcessingUnit" name="RH850/P1H-C (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1H-C?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FP1H-C+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FP1H-C+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%281%29/AGM+core+port?type=HwPort" name="AGM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%281%29/AGM+core+to+bus?type=HwPort" name="AGM core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1H-C+%282%29?type=ProcessingUnit" name="RH850/P1H-C (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1H-C?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FP1H-C+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FP1H-C+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%282%29/AGM+core+port?type=HwPort" name="AGM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%282%29/AGM+core+to+bus?type=HwPort" name="AGM core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FP1H-C+128+KiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%281%29/AGM+EEPROM+port?type=HwPort" name="AGM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-RH850%2FP1H-C+2+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%281%29/AGM+FLASH+port?type=HwPort" name="AGM FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-RH850%2FP1H-C+512+KiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%281%29/AGM+RAM+port?type=HwPort" name="AGM RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-RH850%2FP1H-C+128+KiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%282%29/AGM+EEPROM+port?type=HwPort" name="AGM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-RH850%2FP1H-C+2+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%282%29/AGM+FLASH+port?type=HwPort" name="AGM FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-RH850%2FP1H-C+512+KiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%282%29/AGM+RAM+port?type=HwPort" name="AGM RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
             <ports xmi:id="MCU+Handler/MCU-ACM+Port+%281%29?type=HwPort" name="MCU-ACM Port (1)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU+Handler/MCU-ACM+Port+%282%29?type=HwPort" name="MCU-ACM Port (2)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU+Handler/MCU-ACM+Handler+Out?type=HwPort" name="MCU-ACM Handler Out" bitWidth="0" priority="0"/>
           </modules>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1H-C+%281%29/core+port?type=HwPort" port2="EEPROM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1H-C+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1H-C+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1H-C+%282%29/core+port?type=HwPort" port2="EEPROM+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1H-C+%282%29/core+port?type=HwPort" port2="FLASH+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1H-C+%282%29/core+port?type=HwPort" port2="RAM+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-ACM+Port+%281%29?type=HwPort" port2="RH850%2FP1H-C+%281%29/core+to+bus?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-ACM+Port+%282%29?type=HwPort" port2="RH850%2FP1H-C+%282%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1H-C+%281%29/AGM+core+port?type=HwPort" port2="EEPROM+%281%29/AGM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1H-C+%281%29/AGM+core+port?type=HwPort" port2="FLASH+%281%29/AGM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1H-C+%281%29/AGM+core+port?type=HwPort" port2="RAM+%281%29/AGM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1H-C+%282%29/AGM+core+port?type=HwPort" port2="EEPROM+%282%29/AGM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1H-C+%282%29/AGM+core+port?type=HwPort" port2="FLASH+%282%29/AGM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1H-C+%282%29/AGM+core+port?type=HwPort" port2="RAM+%282%29/AGM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-ACM+Port+%281%29?type=HwPort" port2="RH850%2FP1H-C+%281%29/AGM+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-ACM+Port+%282%29?type=HwPort" port2="RH850%2FP1H-C+%282%29/AGM+core+to+bus?type=HwPort"/>
         </structures>
         <modules xsi:type="am:ConnectionHandler" xmi:id="ACM-ConnectionHandler?type=ConnectionHandler" name="ACM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
           <ports xmi:id="ACM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
@@ -424,56 +488,56 @@
         <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
           <ports xmi:id="MicroController/MCU-HMIM+Handler+Out?type=HwPort" name="MCU-HMIM Handler Out" bitWidth="0" priority="0"/>
           <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+M3+%281%29?type=ProcessingUnit" name="R-Car M3 (1)" powerDomain="R-Car+M3?type=PowerDomain" frequencyDomain="R-Car+M3?type=FrequencyDomain" definition="R-Car+M3?type=ProcessingUnitDefinition">
-            <ports xmi:id="R-Car+M3+%281%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="R-Car+M3+%281%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%281%29/HMI+core+port?type=HwPort" name="HMI core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%281%29/HMI+core+to+bus?type=HwPort" name="HMI core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+M3+%282%29?type=ProcessingUnit" name="R-Car M3 (2)" powerDomain="R-Car+M3?type=PowerDomain" frequencyDomain="R-Car+M3?type=FrequencyDomain" definition="R-Car+M3?type=ProcessingUnitDefinition">
-            <ports xmi:id="R-Car+M3+%282%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="R-Car+M3+%282%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%282%29/HMI+core+port?type=HwPort" name="HMI core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%282%29/HMI+core+to+bus?type=HwPort" name="HMI core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+M3+%283%29?type=ProcessingUnit" name="R-Car M3 (3)" powerDomain="R-Car+M3?type=PowerDomain" frequencyDomain="R-Car+M3?type=FrequencyDomain" definition="R-Car+M3?type=ProcessingUnitDefinition">
-            <ports xmi:id="R-Car+M3+%283%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="R-Car+M3+%283%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%283%29/HMI+core+port?type=HwPort" name="HMI core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%283%29/HMI+core+to+bus?type=HwPort" name="HMI core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+M3+%284%29?type=ProcessingUnit" name="R-Car M3 (4)" powerDomain="R-Car+M3?type=PowerDomain" frequencyDomain="R-Car+M3?type=FrequencyDomain" definition="R-Car+M3?type=ProcessingUnitDefinition">
-            <ports xmi:id="R-Car+M3+%284%29/core+port?type=HwPort" name="core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="R-Car+M3+%284%29/core+to+bus?type=HwPort" name="core to bus" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%284%29/HMI+core+port?type=HwPort" name="HMI core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%284%29/HMI+core+to+bus?type=HwPort" name="HMI core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%281%29?type=Memory" name="FLASH (1)" definition="Flash-R-Car+M3+16+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%281%29/HMI+FLASH+port?type=HwPort" name="HMI FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%281%29?type=Memory" name="RAM (1)" definition="RAM-R-Car+M3+2+GiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%281%29/HMI+RAM+port?type=HwPort" name="HMI RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-R-Car+M3+128+KiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%281%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%281%29/HMI+EEPROM+port?type=HwPort" name="HMI EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%282%29?type=Memory" name="FLASH (2)" definition="Flash-R-Car+M3+16+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%282%29/HMI+FLASH+port?type=HwPort" name="HMI FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%282%29?type=Memory" name="RAM (2)" definition="RAM-R-Car+M3+2+GiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%282%29/HMI+RAM+port?type=HwPort" name="HMI RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%282%29?type=Memory" name="EEPROM (2)" definition="EEPROM-R-Car+M3+128+KiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%282%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%282%29/HMI+EEPROM+port?type=HwPort" name="HMI EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%283%29?type=Memory" name="FLASH (3)" definition="Flash-R-Car+M3+16+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%283%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%283%29/HMI+FLASH+port?type=HwPort" name="HMI FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%283%29?type=Memory" name="RAM (3)" definition="RAM-R-Car+M3+2+GiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%283%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%283%29/HMI+RAM+port?type=HwPort" name="HMI RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%283%29?type=Memory" name="EEPROM (3)" definition="EEPROM-R-Car+M3+128+KiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%283%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%283%29/HMI+EEPROM+port?type=HwPort" name="HMI EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="FLASH+%284%29?type=Memory" name="FLASH (4)" definition="Flash-R-Car+M3+16+MiB?type=MemoryDefinition">
-            <ports xmi:id="FLASH+%284%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="FLASH+%284%29/HMI+FLASH+port?type=HwPort" name="HMI FLASH port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="RAM+%284%29?type=Memory" name="RAM (4)" definition="RAM-R-Car+M3+2+GiB?type=MemoryDefinition">
-            <ports xmi:id="RAM+%284%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="RAM+%284%29/HMI+RAM+port?type=HwPort" name="HMI RAM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%284%29?type=Memory" name="EEPROM (4)" definition="EEPROM-R-Car+M3+128+KiB?type=MemoryDefinition">
-            <ports xmi:id="EEPROM+%284%29/mem+port?type=HwPort" name="mem port" bitWidth="0" priority="0" portType="responder"/>
+            <ports xmi:id="EEPROM+%284%29/HMI+EEPROM+port?type=HwPort" name="HMI EEPROM port" bitWidth="0" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:ConnectionHandler" xmi:id="MCU+Handler?type=ConnectionHandler" name="MCU Handler">
             <ports xmi:id="MCU+Handler/MCU-HMIM+Port+%281%29?type=HwPort" name="MCU-HMIM Port (1)" bitWidth="0" priority="0"/>
@@ -482,22 +546,22 @@
             <ports xmi:id="MCU+Handler/MCU-HMIM+Port+%284%29?type=HwPort" name="MCU-HMIM Port (4)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU+Handler/MCU-HMIM+Handler+Out?type=HwPort" name="MCU-HMIM Handler Out" bitWidth="0" priority="0"/>
           </modules>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="R-Car+M3+%281%29/core+port?type=HwPort" port2="EEPROM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+M3+%281%29/core+port?type=HwPort" port2="FLASH+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+M3+%281%29/core+port?type=HwPort" port2="RAM+%281%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="R-Car+M3+%282%29/core+port?type=HwPort" port2="EEPROM+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+M3+%282%29/core+port?type=HwPort" port2="FLASH+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+M3+%282%29/core+port?type=HwPort" port2="RAM+%282%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="R-Car+M3+%283%29/core+port?type=HwPort" port2="EEPROM+%283%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+M3+%283%29/core+port?type=HwPort" port2="FLASH+%283%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+M3+%283%29/core+port?type=HwPort" port2="RAM+%283%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="R-Car+M3+%284%29/core+port?type=HwPort" port2="EEPROM+%284%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+M3+%284%29/core+port?type=HwPort" port2="FLASH+%284%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+M3+%284%29/core+port?type=HwPort" port2="RAM+%284%29/mem+port?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-HMIM+Port+%281%29?type=HwPort" port2="R-Car+M3+%281%29/core+to+bus?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-HMIM+Port+%282%29?type=HwPort" port2="R-Car+M3+%282%29/core+to+bus?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-HMIM+Port+%283%29?type=HwPort" port2="R-Car+M3+%283%29/core+to+bus?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-HMIM+Port+%284%29?type=HwPort" port2="R-Car+M3+%284%29/core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="R-Car+M3+%281%29/HMI+core+port?type=HwPort" port2="EEPROM+%281%29/HMI+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+M3+%281%29/HMI+core+port?type=HwPort" port2="FLASH+%281%29/HMI+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+M3+%281%29/HMI+core+port?type=HwPort" port2="RAM+%281%29/HMI+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="R-Car+M3+%282%29/HMI+core+port?type=HwPort" port2="EEPROM+%282%29/HMI+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+M3+%282%29/HMI+core+port?type=HwPort" port2="FLASH+%282%29/HMI+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+M3+%282%29/HMI+core+port?type=HwPort" port2="RAM+%282%29/HMI+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="R-Car+M3+%283%29/HMI+core+port?type=HwPort" port2="EEPROM+%283%29/HMI+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+M3+%283%29/HMI+core+port?type=HwPort" port2="FLASH+%283%29/HMI+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+M3+%283%29/HMI+core+port?type=HwPort" port2="RAM+%283%29/HMI+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="R-Car+M3+%284%29/HMI+core+port?type=HwPort" port2="EEPROM+%284%29/HMI+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="R-Car+M3+%284%29/HMI+core+port?type=HwPort" port2="FLASH+%284%29/HMI+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="R-Car+M3+%284%29/HMI+core+port?type=HwPort" port2="RAM+%284%29/HMI+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-HMIM+Port+%281%29?type=HwPort" port2="R-Car+M3+%281%29/HMI+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-HMIM+Port+%282%29?type=HwPort" port2="R-Car+M3+%282%29/HMI+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-HMIM+Port+%283%29?type=HwPort" port2="R-Car+M3+%283%29/HMI+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-HMIM+Port+%284%29?type=HwPort" port2="R-Car+M3+%284%29/HMI+core+to+bus?type=HwPort"/>
         </structures>
         <modules xsi:type="am:ConnectionHandler" xmi:id="HMIM-ConnectionHandler?type=ConnectionHandler" name="HMIM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
           <ports xmi:id="HMIM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
@@ -513,7 +577,7 @@
       <defaultValue value="240.0" unit="MHz"/>
     </domains>
     <domains xsi:type="am:PowerDomain" xmi:id="RH850?type=PowerDomain" name="RH850" powerGating="false">
-      <defaultValue value="5.0" unit="V"/>
+      <defaultValue value="3.3" unit="V"/>
     </domains>
     <domains xsi:type="am:FrequencyDomain" xmi:id="RH850%2FC1M-Ax?type=FrequencyDomain" name="RH850/C1M-Ax" clockGating="false">
       <defaultValue value="240.0" unit="MHz"/>
