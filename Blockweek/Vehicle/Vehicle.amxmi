@@ -3,7 +3,6 @@
   <swModel>
     <tasks xmi:id="Task-5ms?type=Task" name="Task-5ms" multipleTaskActivationLimit="0">
       <activityGraph>
-        <items xsi:type="am:Group" name="ACMZone" ordered="true" interruptible="true"/>
         <items xsi:type="am:Group" name="VCM" ordered="true" interruptible="true">
           <items xsi:type="am:Group" name="CenterZone" ordered="true" interruptible="true">
             <items xsi:type="am:RunnableCall" runnable="ACM-checkFault?type=Runnable"/>
@@ -11,15 +10,15 @@
           <items xsi:type="am:Group" name="CenterZone-keepalive" ordered="true" interruptible="true">
             <items xsi:type="am:RunnableCall" runnable="ACM-keepalive?type=Runnable"/>
           </items>
+          <items xsi:type="am:Group" name="Timeout" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ACM-timeout?type=Runnable"/>
+          </items>
         </items>
       </activityGraph>
     </tasks>
     <tasks xmi:id="Task-10ms?type=Task" name="Task-10ms" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="VCM" ordered="true" interruptible="true">
-          <items xsi:type="am:Group" name="CenterZone" ordered="true" interruptible="true">
-            <items xsi:type="am:RunnableCall" runnable="ACM-keepalive?type=Runnable"/>
-          </items>
           <items xsi:type="am:Group" name="FrontZone-keepalive" ordered="true" interruptible="true">
             <items xsi:type="am:RunnableCall" runnable="ECU-keepalive?type=Runnable"/>
             <items xsi:type="am:RunnableCall" runnable="TCM-keepalive?type=Runnable"/>
@@ -29,17 +28,11 @@
             <items xsi:type="am:RunnableCall" runnable="ECU-timeout?type=Runnable"/>
             <items xsi:type="am:RunnableCall" runnable="TCM-timeout?type=Runnable"/>
             <items xsi:type="am:RunnableCall" runnable="TCU-timeout?type=Runnable"/>
-            <items xsi:type="am:RunnableCall" runnable="VCM-timeout?type=Runnable"/>
-            <items xsi:type="am:RunnableCall" runnable="BCM-timeout?type=Runnable"/>
-            <items xsi:type="am:RunnableCall" runnable="SCM-timeout?type=Runnable"/>
-            <items xsi:type="am:RunnableCall" runnable="ACM-timeout?type=Runnable"/>
-            <items xsi:type="am:RunnableCall" runnable="HMI-timeout?type=Runnable"/>
           </items>
           <items xsi:type="am:Group" name="FrontZone" ordered="true" interruptible="true">
             <items xsi:type="am:RunnableCall" runnable="ECU-checkFault?type=Runnable"/>
             <items xsi:type="am:RunnableCall" runnable="TCM-checkFault?type=Runnable"/>
             <items xsi:type="am:RunnableCall" runnable="TCU-checkFault?type=Runnable"/>
-            <items xsi:type="am:RunnableCall" runnable="VCM-checkFault?type=Runnable"/>
           </items>
         </items>
       </activityGraph>
@@ -55,10 +48,14 @@
             <items xsi:type="am:RunnableCall" runnable="BCM-keepalive?type=Runnable"/>
             <items xsi:type="am:RunnableCall" runnable="SCM-keepalive?type=Runnable"/>
           </items>
+          <items xsi:type="am:Group" name="Timeout" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="BCM-timeout?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="SCM-timeout?type=Runnable"/>
+          </items>
         </items>
       </activityGraph>
     </tasks>
-    <tasks xmi:id="Task-40ms?type=Task" name="Task-40ms" multipleTaskActivationLimit="0">
+    <tasks xmi:id="Task-100ms?type=Task" name="Task-100ms" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="VCM" ordered="true" interruptible="true">
           <items xsi:type="am:Group" name="BackZone" ordered="true" interruptible="true">
@@ -67,17 +64,15 @@
           <items xsi:type="am:Group" name="BackZone-keepalive" ordered="true" interruptible="true">
             <items xsi:type="am:RunnableCall" runnable="HMI-keepalive?type=Runnable"/>
           </items>
+          <items xsi:type="am:Group" name="HMI - Data" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="HMI-Data?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="Timeout" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="HMI-timeout?type=Runnable"/>
+          </items>
         </items>
       </activityGraph>
     </tasks>
-    <tasks xmi:id="Task-100ms?type=Task" name="Task-100ms" multipleTaskActivationLimit="0">
-      <activityGraph>
-        <items xsi:type="am:Group" name="HMI - Data" ordered="true" interruptible="true">
-          <items xsi:type="am:RunnableCall" runnable="HMI-Data?type=Runnable"/>
-        </items>
-      </activityGraph>
-    </tasks>
-    <tasks xmi:id="Task-500ms?type=Task" name="Task-500ms" multipleTaskActivationLimit="0"/>
     <tasks xmi:id="Task-1000ms?type=Task" name="Task-1000ms" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="DTC - Diagnostic Trouble Code" ordered="true" interruptible="true">
@@ -101,12 +96,6 @@
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="TCU-AliveCounter?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="TCU-timeoutFlag?type=Label" access="write"/>
-      </activityGraph>
-    </runnables>
-    <runnables xmi:id="VCM-timeout?type=Runnable" name="VCM-timeout" callback="false" service="false">
-      <activityGraph>
-        <items xsi:type="am:LabelAccess" data="VCM-AliveCounter?type=Label" access="read"/>
-        <items xsi:type="am:LabelAccess" data="VCM-timeoutFlag?type=Label" access="write"/>
       </activityGraph>
     </runnables>
     <runnables xmi:id="BCM-timeout?type=Runnable" name="BCM-timeout" callback="false" service="false">
@@ -172,48 +161,49 @@
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="ECU-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="ECU-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ECU-timeoutFlag?type=Label" access="read"/>
       </activityGraph>
     </runnables>
     <runnables xmi:id="TCM-checkFault?type=Runnable" name="TCM-checkFault" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="TCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="TCM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCM-timeoutFlag?type=Label" access="read"/>
       </activityGraph>
     </runnables>
     <runnables xmi:id="TCU-checkFault?type=Runnable" name="TCU-checkFault" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="TCU-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="TCU-Fault?type=Label" access="read"/>
-      </activityGraph>
-    </runnables>
-    <runnables xmi:id="VCM-checkFault?type=Runnable" name="VCM-checkFault" callback="false" service="false">
-      <activityGraph>
-        <items xsi:type="am:LabelAccess" data="VCM-MemFaults?type=Label" access="write"/>
-        <items xsi:type="am:LabelAccess" data="VCM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCU-timeoutFlag?type=Label" access="read"/>
       </activityGraph>
     </runnables>
     <runnables xmi:id="BCM-checkFault?type=Runnable" name="BCM-checkFault" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="BCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="BCM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="BCM-timeoutFlag?type=Label" access="read"/>
       </activityGraph>
     </runnables>
     <runnables xmi:id="SCM-checkFault?type=Runnable" name="SCM-checkFault" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="SCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="SCM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="SCM-timeoutFlag?type=Label" access="read"/>
       </activityGraph>
     </runnables>
     <runnables xmi:id="ACM-checkFault?type=Runnable" name="ACM-checkFault" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="ACM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="ACM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ACM-timeoutFlag?type=Label" access="read"/>
       </activityGraph>
     </runnables>
     <runnables xmi:id="HMI-checkFault?type=Runnable" name="HMI-checkFault" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="HMI-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="HMI-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="HMI-timeoutFlag?type=Label" access="read"/>
       </activityGraph>
     </runnables>
     <runnables xmi:id="VCM-checkFaultMemArea?type=Runnable" name="VCM-checkFaultMemArea" callback="false" service="false">
@@ -222,22 +212,15 @@
         <items xsi:type="am:LabelAccess" data="ECU-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="TCM-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="TCU-MemFaults?type=Label" access="read"/>
-        <items xsi:type="am:LabelAccess" data="VCM-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="BCM-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="SCM-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="ACM-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="HMI-MemFaults?type=Label" access="read"/>
-        <items xsi:type="am:LabelAccess" data="ECU-timeoutFlag?type=Label" access="read"/>
-        <items xsi:type="am:LabelAccess" data="TCM-timeoutFlag?type=Label" access="read"/>
-        <items xsi:type="am:LabelAccess" data="TCU-timeoutFlag?type=Label" access="read"/>
-        <items xsi:type="am:LabelAccess" data="BCM-timeoutFlag?type=Label" access="read"/>
-        <items xsi:type="am:LabelAccess" data="SCM-timeoutFlag?type=Label" access="read"/>
-        <items xsi:type="am:LabelAccess" data="ACM-timeoutFlag?type=Label" access="read"/>
-        <items xsi:type="am:LabelAccess" data="HMI-timeoutFlag?type=Label" access="read"/>
       </activityGraph>
     </runnables>
     <runnables xmi:id="HMI-Data?type=Runnable" name="HMI-Data" callback="false" service="false">
       <activityGraph>
+        <items xsi:type="am:LabelAccess" data="HMI-DataIn?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="HMI-DataOut?type=Label" access="write"/>
       </activityGraph>
     </runnables>
@@ -341,6 +324,7 @@
       <size value="10" unit="B"/>
     </labels>
     <labels xmi:id="HMI-DataOut?type=Label" name="HMI-DataOut" constant="false" bVolatile="false"/>
+    <labels xmi:id="HMI-DataIn?type=Label" name="HMI-DataIn" constant="false" bVolatile="false"/>
   </swModel>
   <hwModel>
     <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="RH850%2FP1H-C?type=ProcessingUnitDefinition" name="RH850/P1H-C" puType="CPU"/>
@@ -618,13 +602,13 @@
         <ports xmi:id="VehicleControlModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
         <structures xmi:id="MicroController?type=HwStructure" name="MicroController" structureType="Microcontroller">
           <ports xmi:id="MicroController/MCU-VCM+Handler+Out?type=HwPort" name="MCU-VCM Handler Out" bitWidth="0" priority="0"/>
-          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%281%29?type=ProcessingUnit" name="RH850/P1M (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1M?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FP1M+%281%29/VCM+core+port?type=HwPort" name="VCM core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FP1M+%281%29/VCM+core+to+bus?type=HwPort" name="VCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit" name="RH850/P1M (1) VCM" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1M+%281%29+VCM/VCM+core+port?type=HwPort" name="VCM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%281%29+VCM/VCM+core+to+bus?type=HwPort" name="VCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
-          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%282%29?type=ProcessingUnit" name="RH850/P1M (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1M?type=ProcessingUnitDefinition">
-            <ports xmi:id="RH850%2FP1M+%282%29/VCM+core+port?type=HwPort" name="VCM core port" bitWidth="0" priority="0" portType="initiator"/>
-            <ports xmi:id="RH850%2FP1M+%282%29/VCM+core+to+bus?type=HwPort" name="VCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" name="RH850/P1M (2) VCM" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1M+%282%29+VCM/VCM+core+port?type=HwPort" name="VCM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%282%29+VCM/VCM+core+to+bus?type=HwPort" name="VCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
           </modules>
           <modules xsi:type="am:Memory" xmi:id="EEPROM+%281%29?type=Memory" name="EEPROM (1)" definition="EEPROM-RH850%2FP1M+256+KiB?type=MemoryDefinition">
             <ports xmi:id="EEPROM+%281%29/VCM+EEPROM+port?type=HwPort" name="VCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
@@ -649,14 +633,14 @@
             <ports xmi:id="MCU+Handler/MCU-VCM+Port+%282%29?type=HwPort" name="MCU-VCM Port (2)" bitWidth="0" priority="0"/>
             <ports xmi:id="MCU+Handler/MCU-VCM+Handler+Out?type=HwPort" name="MCU-VCM Handler Out" bitWidth="0" priority="0"/>
           </modules>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%281%29/VCM+core+port?type=HwPort" port2="EEPROM+%281%29/VCM+EEPROM+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%281%29/VCM+core+port?type=HwPort" port2="FLASH+%281%29/VCM+FLASH+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%281%29/VCM+core+port?type=HwPort" port2="RAM+%281%29/VCM+RAM+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%282%29/VCM+core+port?type=HwPort" port2="EEPROM+%282%29/VCM+EEPROM+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%282%29/VCM+core+port?type=HwPort" port2="FLASH+%282%29/VCM+FLASH+port?type=HwPort"/>
-          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%282%29/VCM+core+port?type=HwPort" port2="RAM+%282%29/VCM+RAM+port?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-VCM+Port+%281%29?type=HwPort" port2="RH850%2FP1M+%281%29/VCM+core+to+bus?type=HwPort"/>
-          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-VCM+Port+%282%29?type=HwPort" port2="RH850%2FP1M+%282%29/VCM+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%281%29+VCM/VCM+core+port?type=HwPort" port2="EEPROM+%281%29/VCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%281%29+VCM/VCM+core+port?type=HwPort" port2="FLASH+%281%29/VCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%281%29+VCM/VCM+core+port?type=HwPort" port2="RAM+%281%29/VCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+EEPROM?type=HwConnection" name="Core To EEPROM" port1="RH850%2FP1M+%282%29+VCM/VCM+core+port?type=HwPort" port2="EEPROM+%282%29/VCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+FLASH?type=HwConnection" name="Core To FLASH" port1="RH850%2FP1M+%282%29+VCM/VCM+core+port?type=HwPort" port2="FLASH+%282%29/VCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController/Core+To+RAM?type=HwConnection" name="Core To RAM" port1="RH850%2FP1M+%282%29+VCM/VCM+core+port?type=HwPort" port2="RAM+%282%29/VCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%281%29?type=HwConnection" name="MCU Handler (1)" port1="MCU+Handler/MCU-VCM+Port+%281%29?type=HwPort" port2="RH850%2FP1M+%281%29+VCM/VCM+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController/MCU+Handler+%282%29?type=HwConnection" name="MCU Handler (2)" port1="MCU+Handler/MCU-VCM+Port+%282%29?type=HwPort" port2="RH850%2FP1M+%282%29+VCM/VCM+core+to+bus?type=HwPort"/>
         </structures>
         <modules xsi:type="am:ConnectionHandler" xmi:id="VCM-ConnectionHandler?type=ConnectionHandler" name="VCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain">
           <ports xmi:id="VCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
@@ -667,6 +651,13 @@
         <connections xmi:id="VehicleControlModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="VCM-ConnectionHandler/PortOut?type=HwPort" port2="VehicleControlModule/FlexRay?type=HwPort"/>
         <connections xmi:id="VehicleControlModule/MCU-VCM+Handler?type=HwConnection" name="MCU-VCM Handler" port1="VCM-ConnectionHandler/PortIn?type=HwPort" port2="MCU+Handler/MCU-VCM+Handler+Out?type=HwPort"/>
       </structures>
+      <connections xmi:id="FrontZoneECU/VCM-ECU?type=HwConnection" name="VCM-ECU" port1="VehicleControlModule/CAN?type=HwPort" port2="EngineControlUnit/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-TCM?type=HwConnection" name="VCM-TCM" port1="VehicleControlModule/CAN?type=HwPort" port2="TransmissionControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-TCU?type=HwConnection" name="VCM-TCU" port1="VehicleControlModule/CAN?type=HwPort" port2="TelematicsControlUnit/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-BCM?type=HwConnection" name="VCM-BCM" port1="VehicleControlModule/CAN?type=HwPort" port2="BrakeControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-SCM?type=HwConnection" name="VCM-SCM" port1="VehicleControlModule/CAN?type=HwPort" port2="SteeringControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-ACM?type=HwConnection" name="VCM-ACM" port1="VehicleControlModule/CAN?type=HwPort" port2="AirbagControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-HMI?type=HwConnection" name="VCM-HMI" port1="VehicleControlModule/CAN?type=HwPort" port2="HumanMachineInterfaceModule/CAN?type=HwPort"/>
     </structures>
     <structures xmi:id="BackZoneECU?type=HwStructure" name="BackZoneECU" structureType="System">
       <structures xmi:id="BrakeControlModule?type=HwStructure" name="BrakeControlModule" structureType="ECU">
@@ -914,6 +905,16 @@
         <connections xmi:id="HumanMachineInterfaceModule/MCU-HMIM+Handler?type=HwConnection" name="MCU-HMIM Handler" port1="HMIM-ConnectionHandler/PortIn?type=HwPort" port2="MCU+Handler/MCU-HMIM+Handler+Out?type=HwPort"/>
       </structures>
     </structures>
+    <structures xmi:id="CAN?type=HwStructure" name="CAN" structureType="System">
+      <ports xmi:id="CAN/Can?type=HwPort" name="Can" bitWidth="0" priority="0"/>
+      <connections xmi:id="CAN/ACM_CAN?type=HwConnection" name="ACM_CAN" port1="CAN/Can?type=HwPort" port2="AirbagControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/VCM_CAN?type=HwConnection" name="VCM_CAN" port1="CAN/Can?type=HwPort" port2="VehicleControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/TCM_CAN?type=HwConnection" name="TCM_CAN" port1="CAN/Can?type=HwPort" port2="TransmissionControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/TCU_CAN?type=HwConnection" name="TCU_CAN" port1="CAN/Can?type=HwPort" port2="TelematicsControlUnit/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/BCM_CAN?type=HwConnection" name="BCM_CAN" port1="CAN/Can?type=HwPort" port2="BrakeControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/SAS_CAN?type=HwConnection" name="SAS_CAN" port1="CAN/Can?type=HwPort" port2="SteeringControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/HMI_CAN?type=HwConnection" name="HMI_CAN" port1="CAN/Can?type=HwPort" port2="HumanMachineInterfaceModule/CAN?type=HwPort"/>
+    </structures>
     <domains xsi:type="am:FrequencyDomain" xmi:id="RH850%2FE2x?type=FrequencyDomain" name="RH850/E2x" clockGating="false">
       <defaultValue value="240.0" unit="MHz"/>
     </domains>
@@ -943,7 +944,42 @@
     </domains>
   </hwModel>
   <osModel>
-    <operatingSystems name=""/>
+    <operatingSystems name="">
+      <taskSchedulers xmi:id="Priority+Based+Round+Robin?type=TaskScheduler" name="Priority Based Round Robin" definition="PriorityBasedRoundRobin?type=SchedulerDefinition"/>
+      <taskSchedulers xmi:id="OSEKA?type=TaskScheduler" name="OSEKA" definition="OSEK?type=SchedulerDefinition">
+        <parentAssociation parent="Priority+Based+Round+Robin?type=TaskScheduler">
+          <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+            <value xsi:type="am:IntegerObject" value="5"/>
+          </schedulingParameters>
+        </parentAssociation>
+      </taskSchedulers>
+      <taskSchedulers xmi:id="OSEKB?type=TaskScheduler" name="OSEKB" definition="OSEK?type=SchedulerDefinition">
+        <parentAssociation parent="Priority+Based+Round+Robin?type=TaskScheduler">
+          <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+            <value xsi:type="am:IntegerObject" value="10"/>
+          </schedulingParameters>
+        </parentAssociation>
+      </taskSchedulers>
+      <taskSchedulers xmi:id="OSEKC?type=TaskScheduler" name="OSEKC" definition="OSEK?type=SchedulerDefinition">
+        <parentAssociation parent="Priority+Based+Round+Robin?type=TaskScheduler">
+          <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+            <value xsi:type="am:IntegerObject" value="15"/>
+          </schedulingParameters>
+        </parentAssociation>
+      </taskSchedulers>
+      <taskSchedulers xmi:id="OSEKD?type=TaskScheduler" name="OSEKD" definition="OSEK?type=SchedulerDefinition">
+        <parentAssociation parent="Priority+Based+Round+Robin?type=TaskScheduler">
+          <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+            <value xsi:type="am:IntegerObject" value="20"/>
+          </schedulingParameters>
+        </parentAssociation>
+      </taskSchedulers>
+    </operatingSystems>
+    <schedulerDefinitions xmi:id="OSEK?type=SchedulerDefinition" name="OSEK" description="OSEK compliant Scheduling. A fixed priority preemptive scheduling algorithm&#xA;with task groups. Tasks belonging to the same task group are scheduled&#xA;cooperatively (they do not preempt each other), preemptive otherwise.&#xA;Tasks with the same priority also behave cooperatively.&#xA;&#xA;Algorithm parameters&#xA; -&#xA;&#xA;Process parameters&#xA; - priority [1] Integer&#xA;      The priority of the process (a higher value means a higher priority).&#xA; - taskGroup [1] Integer&#xA;      The OSEK task group number (if for two processes the number is equal,&#xA;      that means they are in the same task group).&#xA;&#xA;Options:&#xA; -&#xA;&#xA;Reference:&#xA; - TODO" processParameters="priority?type=SchedulingParameterDefinition taskGroup?type=SchedulingParameterDefinition" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
+    <schedulerDefinitions xmi:id="PriorityBasedRoundRobin?type=SchedulerDefinition" name="PriorityBasedRoundRobin" description="Round Robin scheduling algorithm assigns equally sized time slices&#xA;to each process that it schedules. The priority describes the order&#xA;in which the processes will be executed. If two processes have the&#xA;same priority, the order of these two is random (non-deterministic).&#xA;&#xA;Algorithm parameters&#xA; - timeSliceLength [1] Time&#xA;      Length of each time slice.&#xA;&#xA;Process parameters&#xA; - priority [1] Integer&#xA;      The priority of the process (a higher value means a higher priority).&#xA;&#xA;Options:&#xA; -&#xA;&#xA;Reference:&#xA; - TODO" algorithmParameters="timeSliceLength?type=SchedulingParameterDefinition" processParameters="priority?type=SchedulingParameterDefinition" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
+    <schedulingParameterDefinitions xmi:id="priority?type=SchedulingParameterDefinition" name="priority" type="Integer" many="false" mandatory="true"/>
+    <schedulingParameterDefinitions xmi:id="taskGroup?type=SchedulingParameterDefinition" name="taskGroup" type="Integer" many="false" mandatory="true"/>
+    <schedulingParameterDefinitions xmi:id="timeSliceLength?type=SchedulingParameterDefinition" name="timeSliceLength" type="Time" many="false" mandatory="true"/>
   </osModel>
   <stimuliModel>
     <stimuli xsi:type="am:PeriodicStimulus" xmi:id="5+ms?type=PeriodicStimulus" name="5 ms">
@@ -958,16 +994,8 @@
       <recurrence value="20" unit="ms"/>
       <offset value="0" unit="ms"/>
     </stimuli>
-    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="40+ms?type=PeriodicStimulus" name="40 ms">
-      <recurrence value="40" unit="ms"/>
-      <offset value="0" unit="ms"/>
-    </stimuli>
     <stimuli xsi:type="am:PeriodicStimulus" xmi:id="100+ms?type=PeriodicStimulus" name="100 ms">
       <recurrence value="100" unit="ms"/>
-      <offset value="0" unit="ms"/>
-    </stimuli>
-    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="500+ms?type=PeriodicStimulus" name="500 ms">
-      <recurrence value="500" unit="ms"/>
       <offset value="0" unit="ms"/>
     </stimuli>
     <stimuli xsi:type="am:PeriodicStimulus" xmi:id="1000+ms?type=PeriodicStimulus" name="1000 ms">
@@ -975,4 +1003,166 @@
       <offset value="0" unit="ms"/>
     </stimuli>
   </stimuliModel>
+  <eventModel>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask5ms?type=ProcessEvent" name="ActivateTask5ms" eventType="activate" entity="Task-5ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask5ms?type=ProcessEvent" name="EndTask5ms" eventType="terminate" entity="Task-5ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask10ms?type=ProcessEvent" name="ActivateTask10ms" eventType="activate" entity="Task-10ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask10ms?type=ProcessEvent" name="EndTask10ms" eventType="terminate" entity="Task-10ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask20ms?type=ProcessEvent" name="ActivateTask20ms" eventType="activate" entity="Task-20ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask20ms?type=ProcessEvent" name="EndTask20ms" eventType="terminate" entity="Task-20ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask100ms?type=ProcessEvent" name="ActivateTask100ms" eventType="activate" entity="Task-100ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask100ms?type=ProcessEvent" name="EndTask100ms" eventType="terminate" entity="Task-100ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask1000ms?type=ProcessEvent" name="ActivateTask1000ms" eventType="activate" entity="Task-1000ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask1000ms?type=ProcessEvent" name="EndTask1000ms" eventType="terminate" entity="Task-1000ms?type=Task"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="ECU_faultCheck_Start?type=RunnableEvent" name="ECU_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="TCM_faultCheck_Start?type=RunnableEvent" name="TCM_faultCheck_Start" eventType="start" entity="TCM-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="TCU_faultCheck_Start?type=RunnableEvent" name="TCU_faultCheck_Start" eventType="start" entity="TCU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="ECU_faultCheck_Terminate?type=RunnableEvent" name="ECU_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="TCM_faultCheck_Terminate?type=RunnableEvent" name="TCM_faultCheck_Terminate" eventType="terminate" entity="TCM-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="TCU_faultCheck_Terminate?type=RunnableEvent" name="TCU_faultCheck_Terminate" eventType="terminate" entity="TCU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="BCM_faultCheck_Start?type=RunnableEvent" name="BCM_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="BCM_faultCheck_Terminate?type=RunnableEvent" name="BCM_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="SCM_faultCheck_Start?type=RunnableEvent" name="SCM_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="SCM_faultCheck_Terminate?type=RunnableEvent" name="SCM_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="ACM_faultCheck_Start?type=RunnableEvent" name="ACM_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="ACM_faultCheck_Terminate?type=RunnableEvent" name="ACM_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="HMI_faultCheck_Start?type=RunnableEvent" name="HMI_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="HMI_faultCheck_Terminate?type=RunnableEvent" name="HMI_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+  </eventModel>
+  <constraintsModel>
+    <eventChains xmi:id="TCU_eventChain?type=EventChain" name="TCU_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCU_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="TCU_faultCheck_Start?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCU_faultCheckStart" stimulus="TCU_faultCheck_Start?type=RunnableEvent" response="TCU_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCU_faultCheckTerminate" stimulus="TCU_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="TCM_eventChain?type=EventChain" name="TCM_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="TCM_faultCheck_Start?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCM_faultCheckStart" stimulus="TCM_faultCheck_Start?type=RunnableEvent" response="TCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCM_faultCheckTerminate" stimulus="TCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="ECU_eventChain?type=EventChain" name="ECU_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ECU_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="ECU_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ECU_faultCheckStart" stimulus="ECU_faultCheck_Start?type=RunnableEvent" response="ECU_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ECU_faultCheckTerminate" stimulus="ECU_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="BCM_eventChain?type=EventChain" name="BCM_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="BCM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="BCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="BCM_faultCheckStart" stimulus="BCM_faultCheck_Start?type=RunnableEvent" response="BCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="BCM_faultCheckTerminate" stimulus="BCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="SCM_eventChain?type=EventChain" name="SCM_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="SCM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="SCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="SCM_faultCheckStart" stimulus="SCM_faultCheck_Start?type=RunnableEvent" response="SCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="SCM_faultCheckTerminate" stimulus="SCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="ACM_eventChain?type=EventChain" name="ACM_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ACM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="ACM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ACM_faultCheckStart" stimulus="ACM_faultCheck_Start?type=RunnableEvent" response="ACM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ACM_faultCheckTerminate" stimulus="ACM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="HMI_eventChain?type=EventChain" name="HMI_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="HMI_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="HMI_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="HMI_faultCheckStart" stimulus="HMI_faultCheck_Start?type=RunnableEvent" response="HMI_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="HMI_faultCheckTerminate" stimulus="HMI_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_05" severity="Critical" process="Task-5ms?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="5" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_10" severity="Critical" process="Task-10ms?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="10" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_20" severity="Critical" process="Task-20ms?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="20" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_100" severity="Critical" process="Task-100ms?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="100" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_1000" severity="Critical" process="Task-1000ms?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="1000" unit="ms"/>
+      </limit>
+    </requirements>
+  </constraintsModel>
+  <mappingModel>
+    <schedulerAllocation scheduler="Priority+Based+Round+Robin?type=TaskScheduler" responsibility="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKA?type=TaskScheduler" responsibility="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKB?type=TaskScheduler" responsibility="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKC?type=TaskScheduler" responsibility="RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%282%29+VCM?type=ProcessingUnit"/>
+    <schedulerAllocation scheduler="OSEKD?type=TaskScheduler" responsibility="RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%282%29+VCM?type=ProcessingUnit"/>
+    <taskAllocation task="Task-5ms?type=Task" scheduler="OSEKA?type=TaskScheduler">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="5"/>
+      </schedulingParameters>
+    </taskAllocation>
+    <taskAllocation task="Task-10ms?type=Task" scheduler="OSEKB?type=TaskScheduler">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="10"/>
+      </schedulingParameters>
+    </taskAllocation>
+    <taskAllocation task="Task-20ms?type=Task" scheduler="OSEKC?type=TaskScheduler">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="15"/>
+      </schedulingParameters>
+    </taskAllocation>
+    <taskAllocation task="Task-100ms?type=Task" scheduler="OSEKD?type=TaskScheduler">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="20"/>
+      </schedulingParameters>
+    </taskAllocation>
+    <taskAllocation task="Task-1000ms?type=Task" scheduler="OSEKD?type=TaskScheduler">
+      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
+        <value xsi:type="am:IntegerObject" value="20"/>
+      </schedulingParameters>
+    </taskAllocation>
+  </mappingModel>
 </am:Amalthea>
