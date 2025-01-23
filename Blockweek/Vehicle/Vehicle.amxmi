@@ -994,42 +994,13 @@
     </domains>
   </hwModel>
   <osModel>
-    <operatingSystems name="">
-      <taskSchedulers xmi:id="Priority+Based+Round+Robin?type=TaskScheduler" name="Priority Based Round Robin" definition="PriorityBasedRoundRobin?type=SchedulerDefinition"/>
-      <taskSchedulers xmi:id="OSEKA?type=TaskScheduler" name="OSEKA" definition="OSEK?type=SchedulerDefinition">
-        <parentAssociation parent="Priority+Based+Round+Robin?type=TaskScheduler">
-          <schedulingParameters key="priority?type=SchedulingParameterDefinition">
-            <value xsi:type="am:IntegerObject" value="5"/>
-          </schedulingParameters>
-        </parentAssociation>
-      </taskSchedulers>
-      <taskSchedulers xmi:id="OSEKB?type=TaskScheduler" name="OSEKB" definition="OSEK?type=SchedulerDefinition">
-        <parentAssociation parent="Priority+Based+Round+Robin?type=TaskScheduler">
-          <schedulingParameters key="priority?type=SchedulingParameterDefinition">
-            <value xsi:type="am:IntegerObject" value="10"/>
-          </schedulingParameters>
-        </parentAssociation>
-      </taskSchedulers>
-      <taskSchedulers xmi:id="OSEKC?type=TaskScheduler" name="OSEKC" definition="OSEK?type=SchedulerDefinition">
-        <parentAssociation parent="Priority+Based+Round+Robin?type=TaskScheduler">
-          <schedulingParameters key="priority?type=SchedulingParameterDefinition">
-            <value xsi:type="am:IntegerObject" value="15"/>
-          </schedulingParameters>
-        </parentAssociation>
-      </taskSchedulers>
-      <taskSchedulers xmi:id="OSEKD?type=TaskScheduler" name="OSEKD" definition="OSEK?type=SchedulerDefinition">
-        <parentAssociation parent="Priority+Based+Round+Robin?type=TaskScheduler">
-          <schedulingParameters key="priority?type=SchedulingParameterDefinition">
-            <value xsi:type="am:IntegerObject" value="20"/>
-          </schedulingParameters>
-        </parentAssociation>
+    <operatingSystems name="RTOS">
+      <taskSchedulers xmi:id="RateMonotonic?type=TaskScheduler" name="RateMonotonic">
+        <definition href="amlt:/#Monotonic?type=SchedulerDefinition"/>
       </taskSchedulers>
     </operatingSystems>
-    <schedulerDefinitions xmi:id="OSEK?type=SchedulerDefinition" name="OSEK" description="OSEK compliant Scheduling. A fixed priority preemptive scheduling algorithm&#xA;with task groups. Tasks belonging to the same task group are scheduled&#xA;cooperatively (they do not preempt each other), preemptive otherwise.&#xA;Tasks with the same priority also behave cooperatively.&#xA;&#xA;Algorithm parameters&#xA; -&#xA;&#xA;Process parameters&#xA; - priority [1] Integer&#xA;      The priority of the process (a higher value means a higher priority).&#xA; - taskGroup [1] Integer&#xA;      The OSEK task group number (if for two processes the number is equal,&#xA;      that means they are in the same task group).&#xA;&#xA;Options:&#xA; -&#xA;&#xA;Reference:&#xA; - TODO" processParameters="priority?type=SchedulingParameterDefinition taskGroup?type=SchedulingParameterDefinition" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
-    <schedulerDefinitions xmi:id="PriorityBasedRoundRobin?type=SchedulerDefinition" name="PriorityBasedRoundRobin" description="Round Robin scheduling algorithm assigns equally sized time slices&#xA;to each process that it schedules. The priority describes the order&#xA;in which the processes will be executed. If two processes have the&#xA;same priority, the order of these two is random (non-deterministic).&#xA;&#xA;Algorithm parameters&#xA; - timeSliceLength [1] Time&#xA;      Length of each time slice.&#xA;&#xA;Process parameters&#xA; - priority [1] Integer&#xA;      The priority of the process (a higher value means a higher priority).&#xA;&#xA;Options:&#xA; -&#xA;&#xA;Reference:&#xA; - TODO" algorithmParameters="timeSliceLength?type=SchedulingParameterDefinition" processParameters="priority?type=SchedulingParameterDefinition" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
-    <schedulingParameterDefinitions xmi:id="priority?type=SchedulingParameterDefinition" name="priority" type="Integer" many="false" mandatory="true"/>
-    <schedulingParameterDefinitions xmi:id="taskGroup?type=SchedulingParameterDefinition" name="taskGroup" type="Integer" many="false" mandatory="true"/>
-    <schedulingParameterDefinitions xmi:id="timeSliceLength?type=SchedulingParameterDefinition" name="timeSliceLength" type="Time" many="false" mandatory="true"/>
+    <schedulerDefinitions xmi:id="Monotonic?type=SchedulerDefinition" name="Monotonic" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
+    <schedulerDefinitions xmi:id="EarliestDeadlineFirst?type=SchedulerDefinition" name="EarliestDeadlineFirst" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
   </osModel>
   <stimuliModel>
     <stimuli xsi:type="am:PeriodicStimulus" xmi:id="5+ms?type=PeriodicStimulus" name="5 ms">
@@ -1184,35 +1155,13 @@
     </requirements>
   </constraintsModel>
   <mappingModel>
-    <schedulerAllocation scheduler="Priority+Based+Round+Robin?type=TaskScheduler" responsibility="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit"/>
-    <schedulerAllocation scheduler="OSEKA?type=TaskScheduler" responsibility="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit"/>
-    <schedulerAllocation scheduler="OSEKB?type=TaskScheduler" responsibility="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit"/>
-    <schedulerAllocation scheduler="OSEKC?type=TaskScheduler" responsibility="RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%282%29+VCM?type=ProcessingUnit"/>
-    <schedulerAllocation scheduler="OSEKD?type=TaskScheduler" responsibility="RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%282%29+VCM?type=ProcessingUnit"/>
-    <taskAllocation task="Task-5ms?type=Task" scheduler="OSEKA?type=TaskScheduler">
-      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
-        <value xsi:type="am:IntegerObject" value="5"/>
-      </schedulingParameters>
-    </taskAllocation>
-    <taskAllocation task="Task-10ms?type=Task" scheduler="OSEKB?type=TaskScheduler">
-      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
-        <value xsi:type="am:IntegerObject" value="10"/>
-      </schedulingParameters>
-    </taskAllocation>
-    <taskAllocation task="Task-20ms?type=Task" scheduler="OSEKC?type=TaskScheduler">
-      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
-        <value xsi:type="am:IntegerObject" value="15"/>
-      </schedulingParameters>
-    </taskAllocation>
-    <taskAllocation task="Task-100ms?type=Task" scheduler="OSEKD?type=TaskScheduler">
-      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
-        <value xsi:type="am:IntegerObject" value="20"/>
-      </schedulingParameters>
-    </taskAllocation>
-    <taskAllocation task="Task-1000ms?type=Task" scheduler="OSEKD?type=TaskScheduler">
-      <schedulingParameters key="priority?type=SchedulingParameterDefinition">
-        <value xsi:type="am:IntegerObject" value="20"/>
-      </schedulingParameters>
-    </taskAllocation>
+    <schedulerAllocation responsibility="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit">
+      <scheduler xsi:type="am:TaskScheduler" href="amlt:/#RateMonotonic?type=TaskScheduler"/>
+    </schedulerAllocation>
+    <taskAllocation task="Task-5ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+    <taskAllocation task="Task-10ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+    <taskAllocation task="Task-20ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+    <taskAllocation task="Task-100ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+    <taskAllocation task="Task-1000ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
   </mappingModel>
 </am:Amalthea>
