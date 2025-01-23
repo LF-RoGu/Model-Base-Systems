@@ -1049,6 +1049,8 @@
     <events xsi:type="am:RunnableEvent" xmi:id="ACM_faultCheck_Terminate?type=RunnableEvent" name="ACM_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
     <events xsi:type="am:RunnableEvent" xmi:id="HMI_faultCheck_Start?type=RunnableEvent" name="HMI_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
     <events xsi:type="am:RunnableEvent" xmi:id="HMI_faultCheck_Terminate?type=RunnableEvent" name="HMI_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="VCMCheckFaultMemArea_faultCheck_Start?type=RunnableEvent" name="VCMCheckFaultMemArea_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="VCMCheckFaultMemArea_faultCheck_Terminate?type=RunnableEvent" name="VCMCheckFaultMemArea_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
   </eventModel>
   <constraintsModel>
     <eventChains xmi:id="TCU_eventChain?type=EventChain" name="TCU_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
@@ -1084,26 +1086,26 @@
         <eventChain name="ECU_faultCheckTerminate" stimulus="ECU_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
       </items>
     </eventChains>
-    <eventChains xmi:id="BCM_eventChain?type=EventChain" name="BCM_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+    <eventChains xmi:id="BCM_eventChain?type=EventChain" name="BCM_eventChain" stimulus="ActivateTask20ms?type=ProcessEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
       <items xsi:type="am:EventChainContainer">
-        <eventChain name="BCM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="BCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+        <eventChain name="BCM_faultCheck" stimulus="ActivateTask20ms?type=ProcessEvent" response="BCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
       </items>
       <items xsi:type="am:EventChainContainer">
         <eventChain name="BCM_faultCheckStart" stimulus="BCM_faultCheck_Start?type=RunnableEvent" response="BCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
       </items>
       <items xsi:type="am:EventChainContainer">
-        <eventChain name="BCM_faultCheckTerminate" stimulus="BCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+        <eventChain name="BCM_faultCheckTerminate" stimulus="BCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
       </items>
     </eventChains>
-    <eventChains xmi:id="SCM_eventChain?type=EventChain" name="SCM_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+    <eventChains xmi:id="SCM_eventChain?type=EventChain" name="SCM_eventChain" stimulus="ActivateTask20ms?type=ProcessEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
       <items xsi:type="am:EventChainContainer">
-        <eventChain name="SCM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="SCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+        <eventChain name="SCM_faultCheck" stimulus="ActivateTask20ms?type=ProcessEvent" response="SCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
       </items>
       <items xsi:type="am:EventChainContainer">
         <eventChain name="SCM_faultCheckStart" stimulus="SCM_faultCheck_Start?type=RunnableEvent" response="SCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
       </items>
       <items xsi:type="am:EventChainContainer">
-        <eventChain name="SCM_faultCheckTerminate" stimulus="SCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+        <eventChain name="SCM_faultCheckTerminate" stimulus="SCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
       </items>
     </eventChains>
     <eventChains xmi:id="ACM_eventChain?type=EventChain" name="ACM_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
@@ -1117,15 +1119,26 @@
         <eventChain name="ACM_faultCheckTerminate" stimulus="ACM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
       </items>
     </eventChains>
-    <eventChains xmi:id="HMI_eventChain?type=EventChain" name="HMI_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+    <eventChains xmi:id="HMI_eventChain?type=EventChain" name="HMI_eventChain" stimulus="ActivateTask100ms?type=ProcessEvent" response="EndTask100ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
       <items xsi:type="am:EventChainContainer">
-        <eventChain name="HMI_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="HMI_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+        <eventChain name="HMI_faultCheck" stimulus="ActivateTask100ms?type=ProcessEvent" response="HMI_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
       </items>
       <items xsi:type="am:EventChainContainer">
         <eventChain name="HMI_faultCheckStart" stimulus="HMI_faultCheck_Start?type=RunnableEvent" response="HMI_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
       </items>
       <items xsi:type="am:EventChainContainer">
-        <eventChain name="HMI_faultCheckTerminate" stimulus="HMI_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+        <eventChain name="HMI_faultCheckTerminate" stimulus="HMI_faultCheck_Terminate?type=RunnableEvent" response="EndTask100ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="checkMemFaultArea_eventChain?type=EventChain" name="checkMemFaultArea_eventChain" stimulus="ActivateTask1000ms?type=ProcessEvent" response="EndTask1000ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="VCMCheckFaultMemArea_faultCheck" stimulus="ActivateTask1000ms?type=ProcessEvent" response="VCMCheckFaultMemArea_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="VCMCheckFaultMemArea_faultCheckStart" stimulus="VCMCheckFaultMemArea_faultCheck_Start?type=RunnableEvent" response="VCMCheckFaultMemArea_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="VCMCheckFaultMemArea_faultCheckTerminate" stimulus="VCMCheckFaultMemArea_faultCheck_Terminate?type=RunnableEvent" response="EndTask1000ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
       </items>
     </eventChains>
     <requirements xsi:type="am:ProcessRequirement" name="Deadline_05" severity="Critical" process="Task-5ms?type=Task">
