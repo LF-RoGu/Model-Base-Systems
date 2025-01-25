@@ -84,57 +84,87 @@
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="ECU-AliveCounter?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="ECU-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="TCM-timeout?type=Runnable" name="TCM-timeout" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="TCM-AliveCounter?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="TCM-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="TCU-timeout?type=Runnable" name="TCU-timeout" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="TCU-AliveCounter?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="TCU-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="BCM-timeout?type=Runnable" name="BCM-timeout" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="BCM-AliveCounter?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="BCM-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="SCM-timeout?type=Runnable" name="SCM-timeout" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="SCM-AliveCounter?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="SCM-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="ACM-timeout?type=Runnable" name="ACM-timeout" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="ACM-AliveCounter?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="ACM-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="HMI-timeout?type=Runnable" name="HMI-timeout" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="HMI-AliveCounter?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="HMI-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="ECU-keepalive?type=Runnable" name="ECU-keepalive" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="ECU-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="TCM-keepalive?type=Runnable" name="TCM-keepalive" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="TCM-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="TCU-keepalive?type=Runnable" name="TCU-keepalive" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="TCU-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="BCM-keepalive?type=Runnable" name="BCM-keepalive" callback="false" service="false">
@@ -145,16 +175,25 @@
     <runnables xmi:id="SCM-keepalive?type=Runnable" name="SCM-keepalive" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="SCM-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="ACM-keepalive?type=Runnable" name="ACM-keepalive" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="ACM-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="HMI-keepalive?type=Runnable" name="HMI-keepalive" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="HMI-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="ECU-checkFault?type=Runnable" name="ECU-checkFault" callback="false" service="false">
@@ -162,6 +201,9 @@
         <items xsi:type="am:LabelAccess" data="ECU-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="ECU-Fault?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="ECU-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="TCM-checkFault?type=Runnable" name="TCM-checkFault" callback="false" service="false">
@@ -169,6 +211,9 @@
         <items xsi:type="am:LabelAccess" data="TCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="TCM-Fault?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="TCM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="TCU-checkFault?type=Runnable" name="TCU-checkFault" callback="false" service="false">
@@ -176,6 +221,9 @@
         <items xsi:type="am:LabelAccess" data="TCU-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="TCU-Fault?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="TCU-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="BCM-checkFault?type=Runnable" name="BCM-checkFault" callback="false" service="false">
@@ -183,6 +231,9 @@
         <items xsi:type="am:LabelAccess" data="BCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="BCM-Fault?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="BCM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="SCM-checkFault?type=Runnable" name="SCM-checkFault" callback="false" service="false">
@@ -190,6 +241,9 @@
         <items xsi:type="am:LabelAccess" data="SCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="SCM-Fault?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="SCM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="ACM-checkFault?type=Runnable" name="ACM-checkFault" callback="false" service="false">
@@ -197,6 +251,9 @@
         <items xsi:type="am:LabelAccess" data="ACM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="ACM-Fault?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="ACM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="HMI-checkFault?type=Runnable" name="HMI-checkFault" callback="false" service="false">
@@ -204,6 +261,9 @@
         <items xsi:type="am:LabelAccess" data="HMI-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="HMI-Fault?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="HMI-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="VCM-checkFaultMemArea?type=Runnable" name="VCM-checkFaultMemArea" callback="false" service="false">
@@ -216,12 +276,18 @@
         <items xsi:type="am:LabelAccess" data="SCM-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="ACM-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="HMI-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <runnables xmi:id="HMI-Data?type=Runnable" name="HMI-Data" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="HMI-DataIn?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="HMI-DataOut?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
       </activityGraph>
     </runnables>
     <labels xmi:id="ECU-AliveCounter?type=Label" name="ECU-AliveCounter" constant="false" bVolatile="false">
@@ -995,9 +1061,7 @@
   </hwModel>
   <osModel>
     <operatingSystems name="RTOS">
-      <taskSchedulers xmi:id="RateMonotonic?type=TaskScheduler" name="RateMonotonic">
-        <definition href="amlt:/#Monotonic?type=SchedulerDefinition"/>
-      </taskSchedulers>
+      <taskSchedulers xmi:id="RateMonotonic?type=TaskScheduler" name="RateMonotonic" definition="Monotonic?type=SchedulerDefinition"/>
     </operatingSystems>
     <schedulerDefinitions xmi:id="Monotonic?type=SchedulerDefinition" name="Monotonic" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
     <schedulerDefinitions xmi:id="EarliestDeadlineFirst?type=SchedulerDefinition" name="EarliestDeadlineFirst" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
@@ -1168,9 +1232,7 @@
     </requirements>
   </constraintsModel>
   <mappingModel>
-    <schedulerAllocation responsibility="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit">
-      <scheduler xsi:type="am:TaskScheduler" href="amlt:/#RateMonotonic?type=TaskScheduler"/>
-    </schedulerAllocation>
+    <schedulerAllocation scheduler="RateMonotonic?type=TaskScheduler" responsibility="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit"/>
     <taskAllocation task="Task-5ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
     <taskAllocation task="Task-10ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
     <taskAllocation task="Task-20ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
