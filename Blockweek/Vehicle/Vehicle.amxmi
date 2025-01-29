@@ -198,8 +198,8 @@
     </runnables>
     <runnables xmi:id="ECU-checkFault?type=Runnable" name="ECU-checkFault" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="ECU-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="ECU-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ECU-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="ECU-timeoutFlag?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <default xsi:type="am:DiscreteValueConstant" value="88000"/>
@@ -208,8 +208,8 @@
     </runnables>
     <runnables xmi:id="TCM-checkFault?type=Runnable" name="TCM-checkFault" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="TCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="TCM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="TCM-timeoutFlag?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <default xsi:type="am:DiscreteValueConstant" value="88000"/>
@@ -218,8 +218,8 @@
     </runnables>
     <runnables xmi:id="TCU-checkFault?type=Runnable" name="TCU-checkFault" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="TCU-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="TCU-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCU-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="TCU-timeoutFlag?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <default xsi:type="am:DiscreteValueConstant" value="88000"/>
@@ -228,8 +228,8 @@
     </runnables>
     <runnables xmi:id="BCM-checkFault?type=Runnable" name="BCM-checkFault" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="BCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="BCM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="BCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="BCM-timeoutFlag?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <default xsi:type="am:DiscreteValueConstant" value="88000"/>
@@ -238,8 +238,8 @@
     </runnables>
     <runnables xmi:id="SCM-checkFault?type=Runnable" name="SCM-checkFault" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="SCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="SCM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="SCM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="SCM-timeoutFlag?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <default xsi:type="am:DiscreteValueConstant" value="88000"/>
@@ -248,8 +248,8 @@
     </runnables>
     <runnables xmi:id="ACM-checkFault?type=Runnable" name="ACM-checkFault" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="ACM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="ACM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ACM-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="ACM-timeoutFlag?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <default xsi:type="am:DiscreteValueConstant" value="88000"/>
@@ -258,8 +258,8 @@
     </runnables>
     <runnables xmi:id="HMI-checkFault?type=Runnable" name="HMI-checkFault" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="HMI-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="HMI-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="HMI-MemFaults?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="HMI-timeoutFlag?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <default xsi:type="am:DiscreteValueConstant" value="88000"/>
@@ -268,7 +268,6 @@
     </runnables>
     <runnables xmi:id="VCM-checkFaultMemArea?type=Runnable" name="VCM-checkFaultMemArea" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="VCM-FaultMemArea?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="ECU-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="TCM-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="TCU-MemFaults?type=Label" access="read"/>
@@ -276,6 +275,7 @@
         <items xsi:type="am:LabelAccess" data="SCM-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="ACM-MemFaults?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="HMI-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="VCM-FaultMemArea?type=Label" access="write"/>
         <items xsi:type="am:Ticks">
           <default xsi:type="am:DiscreteValueConstant" value="88000"/>
         </items>
@@ -1030,6 +1030,10 @@
       <connections xmi:id="CAN/BCM_CAN?type=HwConnection" name="BCM_CAN" port1="CAN/Can?type=HwPort" port2="BrakeControlModule/CAN?type=HwPort"/>
       <connections xmi:id="CAN/SAS_CAN?type=HwConnection" name="SAS_CAN" port1="CAN/Can?type=HwPort" port2="SteeringControlModule/CAN?type=HwPort"/>
       <connections xmi:id="CAN/HMI_CAN?type=HwConnection" name="HMI_CAN" port1="CAN/Can?type=HwPort" port2="HumanMachineInterfaceModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/OBU_CAN?type=HwConnection" name="OBU_CAN" port1="CAN/Can?type=HwPort" port2="OBU/Can?type=HwPort"/>
+    </structures>
+    <structures xmi:id="OBU?type=HwStructure" name="OBU" structureType="System">
+      <ports xmi:id="OBU/Can?type=HwPort" name="Can" bitWidth="0" priority="0"/>
     </structures>
     <domains xsi:type="am:FrequencyDomain" xmi:id="RH850%2FE2x?type=FrequencyDomain" name="RH850/E2x" clockGating="false">
       <defaultValue value="240.0" unit="MHz"/>
