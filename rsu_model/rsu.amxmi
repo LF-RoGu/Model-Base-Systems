@@ -1,5 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <swModel>
+    <tasks xmi:id="Task-30ms+ReceiveFromEnv?type=Task" name="Task-30ms ReceiveFromEnv" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="getIncomingData?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="decodeMessages?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-20ms+SendToEnv?type=Task" name="Task-20ms SendToEnv" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="encodeMessages?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="propogateMessages?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-50ms?type=Task" name="Task-50ms" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="Event Manager" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="processMessages?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="createMessages?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-25ms+SendToInfr?type=Task" name="Task-25ms SendToInfr" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="encodeMessagesForInfr?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="propogateMessagestoInfr?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-25ms+ReceiveFromInfr?type=Task" name="Task-25ms ReceiveFromInfr" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="retrieveInfrData?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="decodeInfrustructureMessages?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <runnables xmi:id="createMessages?type=Runnable" name="createMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="RelevantMessagesData?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="SendQueue?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="decodeMessages?type=Runnable" name="decodeMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="RX-Buffer-Env?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="ReceiveQueue?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="getIncomingData?type=Runnable" name="getIncomingData" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="RX-Buffer-Env?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="propogateMessages?type=Runnable" name="propogateMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TX-Buffer-Env?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="encodeMessages?type=Runnable" name="encodeMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="SendQueue?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="TX-Buffer-Env?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="retrieveInfrData?type=Runnable" name="retrieveInfrData" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="RX-Buffer-Infr?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="decodeInfrustructureMessages?type=Runnable" name="decodeInfrustructureMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="RX-Buffer-Infr?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="ReceiveQueue?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="propogateMessagestoInfr?type=Runnable" name="propogateMessagestoInfr" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TX-Buffer-Infr?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="encodeMessagesForInfr?type=Runnable" name="encodeMessagesForInfr" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="SendQueue?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="TX-Buffer-Infr?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="processMessages?type=Runnable" name="processMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ReceiveQueue?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="RelevantMessagesData?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <labels xmi:id="SendQueue?type=Label" name="SendQueue" constant="false" bVolatile="false"/>
+    <labels xmi:id="RX-Buffer-Env?type=Label" name="RX-Buffer-Env" constant="false" bVolatile="false"/>
+    <labels xmi:id="TX-Buffer-Env?type=Label" name="TX-Buffer-Env" constant="false" bVolatile="false"/>
+    <labels xmi:id="ReceiveQueue?type=Label" name="ReceiveQueue" constant="false" bVolatile="false"/>
+    <labels xmi:id="RX-Buffer-Infr?type=Label" name="RX-Buffer-Infr" constant="false" bVolatile="false"/>
+    <labels xmi:id="TX-Buffer-Infr?type=Label" name="TX-Buffer-Infr" constant="false" bVolatile="false"/>
+    <labels xmi:id="RelevantMessagesData?type=Label" name="RelevantMessagesData" constant="false" bVolatile="false"/>
+  </swModel>
   <hwModel>
     <definitions xsi:type="am:MemoryDefinition" xmi:id="DDR3+SDRAM?type=MemoryDefinition" name="DDR3 SDRAM" memoryType="DRAM">
       <size value="2" unit="GB"/>
@@ -52,11 +167,16 @@
       </structures>
       <structures xmi:id="Measurement+Devices?type=HwStructure" name="Measurement Devices" structureType="Group">
         <ports xmi:id="Measurement+Devices/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
-        <structures xmi:id="Gyroscope?type=HwStructure" name="Gyroscope"/>
-        <structures xmi:id="Accelerometer?type=HwStructure" name="Accelerometer"/>
-        <structures xmi:id="GNSS?type=HwStructure" name="GNSS"/>
+        <structures xmi:id="Magnetometer?type=HwStructure" name="Magnetometer" structureType="SoC"/>
+        <structures xmi:id="Gyroscope?type=HwStructure" name="Gyroscope" structureType="SoC"/>
+        <structures xmi:id="Accelerometer?type=HwStructure" name="Accelerometer" structureType="SoC"/>
+        <structures xmi:id="GNSS?type=HwStructure" name="GNSS" structureType="SoC"/>
       </structures>
-      <structures xmi:id="HSM?type=HwStructure" name="HSM" structureType="System"/>
+      <structures xmi:id="HSM?type=HwStructure" name="HSM" structureType="System">
+        <ports xmi:id="HSM/AXI-Port?type=HwPort" name="AXI-Port" bitWidth="0" priority="0"/>
+        <ports xmi:id="HSM/SPI-Port?type=HwPort" name="SPI-Port" bitWidth="0" priority="0" portInterface="SPI"/>
+        <ports xmi:id="HSM/PCIe-Port?type=HwPort" name="PCIe-Port" bitWidth="0" priority="0" portInterface="custom"/>
+      </structures>
       <structures xmi:id="DSRC+Transmitter?type=HwStructure" name="DSRC Transmitter" structureType="System">
         <ports xmi:id="DSRC+Transmitter/DSRC+Port?type=HwPort" name="DSRC Port" bitWidth="0" priority="0"/>
         <structures xmi:id="V2X+ANT1?type=HwStructure" name="V2X ANT1"/>
@@ -108,11 +228,51 @@
       <connections xmi:id="Commsignia+ITS-RS4/SPI+-+Measurement+Devices?type=HwConnection" name="SPI - Measurement Devices" port1="SPI+Bus/Port?type=HwPort" port2="Measurement+Devices/Port?type=HwPort"/>
       <connections xmi:id="Commsignia+ITS-RS4/AXI+-+GPIO?type=HwConnection" name="AXI - GPIO" port1="AXI+Bus/Port?type=HwPort" port2="GPIO/Port?type=HwPort"/>
       <connections xmi:id="Commsignia+ITS-RS4/AXI+-+CPU?type=HwConnection" name="AXI - CPU" port1="AXI+Bus/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/AXI-HSM?type=HwConnection" name="AXI-HSM" port1="AXI+Bus/Port?type=HwPort" port2="HSM/AXI-Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/SPI-HSM?type=HwConnection" name="SPI-HSM" port1="SPI+Bus/Port?type=HwPort" port2="HSM/SPI-Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/PCIe-HSM?type=HwConnection" name="PCIe-HSM" port1="PCIe+Bus/Port?type=HwPort" port2="HSM/PCIe-Port?type=HwPort"/>
     </structures>
     <domains xsi:type="am:FrequencyDomain" xmi:id="400+MHz?type=FrequencyDomain" name="400 MHz" clockGating="false"/>
     <domains xsi:type="am:FrequencyDomain" xmi:id="800+MHz?type=FrequencyDomain" name="800 MHz" clockGating="false"/>
   </hwModel>
   <osModel>
-    <operatingSystems name="Linux (V2X)"/>
+    <operatingSystems name="RTOS">
+      <taskSchedulers xmi:id="RateMonotonic?type=TaskScheduler" name="RateMonotonic"/>
+    </operatingSystems>
   </osModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="50ms?type=PeriodicStimulus" name="50ms">
+      <recurrence value="50" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="500ms?type=PeriodicStimulus" name="500ms">
+      <recurrence value="500" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+  </stimuliModel>
+  <eventModel>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask50msReceiving?type=ProcessEvent" name="ActivateTask50msReceiving" eventType="activate" entity="Task-30ms+ReceiveFromEnv?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask50msReceiving?type=ProcessEvent" name="EndTask50msReceiving" eventType="terminate" entity="Task-30ms+ReceiveFromEnv?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+  </eventModel>
+  <constraintsModel>
+    <eventChains xmi:id="ReceivedDENM_eventChain?type=EventChain" name="ReceivedDENM_eventChain" stimulus="ActivateTask50msReceiving?type=ProcessEvent" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ReceiveMessages" stimulus="ActivateTask50msReceiving?type=ProcessEvent" response="EndTask50msReceiving?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="EndReceiveActivateProcess" stimulus="EndTask50msReceiving?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ProcessMessage" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+  </constraintsModel>
+  <mappingModel>
+    <schedulerAllocation scheduler="RateMonotonic?type=TaskScheduler" responsibility="ARM+Cortex+A9+Core?type=ProcessingUnit" executingPU="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <taskAllocation task="Task-20ms+SendToEnv?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <taskAllocation task="Task-30ms+ReceiveFromEnv?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <taskAllocation task="Task-25ms+SendToInfr?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <taskAllocation task="Task-25ms+ReceiveFromInfr?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <taskAllocation task="Task-50ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+  </mappingModel>
 </am:Amalthea>

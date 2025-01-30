@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
   <swModel>
-    <tasks xmi:id="Task-500ms?type=Task" name="Task-500ms" multipleTaskActivationLimit="0">
+    <tasks xmi:id="Task-500ms+-+Prepare+Message?type=Task" name="Task-500ms - Prepare Message" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="DENM" ordered="true" interruptible="true">
           <items xsi:type="am:RunnableCall" runnable="VCM-retrieveFaultData?type=Runnable"/>
@@ -30,7 +30,7 @@
         </items>
       </activityGraph>
     </tasks>
-    <tasks xmi:id="Task+80ms?type=Task" name="Task 80ms" multipleTaskActivationLimit="0">
+    <tasks xmi:id="Task+80ms+-+Process+Received+Message?type=Task" name="Task 80ms - Process Received Message" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="ReceivedMessages" ordered="true" interruptible="true">
           <items xsi:type="am:RunnableCall" runnable="processMessages?type=Runnable"/>
@@ -40,7 +40,9 @@
     </tasks>
     <runnables xmi:id="VCM-retrieveFaultData?type=Runnable" name="VCM-retrieveFaultData" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="10000"/>
+        </items>
         <items xsi:type="am:LabelAccess" data="VCM-FaultMemArea?type=Label" access="write"/>
       </activityGraph>
     </runnables>
@@ -282,20 +284,20 @@
   <eventModel>
     <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask50msReceiving?type=ProcessEvent" name="ActivateTask50msReceiving" eventType="activate" entity="Task-50ms+Receiving?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
     <events xsi:type="am:ProcessEvent" xmi:id="EndTask50msReceiving?type=ProcessEvent" name="EndTask50msReceiving" eventType="terminate" entity="Task-50ms+Receiving?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask500ms?type=ProcessEvent" name="ActivateTask500ms" eventType="activate" entity="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:ProcessEvent" xmi:id="EndTask500ms?type=ProcessEvent" name="EndTask500ms" eventType="terminate" entity="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask50msSending?type=ProcessEvent" name="ActivateTask50msSending" eventType="activate" entity="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:ProcessEvent" xmi:id="EndTask50msSending?type=ProcessEvent" name="EndTask50msSending" eventType="terminate" entity="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask80ms?type=ProcessEvent" name="ActivateTask80ms" eventType="activate" entity="Task+80ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:ProcessEvent" xmi:id="EndTask80ms?type=ProcessEvent" name="EndTask80ms" eventType="terminate" entity="Task+80ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:RunnableEvent" xmi:id="GPS-retrieveFaultData_Start?type=RunnableEvent" name="GPS-retrieveFaultData_Start" eventType="start" entity="GPS-calculateCoordinates?type=Runnable" process="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:RunnableEvent" xmi:id="GPS-retrieveFaultData_End?type=RunnableEvent" name="GPS-retrieveFaultData_End" eventType="terminate" entity="GPS-calculateCoordinates?type=Runnable" process="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:RunnableEvent" xmi:id="VCM-retrieveFaultData_Start?type=RunnableEvent" name="VCM-retrieveFaultData_Start" eventType="start" entity="VCM-retrieveFaultData?type=Runnable" process="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:RunnableEvent" xmi:id="VCM-retrieveFaultData_End?type=RunnableEvent" name="VCM-retrieveFaultData_End" eventType="terminate" entity="VCM-retrieveFaultData?type=Runnable" process="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:RunnableEvent" xmi:id="Accelerometer-calculateSpeed_Start?type=RunnableEvent" name="Accelerometer-calculateSpeed_Start" eventType="start" entity="Accelerometer-calculateSpeed?type=Runnable" process="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:RunnableEvent" xmi:id="Accelerometer-calculateSpeed_End?type=RunnableEvent" name="Accelerometer-calculateSpeed_End" eventType="terminate" entity="VCM-retrieveFaultData?type=Runnable" process="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:RunnableEvent" xmi:id="processVCMFaultData_Start?type=RunnableEvent" name="processVCMFaultData_Start" eventType="start" entity="processVCMFaultData?type=Runnable" process="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <events xsi:type="am:RunnableEvent" xmi:id="processVCMFaultData_End?type=RunnableEvent" name="processVCMFaultData_End" eventType="terminate" entity="processVCMFaultData?type=Runnable" process="Task-500ms?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask500ms?type=ProcessEvent" name="ActivateTask500ms" eventType="activate" entity="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask500ms?type=ProcessEvent" name="EndTask500ms" eventType="terminate" entity="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask50msSending?type=ProcessEvent" name="ActivateTask50msSending" eventType="activate" entity="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask50msSending?type=ProcessEvent" name="EndTask50msSending" eventType="terminate" entity="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask80ms?type=ProcessEvent" name="ActivateTask80ms" eventType="activate" entity="Task+80ms+-+Process+Received+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask80ms?type=ProcessEvent" name="EndTask80ms" eventType="terminate" entity="Task+80ms+-+Process+Received+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="GPS-retrieveFaultData_Start?type=RunnableEvent" name="GPS-retrieveFaultData_Start" eventType="start" entity="GPS-calculateCoordinates?type=Runnable" process="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="GPS-retrieveFaultData_End?type=RunnableEvent" name="GPS-retrieveFaultData_End" eventType="terminate" entity="GPS-calculateCoordinates?type=Runnable" process="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="VCM-retrieveFaultData_Start?type=RunnableEvent" name="VCM-retrieveFaultData_Start" eventType="start" entity="VCM-retrieveFaultData?type=Runnable" process="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="VCM-retrieveFaultData_End?type=RunnableEvent" name="VCM-retrieveFaultData_End" eventType="terminate" entity="VCM-retrieveFaultData?type=Runnable" process="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="Accelerometer-calculateSpeed_Start?type=RunnableEvent" name="Accelerometer-calculateSpeed_Start" eventType="start" entity="Accelerometer-calculateSpeed?type=Runnable" process="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="Accelerometer-calculateSpeed_End?type=RunnableEvent" name="Accelerometer-calculateSpeed_End" eventType="terminate" entity="VCM-retrieveFaultData?type=Runnable" process="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="processVCMFaultData_Start?type=RunnableEvent" name="processVCMFaultData_Start" eventType="start" entity="processVCMFaultData?type=Runnable" process="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="processVCMFaultData_End?type=RunnableEvent" name="processVCMFaultData_End" eventType="terminate" entity="processVCMFaultData?type=Runnable" process="Task-500ms+-+Prepare+Message?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
   </eventModel>
   <constraintsModel>
     <eventChains xmi:id="ReceivedDENM_eventChain?type=EventChain" name="ReceivedDENM_eventChain" stimulus="ActivateTask50msReceiving?type=ProcessEvent" response="EndTask80ms?type=ProcessEvent" minItemsCompleted="1">
@@ -323,9 +325,9 @@
   </constraintsModel>
   <mappingModel>
     <schedulerAllocation scheduler="RateMonotonic?type=TaskScheduler" responsibility="ARM+Cortex+A9+Core?type=ProcessingUnit" executingPU="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <taskAllocation task="Task-500ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <taskAllocation task="Task-500ms+-+Prepare+Message?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
     <taskAllocation task="Task-50ms+Receiving?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
     <taskAllocation task="Task-50ms+Sending?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
-    <taskAllocation task="Task+80ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <taskAllocation task="Task+80ms+-+Process+Received+Message?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
   </mappingModel>
 </am:Amalthea>
