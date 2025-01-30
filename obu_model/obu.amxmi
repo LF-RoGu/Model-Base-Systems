@@ -130,7 +130,8 @@
     <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="NEON+MPE+Co-Processor?type=ProcessingUnitDefinition" name="NEON MPE Co-Processor" puType="Accelerator"/>
     <definitions xsi:type="am:ConnectionHandlerDefinition" xmi:id="External+Memory+Controller?type=ConnectionHandlerDefinition" name="External Memory Controller" maxBurstSize="1" maxConcurrentTransfers="1"/>
     <structures xmi:id="Commsignia+ITS-OB4?type=HwStructure" name="Commsignia ITS-OB4" structureType="System">
-      <ports xmi:id="Commsignia+ITS-OB4/CAN?type=HwPort" name="CAN" bitWidth="0" priority="0" portInterface="CAN"/>
+      <ports xmi:id="Commsignia+ITS-OB4/CAN+I?type=HwPort" name="CAN I" bitWidth="0" priority="0" portInterface="CAN"/>
+      <ports xmi:id="Commsignia+ITS-OB4/CAN+II?type=HwPort" name="CAN II" bitWidth="0" priority="0" portInterface="CAN"/>
       <ports xmi:id="Commsignia+ITS-OB4/OBD+II?type=HwPort" name="OBD II" bitWidth="0" priority="0" portInterface="custom"/>
       <ports xmi:id="Commsignia+ITS-OB4/Ethernet?type=HwPort" name="Ethernet" bitWidth="0" priority="0" portInterface="Ethernet"/>
       <ports xmi:id="Commsignia+ITS-OB4/USB+I?type=HwPort" name="USB I" bitWidth="0" priority="0" portInterface="Ethernet"/>
@@ -173,12 +174,16 @@
       </structures>
       <structures xmi:id="Measurement+Devices?type=HwStructure" name="Measurement Devices" structureType="Group">
         <ports xmi:id="Measurement+Devices/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
-        <structures xmi:id="Magnetometer?type=HwStructure" name="Magnetometer"/>
-        <structures xmi:id="Gyroscope?type=HwStructure" name="Gyroscope"/>
-        <structures xmi:id="Accelerometer?type=HwStructure" name="Accelerometer"/>
-        <structures xmi:id="GNSS?type=HwStructure" name="GNSS"/>
+        <structures xmi:id="Magnetometer?type=HwStructure" name="Magnetometer" structureType="SoC"/>
+        <structures xmi:id="Gyroscope?type=HwStructure" name="Gyroscope" structureType="SoC"/>
+        <structures xmi:id="Accelerometer?type=HwStructure" name="Accelerometer" structureType="SoC"/>
+        <structures xmi:id="GNSS?type=HwStructure" name="GNSS" structureType="SoC"/>
       </structures>
-      <structures xmi:id="HSM?type=HwStructure" name="HSM" structureType="System"/>
+      <structures xmi:id="HSM?type=HwStructure" name="HSM" structureType="System">
+        <ports xmi:id="HSM/AXI-Port?type=HwPort" name="AXI-Port" bitWidth="0" priority="0"/>
+        <ports xmi:id="HSM/SPI-Port?type=HwPort" name="SPI-Port" bitWidth="0" priority="0" portInterface="SPI"/>
+        <ports xmi:id="HSM/PCIe-Port?type=HwPort" name="PCIe-Port" bitWidth="0" priority="0" portInterface="custom"/>
+      </structures>
       <structures xmi:id="DSRC+Transmitter?type=HwStructure" name="DSRC Transmitter" structureType="System">
         <ports xmi:id="DSRC+Transmitter/DSRC+Port?type=HwPort" name="DSRC Port" bitWidth="0" priority="0"/>
         <structures xmi:id="V2X+ANT1?type=HwStructure" name="V2X ANT1"/>
@@ -230,6 +235,9 @@
       <connections xmi:id="Commsignia+ITS-OB4/SPI+-+Measurement+Devices?type=HwConnection" name="SPI - Measurement Devices" port1="SPI+Bus/Port?type=HwPort" port2="Measurement+Devices/Port?type=HwPort"/>
       <connections xmi:id="Commsignia+ITS-OB4/AXI+-+GPIO?type=HwConnection" name="AXI - GPIO" port1="AXI+Bus/Port?type=HwPort" port2="GPIO/Port?type=HwPort"/>
       <connections xmi:id="Commsignia+ITS-OB4/AXI+-+CPU?type=HwConnection" name="AXI - CPU" port1="AXI+Bus/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/AXI-HSM?type=HwConnection" name="AXI-HSM" port1="AXI+Bus/Port?type=HwPort" port2="HSM/AXI-Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/SPI-HSM?type=HwConnection" name="SPI-HSM" port1="SPI+Bus/Port?type=HwPort" port2="HSM/SPI-Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-OB4/PCIe-HSM?type=HwConnection" name="PCIe-HSM" port1="PCIe+Bus/Port?type=HwPort" port2="HSM/PCIe-Port?type=HwPort"/>
     </structures>
     <domains xsi:type="am:FrequencyDomain" xmi:id="400+MHz?type=FrequencyDomain" name="400 MHz" clockGating="false"/>
     <domains xsi:type="am:FrequencyDomain" xmi:id="800+MHz?type=FrequencyDomain" name="800 MHz" clockGating="false"/>
