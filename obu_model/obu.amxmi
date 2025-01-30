@@ -1,5 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <swModel>
+    <tasks xmi:id="Task-500ms?type=Task" name="Task-500ms" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="DENM" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="VCM-retrieveFaultData?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="processVCMFaultData?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="GPS-checkMemArea?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="Accelerometer-checkMemArea?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="DENM-prepareMessage?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="addMessageToQueue?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="sendInfoToHMI?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-50ms+Receiving?type=Task" name="Task-50ms Receiving" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="getIncomingData?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="decodeMessages?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-50ms+Sending?type=Task" name="Task-50ms Sending" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="encodeMessages?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="sendMessages?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <runnables xmi:id="VCM-retrieveFaultData?type=Runnable" name="VCM-retrieveFaultData" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="VCM-FaultMemArea?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="GPS-checkMemArea?type=Runnable" name="GPS-checkMemArea" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="GPS-MemArea?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="Accelerometer-checkMemArea?type=Runnable" name="Accelerometer-checkMemArea" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="Accelerometer-MemArea?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="DENM-prepareMessage?type=Runnable" name="DENM-prepareMessage" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="FaultSeverity?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="FaultsInfoMemArea?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="GPS-MemArea?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Accelerometer-MemArea?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="DENMInfo?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="decodeMessages?type=Runnable" name="decodeMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="RX-Buffer?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="ReceiveQueue?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="getIncomingData?type=Runnable" name="getIncomingData" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="RX-Buffer?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="sendMessages?type=Runnable" name="sendMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TX-Buffer?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="addMessageToQueue?type=Runnable" name="addMessageToQueue" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="DENMInfo?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="SendQueue?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="sendInfoToHMI?type=Runnable" name="sendInfoToHMI" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="DENMInfo?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="encodeMessages?type=Runnable" name="encodeMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="SendQueue?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="TX-Buffer?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="processVCMFaultData?type=Runnable" name="processVCMFaultData" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="VCM-FaultMemArea?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="FaultSeverity?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="FaultsInfoMemArea?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <labels xmi:id="VCM-FaultMemArea?type=Label" name="VCM-FaultMemArea" constant="false" bVolatile="false"/>
+    <labels xmi:id="GPS-MemArea?type=Label" name="GPS-MemArea" constant="false" bVolatile="false"/>
+    <labels xmi:id="Accelerometer-MemArea?type=Label" name="Accelerometer-MemArea" constant="false" bVolatile="false"/>
+    <labels xmi:id="HMI-MemArea?type=Label" name="HMI-MemArea" constant="false" bVolatile="false"/>
+    <labels xmi:id="DENMInfo?type=Label" name="DENMInfo" constant="false" bVolatile="false"/>
+    <labels xmi:id="SendQueue?type=Label" name="SendQueue" constant="false" bVolatile="false"/>
+    <labels xmi:id="RX-Buffer?type=Label" name="RX-Buffer" constant="false" bVolatile="false"/>
+    <labels xmi:id="TX-Buffer?type=Label" name="TX-Buffer" constant="false" bVolatile="false"/>
+    <labels xmi:id="ReceiveQueue?type=Label" name="ReceiveQueue" constant="false" bVolatile="false"/>
+    <labels xmi:id="FaultSeverity?type=Label" name="FaultSeverity" constant="false" bVolatile="false"/>
+    <labels xmi:id="FaultsInfoMemArea?type=Label" name="FaultsInfoMemArea" constant="false" bVolatile="false"/>
+  </swModel>
   <hwModel>
     <definitions xsi:type="am:MemoryDefinition" xmi:id="DDR3+SDRAM?type=MemoryDefinition" name="DDR3 SDRAM" memoryType="DRAM">
       <size value="2" unit="GB"/>
