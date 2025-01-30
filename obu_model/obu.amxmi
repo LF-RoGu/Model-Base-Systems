@@ -243,6 +243,8 @@
     <domains xsi:type="am:FrequencyDomain" xmi:id="800+MHz?type=FrequencyDomain" name="800 MHz" clockGating="false"/>
   </hwModel>
   <osModel>
-    <operatingSystems name="Linux (V2X)"/>
+    <operatingSystems name="RTOS">
+      <taskSchedulers xmi:id="RateMonotonic?type=TaskScheduler" name="RateMonotonic"/>
+    </operatingSystems>
   </osModel>
 </am:Amalthea>
