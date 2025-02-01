@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
   <swModel>
-    <tasks xmi:id="Task-500ms+-+Prepare+Message?type=Task" name="Task-500ms - Prepare Message" multipleTaskActivationLimit="0">
+    <tasks xmi:id="Task-500ms+-+Prepare+Message?type=Task" name="Task-500ms - Prepare Message" stimuli="500ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="DENM" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="OBU-requestDataFromVCM?type=Runnable"/>
           <items xsi:type="am:RunnableCall" runnable="VCM-retrieveFaultData?type=Runnable"/>
           <items xsi:type="am:RunnableCall" runnable="processVCMFaultData?type=Runnable"/>
           <items xsi:type="am:RunnableCall" runnable="GPS-calculateCoordinates?type=Runnable"/>
@@ -14,7 +15,7 @@
         </items>
       </activityGraph>
     </tasks>
-    <tasks xmi:id="Task-50ms+Receiving?type=Task" name="Task-50ms Receiving" multipleTaskActivationLimit="0">
+    <tasks xmi:id="Task-50ms+Receiving?type=Task" name="Task-50ms Receiving" stimuli="50ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
           <items xsi:type="am:RunnableCall" runnable="getIncomingData?type=Runnable"/>
@@ -22,7 +23,7 @@
         </items>
       </activityGraph>
     </tasks>
-    <tasks xmi:id="Task-50ms+Sending?type=Task" name="Task-50ms Sending" multipleTaskActivationLimit="0">
+    <tasks xmi:id="Task-50ms+Sending?type=Task" name="Task-50ms Sending" stimuli="50ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
           <items xsi:type="am:RunnableCall" runnable="encodeMessages?type=Runnable"/>
@@ -30,7 +31,7 @@
         </items>
       </activityGraph>
     </tasks>
-    <tasks xmi:id="Task+80ms+-+Process+Received+Message?type=Task" name="Task 80ms - Process Received Message" multipleTaskActivationLimit="0">
+    <tasks xmi:id="Task+80ms+-+Process+Received+Message?type=Task" name="Task 80ms - Process Received Message" stimuli="80ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="ReceivedMessages" ordered="true" interruptible="true">
           <items xsi:type="am:RunnableCall" runnable="processMessages?type=Runnable"/>
@@ -40,6 +41,7 @@
     </tasks>
     <runnables xmi:id="VCM-retrieveFaultData?type=Runnable" name="VCM-retrieveFaultData" callback="false" service="false">
       <activityGraph>
+        <items xsi:type="am:LabelAccess" data="IsFaultDataRequested?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <default xsi:type="am:DiscreteValueConstant" value="10000"/>
         </items>
@@ -98,6 +100,7 @@
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="DENMInfo?type=Label" access="read"/>
         <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="HMI-DataIn?type=Label" access="write"/>
       </activityGraph>
     </runnables>
     <runnables xmi:id="encodeMessages?type=Runnable" name="encodeMessages" callback="false" service="false">
@@ -126,6 +129,13 @@
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="DENMReceivedInfo?type=Label" access="read"/>
         <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="HMI-DataIn?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="OBU-requestDataFromVCM?type=Runnable" name="OBU-requestDataFromVCM" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="IsFaultDataRequested?type=Label" access="write"/>
       </activityGraph>
     </runnables>
     <labels xmi:id="VCM-FaultMemArea?type=Label" name="VCM-FaultMemArea" constant="false" bVolatile="false"/>
@@ -140,6 +150,8 @@
     <labels xmi:id="FaultSeverity?type=Label" name="FaultSeverity" constant="false" bVolatile="false"/>
     <labels xmi:id="FaultsInfoMemArea?type=Label" name="FaultsInfoMemArea" constant="false" bVolatile="false"/>
     <labels xmi:id="DENMReceivedInfo?type=Label" name="DENMReceivedInfo" constant="false" bVolatile="false"/>
+    <labels xmi:id="IsFaultDataRequested?type=Label" name="IsFaultDataRequested" constant="false" bVolatile="false"/>
+    <labels xmi:id="HMI-DataIn?type=Label" name="HMI-DataIn" constant="false" bVolatile="false"/>
   </swModel>
   <hwModel>
     <definitions xsi:type="am:MemoryDefinition" xmi:id="DDR3+SDRAM?type=MemoryDefinition" name="DDR3 SDRAM" memoryType="DRAM">
@@ -278,6 +290,10 @@
     </stimuli>
     <stimuli xsi:type="am:PeriodicStimulus" xmi:id="500ms?type=PeriodicStimulus" name="500ms">
       <recurrence value="500" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="80ms?type=PeriodicStimulus" name="80ms">
+      <recurrence value="80" unit="ms"/>
       <offset value="0" unit="ms"/>
     </stimuli>
   </stimuliModel>

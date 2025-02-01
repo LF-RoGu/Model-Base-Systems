@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
   <swModel>
-    <tasks xmi:id="Task-30ms+receiveData?type=Task" name="Task-30ms receiveData" multipleTaskActivationLimit="0">
+    <tasks xmi:id="Task-30ms+receiveData?type=Task" name="Task-30ms receiveData" stimuli="30ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
           <items xsi:type="am:RunnableCall" runnable="getIncomingData?type=Runnable"/>
@@ -11,7 +11,7 @@
         </items>
       </activityGraph>
     </tasks>
-    <tasks xmi:id="Task-20ms+propogateMessages?type=Task" name="Task-20ms propogateMessages" multipleTaskActivationLimit="0">
+    <tasks xmi:id="Task-20ms+propogateMessages?type=Task" name="Task-20ms propogateMessages" stimuli="20ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
           <items xsi:type="am:RunnableCall" runnable="encodeMessages?type=Runnable"/>
@@ -21,7 +21,7 @@
         </items>
       </activityGraph>
     </tasks>
-    <tasks xmi:id="Task-50ms?type=Task" name="Task-50ms" multipleTaskActivationLimit="0">
+    <tasks xmi:id="Task-50ms?type=Task" name="Task-50ms" stimuli="50ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
       <activityGraph>
         <items xsi:type="am:Group" name="Event Manager" ordered="true" interruptible="true">
           <items xsi:type="am:RunnableCall" runnable="processMessages?type=Runnable"/>
