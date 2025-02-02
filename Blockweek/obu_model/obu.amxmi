@@ -7,6 +7,7 @@
           <items xsi:type="am:RunnableCall" runnable="OBU-requestDataFromVCM?type=Runnable"/>
           <items xsi:type="am:RunnableCall" runnable="VCM-retrieveFaultData?type=Runnable"/>
           <items xsi:type="am:RunnableCall" runnable="processVCMFaultData?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="processSystemDegradation?type=Runnable"/>
           <items xsi:type="am:RunnableCall" runnable="GPS-calculateCoordinates?type=Runnable"/>
           <items xsi:type="am:RunnableCall" runnable="Accelerometer-calculateSpeed?type=Runnable"/>
           <items xsi:type="am:RunnableCall" runnable="DENM-prepareMessage?type=Runnable"/>
@@ -42,6 +43,9 @@
     <runnables xmi:id="VCM-retrieveFaultData?type=Runnable" name="VCM-retrieveFaultData" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="IsFaultDataRequested?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" access="read">
+          <data href="amlt:/#VCM-FaultMemArea?type=Label"/>
+        </items>
         <items xsi:type="am:Ticks">
           <default xsi:type="am:DiscreteValueConstant" value="10000"/>
         </items>
@@ -62,7 +66,7 @@
     </runnables>
     <runnables xmi:id="DENM-prepareMessage?type=Runnable" name="DENM-prepareMessage" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="FaultSeverity?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="DegradationSeverity?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="FaultsInfoMemArea?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="GPS-MemArea?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="Accelerometer-MemArea?type=Label" access="read"/>
@@ -113,9 +117,17 @@
     <runnables xmi:id="processVCMFaultData?type=Runnable" name="processVCMFaultData" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="VCM-FaultMemArea?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="DegradationLevelSystem?type=Label" access="read"/>
         <items xsi:type="am:Ticks"/>
-        <items xsi:type="am:LabelAccess" data="FaultSeverity?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="DegradationSeverity?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="FaultsInfoMemArea?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="processSystemDegradation?type=Runnable" name="processSystemDegradation" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="VCM-FaultMemArea?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="DegradationLevelSystem?type=Label" access="write"/>
       </activityGraph>
     </runnables>
     <runnables xmi:id="processMessages?type=Runnable" name="processMessages" callback="false" service="false">
@@ -139,6 +151,7 @@
       </activityGraph>
     </runnables>
     <labels xmi:id="VCM-FaultMemArea?type=Label" name="VCM-FaultMemArea" constant="false" bVolatile="false"/>
+    <labels xmi:id="DegradationLevelSystem?type=Label" name="DegradationLevelSystem" constant="false" bVolatile="false"/>
     <labels xmi:id="GPS-MemArea?type=Label" name="GPS-MemArea" constant="false" bVolatile="false"/>
     <labels xmi:id="Accelerometer-MemArea?type=Label" name="Accelerometer-MemArea" constant="false" bVolatile="false"/>
     <labels xmi:id="HMI-MemArea?type=Label" name="HMI-MemArea" constant="false" bVolatile="false"/>
@@ -147,7 +160,7 @@
     <labels xmi:id="RX-Buffer?type=Label" name="RX-Buffer" constant="false" bVolatile="false"/>
     <labels xmi:id="TX-Buffer?type=Label" name="TX-Buffer" constant="false" bVolatile="false"/>
     <labels xmi:id="ReceiveQueue?type=Label" name="ReceiveQueue" constant="false" bVolatile="false"/>
-    <labels xmi:id="FaultSeverity?type=Label" name="FaultSeverity" constant="false" bVolatile="false"/>
+    <labels xmi:id="DegradationSeverity?type=Label" name="DegradationSeverity" constant="false" bVolatile="false"/>
     <labels xmi:id="FaultsInfoMemArea?type=Label" name="FaultsInfoMemArea" constant="false" bVolatile="false"/>
     <labels xmi:id="DENMReceivedInfo?type=Label" name="DENMReceivedInfo" constant="false" bVolatile="false"/>
     <labels xmi:id="IsFaultDataRequested?type=Label" name="IsFaultDataRequested" constant="false" bVolatile="false"/>

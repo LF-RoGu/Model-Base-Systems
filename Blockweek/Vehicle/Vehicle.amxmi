@@ -78,7 +78,7 @@
         <items xsi:type="am:Group" name="DTC - Diagnostic Trouble Code" ordered="true" interruptible="true">
           <items xsi:type="am:RunnableCall" runnable="VCM-checkFaultMemArea?type=Runnable"/>
           <items xsi:type="am:RunnableCall" runnable="OBU-requestDataFromVCM?type=Runnable"/>
-          <items xsi:type="am:RunnableCall" runnable="VCM-sendFaultDataToCan?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="VCM-retrieveFaultData?type=Runnable"/>
         </items>
       </activityGraph>
     </tasks>
@@ -292,12 +292,15 @@
         </items>
       </activityGraph>
     </runnables>
-    <runnables xmi:id="VCM-sendFaultDataToCan?type=Runnable" name="VCM-sendFaultDataToCan" callback="false" service="false">
+    <runnables xmi:id="VCM-retrieveFaultData?type=Runnable" name="VCM-retrieveFaultData" callback="false" service="false">
       <activityGraph>
         <items xsi:type="am:LabelAccess" data="IsFaultDataRequested?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="VCM-FaultMemArea?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+        <items xsi:type="am:LabelAccess" access="write">
+          <data href="amlt:/#VCM-FaultMemArea?type=Label"/>
         </items>
       </activityGraph>
     </runnables>
