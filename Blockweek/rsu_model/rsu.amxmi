@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <swModel>
+    <tasks xmi:id="Task-30ms+receiveData?type=Task" name="Task-30ms receiveData" stimuli="30ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="getIncomingData?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="decodeMessages?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="retrieveInfrData?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="decodeInfrustructureMessages?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-20ms+propogateMessages?type=Task" name="Task-20ms propogateMessages" stimuli="20ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="Comms" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="encodeMessages?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="propogateMessages?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="encodeMessagesForInfr?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="propogateMessagestoInfr?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-50ms?type=Task" name="Task-50ms" stimuli="50ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="Event Manager" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="processMessages?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="createMessages?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <runnables xmi:id="createMessages?type=Runnable" name="createMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="RelevantMessagesData?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="SendQueue?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="decodeMessages?type=Runnable" name="decodeMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="RX-Buffer-Env?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="ReceiveQueue?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="getIncomingData?type=Runnable" name="getIncomingData" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="RX-Buffer-Env?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="propogateMessages?type=Runnable" name="propogateMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TX-Buffer-Env?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="encodeMessages?type=Runnable" name="encodeMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="SendQueue?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="TX-Buffer-Env?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="retrieveInfrData?type=Runnable" name="retrieveInfrData" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="RX-Buffer-Infr?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="decodeInfrustructureMessages?type=Runnable" name="decodeInfrustructureMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="RX-Buffer-Infr?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="ReceiveQueue?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="propogateMessagestoInfr?type=Runnable" name="propogateMessagestoInfr" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TX-Buffer-Infr?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="encodeMessagesForInfr?type=Runnable" name="encodeMessagesForInfr" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="SendQueue?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="TX-Buffer-Infr?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="processMessages?type=Runnable" name="processMessages" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ReceiveQueue?type=Label" access="read"/>
+        <items xsi:type="am:Ticks"/>
+        <items xsi:type="am:LabelAccess" data="RelevantMessagesData?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <labels xmi:id="SendQueue?type=Label" name="SendQueue" constant="false" bVolatile="false"/>
+    <labels xmi:id="RX-Buffer-Env?type=Label" name="RX-Buffer-Env" constant="false" bVolatile="false"/>
+    <labels xmi:id="TX-Buffer-Env?type=Label" name="TX-Buffer-Env" constant="false" bVolatile="false"/>
+    <labels xmi:id="ReceiveQueue?type=Label" name="ReceiveQueue" constant="false" bVolatile="false"/>
+    <labels xmi:id="RX-Buffer-Infr?type=Label" name="RX-Buffer-Infr" constant="false" bVolatile="false"/>
+    <labels xmi:id="TX-Buffer-Infr?type=Label" name="TX-Buffer-Infr" constant="false" bVolatile="false"/>
+    <labels xmi:id="RelevantMessagesData?type=Label" name="RelevantMessagesData" constant="false" bVolatile="false"/>
+  </swModel>
+  <hwModel>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="DDR3+SDRAM?type=MemoryDefinition" name="DDR3 SDRAM" memoryType="DRAM">
+      <size value="2" unit="GB"/>
+      <dataRate value="400" unit="MibitPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="eMMC?type=MemoryDefinition" name="eMMC" memoryType="FLASH">
+      <size value="4" unit="GB"/>
+      <dataRate value="400" unit="MibitPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="ARM+Cortex+A9+Core?type=ProcessingUnitDefinition" name="ARM Cortex A9 Core" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="NEON+MPE+Co-Processor?type=ProcessingUnitDefinition" name="NEON MPE Co-Processor" puType="Accelerator"/>
+    <definitions xsi:type="am:ConnectionHandlerDefinition" xmi:id="External+Memory+Controller?type=ConnectionHandlerDefinition" name="External Memory Controller" maxBurstSize="1" maxConcurrentTransfers="1"/>
+    <structures xmi:id="Commsignia+ITS-RS4?type=HwStructure" name="Commsignia ITS-RS4" structureType="System">
+      <ports xmi:id="Commsignia+ITS-RS4/Ethernet?type=HwPort" name="Ethernet" bitWidth="0" priority="0" portInterface="Ethernet"/>
+      <structures xmi:id="CPU+i.MX+6?type=HwStructure" name="CPU i.MX 6" structureType="SoC">
+        <ports xmi:id="CPU+i.MX+6/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+        <modules xsi:type="am:ProcessingUnit" xmi:id="ARM+Cortex+A9+Core?type=ProcessingUnit" name="ARM Cortex A9 Core" frequencyDomain="800+MHz?type=FrequencyDomain" definition="ARM+Cortex+A9+Core?type=ProcessingUnitDefinition">
+          <ports xmi:id="ARM+Cortex+A9+Core/Core+-+I-Cache?type=HwPort" name="Core - I-Cache" bitWidth="0" priority="0"/>
+          <ports xmi:id="ARM+Cortex+A9+Core/Core+-+D-Cache?type=HwPort" name="Core - D-Cache" bitWidth="0" priority="0"/>
+          <ports xmi:id="ARM+Cortex+A9+Core/Core+-+Bus?type=HwPort" name="Core - Bus" bitWidth="0" priority="0"/>
+          <caches xmi:id="I-Cache?type=Cache" name="I-Cache">
+            <ports xmi:id="I-Cache/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+          </caches>
+          <caches xmi:id="D-Cache?type=Cache" name="D-Cache">
+            <ports xmi:id="D-Cache/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+          </caches>
+        </modules>
+        <modules xsi:type="am:Cache" xmi:id="L2+Cache?type=Cache" name="L2 Cache" frequencyDomain="800+MHz?type=FrequencyDomain">
+          <ports xmi:id="L2+Cache/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+        </modules>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="CPU+Bus?type=ConnectionHandler" name="CPU Bus">
+          <ports xmi:id="CPU+Bus/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+        </modules>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="External+Memory++Controller?type=ConnectionHandler" name="External Memory  Controller" frequencyDomain="400+MHz?type=FrequencyDomain" definition="External+Memory+Controller?type=ConnectionHandlerDefinition">
+          <ports xmi:id="External+Memory++Controller/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="AHB"/>
+        </modules>
+        <modules xsi:type="am:Memory" xmi:id="Internal+RAM?type=Memory" name="Internal RAM">
+          <ports xmi:id="Internal+RAM/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="AXI"/>
+        </modules>
+        <modules xsi:type="am:Memory" xmi:id="Internal+ROM?type=Memory" name="Internal ROM">
+          <ports xmi:id="Internal+ROM/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="AHB"/>
+        </modules>
+        <connections xmi:id="CPU+i.MX+6/Core+-+I-Cache?type=HwConnection" name="Core - I-Cache" port1="ARM+Cortex+A9+Core/Core+-+I-Cache?type=HwPort" port2="I-Cache/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/Core+-+D-Cache?type=HwConnection" name="Core - D-Cache" port1="ARM+Cortex+A9+Core/Core+-+D-Cache?type=HwPort" port2="D-Cache/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/CPU+Bus+-+Core?type=HwConnection" name="CPU Bus - Core" port1="ARM+Cortex+A9+Core/Core+-+Bus?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/CPU+Bus+-+L2+Cache?type=HwConnection" name="CPU Bus - L2 Cache" port1="L2+Cache/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/Bus+-+EMC?type=HwConnection" name="Bus - EMC" port1="External+Memory++Controller/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/Bus+-+RAM?type=HwConnection" name="Bus - RAM" port1="CPU+Bus/Port?type=HwPort" port2="Internal+RAM/Port?type=HwPort"/>
+        <connections xmi:id="CPU+i.MX+6/Bus+-+ROM?type=HwConnection" name="Bus - ROM" port1="CPU+Bus/Port?type=HwPort" port2="Internal+ROM/Port?type=HwPort"/>
+      </structures>
+      <structures xmi:id="Measurement+Devices?type=HwStructure" name="Measurement Devices" structureType="Group">
+        <ports xmi:id="Measurement+Devices/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+        <structures xmi:id="Magnetometer?type=HwStructure" name="Magnetometer" structureType="SoC"/>
+        <structures xmi:id="Gyroscope?type=HwStructure" name="Gyroscope" structureType="SoC"/>
+        <structures xmi:id="Accelerometer?type=HwStructure" name="Accelerometer" structureType="SoC"/>
+        <structures xmi:id="GNSS?type=HwStructure" name="GNSS" structureType="SoC"/>
+      </structures>
+      <structures xmi:id="HSM?type=HwStructure" name="HSM" structureType="System">
+        <ports xmi:id="HSM/AXI-Port?type=HwPort" name="AXI-Port" bitWidth="0" priority="0"/>
+        <ports xmi:id="HSM/SPI-Port?type=HwPort" name="SPI-Port" bitWidth="0" priority="0" portInterface="SPI"/>
+        <ports xmi:id="HSM/PCIe-Port?type=HwPort" name="PCIe-Port" bitWidth="0" priority="0" portInterface="custom"/>
+      </structures>
+      <structures xmi:id="DSRC+Transmitter?type=HwStructure" name="DSRC Transmitter" structureType="System">
+        <ports xmi:id="DSRC+Transmitter/DSRC+Port?type=HwPort" name="DSRC Port" bitWidth="0" priority="0"/>
+        <structures xmi:id="V2X+ANT1?type=HwStructure" name="V2X ANT1"/>
+        <structures xmi:id="V2X+ANT2?type=HwStructure" name="V2X ANT2"/>
+      </structures>
+      <structures xmi:id="Mini+PCIe+%231?type=HwStructure" name="Mini PCIe #1">
+        <ports xmi:id="Mini+PCIe+%231/WLAN+Port?type=HwPort" name="WLAN Port" bitWidth="0" priority="0"/>
+        <structures xmi:id="WLAN?type=HwStructure" name="WLAN" structureType="System">
+          <structures xmi:id="WLAN+ANT1?type=HwStructure" name="WLAN ANT1"/>
+          <structures xmi:id="WLAN+ANT2?type=HwStructure" name="WLAN ANT2"/>
+        </structures>
+      </structures>
+      <structures xmi:id="Mini+PCIe+%232?type=HwStructure" name="Mini PCIe #2">
+        <ports xmi:id="Mini+PCIe+%232/LTE+Port?type=HwPort" name="LTE Port" bitWidth="0" priority="0"/>
+        <structures xmi:id="4G%2FLTE+Modem?type=HwStructure" name="4G/LTE Modem" structureType="System">
+          <structures xmi:id="LTE+ANT1?type=HwStructure" name="LTE ANT1"/>
+          <structures xmi:id="LTE+ANT2?type=HwStructure" name="LTE ANT2"/>
+        </structures>
+      </structures>
+      <structures xmi:id="GPIO?type=HwStructure" name="GPIO">
+        <ports xmi:id="GPIO/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="AXI"/>
+      </structures>
+      <structures xmi:id="GNSS+ANT1?type=HwStructure" name="GNSS ANT1">
+        <ports xmi:id="GNSS+ANT1/GPS+Port?type=HwPort" name="GPS Port" bitWidth="0" priority="0" portInterface="SPI"/>
+      </structures>
+      <modules xsi:type="am:Memory" xmi:id="DDR3+SDRAM?type=Memory" name="DDR3 SDRAM" frequencyDomain="800+MHz?type=FrequencyDomain" definition="DDR3+SDRAM?type=MemoryDefinition">
+        <ports xmi:id="DDR3+SDRAM/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+      </modules>
+      <modules xsi:type="am:Memory" xmi:id="eMMC+Flash?type=Memory" name="eMMC Flash" frequencyDomain="800+MHz?type=FrequencyDomain" definition="eMMC?type=MemoryDefinition">
+        <ports xmi:id="eMMC+Flash/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+      </modules>
+      <modules xsi:type="am:ConnectionHandler" xmi:id="PCIe+Bus?type=ConnectionHandler" name="PCIe Bus">
+        <ports xmi:id="PCIe+Bus/Port?type=HwPort" name="Port" bitWidth="0" priority="0"/>
+      </modules>
+      <modules xsi:type="am:ConnectionHandler" xmi:id="SPI+Bus?type=ConnectionHandler" name="SPI Bus">
+        <ports xmi:id="SPI+Bus/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="SPI"/>
+      </modules>
+      <modules xsi:type="am:ConnectionHandler" xmi:id="AXI+Bus?type=ConnectionHandler" name="AXI Bus">
+        <ports xmi:id="AXI+Bus/Port?type=HwPort" name="Port" bitWidth="0" priority="0" portInterface="AXI"/>
+      </modules>
+      <connections xmi:id="Commsignia+ITS-RS4/CPU+-+Ram?type=HwConnection" name="CPU - Ram" port1="External+Memory++Controller/Port?type=HwPort" port2="DDR3+SDRAM/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/CPU+-+Flash?type=HwConnection" name="CPU - Flash" port1="External+Memory++Controller/Port?type=HwPort" port2="eMMC+Flash/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/PCIe+-+WLAN?type=HwConnection" name="PCIe - WLAN" port1="PCIe+Bus/Port?type=HwPort" port2="Mini+PCIe+%231/WLAN+Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/PCIe+-+LTE?type=HwConnection" name="PCIe - LTE" port1="PCIe+Bus/Port?type=HwPort" port2="Mini+PCIe+%232/LTE+Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/PCIe+-+CPU?type=HwConnection" name="PCIe - CPU" port1="PCIe+Bus/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/PCIe+-+DSRC?type=HwConnection" name="PCIe - DSRC" port1="PCIe+Bus/Port?type=HwPort" port2="DSRC+Transmitter/DSRC+Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/SPI+-+GPS?type=HwConnection" name="SPI - GPS" port1="SPI+Bus/Port?type=HwPort" port2="GNSS+ANT1/GPS+Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/SPI+-+CPU?type=HwConnection" name="SPI - CPU" port1="SPI+Bus/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/SPI+-+Measurement+Devices?type=HwConnection" name="SPI - Measurement Devices" port1="SPI+Bus/Port?type=HwPort" port2="Measurement+Devices/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/AXI+-+GPIO?type=HwConnection" name="AXI - GPIO" port1="AXI+Bus/Port?type=HwPort" port2="GPIO/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/AXI+-+CPU?type=HwConnection" name="AXI - CPU" port1="AXI+Bus/Port?type=HwPort" port2="CPU+Bus/Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/AXI-HSM?type=HwConnection" name="AXI-HSM" port1="AXI+Bus/Port?type=HwPort" port2="HSM/AXI-Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/SPI-HSM?type=HwConnection" name="SPI-HSM" port1="SPI+Bus/Port?type=HwPort" port2="HSM/SPI-Port?type=HwPort"/>
+      <connections xmi:id="Commsignia+ITS-RS4/PCIe-HSM?type=HwConnection" name="PCIe-HSM" port1="PCIe+Bus/Port?type=HwPort" port2="HSM/PCIe-Port?type=HwPort"/>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="400+MHz?type=FrequencyDomain" name="400 MHz" clockGating="false"/>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="800+MHz?type=FrequencyDomain" name="800 MHz" clockGating="false"/>
+  </hwModel>
+  <osModel>
+    <operatingSystems name="RTOS">
+      <taskSchedulers xmi:id="RateMonotonic?type=TaskScheduler" name="RateMonotonic"/>
+    </operatingSystems>
+  </osModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="50ms?type=PeriodicStimulus" name="50ms">
+      <recurrence value="50" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="20ms?type=PeriodicStimulus" name="20ms">
+      <recurrence value="20" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="30ms?type=PeriodicStimulus" name="30ms">
+      <recurrence value="50" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+  </stimuliModel>
+  <eventModel>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask50ms?type=ProcessEvent" name="ActivateTask50ms" eventType="activate" entity="Task-30ms+receiveData?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask50ms?type=ProcessEvent" name="EndTask50ms" eventType="terminate" entity="Task-30ms+receiveData?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask20ms+propogateMessages?type=ProcessEvent" name="ActivateTask20ms propogateMessages" eventType="activate" entity="Task-20ms+propogateMessages?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask20ms+propogateMessages?type=ProcessEvent" name="EndTask20ms propogateMessages" eventType="terminate" entity="Task-20ms+propogateMessages?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask30ms+receiveData?type=ProcessEvent" name="ActivateTask30ms receiveData" eventType="activate" entity="Task-30ms+receiveData?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask30ms+receiveData?type=ProcessEvent" name="EndTask30ms receiveData" eventType="terminate" entity="Task-30ms+receiveData?type=Task" processingUnit="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+  </eventModel>
+  <constraintsModel>
+    <eventChains xmi:id="ReceiveToPropogation+Event+Chain?type=EventChain" name="ReceiveToPropogation Event Chain" stimulus="ActivateTask30ms+receiveData?type=ProcessEvent" response="EndTask20ms+propogateMessages?type=ProcessEvent" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ReceiveMessages" stimulus="ActivateTask30ms+receiveData?type=ProcessEvent" response="EndTask30ms+receiveData?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="EndReceiveActivateProcess" stimulus="EndTask30ms+receiveData?type=ProcessEvent" response="ActivateTask50ms?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ProcessMessage" stimulus="ActivateTask50ms?type=ProcessEvent" response="EndTask50ms?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="EndProcessActivatePropogate" stimulus="EndTask50ms?type=ProcessEvent" response="ActivateTask20ms+propogateMessages?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="PropogateMessages" stimulus="ActivateTask20ms+propogateMessages?type=ProcessEvent" response="EndTask20ms+propogateMessages?type=ProcessEvent" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+  </constraintsModel>
+  <mappingModel>
+    <schedulerAllocation scheduler="RateMonotonic?type=TaskScheduler" responsibility="ARM+Cortex+A9+Core?type=ProcessingUnit" executingPU="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <taskAllocation task="Task-20ms+propogateMessages?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <taskAllocation task="Task-30ms+receiveData?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+    <taskAllocation task="Task-50ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler" affinity="ARM+Cortex+A9+Core?type=ProcessingUnit"/>
+  </mappingModel>
+</am:Amalthea>
