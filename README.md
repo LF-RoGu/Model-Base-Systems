@@ -10,14 +10,20 @@ Team members and matriculation number:
 
 ## Structure
 ```
-
-├── Blockweek/             : All exercises and models from the project, the block week, etc
-    ├────Vehicle           : Amalthea model of the vehicle components
-    ├────cits_obu          : Amalthea model of the OBU
-    ├────rsu_model         : Amalthea model of the RSU
-├── docs/                  : Some sources and references 
-├── Presentation/          : Presentation file
-├── README.md              : this file
+├── Project/               : Final project for the Model Base Systems.
+    ├── C-ITS/                 : Almathea model of the whole system.
+        ├────Vehicle           : Amalthea model of the vehicle components.
+        ├────cits_obu          : Amalthea model of the OBU.
+        ├────rsu_model         : Amalthea model of the RSU.
+    ├── Presentation/          : Presentation folder.
+        ├──C-ITS.pptx          : C-ITS pptx
+├── Blockweek/             : All exercises and models from the project, the block week, etc.
+    ├────Vehicle           : Amalthea model of the vehicle components.
+    ├────cits_obu          : Amalthea model of the OBU.
+    ├────rsu_model         : Amalthea model of the RSU.
+├── docs/                  : Some sources and references .
+├── Presentation/          : Presentation file.
+├── README.md              : this file.
 ```
 
 ## Model
