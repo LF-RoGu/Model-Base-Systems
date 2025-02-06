@@ -1,0 +1,1453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:am="http://app4mc.eclipse.org/amalthea/3.3.0">
+  <swModel>
+    <tasks xmi:id="Task-5ms?type=Task" name="Task-5ms" stimuli="5+ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="VCM" ordered="true" interruptible="true">
+          <items xsi:type="am:Group" name="CenterZone" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ACM-checkFault?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="CenterZone-keepalive" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ACM-keepalive?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="Timeout" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ACM-timeout?type=Runnable"/>
+          </items>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-10ms?type=Task" name="Task-10ms" stimuli="10+ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="VCM" ordered="true" interruptible="true">
+          <items xsi:type="am:Group" name="FrontZone-keepalive" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ECU-keepalive?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCM-keepalive?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCU-keepalive?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="Timeout" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ECU-timeout?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCM-timeout?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCU-timeout?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="FrontZone" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="ECU-checkFault?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCM-checkFault?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="TCU-checkFault?type=Runnable"/>
+          </items>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-20ms?type=Task" name="Task-20ms" stimuli="20+ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="VCM" ordered="true" interruptible="true">
+          <items xsi:type="am:Group" name="BackZone" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="BCM-checkFault?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="SCM-checkFault?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="BackZone-keepalive" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="BCM-keepalive?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="SCM-keepalive?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="Timeout" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="BCM-timeout?type=Runnable"/>
+            <items xsi:type="am:RunnableCall" runnable="SCM-timeout?type=Runnable"/>
+          </items>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-100ms?type=Task" name="Task-100ms" stimuli="100+ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="VCM" ordered="true" interruptible="true">
+          <items xsi:type="am:Group" name="BackZone" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="HMI-checkFault?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="BackZone-keepalive" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="HMI-keepalive?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="HMI - Data" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="HMI-Data?type=Runnable"/>
+          </items>
+          <items xsi:type="am:Group" name="Timeout" ordered="true" interruptible="true">
+            <items xsi:type="am:RunnableCall" runnable="HMI-timeout?type=Runnable"/>
+          </items>
+        </items>
+      </activityGraph>
+    </tasks>
+    <tasks xmi:id="Task-500ms?type=Task" name="Task-500ms" stimuli="500+ms?type=PeriodicStimulus" multipleTaskActivationLimit="0">
+      <activityGraph>
+        <items xsi:type="am:Group" name="DTC - Diagnostic Trouble Code" ordered="true" interruptible="true">
+          <items xsi:type="am:RunnableCall" runnable="VCM-checkFaultMemArea?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="OBU-requestDataFromVCM?type=Runnable"/>
+          <items xsi:type="am:RunnableCall" runnable="VCM-retrieveFaultData?type=Runnable"/>
+        </items>
+      </activityGraph>
+    </tasks>
+    <runnables xmi:id="ECU-timeout?type=Runnable" name="ECU-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ECU-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ECU-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCM-timeout?type=Runnable" name="TCM-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCM-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCM-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCU-timeout?type=Runnable" name="TCU-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCU-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCU-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="BCM-timeout?type=Runnable" name="BCM-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="BCM-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="BCM-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="SCM-timeout?type=Runnable" name="SCM-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="SCM-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="SCM-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="ACM-timeout?type=Runnable" name="ACM-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ACM-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ACM-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="HMI-timeout?type=Runnable" name="HMI-timeout" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="HMI-AliveCounter?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="HMI-timeoutFlag?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="ECU-keepalive?type=Runnable" name="ECU-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ECU-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCM-keepalive?type=Runnable" name="TCM-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCM-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCU-keepalive?type=Runnable" name="TCU-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCU-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="BCM-keepalive?type=Runnable" name="BCM-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="BCM-AliveCounter?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="SCM-keepalive?type=Runnable" name="SCM-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="SCM-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="ACM-keepalive?type=Runnable" name="ACM-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ACM-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="HMI-keepalive?type=Runnable" name="HMI-keepalive" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="HMI-AliveCounter?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="ECU-checkFault?type=Runnable" name="ECU-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ECU-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ECU-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="ECU-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCM-checkFault?type=Runnable" name="TCM-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCM-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="TCM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="TCU-checkFault?type=Runnable" name="TCU-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="TCU-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCU-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="TCU-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="BCM-checkFault?type=Runnable" name="BCM-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="BCM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="BCM-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="BCM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="SCM-checkFault?type=Runnable" name="SCM-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="SCM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="SCM-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="SCM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="ACM-checkFault?type=Runnable" name="ACM-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ACM-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ACM-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="ACM-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="HMI-checkFault?type=Runnable" name="HMI-checkFault" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="HMI-Fault?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="HMI-MemFaults?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="HMI-timeoutFlag?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="VCM-checkFaultMemArea?type=Runnable" name="VCM-checkFaultMemArea" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="ECU-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCM-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="TCU-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="BCM-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="SCM-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="ACM-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="HMI-MemFaults?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="VCM-FaultMemArea?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="HMI-Data?type=Runnable" name="HMI-Data" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="HMI-DataIn?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="HMI-DataOut?type=Label" access="write"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="VCM-retrieveFaultData?type=Runnable" name="VCM-retrieveFaultData" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:LabelAccess" data="IsFaultDataRequested?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="VCM-FaultMemArea?type=Label" access="read"/>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+        <items xsi:type="am:LabelAccess" access="write">
+          <data href="amlt:/#VCM-FaultMemArea?type=Label"/>
+        </items>
+      </activityGraph>
+    </runnables>
+    <runnables xmi:id="OBU-requestDataFromVCM?type=Runnable" name="OBU-requestDataFromVCM" callback="false" service="false">
+      <activityGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="88000"/>
+        </items>
+        <items xsi:type="am:LabelAccess" data="IsFaultDataRequested?type=Label" access="write"/>
+      </activityGraph>
+    </runnables>
+    <labels xmi:id="ECU-AliveCounter?type=Label" name="ECU-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="TCM-AliveCounter?type=Label" name="TCM-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="TCU-AliveCounter?type=Label" name="TCU-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="VCM-AliveCounter?type=Label" name="VCM-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="BCM-AliveCounter?type=Label" name="BCM-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="SCM-AliveCounter?type=Label" name="SCM-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="ACM-AliveCounter?type=Label" name="ACM-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="HMI-AliveCounter?type=Label" name="HMI-AliveCounter" constant="false" bVolatile="false">
+      <size value="8" unit="bit"/>
+    </labels>
+    <labels xmi:id="ECU-timeoutFlag?type=Label" name="ECU-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="TCM-timeoutFlag?type=Label" name="TCM-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="TCU-timeoutFlag?type=Label" name="TCU-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="VCM-timeoutFlag?type=Label" name="VCM-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="BCM-timeoutFlag?type=Label" name="BCM-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="SCM-timeoutFlag?type=Label" name="SCM-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="ACM-timeoutFlag?type=Label" name="ACM-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="HMI-timeoutFlag?type=Label" name="HMI-timeoutFlag" constant="false" bVolatile="false">
+      <size value="1" unit="bit"/>
+    </labels>
+    <labels xmi:id="ECU-MemFaults?type=Label" name="ECU-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="TCM-MemFaults?type=Label" name="TCM-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="TCU-MemFaults?type=Label" name="TCU-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="VCM-MemFaults?type=Label" name="VCM-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="BCM-MemFaults?type=Label" name="BCM-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="SCM-MemFaults?type=Label" name="SCM-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="ACM-MemFaults?type=Label" name="ACM-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="HMI-MemFaults?type=Label" name="HMI-MemFaults" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="VCM-FaultMemArea?type=Label" name="VCM-FaultMemArea" constant="false" bVolatile="false">
+      <size value="200" unit="B"/>
+    </labels>
+    <labels xmi:id="ECU-Fault?type=Label" name="ECU-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="TCM-Fault?type=Label" name="TCM-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="TCU-Fault?type=Label" name="TCU-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="VCM-Fault?type=Label" name="VCM-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="BCM-Fault?type=Label" name="BCM-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="SCM-Fault?type=Label" name="SCM-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="ACM-Fault?type=Label" name="ACM-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="HMI-Fault?type=Label" name="HMI-Fault" constant="false" bVolatile="false">
+      <size value="10" unit="B"/>
+    </labels>
+    <labels xmi:id="HMI-DataOut?type=Label" name="HMI-DataOut" constant="false" bVolatile="false"/>
+    <labels xmi:id="HMI-DataIn?type=Label" name="HMI-DataIn" constant="false" bVolatile="false"/>
+    <labels xmi:id="IsFaultDataRequested?type=Label" name="IsFaultDataRequested" constant="false" bVolatile="false"/>
+  </swModel>
+  <hwModel>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="RH850%2FP1H-C?type=ProcessingUnitDefinition" name="RH850/P1H-C" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="RH850%2FE2x?type=ProcessingUnitDefinition" name="RH850/E2x" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="RH850%2FC1M?type=ProcessingUnitDefinition" name="RH850/C1M" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="R-Car+W1R?type=ProcessingUnitDefinition" name="R-Car W1R" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="R-Car+M3?type=ProcessingUnitDefinition" name="R-Car M3" puType="CPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="ARM+Mali-T720?type=ProcessingUnitDefinition" name="ARM Mali-T720" puType="GPU"/>
+    <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="RH850%2FP1M?type=ProcessingUnitDefinition" name="RH850/P1M" puType="CPU"/>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition" name="Flash-RH850/E2x 4 MiB" memoryType="FLASH">
+      <size value="4" unit="MiB"/>
+      <dataRate value="50" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition" name="RAM-RH850/E2x 1MiB" memoryType="SRAM">
+      <size value="1" unit="MiB"/>
+      <dataRate value="120" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition" name="EEPROM-RH850/E2x 1MiB">
+      <size value="256" unit="KiB"/>
+      <dataRate value="5" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FC1M+3+MiB?type=MemoryDefinition" name="Flash-RH850/C1M 3 MiB" memoryType="FLASH">
+      <size value="3" unit="MiB"/>
+      <dataRate value="50" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-RH850%2FC1M+256+KiB?type=MemoryDefinition" name="RAM-RH850/C1M 256 KiB" memoryType="SRAM">
+      <size value="256" unit="KiB"/>
+      <dataRate value="80" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="EEPROM-RH850%2FC1M+128+KiB?type=MemoryDefinition" name="EEPROM-RH850/C1M 128 KiB">
+      <size value="128" unit="KiB"/>
+      <dataRate value="5" unit="KiBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-R-Car+W1R+16GiB?type=MemoryDefinition" name="Flash-R-Car W1R 16GiB" memoryType="FLASH">
+      <size value="16" unit="GiB"/>
+      <dataRate value="600" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-R-Car+W1R+2GiB?type=MemoryDefinition" name="RAM-R-Car W1R 2GiB" memoryType="DRAM">
+      <size value="2" unit="GiB"/>
+      <dataRate value="80" unit="GBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FP1M+4MiB?type=MemoryDefinition" name="Flash-RH850/P1M 4MiB" memoryType="FLASH">
+      <size value="4" unit="MiB"/>
+      <dataRate value="50" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="EEPROM-RH850%2FP1M+256+KiB?type=MemoryDefinition" name="EEPROM-RH850/P1M 256 KiB">
+      <size value="256" unit="KiB"/>
+      <dataRate value="5" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition" name="Flash-RH850/P1M 2 MiB" memoryType="FLASH">
+      <size value="2" unit="MiB"/>
+      <dataRate value="50" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-RH850%2FP1M+512+KiB?type=MemoryDefinition" name="RAM-RH850/P1M 512 KiB" memoryType="SRAM">
+      <size value="512" unit="KiB"/>
+      <dataRate value="100" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="EEPROM-RH850%2FP1M+128+KiB?type=MemoryDefinition" name="EEPROM-RH850/P1M 128 KiB">
+      <size value="128" unit="KiB"/>
+      <dataRate value="5" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-RH850%2FP1H-C+2+MiB?type=MemoryDefinition" name="Flash-RH850/P1H-C 2 MiB" memoryType="FLASH">
+      <size value="2" unit="MiB"/>
+      <dataRate value="40" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-RH850%2FP1H-C+512+KiB?type=MemoryDefinition" name="RAM-RH850/P1H-C 512 KiB" memoryType="SRAM">
+      <size value="512" unit="KiB"/>
+      <dataRate value="100" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="EEPROM-RH850%2FP1H-C+128+KiB?type=MemoryDefinition" name="EEPROM-RH850/P1H-C 128 KiB">
+      <size value="128" unit="KiB"/>
+      <dataRate value="5" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="Flash-R-Car+M3+16+MiB?type=MemoryDefinition" name="Flash-R-Car M3 16 MiB" memoryType="FLASH">
+      <size value="16" unit="MiB"/>
+      <dataRate value="400" unit="MBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="RAM-R-Car+M3+2+GiB?type=MemoryDefinition" name="RAM-R-Car M3 2 GiB" memoryType="DRAM">
+      <size value="2" unit="GiB"/>
+      <dataRate value="100" unit="GBPerSecond"/>
+    </definitions>
+    <definitions xsi:type="am:MemoryDefinition" xmi:id="EEPROM-R-Car+M3+128+KiB?type=MemoryDefinition" name="EEPROM-R-Car M3 128 KiB">
+      <size value="128" unit="KiB"/>
+      <dataRate value="5" unit="MBPerSecond"/>
+    </definitions>
+    <structures xmi:id="FrontZoneECU?type=HwStructure" name="FrontZoneECU" structureType="System">
+      <structures xmi:id="EngineControlUnit?type=HwStructure" name="EngineControlUnit" structureType="ECU">
+        <ports xmi:id="EngineControlUnit/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="EngineControlUnit/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="EngineControlUnit/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController_ECU?type=HwStructure" name="MicroController_ECU" structureType="Microcontroller">
+          <ports xmi:id="MicroController_ECU/MCU-ECU+Handler+Out?type=HwPort" name="MCU-ECU Handler Out" bitWidth="0" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FE2x_ECU+%281%29?type=ProcessingUnit" name="RH850/E2x_ECU (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain" definition="RH850%2FE2x?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FE2x_ECU+%281%29/ECU+core+port+FLASH+%281%29?type=HwPort" name="ECU core port FLASH (1)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x_ECU+%281%29/ECU+core+port+EEPROM+%281%29?type=HwPort" name="ECU core port EEPROM (1)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x_ECU+%281%29/ECU+core+port+RAM+%281%29?type=HwPort" name="ECU core port RAM (1)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x_ECU+%281%29/ECU+core+to+bus?type=HwPort" name="ECU core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FE2x_ECU+%282%29?type=ProcessingUnit" name="RH850/E2x_ECU (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain" definition="RH850%2FE2x?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FE2x_ECU+%282%29/ECU+core+port+FLASH+%282%29?type=HwPort" name="ECU core port FLASH (2)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x_ECU+%282%29/ECU+core+port+EEPROM+%282%29?type=HwPort" name="ECU core port EEPROM (2)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x_ECU+%282%29/ECU+core+port+RAM+%282%29?type=HwPort" name="ECU core port RAM (2)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FE2x_ECU+%282%29/ECU+core+to+bus?type=HwPort" name="ECU core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_ECU+%281%29?type=Memory" name="EEPROM_ECU (1)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_ECU+%281%29/ECU+EEPROM+port?type=HwPort" name="ECU EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_ECU+%281%29?type=Memory" name="FLASH_ECU (1)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_ECU+%281%29/ECU+FLASH+port?type=HwPort" name="ECU FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_ECU+%281%29?type=Memory" name="RAM_ECU (1)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_ECU+%281%29/ECU+RAM+port?type=HwPort" name="ECU RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_ECU+%282%29?type=Memory" name="EEPROM_ECU (2)" definition="EEPROM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_ECU+%282%29/ECU+EEPROM+port?type=HwPort" name="ECU EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_ECU+%282%29?type=Memory" name="FLASH_ECU (2)" definition="Flash-RH850%2FE2x+4+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_ECU+%282%29/ECU+FLASH+port?type=HwPort" name="ECU FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_ECU+%282%29?type=Memory" name="RAM_ECU (2)" definition="RAM-RH850%2FE2x+1MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_ECU+%282%29/ECU+RAM+port?type=HwPort" name="ECU RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-ECU+Handler?type=ConnectionHandler" name="MCU-ECU Handler">
+            <ports xmi:id="MCU-ECU+Handler/MCU-ECU+Port+%281%29?type=HwPort" name="MCU-ECU Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-ECU+Handler/MCU-ECU+Port+%282%29?type=HwPort" name="MCU-ECU Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-ECU+Handler/MCU-ECU+Handler+Out?type=HwPort" name="MCU-ECU Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController_ECU/Core+To+EEPROM_ECU+%281%29?type=HwConnection" name="Core To EEPROM_ECU (1)" port1="RH850%2FE2x_ECU+%281%29/ECU+core+port+EEPROM+%281%29?type=HwPort" port2="EEPROM_ECU+%281%29/ECU+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ECU/Core+To+FLASH_ECU+%281%29?type=HwConnection" name="Core To FLASH_ECU (1)" port1="RH850%2FE2x_ECU+%281%29/ECU+core+port+FLASH+%281%29?type=HwPort" port2="FLASH_ECU+%281%29/ECU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ECU/Core+To+RAM_ECU+%281%29?type=HwConnection" name="Core To RAM_ECU (1)" port1="RH850%2FE2x_ECU+%281%29/ECU+core+port+RAM+%281%29?type=HwPort" port2="RAM_ECU+%281%29/ECU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ECU/Core+To+EEPROM_ECU+%282%29?type=HwConnection" name="Core To EEPROM_ECU (2)" port1="RH850%2FE2x_ECU+%282%29/ECU+core+port+EEPROM+%282%29?type=HwPort" port2="EEPROM_ECU+%282%29/ECU+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ECU/Core+To+FLASH_ECU+%282%29?type=HwConnection" name="Core To FLASH_ECU (2)" port1="RH850%2FE2x_ECU+%282%29/ECU+core+port+FLASH+%282%29?type=HwPort" port2="FLASH_ECU+%282%29/ECU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ECU/Core+To+RAM_ECU+%282%29?type=HwConnection" name="Core To RAM_ECU (2)" port1="RH850%2FE2x_ECU+%282%29/ECU+core+port+RAM+%282%29?type=HwPort" port2="RAM_ECU+%282%29/ECU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ECU/MCU+Handler_ECU+%281%29?type=HwConnection" name="MCU Handler_ECU (1)" port1="MCU-ECU+Handler/MCU-ECU+Port+%281%29?type=HwPort" port2="RH850%2FE2x_ECU+%281%29/ECU+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController_ECU/MCU+Handler_ECU+%282%29?type=HwConnection" name="MCU Handler_ECU (2)" port1="MCU-ECU+Handler/MCU-ECU+Port+%282%29?type=HwPort" port2="RH850%2FE2x_ECU+%282%29/ECU+core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="ECU-ConnectionHandler?type=ConnectionHandler" name="ECU-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="ECU-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="ECU-ConnectionHandler/PortOut_CAN?type=HwPort" name="PortOut_CAN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="ECU-ConnectionHandler/PortOut_LIN?type=HwPort" name="PortOut_LIN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="ECU-ConnectionHandler/PortOut_FlexRay?type=HwPort" name="PortOut_FlexRay" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="EngineControlUnit/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="ECU-ConnectionHandler/PortOut_CAN?type=HwPort" port2="EngineControlUnit/CAN?type=HwPort"/>
+        <connections xmi:id="EngineControlUnit/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="ECU-ConnectionHandler/PortOut_LIN?type=HwPort" port2="EngineControlUnit/LIN?type=HwPort"/>
+        <connections xmi:id="EngineControlUnit/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="ECU-ConnectionHandler/PortOut_FlexRay?type=HwPort" port2="EngineControlUnit/FlexRay?type=HwPort"/>
+        <connections xmi:id="EngineControlUnit/MCU-ECU+Handler?type=HwConnection" name="MCU-ECU Handler" port1="ECU-ConnectionHandler/PortIn?type=HwPort" port2="MCU-ECU+Handler/MCU-ECU+Handler+Out?type=HwPort"/>
+      </structures>
+      <structures xmi:id="TransmissionControlModule?type=HwStructure" name="TransmissionControlModule" structureType="ECU">
+        <ports xmi:id="TransmissionControlModule/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="TransmissionControlModule/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="TransmissionControlModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController_TCM?type=HwStructure" name="MicroController_TCM" structureType="Microcontroller">
+          <ports xmi:id="MicroController_TCM/MCU-TCM+port?type=HwPort" name="MCU-TCM port" bitWidth="16" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M_TCM+%281%29?type=ProcessingUnit" name="RH850/C1M_TCM (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FC1M_TCM+%281%29/TCM+core+port+FLASH+%281%29?type=HwPort" name="TCM core port FLASH (1)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M_TCM+%281%29/TCM+core+port+EEPROM+%281%29?type=HwPort" name="TCM core port EEPROM (1)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M_TCM+%281%29/TCM+core+port+RAM+%281%29?type=HwPort" name="TCM core port RAM (1)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M_TCM+%281%29/TCM+core+to+bus?type=HwPort" name="TCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M_TCM+%282%29?type=ProcessingUnit" name="RH850/C1M_TCM (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FC1M_TCM+%282%29/TCM+core+port+FLASH+%282%29?type=HwPort" name="TCM core port FLASH (2)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M_TCM+%282%29/TCM+core+port+EEPROM+%282%29?type=HwPort" name="TCM core port EEPROM (2)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M_TCM+%282%29/TCM+core+port+RAM+%282%29?type=HwPort" name="TCM core port RAM (2)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M_TCM+%282%29/TCM+core+to+bus?type=HwPort" name="TCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_TCM+%281%29?type=Memory" name="EEPROM_TCM (1)" definition="EEPROM-RH850%2FC1M+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_TCM+%281%29/TCM+EEPROM+port?type=HwPort" name="TCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_TCM+%281%29?type=Memory" name="FLASH_TCM (1)" definition="Flash-RH850%2FC1M+3+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_TCM+%281%29/TCM+FLASH+port?type=HwPort" name="TCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_TCM+%281%29?type=Memory" name="RAM_TCM (1)" definition="RAM-RH850%2FC1M+256+KiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_TCM+%281%29/TCM+RAM+port?type=HwPort" name="TCM RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_TCM+%282%29?type=Memory" name="EEPROM_TCM (2)" definition="EEPROM-RH850%2FC1M+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_TCM+%282%29/TCM+EEPROM+port?type=HwPort" name="TCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_TCM+%282%29?type=Memory" name="FLASH_TCM (2)" definition="Flash-RH850%2FC1M+3+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_TCM+%282%29/TCM+FLASH+port?type=HwPort" name="TCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_TCM+%282%29?type=Memory" name="RAM_TCM (2)" definition="RAM-RH850%2FC1M+256+KiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_TCM+%282%29/TCM+RAM+port?type=HwPort" name="TCM RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-TCM+Handler?type=ConnectionHandler" name="MCU-TCM Handler">
+            <ports xmi:id="MCU-TCM+Handler/MCU-TCM+Port+%281%29?type=HwPort" name="MCU-TCM Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-TCM+Handler/MCU-TCM+Port+%282%29?type=HwPort" name="MCU-TCM Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-TCM+Handler/MCU-TCM+Handler+Out?type=HwPort" name="MCU-TCM Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController_TCM/Core+To+EEPROM_TCM+%281%29?type=HwConnection" name="Core To EEPROM_TCM (1)" port1="RH850%2FC1M_TCM+%281%29/TCM+core+port+EEPROM+%281%29?type=HwPort" port2="EEPROM_TCM+%281%29/TCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCM/Core+To+FLASH_TCM+%281%29?type=HwConnection" name="Core To FLASH_TCM (1)" port1="RH850%2FC1M_TCM+%281%29/TCM+core+port+FLASH+%281%29?type=HwPort" port2="FLASH_TCM+%281%29/TCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCM/Core+To+RAM_TCM+%281%29?type=HwConnection" name="Core To RAM_TCM (1)" port1="RH850%2FC1M_TCM+%281%29/TCM+core+port+RAM+%281%29?type=HwPort" port2="RAM_TCM+%281%29/TCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCM/Core+To+EEPROM_TCM+%282%29?type=HwConnection" name="Core To EEPROM_TCM (2)" port1="RH850%2FC1M_TCM+%282%29/TCM+core+port+EEPROM+%282%29?type=HwPort" port2="EEPROM_TCM+%282%29/TCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCM/Core+To+FLASH_TCM+%282%29?type=HwConnection" name="Core To FLASH_TCM (2)" port1="RH850%2FC1M_TCM+%282%29/TCM+core+port+FLASH+%282%29?type=HwPort" port2="FLASH_TCM+%282%29/TCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCM/Core+To+RAM_TCM+%282%29?type=HwConnection" name="Core To RAM_TCM (2)" port1="RH850%2FC1M_TCM+%282%29/TCM+core+port+RAM+%282%29?type=HwPort" port2="RAM_TCM+%282%29/TCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCM/MCU+Handler_TCM+%281%29?type=HwConnection" name="MCU Handler_TCM (1)" port1="MCU-TCM+Handler/MCU-TCM+Port+%281%29?type=HwPort" port2="RH850%2FC1M_TCM+%281%29/TCM+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController_TCM/MCU+Handler_TCM+%282%29?type=HwConnection" name="MCU Handler_TCM (2)" port1="MCU-TCM+Handler/MCU-TCM+Port+%282%29?type=HwPort" port2="RH850%2FC1M_TCM+%282%29/TCM+core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="TCM-ConnectionHandler?type=ConnectionHandler" name="TCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="TCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="TCM-ConnectionHandler/PortOut_CAN?type=HwPort" name="PortOut_CAN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="TCM-ConnectionHandler/PortOut_LIN?type=HwPort" name="PortOut_LIN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="TCM-ConnectionHandler/PortOut_FlexRay?type=HwPort" name="PortOut_FlexRay" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="TransmissionControlModule/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="TCM-ConnectionHandler/PortOut_CAN?type=HwPort" port2="TransmissionControlModule/CAN?type=HwPort"/>
+        <connections xmi:id="TransmissionControlModule/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="TCM-ConnectionHandler/PortOut_LIN?type=HwPort" port2="TransmissionControlModule/LIN?type=HwPort"/>
+        <connections xmi:id="TransmissionControlModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="TCM-ConnectionHandler/PortOut_FlexRay?type=HwPort" port2="TransmissionControlModule/FlexRay?type=HwPort"/>
+        <connections xmi:id="TransmissionControlModule/MCU-TCU+Handler?type=HwConnection" name="MCU-TCU Handler" port1="TCM-ConnectionHandler/PortIn?type=HwPort" port2="MCU-TCM+Handler/MCU-TCM+Handler+Out?type=HwPort"/>
+      </structures>
+      <structures xmi:id="TelematicsControlUnit?type=HwStructure" name="TelematicsControlUnit" structureType="ECU">
+        <ports xmi:id="TelematicsControlUnit/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="TelematicsControlUnit/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="TelematicsControlUnit/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController_TCU?type=HwStructure" name="MicroController_TCU" structureType="Microcontroller">
+          <ports xmi:id="MicroController_TCU/MCU-TCU+Handler+Out?type=HwPort" name="MCU-TCU Handler Out" bitWidth="0" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%281%29?type=ProcessingUnit" name="R-Car W1R (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+W1R+%281%29/TCU+core+port+FLASH+%281%29?type=HwPort" name="TCU core port FLASH (1)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%281%29/TCU+core+port+RAM+%281%29?type=HwPort" name="TCU core port RAM (1)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%281%29/TCU+core+to+bus?type=HwPort" name="TCU core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%282%29?type=ProcessingUnit" name="R-Car W1R (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+W1R+%282%29/TCU+core+port+FLASH+%282%29?type=HwPort" name="TCU core port FLASH (2)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%282%29/TCU+core+port+RAM+%282%29?type=HwPort" name="TCU core port RAM (2)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%282%29/TCU+core+to+bus?type=HwPort" name="TCU core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%283%29?type=ProcessingUnit" name="R-Car W1R (3)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+W1R+%283%29/TCU+core+port+FLASH+%283%29?type=HwPort" name="TCU core port FLASH (3)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%283%29/TCU+core+port+RAM+%283%29?type=HwPort" name="TCU core port RAM (3)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%283%29/TCU+core+to+bus?type=HwPort" name="TCU core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+W1R+%284%29?type=ProcessingUnit" name="R-Car W1R (4)" powerDomain="RH850?type=PowerDomain" frequencyDomain="R-Car+W1R?type=FrequencyDomain" definition="R-Car+W1R?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+W1R+%284%29/TCU+core+port+FLASH+%284%29?type=HwPort" name="TCU core port FLASH (4)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%284%29/TCU+core+port+RAM+%284%29?type=HwPort" name="TCU core port RAM (4)" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+W1R+%284%29/TCU+core+to+bus?type=HwPort" name="TCU core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_TCU+%281%29?type=Memory" name="FLASH_TCU (1)" definition="Flash-R-Car+W1R+16GiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_TCU+%281%29/TCU+FLASH+port?type=HwPort" name="TCU FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_TCU+%281%29?type=Memory" name="RAM_TCU (1)" definition="RAM-R-Car+W1R+2GiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_TCU+%281%29/TCU+RAM+port?type=HwPort" name="TCU RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_TCU+%282%29?type=Memory" name="FLASH_TCU (2)" definition="Flash-R-Car+W1R+16GiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_TCU+%282%29/TCU+FLASH+port?type=HwPort" name="TCU FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_TCU+%282%29?type=Memory" name="RAM_TCU (2)" definition="RAM-R-Car+W1R+2GiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_TCU+%282%29/TCU+RAM+port?type=HwPort" name="TCU RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_TCU+%283%29?type=Memory" name="FLASH_TCU (3)" definition="Flash-R-Car+W1R+16GiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_TCU+%283%29/TCU+FLASH+port?type=HwPort" name="TCU FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_TCU+%283%29?type=Memory" name="RAM_TCU (3)" definition="RAM-R-Car+W1R+2GiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_TCU+%283%29/TCU+RAM+port?type=HwPort" name="TCU RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_TCU+%284%29?type=Memory" name="FLASH_TCU (4)" definition="Flash-R-Car+W1R+16GiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_TCU+%284%29/TCU+FLASH+port?type=HwPort" name="TCU FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_TCU+%284%29?type=Memory" name="RAM_TCU (4)" definition="RAM-R-Car+W1R+2GiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_TCU+%284%29/TCU+RAM+port?type=HwPort" name="TCU RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-TCU+Handler?type=ConnectionHandler" name="MCU-TCU Handler">
+            <ports xmi:id="MCU-TCU+Handler/MCU-TCU+Port+%281%29?type=HwPort" name="MCU-TCU Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-TCU+Handler/MCU-TCU+Port+%282%29?type=HwPort" name="MCU-TCU Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-TCU+Handler/MCU-TCU+Port+%283%29?type=HwPort" name="MCU-TCU Port (3)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-TCU+Handler/MCU-TCU+Port+%284%29?type=HwPort" name="MCU-TCU Port (4)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-TCU+Handler/MCU-TCU+Handler+Out?type=HwPort" name="MCU-TCU Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController_TCU/Core+To+FLASH_TCU+%281%29?type=HwConnection" name="Core To FLASH_TCU (1)" port1="R-Car+W1R+%281%29/TCU+core+port+FLASH+%281%29?type=HwPort" port2="FLASH_TCU+%281%29/TCU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCU/Core+To+RAM_TCU+%281%29?type=HwConnection" name="Core To RAM_TCU (1)" port1="R-Car+W1R+%281%29/TCU+core+port+RAM+%281%29?type=HwPort" port2="RAM_TCU+%281%29/TCU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCU/Core+To+FLASH_TCU+%282%29?type=HwConnection" name="Core To FLASH_TCU (2)" port1="R-Car+W1R+%282%29/TCU+core+port+FLASH+%282%29?type=HwPort" port2="FLASH_TCU+%282%29/TCU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCU/Core+To+RAM_TCU+%282%29?type=HwConnection" name="Core To RAM_TCU (2)" port1="R-Car+W1R+%282%29/TCU+core+port+RAM+%282%29?type=HwPort" port2="RAM_TCU+%282%29/TCU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCU/Core+To+FLASH_TCU+%283%29?type=HwConnection" name="Core To FLASH_TCU (3)" port1="R-Car+W1R+%283%29/TCU+core+port+FLASH+%283%29?type=HwPort" port2="FLASH_TCU+%283%29/TCU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCU/Core+To+RAM_TCU+%283%29?type=HwConnection" name="Core To RAM_TCU (3)" port1="R-Car+W1R+%283%29/TCU+core+port+RAM+%283%29?type=HwPort" port2="RAM_TCU+%283%29/TCU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCU/Core+To+FLASH_TCU+%284%29?type=HwConnection" name="Core To FLASH_TCU (4)" port1="R-Car+W1R+%284%29/TCU+core+port+FLASH+%284%29?type=HwPort" port2="FLASH_TCU+%284%29/TCU+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCU/Core+To+RAM_TCU+%284%29?type=HwConnection" name="Core To RAM_TCU (4)" port1="R-Car+W1R+%284%29/TCU+core+port+RAM+%284%29?type=HwPort" port2="RAM_TCU+%284%29/TCU+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_TCU/MCU+Handler_TCU+%281%29?type=HwConnection" name="MCU Handler_TCU (1)" port1="MCU-TCU+Handler/MCU-TCU+Port+%281%29?type=HwPort" port2="R-Car+W1R+%281%29/TCU+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController_TCU/MCU+Handler_TCU+%282%29?type=HwConnection" name="MCU Handler_TCU (2)" port1="MCU-TCU+Handler/MCU-TCU+Port+%282%29?type=HwPort" port2="R-Car+W1R+%282%29/TCU+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController_TCU/MCU+Handler_TCU+%283%29?type=HwConnection" name="MCU Handler_TCU (3)" port1="MCU-TCU+Handler/MCU-TCU+Port+%283%29?type=HwPort" port2="R-Car+W1R+%283%29/TCU+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController_TCU/MCU+Handler_TCU+%284%29?type=HwConnection" name="MCU Handler_TCU (4)" port1="MCU-TCU+Handler/MCU-TCU+Port+%284%29?type=HwPort" port2="R-Car+W1R+%284%29/TCU+core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="TCU-ConnectionHandler?type=ConnectionHandler" name="TCU-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="TCU-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="TCU-ConnectionHandler/PortOut_CAN?type=HwPort" name="PortOut_CAN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="TCU-ConnectionHandler/PortOut_LIN?type=HwPort" name="PortOut_LIN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="TCU-ConnectionHandler/PortOut_FlexRay?type=HwPort" name="PortOut_FlexRay" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="TelematicsControlUnit/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="TCU-ConnectionHandler/PortOut_CAN?type=HwPort" port2="TelematicsControlUnit/CAN?type=HwPort"/>
+        <connections xmi:id="TelematicsControlUnit/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="TCU-ConnectionHandler/PortOut_LIN?type=HwPort" port2="TelematicsControlUnit/LIN?type=HwPort"/>
+        <connections xmi:id="TelematicsControlUnit/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="TCU-ConnectionHandler/PortOut_FlexRay?type=HwPort" port2="TelematicsControlUnit/FlexRay?type=HwPort"/>
+        <connections xmi:id="TelematicsControlUnit/MCU-TCU+Handler?type=HwConnection" name="MCU-TCU Handler" port1="TCU-ConnectionHandler/PortIn?type=HwPort" port2="MCU-TCU+Handler/MCU-TCU+Handler+Out?type=HwPort"/>
+      </structures>
+      <structures xmi:id="VehicleControlModule?type=HwStructure" name="VehicleControlModule" structureType="ECU">
+        <ports xmi:id="VehicleControlModule/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="VehicleControlModule/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="VehicleControlModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController_VCM?type=HwStructure" name="MicroController_VCM" structureType="Microcontroller">
+          <ports xmi:id="MicroController_VCM/MCU-VCM+Handler+Out?type=HwPort" name="MCU-VCM Handler Out" bitWidth="0" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit" name="RH850/P1M (1) VCM" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1M+%281%29+VCM/VCM+core+port+FLASH?type=HwPort" name="VCM core port FLASH" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%281%29+VCM/VCM+core+port+EEPROM?type=HwPort" name="VCM core port EEPROM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%281%29+VCM/VCM+core+port+RAM?type=HwPort" name="VCM core port RAM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%281%29+VCM/VCM+core+to+bus?type=HwPort" name="VCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" name="RH850/P1M (2) VCM" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1M+%282%29+VCM/VCM+core+port+FLASH?type=HwPort" name="VCM core port FLASH" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%282%29+VCM/VCM+core+port+EEPROM?type=HwPort" name="VCM core port EEPROM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%282%29+VCM/VCM+core+port+RAM?type=HwPort" name="VCM core port RAM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%282%29+VCM/VCM+core+to+bus?type=HwPort" name="VCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_VCM+%281%29?type=Memory" name="EEPROM_VCM (1)" definition="EEPROM-RH850%2FP1M+256+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_VCM+%281%29/VCM+EEPROM+port?type=HwPort" name="VCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_VCM+%281%29?type=Memory" name="FLASH_VCM (1)" definition="Flash-RH850%2FP1M+4MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_VCM+%281%29/VCM+FLASH+port?type=HwPort" name="VCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_VCM+%281%29?type=Memory" name="RAM_VCM (1)" definition="RAM-RH850%2FP1M+512+KiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_VCM+%281%29/VCM+RAM+port?type=HwPort" name="VCM RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_VCM+%282%29?type=Memory" name="EEPROM_VCM (2)" definition="EEPROM-RH850%2FP1M+256+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_VCM+%282%29/VCM+EEPROM+port?type=HwPort" name="VCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_VCM+%282%29?type=Memory" name="FLASH_VCM (2)" definition="Flash-RH850%2FP1M+4MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_VCM+%282%29/VCM+FLASH+port?type=HwPort" name="VCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_VCM+%282%29?type=Memory" name="RAM_VCM (2)" definition="RAM-RH850%2FP1M+512+KiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_VCM+%282%29/VCM+RAM+port?type=HwPort" name="VCM RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-VCM+Handler?type=ConnectionHandler" name="MCU-VCM Handler">
+            <ports xmi:id="MCU-VCM+Handler/MCU-VCM+Port+%281%29?type=HwPort" name="MCU-VCM Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-VCM+Handler/MCU-VCM+Port+%282%29?type=HwPort" name="MCU-VCM Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-VCM+Handler/MCU-VCM+Handler+Out?type=HwPort" name="MCU-VCM Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController_VCM/Core+To+EEPROM_VCM+%281%29?type=HwConnection" name="Core To EEPROM_VCM (1)" port1="RH850%2FP1M+%281%29+VCM/VCM+core+port+EEPROM?type=HwPort" port2="EEPROM_VCM+%281%29/VCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_VCM/Core+To+FLASH_VCM+%281%29?type=HwConnection" name="Core To FLASH_VCM (1)" port1="RH850%2FP1M+%281%29+VCM/VCM+core+port+FLASH?type=HwPort" port2="FLASH_VCM+%281%29/VCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_VCM/Core+To+RAM_VCM+%281%29?type=HwConnection" name="Core To RAM_VCM (1)" port1="RH850%2FP1M+%281%29+VCM/VCM+core+port+RAM?type=HwPort" port2="RAM_VCM+%281%29/VCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_VCM/Core+To+EEPROM_VCM+%282%29?type=HwConnection" name="Core To EEPROM_VCM (2)" port1="RH850%2FP1M+%282%29+VCM/VCM+core+port+EEPROM?type=HwPort" port2="EEPROM_VCM+%282%29/VCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_VCM/Core+To+FLASH_VCM+%282%29?type=HwConnection" name="Core To FLASH_VCM (2)" port1="RH850%2FP1M+%282%29+VCM/VCM+core+port+FLASH?type=HwPort" port2="FLASH_VCM+%282%29/VCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_VCM/Core+To+RAM_VCM+%282%29?type=HwConnection" name="Core To RAM_VCM (2)" port1="RH850%2FP1M+%282%29+VCM/VCM+core+port+RAM?type=HwPort" port2="RAM_VCM+%282%29/VCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_VCM/MCU+Handler_VCM+%281%29?type=HwConnection" name="MCU Handler_VCM (1)" port1="MCU-VCM+Handler/MCU-VCM+Port+%281%29?type=HwPort" port2="RH850%2FP1M+%281%29+VCM/VCM+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController_VCM/MCU+Handler_VCM+%282%29?type=HwConnection" name="MCU Handler_VCM (2)" port1="MCU-VCM+Handler/MCU-VCM+Port+%282%29?type=HwPort" port2="RH850%2FP1M+%282%29+VCM/VCM+core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="VCM-ConnectionHandler?type=ConnectionHandler" name="VCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain">
+          <ports xmi:id="VCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="VCM-ConnectionHandler/PortOut_CAN?type=HwPort" name="PortOut_CAN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="VCM-ConnectionHandler/PortOut_LIN?type=HwPort" name="PortOut_LIN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="VCM-ConnectionHandler/PortOut_FlexRay?type=HwPort" name="PortOut_FlexRay" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="VehicleControlModule/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="VCM-ConnectionHandler/PortOut_CAN?type=HwPort" port2="VehicleControlModule/CAN?type=HwPort"/>
+        <connections xmi:id="VehicleControlModule/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="VCM-ConnectionHandler/PortOut_LIN?type=HwPort" port2="VehicleControlModule/LIN?type=HwPort"/>
+        <connections xmi:id="VehicleControlModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="VCM-ConnectionHandler/PortOut_FlexRay?type=HwPort" port2="VehicleControlModule/FlexRay?type=HwPort"/>
+        <connections xmi:id="VehicleControlModule/MCU-VCM+Handler?type=HwConnection" name="MCU-VCM Handler" port1="VCM-ConnectionHandler/PortIn?type=HwPort" port2="MCU-VCM+Handler/MCU-VCM+Handler+Out?type=HwPort"/>
+      </structures>
+      <connections xmi:id="FrontZoneECU/VCM-ECU?type=HwConnection" name="VCM-ECU" port1="VehicleControlModule/CAN?type=HwPort" port2="EngineControlUnit/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-TCM?type=HwConnection" name="VCM-TCM" port1="VehicleControlModule/CAN?type=HwPort" port2="TransmissionControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-TCU?type=HwConnection" name="VCM-TCU" port1="VehicleControlModule/CAN?type=HwPort" port2="TelematicsControlUnit/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-BCM?type=HwConnection" name="VCM-BCM" port1="VehicleControlModule/CAN?type=HwPort" port2="BrakeControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-SCM?type=HwConnection" name="VCM-SCM" port1="VehicleControlModule/CAN?type=HwPort" port2="SteeringControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-ACM?type=HwConnection" name="VCM-ACM" port1="VehicleControlModule/CAN?type=HwPort" port2="AirbagControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="FrontZoneECU/VCM-HMI?type=HwConnection" name="VCM-HMI" port1="VehicleControlModule/CAN?type=HwPort" port2="HumanMachineInterfaceModule/CAN?type=HwPort"/>
+    </structures>
+    <structures xmi:id="BackZoneECU?type=HwStructure" name="BackZoneECU" structureType="System">
+      <structures xmi:id="BrakeControlModule?type=HwStructure" name="BrakeControlModule" structureType="ECU">
+        <ports xmi:id="BrakeControlModule/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="BrakeControlModule/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="BrakeControlModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController_BCM?type=HwStructure" name="MicroController_BCM" structureType="Microcontroller">
+          <ports xmi:id="MicroController_BCM/MCU-BCM+Handler+Out?type=HwPort" name="MCU-BCM Handler Out" bitWidth="0" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%281%29?type=ProcessingUnit" name="RH850/P1M (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1M+%281%29/BCM+core+port+FLASH?type=HwPort" name="BCM core port FLASH" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%281%29/BCM+core+port+EEPROM?type=HwPort" name="BCM core port EEPROM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%281%29/BCM+core+port+RAM?type=HwPort" name="BCM core port RAM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%281%29/BCM+core+to+bus?type=HwPort" name="BCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1M+%282%29?type=ProcessingUnit" name="RH850/P1M (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1M?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1M+%282%29/BCM+core+port+FLASH?type=HwPort" name="BCM core port FLASH" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%282%29/BCM+core+port+EEPROM?type=HwPort" name="BCM core port EEPROM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%282%29/BCM+core+port+RAM?type=HwPort" name="BCM core port RAM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1M+%282%29/BCM+core+to+bus?type=HwPort" name="BCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_BCM+%281%29?type=Memory" name="EEPROM_BCM (1)" definition="EEPROM-RH850%2FP1M+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_BCM+%281%29/BCM+EEPROM+port?type=HwPort" name="BCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_BCM+%281%29?type=Memory" name="FLASH_BCM (1)" definition="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_BCM+%281%29/BCM+FLASH+port?type=HwPort" name="BCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_BCM+%281%29?type=Memory" name="RAM_BCM (1)" definition="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_BCM+%281%29/BCM+RAM+port?type=HwPort" name="BCM RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_BCM+%282%29?type=Memory" name="EEPROM_BCM (2)" definition="EEPROM-RH850%2FP1M+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_BCM+%282%29/BCM+EEPROM+port?type=HwPort" name="BCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_BCM+%282%29?type=Memory" name="FLASH_BCM (2)" definition="Flash-RH850%2FP1M+2+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_BCM+%282%29/BCM+FLASH+port?type=HwPort" name="BCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_BCM+%282%29?type=Memory" name="RAM_BCM (2)" definition="RAM-RH850%2FP1M+512+KiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_BCM+%282%29/BCM+RAM+port?type=HwPort" name="BCM RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-BCM+Handler?type=ConnectionHandler" name="MCU-BCM Handler">
+            <ports xmi:id="MCU-BCM+Handler/MCU-BCM+Port+%281%29?type=HwPort" name="MCU-BCM Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-BCM+Handler/MCU-BCM+Port+%282%29?type=HwPort" name="MCU-BCM Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-BCM+Handler/MCU-BCM+Handler+Out?type=HwPort" name="MCU-BCM Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController_BCM/Core+To+EEPROM_BCM+%281%29?type=HwConnection" name="Core To EEPROM_BCM (1)" port1="RH850%2FP1M+%281%29/BCM+core+port+EEPROM?type=HwPort" port2="EEPROM_BCM+%281%29/BCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_BCM/Core+To+FLASH_BCM+%281%29?type=HwConnection" name="Core To FLASH_BCM (1)" port1="RH850%2FP1M+%281%29/BCM+core+port+FLASH?type=HwPort" port2="FLASH_BCM+%281%29/BCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_BCM/Core+To+RAM_BCM+%281%29?type=HwConnection" name="Core To RAM_BCM (1)" port1="RH850%2FP1M+%281%29/BCM+core+port+RAM?type=HwPort" port2="RAM_BCM+%281%29/BCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_BCM/Core+To+EEPROM_BCM+%282%29?type=HwConnection" name="Core To EEPROM_BCM (2)" port1="RH850%2FP1M+%282%29/BCM+core+port+EEPROM?type=HwPort" port2="EEPROM_BCM+%282%29/BCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_BCM/Core+To+FLASH_BCM+%282%29?type=HwConnection" name="Core To FLASH_BCM (2)" port1="RH850%2FP1M+%282%29/BCM+core+port+FLASH?type=HwPort" port2="FLASH_BCM+%282%29/BCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_BCM/Core+To+RAM_BCM+%282%29?type=HwConnection" name="Core To RAM_BCM (2)" port1="RH850%2FP1M+%282%29/BCM+core+port+RAM?type=HwPort" port2="RAM_BCM+%282%29/BCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_BCM/MCU+Handler_BCM+%281%29?type=HwConnection" name="MCU Handler_BCM (1)" port1="MCU-BCM+Handler/MCU-BCM+Port+%281%29?type=HwPort" port2="RH850%2FP1M+%281%29/BCM+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController_BCM/MCU+Handler_BCM+%282%29?type=HwConnection" name="MCU Handler_BCM (2)" port1="MCU-BCM+Handler/MCU-BCM+Port+%282%29?type=HwPort" port2="RH850%2FP1M+%282%29/BCM+core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="BCM-ConnectionHandler?type=ConnectionHandler" name="BCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="BCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="BCM-ConnectionHandler/PortOut_CAN?type=HwPort" name="PortOut_CAN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="BCM-ConnectionHandler/PortOut_LIN?type=HwPort" name="PortOut_LIN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="BCM-ConnectionHandler/PortOut_FlexRay?type=HwPort" name="PortOut_FlexRay" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="BrakeControlModule/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="BCM-ConnectionHandler/PortOut_CAN?type=HwPort" port2="BrakeControlModule/CAN?type=HwPort"/>
+        <connections xmi:id="BrakeControlModule/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="BCM-ConnectionHandler/PortOut_LIN?type=HwPort" port2="BrakeControlModule/LIN?type=HwPort"/>
+        <connections xmi:id="BrakeControlModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="BCM-ConnectionHandler/PortOut_FlexRay?type=HwPort" port2="BrakeControlModule/FlexRay?type=HwPort"/>
+        <connections xmi:id="BrakeControlModule/MCU-BCM+Handler?type=HwConnection" name="MCU-BCM Handler" port1="BCM-ConnectionHandler/PortIn?type=HwPort" port2="MCU-BCM+Handler/MCU-BCM+Handler+Out?type=HwPort"/>
+      </structures>
+      <structures xmi:id="SteeringControlModule?type=HwStructure" name="SteeringControlModule" structureType="ECU">
+        <ports xmi:id="SteeringControlModule/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="SteeringControlModule/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="SteeringControlModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController_SCM?type=HwStructure" name="MicroController_SCM" structureType="Microcontroller">
+          <ports xmi:id="MicroController_SCM/MCU-SCM+port?type=HwPort" name="MCU-SCM port" bitWidth="16" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M+%281%29?type=ProcessingUnit" name="RH850/C1M (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FC1M+%281%29/SCM+core+port+FLASH?type=HwPort" name="SCM core port FLASH" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%281%29/SCM+core+port+EEPROM?type=HwPort" name="SCM core port EEPROM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%281%29/SCM+core+port+RAM?type=HwPort" name="SCM core port RAM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%281%29/SCM+core+to+bus?type=HwPort" name="SCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FC1M+%282%29?type=ProcessingUnit" name="RH850/C1M (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FC1M-Ax?type=FrequencyDomain" definition="RH850%2FC1M?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FC1M+%282%29/SCM+core+port?type=HwPort" name="SCM core port" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FC1M+%282%29/SCM+core+to+bus?type=HwPort" name="SCM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_SCM+%281%29?type=Memory" name="FLASH_SCM (1)" definition="Flash-RH850%2FC1M+3+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_SCM+%281%29/SCM+FLASH+port?type=HwPort" name="SCM FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_SCM+%281%29?type=Memory" name="RAM_SCM (1)" definition="RAM-RH850%2FC1M+256+KiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_SCM+%281%29/SCM+RAM+port?type=HwPort" name="SCM RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_SCM+%281%29?type=Memory" name="EEPROM_SCM (1)" definition="EEPROM-RH850%2FC1M+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_SCM+%281%29/SCM+EEPROM+port?type=HwPort" name="SCM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-SCM+Handler?type=ConnectionHandler" name="MCU-SCM Handler">
+            <ports xmi:id="MCU-SCM+Handler/MCU-SCM+Port+%281%29?type=HwPort" name="MCU-SCM Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-SCM+Handler/MCU-SCM+Handler+Out?type=HwPort" name="MCU-SCM Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController_SCM/Core+To+EEPROM_SCM+%281%29?type=HwConnection" name="Core To EEPROM_SCM (1)" port1="RH850%2FC1M+%281%29/SCM+core+port+EEPROM?type=HwPort" port2="EEPROM_SCM+%281%29/SCM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_SCM/Core+To+FLASH_SCM+%281%29?type=HwConnection" name="Core To FLASH_SCM (1)" port1="RH850%2FC1M+%281%29/SCM+core+port+FLASH?type=HwPort" port2="FLASH_SCM+%281%29/SCM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_SCM/Core+To+RAM_SCM+%281%29?type=HwConnection" name="Core To RAM_SCM (1)" port1="RH850%2FC1M+%281%29/SCM+core+port+RAM?type=HwPort" port2="RAM_SCM+%281%29/SCM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_SCM/MCU+Handler_SCM+%281%29?type=HwConnection" name="MCU Handler_SCM (1)" port1="MCU-SCM+Handler/MCU-SCM+Port+%281%29?type=HwPort" port2="RH850%2FC1M+%281%29/SCM+core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="SCM-ConnectionHandler?type=ConnectionHandler" name="SCM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="SCM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="SCM-ConnectionHandler/PortOut_CAN?type=HwPort" name="PortOut_CAN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="SCM-ConnectionHandler/PortOut_LIN?type=HwPort" name="PortOut_LIN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="SCM-ConnectionHandler/PortOut_FlexRay?type=HwPort" name="PortOut_FlexRay" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="SteeringControlModule/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="SCM-ConnectionHandler/PortOut_CAN?type=HwPort" port2="SteeringControlModule/CAN?type=HwPort"/>
+        <connections xmi:id="SteeringControlModule/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="SCM-ConnectionHandler/PortOut_LIN?type=HwPort" port2="SteeringControlModule/LIN?type=HwPort"/>
+        <connections xmi:id="SteeringControlModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="SCM-ConnectionHandler/PortOut_FlexRay?type=HwPort" port2="SteeringControlModule/FlexRay?type=HwPort"/>
+        <connections xmi:id="SteeringControlModule/MCU-SCM+Handler?type=HwConnection" name="MCU-SCM Handler" port1="SCM-ConnectionHandler/PortIn?type=HwPort" port2="MCU-SCM+Handler/MCU-SCM+Handler+Out?type=HwPort"/>
+      </structures>
+    </structures>
+    <structures xmi:id="CenterZoneECU?type=HwStructure" name="CenterZoneECU" structureType="System">
+      <structures xmi:id="AirbagControlModule?type=HwStructure" name="AirbagControlModule" structureType="ECU">
+        <ports xmi:id="AirbagControlModule/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="AirbagControlModule/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="AirbagControlModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController_ACM?type=HwStructure" name="MicroController_ACM" structureType="Microcontroller">
+          <ports xmi:id="MicroController_ACM/MCU-ACM+Handler+Out?type=HwPort" name="MCU-ACM Handler Out" bitWidth="0" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1H-C+%281%29?type=ProcessingUnit" name="RH850/P1H-C (1)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1H-C?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1H-C+%281%29/AGM+core+port+FLASH?type=HwPort" name="AGM core port FLASH" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%281%29/AGM+core+port+EEPROM?type=HwPort" name="AGM core port EEPROM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%281%29/AGM+core+port+RAM?type=HwPort" name="AGM core port RAM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%281%29/AGM+core+to+bus?type=HwPort" name="AGM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="RH850%2FP1H-C+%282%29?type=ProcessingUnit" name="RH850/P1H-C (2)" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FP1H-C?type=FrequencyDomain" definition="RH850%2FP1H-C?type=ProcessingUnitDefinition">
+            <ports xmi:id="RH850%2FP1H-C+%282%29/AGM+core+port+FLASH?type=HwPort" name="AGM core port FLASH" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%282%29/AGM+core+port+EEPROM?type=HwPort" name="AGM core port EEPROM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%282%29/AGM+core+port+RAM?type=HwPort" name="AGM core port RAM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="RH850%2FP1H-C+%282%29/AGM+core+to+bus?type=HwPort" name="AGM core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_ACM+%281%29?type=Memory" name="EEPROM_ACM (1)" definition="EEPROM-RH850%2FP1H-C+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_ACM+%281%29/AGM+EEPROM+port?type=HwPort" name="AGM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_ACM+%281%29?type=Memory" name="FLASH_ACM (1)" definition="Flash-RH850%2FP1H-C+2+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_ACM+%281%29/AGM+FLASH+port?type=HwPort" name="AGM FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_ACM+%281%29?type=Memory" name="RAM_ACM (1)" definition="RAM-RH850%2FP1H-C+512+KiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_ACM+%281%29/AGM+RAM+port?type=HwPort" name="AGM RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_ACM+%282%29?type=Memory" name="EEPROM_ACM (2)" definition="EEPROM-RH850%2FP1H-C+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_ACM+%282%29/AGM+EEPROM+port?type=HwPort" name="AGM EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_ACM+%282%29?type=Memory" name="FLASH_ACM (2)" definition="Flash-RH850%2FP1H-C+2+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_ACM+%282%29/AGM+FLASH+port?type=HwPort" name="AGM FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_ACM+%282%29?type=Memory" name="RAM_ACM (2)" definition="RAM-RH850%2FP1H-C+512+KiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_ACM+%282%29/AGM+RAM+port?type=HwPort" name="AGM RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-ACM+Handler?type=ConnectionHandler" name="MCU-ACM Handler">
+            <ports xmi:id="MCU-ACM+Handler/MCU-ACM+Port+%281%29?type=HwPort" name="MCU-ACM Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-ACM+Handler/MCU-ACM+Port+%282%29?type=HwPort" name="MCU-ACM Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-ACM+Handler/MCU-ACM+Handler+Out?type=HwPort" name="MCU-ACM Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController_ACM/Core+To+EEPROM_ACM+%281%29?type=HwConnection" name="Core To EEPROM_ACM (1)" port1="RH850%2FP1H-C+%281%29/AGM+core+port+EEPROM?type=HwPort" port2="EEPROM_ACM+%281%29/AGM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ACM/Core+To+FLASH_ACM+%281%29?type=HwConnection" name="Core To FLASH_ACM (1)" port1="RH850%2FP1H-C+%281%29/AGM+core+port+FLASH?type=HwPort" port2="FLASH_ACM+%281%29/AGM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ACM/Core+To+RAM_ACM+%281%29?type=HwConnection" name="Core To RAM_ACM (1)" port1="RH850%2FP1H-C+%281%29/AGM+core+port+RAM?type=HwPort" port2="RAM_ACM+%281%29/AGM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ACM/Core+To+EEPROM_ACM+%282%29?type=HwConnection" name="Core To EEPROM_ACM (2)" port1="RH850%2FP1H-C+%282%29/AGM+core+port+EEPROM?type=HwPort" port2="EEPROM_ACM+%282%29/AGM+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ACM/Core+To+FLASH_ACM+%282%29?type=HwConnection" name="Core To FLASH_ACM (2)" port1="RH850%2FP1H-C+%282%29/AGM+core+port+FLASH?type=HwPort" port2="FLASH_ACM+%282%29/AGM+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ACM/Core+To+RAM_ACM+%282%29?type=HwConnection" name="Core To RAM_ACM (2)" port1="RH850%2FP1H-C+%282%29/AGM+core+port+RAM?type=HwPort" port2="RAM_ACM+%282%29/AGM+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_ACM/MCU+Handler_ACM+%281%29?type=HwConnection" name="MCU Handler_ACM (1)" port1="MCU-ACM+Handler/MCU-ACM+Port+%281%29?type=HwPort" port2="RH850%2FP1H-C+%281%29/AGM+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController_ACM/MCU+Handler_ACM+%282%29?type=HwConnection" name="MCU Handler_ACM (2)" port1="MCU-ACM+Handler/MCU-ACM+Port+%282%29?type=HwPort" port2="RH850%2FP1H-C+%282%29/AGM+core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="ACM-ConnectionHandler?type=ConnectionHandler" name="ACM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="ACM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="ACM-ConnectionHandler/PortOut_CAN?type=HwPort" name="PortOut_CAN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="ACM-ConnectionHandler/PortOut_LIN?type=HwPort" name="PortOut_LIN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="ACM-ConnectionHandler/PortOut_FlexRay?type=HwPort" name="PortOut_FlexRay" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="AirbagControlModule/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="ACM-ConnectionHandler/PortOut_CAN?type=HwPort" port2="AirbagControlModule/CAN?type=HwPort"/>
+        <connections xmi:id="AirbagControlModule/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="ACM-ConnectionHandler/PortOut_LIN?type=HwPort" port2="AirbagControlModule/LIN?type=HwPort"/>
+        <connections xmi:id="AirbagControlModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="ACM-ConnectionHandler/PortOut_FlexRay?type=HwPort" port2="AirbagControlModule/FlexRay?type=HwPort"/>
+        <connections xmi:id="AirbagControlModule/MCU-ACM+Handler?type=HwConnection" name="MCU-ACM Handler" port1="ACM-ConnectionHandler/PortIn?type=HwPort" port2="MCU-ACM+Handler/MCU-ACM+Handler+Out?type=HwPort"/>
+      </structures>
+      <structures xmi:id="HumanMachineInterfaceModule?type=HwStructure" name="HumanMachineInterfaceModule" structureType="ECU">
+        <ports xmi:id="HumanMachineInterfaceModule/CAN?type=HwPort" name="CAN" bitWidth="64" priority="0"/>
+        <ports xmi:id="HumanMachineInterfaceModule/LIN?type=HwPort" name="LIN" bitWidth="8" priority="0"/>
+        <ports xmi:id="HumanMachineInterfaceModule/FlexRay?type=HwPort" name="FlexRay" bitWidth="64" priority="0"/>
+        <structures xmi:id="MicroController_HMI?type=HwStructure" name="MicroController_HMI" structureType="Microcontroller">
+          <ports xmi:id="MicroController_HMI/MCU-HMIM+Handler+Out?type=HwPort" name="MCU-HMIM Handler Out" bitWidth="0" priority="0"/>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+M3+%281%29?type=ProcessingUnit" name="R-Car M3 (1)" powerDomain="R-Car+M3?type=PowerDomain" frequencyDomain="R-Car+M3?type=FrequencyDomain" definition="R-Car+M3?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+M3+%281%29/HMI+core+port+FLASH?type=HwPort" name="HMI core port FLASH" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%281%29/HMI+core+port+RAM?type=HwPort" name="HMI core port RAM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%281%29/HMI+core+port+EEPROM?type=HwPort" name="HMI core port EEPROM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%281%29/HMI+core+to+bus?type=HwPort" name="HMI core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+M3+%282%29?type=ProcessingUnit" name="R-Car M3 (2)" powerDomain="R-Car+M3?type=PowerDomain" frequencyDomain="R-Car+M3?type=FrequencyDomain" definition="R-Car+M3?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+M3+%282%29/HMI+core+port+FLASH?type=HwPort" name="HMI core port FLASH" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%282%29/HMI+core+port+RAM?type=HwPort" name="HMI core port RAM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%282%29/HMI+core+port+EEPROM?type=HwPort" name="HMI core port EEPROM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%282%29/HMI+core+to+bus?type=HwPort" name="HMI core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+M3+%283%29?type=ProcessingUnit" name="R-Car M3 (3)" powerDomain="R-Car+M3?type=PowerDomain" frequencyDomain="R-Car+M3?type=FrequencyDomain" definition="R-Car+M3?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+M3+%283%29/HMI+core+port+FLASH?type=HwPort" name="HMI core port FLASH" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%283%29/HMI+core+port+RAM?type=HwPort" name="HMI core port RAM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%283%29/HMI+core+port+EEPROM?type=HwPort" name="HMI core port EEPROM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%283%29/HMI+core+to+bus?type=HwPort" name="HMI core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:ProcessingUnit" xmi:id="R-Car+M3+%284%29?type=ProcessingUnit" name="R-Car M3 (4)" powerDomain="R-Car+M3?type=PowerDomain" frequencyDomain="R-Car+M3?type=FrequencyDomain" definition="R-Car+M3?type=ProcessingUnitDefinition">
+            <ports xmi:id="R-Car+M3+%284%29/HMI+core+port+FLASH?type=HwPort" name="HMI core port FLASH" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%284%29/HMI+core+port+RAM?type=HwPort" name="HMI core port RAM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%284%29/HMI+core+port+EEPROM?type=HwPort" name="HMI core port EEPROM" bitWidth="0" priority="0" portType="initiator"/>
+            <ports xmi:id="R-Car+M3+%284%29/HMI+core+to+bus?type=HwPort" name="HMI core to bus" bitWidth="0" priority="0" portType="initiator"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_HMI+%281%29?type=Memory" name="FLASH_HMI (1)" definition="Flash-R-Car+M3+16+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_HMI+%281%29/HMI+FLASH+port?type=HwPort" name="HMI FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_HMI+%281%29?type=Memory" name="RAM_HMI (1)" definition="RAM-R-Car+M3+2+GiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_HMI+%281%29/HMI+RAM+port?type=HwPort" name="HMI RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_HMI+%281%29?type=Memory" name="EEPROM_HMI (1)" definition="EEPROM-R-Car+M3+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_HMI+%281%29/HMI+EEPROM+port?type=HwPort" name="HMI EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_HMI+%282%29?type=Memory" name="FLASH_HMI (2)" definition="Flash-R-Car+M3+16+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_HMI+%282%29/HMI+FLASH+port?type=HwPort" name="HMI FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_HMI+%282%29?type=Memory" name="RAM_HMI (2)" definition="RAM-R-Car+M3+2+GiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_HMI+%282%29/HMI+RAM+port?type=HwPort" name="HMI RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_HMI+%282%29?type=Memory" name="EEPROM_HMI (2)" definition="EEPROM-R-Car+M3+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_HMI+%282%29/HMI+EEPROM+port?type=HwPort" name="HMI EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_HMI+%283%29?type=Memory" name="FLASH_HMI (3)" definition="Flash-R-Car+M3+16+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_HMI+%283%29/HMI+FLASH+port?type=HwPort" name="HMI FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_HMI+%283%29?type=Memory" name="RAM_HMI (3)" definition="RAM-R-Car+M3+2+GiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_HMI+%283%29/HMI+RAM+port?type=HwPort" name="HMI RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_HMI+%283%29?type=Memory" name="EEPROM_HMI (3)" definition="EEPROM-R-Car+M3+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_HMI+%283%29/HMI+EEPROM+port?type=HwPort" name="HMI EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="FLASH_HMI+%284%29?type=Memory" name="FLASH_HMI (4)" definition="Flash-R-Car+M3+16+MiB?type=MemoryDefinition">
+            <ports xmi:id="FLASH_HMI+%284%29/HMI+FLASH+port?type=HwPort" name="HMI FLASH port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="RAM_HMI+%284%29?type=Memory" name="RAM_HMI (4)" definition="RAM-R-Car+M3+2+GiB?type=MemoryDefinition">
+            <ports xmi:id="RAM_HMI+%284%29/HMI+RAM+port?type=HwPort" name="HMI RAM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:Memory" xmi:id="EEPROM_HMI+%284%29?type=Memory" name="EEPROM_HMI (4)" definition="EEPROM-R-Car+M3+128+KiB?type=MemoryDefinition">
+            <ports xmi:id="EEPROM_HMI+%284%29/HMI+EEPROM+port?type=HwPort" name="HMI EEPROM port" bitWidth="0" priority="0" portType="responder"/>
+          </modules>
+          <modules xsi:type="am:ConnectionHandler" xmi:id="MCU-HMI+Handler?type=ConnectionHandler" name="MCU-HMI Handler">
+            <ports xmi:id="MCU-HMI+Handler/MCU-HMIM+Port+%281%29?type=HwPort" name="MCU-HMIM Port (1)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-HMI+Handler/MCU-HMIM+Port+%282%29?type=HwPort" name="MCU-HMIM Port (2)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-HMI+Handler/MCU-HMIM+Port+%283%29?type=HwPort" name="MCU-HMIM Port (3)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-HMI+Handler/MCU-HMIM+Port+%284%29?type=HwPort" name="MCU-HMIM Port (4)" bitWidth="0" priority="0"/>
+            <ports xmi:id="MCU-HMI+Handler/MCU-HMIM+Handler+Out?type=HwPort" name="MCU-HMIM Handler Out" bitWidth="0" priority="0"/>
+          </modules>
+          <connections xmi:id="MicroController_HMI/Core+To+EEPROM_HMI+%281%29?type=HwConnection" name="Core To EEPROM_HMI (1)" port1="R-Car+M3+%281%29/HMI+core+port+EEPROM?type=HwPort" port2="EEPROM_HMI+%281%29/HMI+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/Core+To+FLASH_HMI+%281%29?type=HwConnection" name="Core To FLASH_HMI (1)" port1="R-Car+M3+%281%29/HMI+core+port+FLASH?type=HwPort" port2="FLASH_HMI+%281%29/HMI+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/Core+To+RAM_HMI+%281%29?type=HwConnection" name="Core To RAM_HMI (1)" port1="R-Car+M3+%281%29/HMI+core+port+RAM?type=HwPort" port2="RAM_HMI+%281%29/HMI+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/Core+To+EEPROM_HMI+%282%29?type=HwConnection" name="Core To EEPROM_HMI (2)" port1="R-Car+M3+%282%29/HMI+core+port+EEPROM?type=HwPort" port2="EEPROM_HMI+%282%29/HMI+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/Core+To+FLASH_HMI+%282%29?type=HwConnection" name="Core To FLASH_HMI (2)" port1="R-Car+M3+%282%29/HMI+core+port+FLASH?type=HwPort" port2="FLASH_HMI+%282%29/HMI+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/Core+To+RAM_HMI+%282%29?type=HwConnection" name="Core To RAM_HMI (2)" port1="R-Car+M3+%282%29/HMI+core+port+RAM?type=HwPort" port2="RAM_HMI+%282%29/HMI+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/Core+To+EEPROM_HMI+%283%29?type=HwConnection" name="Core To EEPROM_HMI (3)" port1="R-Car+M3+%283%29/HMI+core+port+EEPROM?type=HwPort" port2="EEPROM_HMI+%283%29/HMI+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/Core+To+FLASH_HMI+%283%29?type=HwConnection" name="Core To FLASH_HMI (3)" port1="R-Car+M3+%283%29/HMI+core+port+FLASH?type=HwPort" port2="FLASH_HMI+%283%29/HMI+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/Core+To+RAM_HMI+%283%29?type=HwConnection" name="Core To RAM_HMI (3)" port1="R-Car+M3+%283%29/HMI+core+port+RAM?type=HwPort" port2="RAM_HMI+%283%29/HMI+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/Core+To+EEPROM_HMI+%284%29?type=HwConnection" name="Core To EEPROM_HMI (4)" port1="R-Car+M3+%284%29/HMI+core+port+EEPROM?type=HwPort" port2="EEPROM_HMI+%284%29/HMI+EEPROM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/Core+To+FLASH_HMI+%284%29?type=HwConnection" name="Core To FLASH_HMI (4)" port1="R-Car+M3+%284%29/HMI+core+port+FLASH?type=HwPort" port2="FLASH_HMI+%284%29/HMI+FLASH+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/Core+To+RAM_HMI+%284%29?type=HwConnection" name="Core To RAM_HMI (4)" port1="R-Car+M3+%284%29/HMI+core+port+RAM?type=HwPort" port2="RAM_HMI+%284%29/HMI+RAM+port?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/MCU+Handler_HMI+%281%29?type=HwConnection" name="MCU Handler_HMI (1)" port1="MCU-HMI+Handler/MCU-HMIM+Port+%281%29?type=HwPort" port2="R-Car+M3+%281%29/HMI+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/MCU+Handler_HMI+%282%29?type=HwConnection" name="MCU Handler_HMI (2)" port1="MCU-HMI+Handler/MCU-HMIM+Port+%282%29?type=HwPort" port2="R-Car+M3+%282%29/HMI+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/MCU+Handler_HMI+%283%29?type=HwConnection" name="MCU Handler_HMI (3)" port1="MCU-HMI+Handler/MCU-HMIM+Port+%283%29?type=HwPort" port2="R-Car+M3+%283%29/HMI+core+to+bus?type=HwPort"/>
+          <connections xmi:id="MicroController_HMI/MCU+Handler_HMI+%284%29?type=HwConnection" name="MCU Handler_HMI (4)" port1="MCU-HMI+Handler/MCU-HMIM+Port+%284%29?type=HwPort" port2="R-Car+M3+%284%29/HMI+core+to+bus?type=HwPort"/>
+        </structures>
+        <modules xsi:type="am:ConnectionHandler" xmi:id="HMIM-ConnectionHandler?type=ConnectionHandler" name="HMIM-ConnectionHandler" powerDomain="RH850?type=PowerDomain" frequencyDomain="RH850%2FE2x?type=FrequencyDomain">
+          <ports xmi:id="HMIM-ConnectionHandler/PortIn?type=HwPort" name="PortIn" bitWidth="0" priority="0" portType="initiator"/>
+          <ports xmi:id="HMIM-ConnectionHandler/PortOut_CAN?type=HwPort" name="PortOut_CAN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="HMIM-ConnectionHandler/PortOut_LIN?type=HwPort" name="PortOut_LIN" bitWidth="0" priority="0" portType="responder"/>
+          <ports xmi:id="HMIM-ConnectionHandler/PortOut_FlexRay?type=HwPort" name="PortOut_FlexRay" bitWidth="0" priority="0" portType="responder"/>
+        </modules>
+        <connections xmi:id="HumanMachineInterfaceModule/Handler+To+CAN?type=HwConnection" name="Handler To CAN" port1="HMIM-ConnectionHandler/PortOut_CAN?type=HwPort" port2="HumanMachineInterfaceModule/CAN?type=HwPort"/>
+        <connections xmi:id="HumanMachineInterfaceModule/Handler+To+LIN?type=HwConnection" name="Handler To LIN" port1="HMIM-ConnectionHandler/PortOut_LIN?type=HwPort" port2="HumanMachineInterfaceModule/LIN?type=HwPort"/>
+        <connections xmi:id="HumanMachineInterfaceModule/Handler+To+FlexRay?type=HwConnection" name="Handler To FlexRay" port1="HMIM-ConnectionHandler/PortOut_FlexRay?type=HwPort" port2="HumanMachineInterfaceModule/FlexRay?type=HwPort"/>
+        <connections xmi:id="HumanMachineInterfaceModule/MCU-HMIM+Handler?type=HwConnection" name="MCU-HMIM Handler" port1="HMIM-ConnectionHandler/PortIn?type=HwPort" port2="MCU-HMI+Handler/MCU-HMIM+Handler+Out?type=HwPort"/>
+      </structures>
+    </structures>
+    <structures xmi:id="CAN?type=HwStructure" name="CAN" structureType="System">
+      <ports xmi:id="CAN/Can?type=HwPort" name="Can" bitWidth="0" priority="0"/>
+      <connections xmi:id="CAN/ACM_CAN?type=HwConnection" name="ACM_CAN" port1="CAN/Can?type=HwPort" port2="AirbagControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/VCM_CAN?type=HwConnection" name="VCM_CAN" port1="CAN/Can?type=HwPort" port2="VehicleControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/TCM_CAN?type=HwConnection" name="TCM_CAN" port1="CAN/Can?type=HwPort" port2="TransmissionControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/TCU_CAN?type=HwConnection" name="TCU_CAN" port1="CAN/Can?type=HwPort" port2="TelematicsControlUnit/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/BCM_CAN?type=HwConnection" name="BCM_CAN" port1="CAN/Can?type=HwPort" port2="BrakeControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/SAS_CAN?type=HwConnection" name="SAS_CAN" port1="CAN/Can?type=HwPort" port2="SteeringControlModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/HMI_CAN?type=HwConnection" name="HMI_CAN" port1="CAN/Can?type=HwPort" port2="HumanMachineInterfaceModule/CAN?type=HwPort"/>
+      <connections xmi:id="CAN/OBU_CAN?type=HwConnection" name="OBU_CAN" port1="CAN/Can?type=HwPort" port2="OBU/Can?type=HwPort"/>
+    </structures>
+    <structures xmi:id="OBU?type=HwStructure" name="OBU" structureType="System">
+      <ports xmi:id="OBU/Can?type=HwPort" name="Can" bitWidth="0" priority="0"/>
+    </structures>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="RH850%2FE2x?type=FrequencyDomain" name="RH850/E2x" clockGating="false">
+      <defaultValue value="240.0" unit="MHz"/>
+    </domains>
+    <domains xsi:type="am:PowerDomain" xmi:id="RH850?type=PowerDomain" name="RH850" powerGating="false">
+      <defaultValue value="3.3" unit="V"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="RH850%2FC1M-Ax?type=FrequencyDomain" name="RH850/C1M-Ax" clockGating="false">
+      <defaultValue value="240.0" unit="MHz"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="R-Car+W1R?type=FrequencyDomain" name="R-Car W1R" clockGating="false">
+      <defaultValue value="1.2" unit="GHz"/>
+    </domains>
+    <domains xsi:type="am:PowerDomain" xmi:id="R-Car+W1R?type=PowerDomain" name="R-Car W1R" powerGating="false">
+      <defaultValue value="5.0" unit="V"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="RH850%2FP1M?type=FrequencyDomain" name="RH850/P1M" clockGating="false">
+      <defaultValue value="200.0" unit="MHz"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="RH850%2FP1H-C?type=FrequencyDomain" name="RH850/P1H-C" clockGating="false">
+      <defaultValue value="240.0" unit="MHz"/>
+    </domains>
+    <domains xsi:type="am:FrequencyDomain" xmi:id="R-Car+M3?type=FrequencyDomain" name="R-Car M3" clockGating="false">
+      <defaultValue value="1.5" unit="GHz"/>
+    </domains>
+    <domains xsi:type="am:PowerDomain" xmi:id="R-Car+M3?type=PowerDomain" name="R-Car M3" powerGating="false">
+      <defaultValue value="3.3" unit="V"/>
+    </domains>
+  </hwModel>
+  <osModel>
+    <operatingSystems name="RTOS">
+      <taskSchedulers xmi:id="RateMonotonic?type=TaskScheduler" name="RateMonotonic" definition="Monotonic?type=SchedulerDefinition"/>
+    </operatingSystems>
+    <schedulerDefinitions xmi:id="Monotonic?type=SchedulerDefinition" name="Monotonic" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
+    <schedulerDefinitions xmi:id="EarliestDeadlineFirst?type=SchedulerDefinition" name="EarliestDeadlineFirst" requiresParentScheduler="false" passesParametersUpwards="false" hasExactlyOneChild="false"/>
+  </osModel>
+  <stimuliModel>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="5+ms?type=PeriodicStimulus" name="5 ms">
+      <recurrence value="5" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="10+ms?type=PeriodicStimulus" name="10 ms">
+      <recurrence value="10" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="20+ms?type=PeriodicStimulus" name="20 ms">
+      <recurrence value="20" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="100+ms?type=PeriodicStimulus" name="100 ms">
+      <recurrence value="100" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+    <stimuli xsi:type="am:PeriodicStimulus" xmi:id="500+ms?type=PeriodicStimulus" name="500 ms">
+      <recurrence value="500" unit="ms"/>
+      <offset value="0" unit="ms"/>
+    </stimuli>
+  </stimuliModel>
+  <eventModel>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask5ms?type=ProcessEvent" name="ActivateTask5ms" eventType="activate" entity="Task-5ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask5ms?type=ProcessEvent" name="EndTask5ms" eventType="terminate" entity="Task-5ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask10ms?type=ProcessEvent" name="ActivateTask10ms" eventType="activate" entity="Task-10ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask10ms?type=ProcessEvent" name="EndTask10ms" eventType="terminate" entity="Task-10ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask20ms?type=ProcessEvent" name="ActivateTask20ms" eventType="activate" entity="Task-20ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask20ms?type=ProcessEvent" name="EndTask20ms" eventType="terminate" entity="Task-20ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask100ms?type=ProcessEvent" name="ActivateTask100ms" eventType="activate" entity="Task-100ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask100ms?type=ProcessEvent" name="EndTask100ms" eventType="terminate" entity="Task-100ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="ActivateTask1000ms?type=ProcessEvent" name="ActivateTask1000ms" eventType="activate" entity="Task-500ms?type=Task"/>
+    <events xsi:type="am:ProcessEvent" xmi:id="EndTask1000ms?type=ProcessEvent" name="EndTask1000ms" eventType="terminate" entity="Task-500ms?type=Task"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="ECU_faultCheck_Start?type=RunnableEvent" name="ECU_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="TCM_faultCheck_Start?type=RunnableEvent" name="TCM_faultCheck_Start" eventType="start" entity="TCM-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="TCU_faultCheck_Start?type=RunnableEvent" name="TCU_faultCheck_Start" eventType="start" entity="TCU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="ECU_faultCheck_Terminate?type=RunnableEvent" name="ECU_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="TCM_faultCheck_Terminate?type=RunnableEvent" name="TCM_faultCheck_Terminate" eventType="terminate" entity="TCM-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="TCU_faultCheck_Terminate?type=RunnableEvent" name="TCU_faultCheck_Terminate" eventType="terminate" entity="TCU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="BCM_faultCheck_Start?type=RunnableEvent" name="BCM_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="BCM_faultCheck_Terminate?type=RunnableEvent" name="BCM_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="SCM_faultCheck_Start?type=RunnableEvent" name="SCM_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="SCM_faultCheck_Terminate?type=RunnableEvent" name="SCM_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="ACM_faultCheck_Start?type=RunnableEvent" name="ACM_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="ACM_faultCheck_Terminate?type=RunnableEvent" name="ACM_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="HMI_faultCheck_Start?type=RunnableEvent" name="HMI_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="HMI_faultCheck_Terminate?type=RunnableEvent" name="HMI_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="VCMCheckFaultMemArea_faultCheck_Start?type=RunnableEvent" name="VCMCheckFaultMemArea_faultCheck_Start" eventType="start" entity="ECU-checkFault?type=Runnable"/>
+    <events xsi:type="am:RunnableEvent" xmi:id="VCMCheckFaultMemArea_faultCheck_Terminate?type=RunnableEvent" name="VCMCheckFaultMemArea_faultCheck_Terminate" eventType="terminate" entity="ECU-checkFault?type=Runnable"/>
+  </eventModel>
+  <constraintsModel>
+    <eventChains xmi:id="TCU_eventChain?type=EventChain" name="TCU_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCU_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="TCU_faultCheck_Start?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCU_faultCheckStart" stimulus="TCU_faultCheck_Start?type=RunnableEvent" response="TCU_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCU_faultCheckTerminate" stimulus="TCU_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="TCM_eventChain?type=EventChain" name="TCM_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="TCM_faultCheck_Start?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCM_faultCheckStart" stimulus="TCM_faultCheck_Start?type=RunnableEvent" response="TCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TCM_faultCheckTerminate" stimulus="TCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="ECU_eventChain?type=EventChain" name="ECU_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ECU_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="ECU_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ECU_faultCheckStart" stimulus="ECU_faultCheck_Start?type=RunnableEvent" response="ECU_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ECU_faultCheckTerminate" stimulus="ECU_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="BCM_eventChain?type=EventChain" name="BCM_eventChain" stimulus="ActivateTask20ms?type=ProcessEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="BCM_faultCheck" stimulus="ActivateTask20ms?type=ProcessEvent" response="BCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="BCM_faultCheckStart" stimulus="BCM_faultCheck_Start?type=RunnableEvent" response="BCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="BCM_faultCheckTerminate" stimulus="BCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="SCM_eventChain?type=EventChain" name="SCM_eventChain" stimulus="ActivateTask20ms?type=ProcessEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="SCM_faultCheck" stimulus="ActivateTask20ms?type=ProcessEvent" response="SCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="SCM_faultCheckStart" stimulus="SCM_faultCheck_Start?type=RunnableEvent" response="SCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="SCM_faultCheckTerminate" stimulus="SCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="ACM_eventChain?type=EventChain" name="ACM_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ACM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="ACM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ACM_faultCheckStart" stimulus="ACM_faultCheck_Start?type=RunnableEvent" response="ACM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="ACM_faultCheckTerminate" stimulus="ACM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="HMI_eventChain?type=EventChain" name="HMI_eventChain" stimulus="ActivateTask100ms?type=ProcessEvent" response="EndTask100ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="HMI_faultCheck" stimulus="ActivateTask100ms?type=ProcessEvent" response="HMI_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="HMI_faultCheckStart" stimulus="HMI_faultCheck_Start?type=RunnableEvent" response="HMI_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="HMI_faultCheckTerminate" stimulus="HMI_faultCheck_Terminate?type=RunnableEvent" response="EndTask100ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="checkMemFaultArea_eventChain?type=EventChain" name="checkMemFaultArea_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="VCMCheckFaultMemArea_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="checkIndividualFaults_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask100ms?type=ProcessEvent" minItemsCompleted="1">
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCU_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="TCU_faultCheck_Start?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCU_faultCheckStart" stimulus="TCU_faultCheck_Start?type=RunnableEvent" response="TCU_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCU_faultCheckTerminate" stimulus="TCU_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateTCUActivateTCM" stimulus="EndTask10ms?type=ProcessEvent" response="ActivateTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="TCM_faultCheck_Start?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCM_faultCheckStart" stimulus="TCM_faultCheck_Start?type=RunnableEvent" response="TCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCM_faultCheckTerminate" stimulus="TCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateTCMActivateECU" stimulus="EndTask10ms?type=ProcessEvent" response="ActivateTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ECU_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="ECU_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ECU_faultCheckStart" stimulus="ECU_faultCheck_Start?type=RunnableEvent" response="ECU_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ECU_faultCheckTerminate" stimulus="ECU_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateECUActivateACM" stimulus="EndTask10ms?type=ProcessEvent" response="ActivateTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ACM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="ACM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ACM_faultCheckStart" stimulus="ACM_faultCheck_Start?type=RunnableEvent" response="ACM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ACM_faultCheckTerminate" stimulus="ACM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateACMActivateBCM" stimulus="EndTask10ms?type=ProcessEvent" response="ActivateTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="BCM_faultCheck" stimulus="ActivateTask20ms?type=ProcessEvent" response="BCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="BCM_faultCheckStart" stimulus="BCM_faultCheck_Start?type=RunnableEvent" response="BCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="BCM_faultCheckTerminate" stimulus="BCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateBCMActivateSCM" stimulus="EndTask20ms?type=ProcessEvent" response="ActivateTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="SCM_faultCheck" stimulus="ActivateTask20ms?type=ProcessEvent" response="SCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="SCM_faultCheckStart" stimulus="SCM_faultCheck_Start?type=RunnableEvent" response="SCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="SCM_faultCheckTerminate" stimulus="SCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateSCMActivateHMI" stimulus="EndTask20ms?type=ProcessEvent" response="ActivateTask100ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="HMI_faultCheck" stimulus="ActivateTask100ms?type=ProcessEvent" response="HMI_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="HMI_faultCheckStart" stimulus="HMI_faultCheck_Start?type=RunnableEvent" response="HMI_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="HMI_faultCheckTerminate" stimulus="HMI_faultCheck_Terminate?type=RunnableEvent" response="EndTask100ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+        </eventChain>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TerminateHMIActivateVCM" stimulus="EndTask100ms?type=ProcessEvent" response="ActivateTask1000ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="VCMCheckFaultMemArea_faultCheck" stimulus="ActivateTask1000ms?type=ProcessEvent" response="VCMCheckFaultMemArea_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="VCMCheckFaultMemArea_faultCheckStart" stimulus="VCMCheckFaultMemArea_faultCheck_Start?type=RunnableEvent" response="VCMCheckFaultMemArea_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <eventChains xmi:id="sendFaultDataToOBU_eventChain?type=EventChain" name="sendFaultDataToOBU_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask1000ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1">
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="checkIndividualFaults_eventChain" stimulus="ActivateTask10ms?type=ProcessEvent" response="EndTask100ms?type=ProcessEvent" minItemsCompleted="1">
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCU_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="TCU_faultCheck_Start?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCU_faultCheckStart" stimulus="TCU_faultCheck_Start?type=RunnableEvent" response="TCU_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCU_faultCheckTerminate" stimulus="TCU_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateTCUActivateTCM" stimulus="EndTask10ms?type=ProcessEvent" response="ActivateTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="TCM_faultCheck_Start?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCM_faultCheckStart" stimulus="TCM_faultCheck_Start?type=RunnableEvent" response="TCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TCM_faultCheckTerminate" stimulus="TCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateTCMActivateECU" stimulus="EndTask10ms?type=ProcessEvent" response="ActivateTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ECU_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="ECU_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ECU_faultCheckStart" stimulus="ECU_faultCheck_Start?type=RunnableEvent" response="ECU_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ECU_faultCheckTerminate" stimulus="ECU_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateECUActivateACM" stimulus="EndTask10ms?type=ProcessEvent" response="ActivateTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ACM_faultCheck" stimulus="ActivateTask10ms?type=ProcessEvent" response="ACM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ACM_faultCheckStart" stimulus="ACM_faultCheck_Start?type=RunnableEvent" response="ACM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="ACM_faultCheckTerminate" stimulus="ACM_faultCheck_Terminate?type=RunnableEvent" response="EndTask10ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateACMActivateBCM" stimulus="EndTask10ms?type=ProcessEvent" response="ActivateTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="BCM_faultCheck" stimulus="ActivateTask20ms?type=ProcessEvent" response="BCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="BCM_faultCheckStart" stimulus="BCM_faultCheck_Start?type=RunnableEvent" response="BCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="BCM_faultCheckTerminate" stimulus="BCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateBCMActivateSCM" stimulus="EndTask20ms?type=ProcessEvent" response="ActivateTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="SCM_faultCheck" stimulus="ActivateTask20ms?type=ProcessEvent" response="SCM_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="SCM_faultCheckStart" stimulus="SCM_faultCheck_Start?type=RunnableEvent" response="SCM_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="SCM_faultCheckTerminate" stimulus="SCM_faultCheck_Terminate?type=RunnableEvent" response="EndTask20ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="TerminateSCMActivateHMI" stimulus="EndTask20ms?type=ProcessEvent" response="ActivateTask100ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="HMI_faultCheck" stimulus="ActivateTask100ms?type=ProcessEvent" response="HMI_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="HMI_faultCheckStart" stimulus="HMI_faultCheck_Start?type=RunnableEvent" response="HMI_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+          <items xsi:type="am:EventChainContainer">
+            <eventChain name="HMI_faultCheckTerminate" stimulus="HMI_faultCheck_Terminate?type=RunnableEvent" response="EndTask100ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+          </items>
+        </eventChain>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="TerminateHMIActivateVCM" stimulus="EndTask100ms?type=ProcessEvent" response="ActivateTask1000ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="VCMCheckFaultMemArea_faultCheck" stimulus="ActivateTask1000ms?type=ProcessEvent" response="VCMCheckFaultMemArea_faultCheck_Start?type=RunnableEvent" itemType="parallel" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="VCMCheckFaultMemArea_faultCheckStart" stimulus="VCMCheckFaultMemArea_faultCheck_Start?type=RunnableEvent" response="VCMCheckFaultMemArea_faultCheck_Terminate?type=RunnableEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+      <items xsi:type="am:EventChainContainer">
+        <eventChain name="VCMCheckFaultMemArea_faultCheckTerminate" stimulus="VCMCheckFaultMemArea_faultCheck_Terminate?type=RunnableEvent" response="EndTask1000ms?type=ProcessEvent" itemType="sequence" minItemsCompleted="1"/>
+      </items>
+    </eventChains>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_05" severity="Critical" process="Task-5ms?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="5" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_10" severity="Critical" process="Task-10ms?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="10" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_20" severity="Critical" process="Task-20ms?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="20" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_100" severity="Critical" process="Task-100ms?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="100" unit="ms"/>
+      </limit>
+    </requirements>
+    <requirements xsi:type="am:ProcessRequirement" name="Deadline_1000" severity="Critical" process="Task-500ms?type=Task">
+      <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
+        <limitValue value="1000" unit="ms"/>
+      </limit>
+    </requirements>
+  </constraintsModel>
+  <mappingModel>
+    <schedulerAllocation scheduler="RateMonotonic?type=TaskScheduler" responsibility="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit RH850%2FP1M+%282%29+VCM?type=ProcessingUnit" executingPU="RH850%2FP1M+%281%29+VCM?type=ProcessingUnit"/>
+    <taskAllocation task="Task-5ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+    <taskAllocation task="Task-10ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+    <taskAllocation task="Task-20ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+    <taskAllocation task="Task-100ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+    <taskAllocation task="Task-500ms?type=Task" scheduler="RateMonotonic?type=TaskScheduler"/>
+  </mappingModel>
+</am:Amalthea>
